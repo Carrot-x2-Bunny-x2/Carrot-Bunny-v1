@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="com.member.model.vo.Member,com.common.listener.LoginCheckListener" %>
+<%
+	//서버에서 전송된 request의 loginMember를 가져오자
+	//Member loginMember=(Member)request.getAttribute("loginMember"); 
+	//	-> 데이터 유지가 안됨
+	//HttpSession객체에 저장된 loginMember가져오기
+	Member loginMember=(Member)session.getAttribute("loginMember");
+	Cookie[] cookies=request.getCookies();
+	String saveId=null;
+	if(cookies!=null){
+		for(Cookie c:cookies){
+			if(c.getName().equals("saveId")){
+				saveId=c.getValue();
+				break;
+			}
+		}
+	}
+	
+%> 	
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>바니바니당근당근</title>
+
+<link rel=" shortcut icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+<link rel="icon" href="<%=request.getContextPath()%>/images/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/style.css">
+<script src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+
+	<!--  상단바 -->
+	<nav class="navbar">
+		<div class="navbar_logo">
+			
+			<a href="<%=request.getContextPath()%>/index.jsp"><img class="logo" src="<%=request.getContextPath()%>/images/carrotlogo.png";></img></a>
+		</div>
+		
+		<!-- 상단 로그인 , 메뉴바 아이콘 -->
+		<ul class="navbar_icon">
+		<%if(loginMember==null){ %>
+			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;">login</a>
+			<a href="<%=request.getContextPath()%>/myinfo"><img class="loginicon" src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
+		<%} else{%>
+			<p style ="font-size: 15px; text-decoration:none; color : #646464;"><%=loginMember.getUserName() %>님, 환영합니다.</p>
+			<a href="<%=request.getContextPath()%>/logout" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;">logout</a>
+			<a href="<%=request.getContextPath()%>/myinfo"><img class="loginicon" src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
+		<%} %>
+		<!-- 메뉴 바 -->
+			<img class="btn" src="<%=request.getContextPath()%>/images/menubar.png"></img>
+		</ul>
+		
+		
+			<!-- 메뉴영역 밖을 누르면 닫힘 -->
+			<div onclick="history.back();" class="page_cover"></div>
+			<!-- 메뉴영역 -->
+			<div id="menu">
+				<!-- 뒤로가기 버튼 -->
+				<div onclick="history.back();"><img class="close" src="<%=request.getContextPath()%>/images/rabbiticon.png";></img></div>
+				<!-- 메뉴바 이동 -->
+				<div class="menubar">
+					<ul>
+					<li><a href="<%=request.getContextPath()%>/views/notice/noticePage.jsp">공지사항</a></li>
+					</ul>
+					<ul>
+					<%if(loginMember==null){ %>
+					<li><a href="<%=request.getContextPath()%>/views/login/loginPage.jsp">로그인 / 회원가입</a></li>
+					<%} else{%>
+					<li><a href="<%=request.getContextPath()%>/myinfo">나의 정보</a></li>
+					<%} %>
+					</ul>
+					<ul>
+					<li><a href="">상품목록 / 조회</a></li>
+					</ul>
+					<ul>
+					<li><a href="">상품등록</a></li>
+					</ul>
+					<ul>
+					<li><a href="">1:1 문의</a></li>
+					</ul>
+				</div>	
+			</div>
+	</nav>
+
+
+	<script type="text/javascript">
+      $(".btn").click(function() {
+         $("#menu,.page_cover,html").addClass("open");
+         window.location.hash = "#open";
+      });
+      window.onhashchange = function() {
+         if (location.hash != "#open") {
+            $("#menu,.page_cover,html").removeClass("open");
+         }
+      };
+   </script>
