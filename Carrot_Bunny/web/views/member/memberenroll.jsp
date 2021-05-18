@@ -80,10 +80,9 @@
 			});
 		});
 		
-		//입력한 아이디값이 4글자 이상이 아니면 전송금지
 		const fn_enroll_validate=()=>{
 			const userId=$("#userId_");
-			const agr = $("#agree");
+			const agr = $("#agree"); //약관 동의 
 			const pwck=$("#password_");
 			const pw=$("#password_2");
 			const idok=$("#idok");
