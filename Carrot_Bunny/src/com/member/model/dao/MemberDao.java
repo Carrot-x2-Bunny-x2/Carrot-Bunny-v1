@@ -47,9 +47,9 @@ public class MemberDao {
 				//m.setGender(rs.getString("gender").charAt(0));
 				m.setEmail(rs.getString("mem_email"));
 				m.setPhone(rs.getString("mem_phone"));
-				m.setIsAgree(rs.getString("mem_agree").indexOf(0));
-				m.setIsDelete(rs.getString("mem_delete").indexOf(0));
-				m.setIsAdmin(rs.getString("mem_admin").indexOf(0));
+				m.setIsAgree(rs.getInt("mem_agree"));
+				m.setIsDelete(rs.getInt("mem_delete"));
+				m.setIsAdmin(rs.getInt("mem_admin"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class MemberDao {
 			pstmt.setInt(7, m.getIsAdmin());
 			pstmt.setString(8, m.getEmail());
 			result=pstmt.executeUpdate();
-			System.out.println("회원가입 체크 2");
+			System.out.println("회원가입 완료");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -105,12 +105,11 @@ public class MemberDao {
 				m.setUserName(rs.getString("mem_name"));
 				m.setEmail(rs.getString("mem_email"));
 				m.setPhone(rs.getString("mem_phone"));
-				m.setIsAgree(rs.getString("mem_agree").indexOf(0));
-				m.setIsDelete(rs.getString("mem_delete").indexOf(0));
-				m.setIsAdmin(rs.getString("mem_admin").indexOf(0));
+				m.setIsAgree(rs.getInt("mem_agree"));
+				m.setIsDelete(rs.getInt("mem_delete"));
+				m.setIsAdmin(rs.getInt("mem_admin"));
 
-
-				System.out.println("듀플체크 체크 6");
+				System.out.println("듀플체크 체크 완료");
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

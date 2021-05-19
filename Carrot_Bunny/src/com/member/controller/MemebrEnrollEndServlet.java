@@ -45,11 +45,12 @@ public class MemebrEnrollEndServlet extends HttpServlet {
 		/*
 		 * try { email=AESCryptor.encrypt(email);//암호화처리
 		 * phone=AESCryptor.encrypt(phone); }catch(Exception e) { e.printStackTrace(); }
-		 */		
-		int isAgree=Integer.parseInt(request.getParameter("isAgree"));
-		int isDelete=Integer.parseInt(request.getParameter("isDelete"));
-		int isAdmin=Integer.parseInt(request.getParameter("isAdmin"));
-
+		 */
+		
+		int isAgree= 0;
+		int isDelete= 0;
+		int isAdmin= 0;
+			
 		//다중값을 보관하기 위해 -> vo객체를 생성해놓음
 		
 		Member m=new Member(userId, password, userName, email, phone,
