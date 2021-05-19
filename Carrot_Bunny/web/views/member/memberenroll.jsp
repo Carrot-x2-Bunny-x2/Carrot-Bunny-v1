@@ -134,7 +134,7 @@ ul.join_box {
 				<li class="checkBox check02">
 					<ul class="clearfix">
 						<li>이용약관 동의(필수)</li>
-						<li class="checkBtn"><input type="checkbox" name="chk" required>
+						<li class="checkBtn"><input type="checkbox" name="pointcheck" id="pointcheck" value="0" />
 						</li>
 					</ul> <textarea name="" id="">여러분을 환영합니다.
 바니바니당근당근 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 바니바니당근당근 서비스의 이용과 관련하여 바니바니당근당근 서비스를 제공하는 바니바니당근당근 주식회사(이하 ‘바니바니당근당근’)와 이를 이용하는 바니바니당근당근 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 바니바니당근당근 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
@@ -143,7 +143,7 @@ ul.join_box {
 				<li class="checkBox check03">
 					<ul class="clearfix">
 						<li>개인정보 수집 및 이용에 대한 안내(필수)</li>
-						<li class="checkBtn"><input type="checkbox" name="chk" required>
+						<li class="checkBtn"><input type="checkbox" name="pointcheck2" id="pointcheck2" value="0" />
 						</li>
 					</ul> <textarea name="" id="">여러분을 환영합니다.
 바니바니당근당근 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 바니바니당근당근 서비스의 이용과 관련하여 바니바니당근당근 서비스를 제공하는 바니바니당근당근 주식회사(이하 ‘바니바니당근당근’)와 이를 이용하는 바니바니당근당근 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 바니바니당근당근 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
@@ -151,7 +151,9 @@ ul.join_box {
 				</li>
 			</ul>
 		</div>
-		<input type="submit" value="가입">
+		<!-- fn_enroll_validate 함수가 submit을 하면 실행이 되도록 이벤트를 걸어줘야함. 그래야 사용이 가능. 
+			로직에서 true가 반환되면 넘어가고 false가 되면 전송을 막음. -->
+		<input type="submit" value="가입" onclick="return fn_enroll_validate();">
 		<!-- <button type="button" id="signUp">가입</button> -->
 		<input type="reset" value="취소">
 	</form>
@@ -159,7 +161,7 @@ ul.join_box {
 <form action="" name="checkDuplicateId">
 	<input type="hidden" name="userId"> 
 </form>
-<script type="text/javascript">
+<script>
 
 		$(function(){
 			//비밀번호와 비밀번호확인의 값이 일치하는지 check
@@ -173,11 +175,11 @@ ul.join_box {
 			});
 		});	
 		
-		//너무 빡치는 이녀석;;;;; 아예 안돌아가는듯 -남규
+		//너무 빡치는 이녀석;;;;; 아예 안돌아가는듯 -
 		const fn_enroll_validate=()=>{
 			const userId=$("#userId_");
 			const pwck=$("#password_");
-			const pw=$("#password_2");
+			const pw=$("#password_2");	
 			if(userId.val().length<4){
 				alert("아이디는 최소 4자리 이상이여야 합니다.");
 				userId.focus();
@@ -186,6 +188,18 @@ ul.join_box {
 			if(pwck.val() != pw.val()){
 				alert("패스워드가 일치하지 않습니다.");
 				pw.focus();
+				return false;
+			}
+			//여기에서 체크해 체크박스에 체크가 되었는지 안되었는지
+			//안되어있으면 false를 반환 
+			if($("input:checkbox[name=pointcheck]").is(":checked")==false){
+				alert("약관동의 체크해주세요.");
+				pointcheck.focus();
+				return false;
+			}
+			if($("input:checkbox[name=pointcheck2]").is(":checked")==false){
+				alert("약관동의 체크해주세요.");
+				pointcheck2.focus();
 				return false;
 			}
 		}
