@@ -47,9 +47,9 @@ public class MemberDao {
 				//m.setGender(rs.getString("gender").charAt(0));
 				m.setEmail(rs.getString("mem_email"));
 				m.setPhone(rs.getString("mem_phone"));
-				m.setIsAgree(rs.getString("mem_agree").indexOf(0));
-				m.setIsDelete(rs.getString("mem_delete").indexOf(0));
-				m.setIsAdmin(rs.getString("mem_admin").indexOf(0));
+				m.setIsAgree(rs.getInt("mem_agree"));
+				m.setIsDelete(rs.getInt("mem_delete"));
+				m.setIsAdmin(rs.getInt("mem_admin"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -105,10 +105,9 @@ public class MemberDao {
 				m.setUserName(rs.getString("mem_name"));
 				m.setEmail(rs.getString("mem_email"));
 				m.setPhone(rs.getString("mem_phone"));
-				m.setIsAgree(rs.getString("mem_agree").indexOf(0));
-				m.setIsDelete(rs.getString("mem_delete").indexOf(0));
-				m.setIsAdmin(rs.getString("mem_admin").indexOf(0));
-
+				m.setIsAgree(rs.getInt("mem_agree"));
+				m.setIsDelete(rs.getInt("mem_delete"));
+				m.setIsAdmin(rs.getInt("mem_admin"));
 
 				System.out.println("듀플체크 체크 완료");
 			}
