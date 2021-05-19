@@ -35,9 +35,7 @@
 			//1. 현재값을 부모창의 userId_에 대입
 			const userId='<%=request.getParameter("userId")%>';
 			//2. id가 가능하다 넘기기
-			const idok = '<%=request.getParameter("userId")%>';
 			opener.memberEnrollFrm.userId.value=userId;
-			opener.memberEnrollFrm.idok.value=userId;
 			opener.memberEnrollFrm.password.focus();
 			//윈도우창 닫기
 			close();

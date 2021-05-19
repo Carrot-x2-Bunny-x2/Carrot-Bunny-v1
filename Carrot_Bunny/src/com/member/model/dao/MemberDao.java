@@ -76,7 +76,7 @@ public class MemberDao {
 			pstmt.setInt(7, m.getIsAdmin());
 			pstmt.setString(8, m.getEmail());
 			result=pstmt.executeUpdate();
-			System.out.println("회원가입 체크 2");
+			System.out.println("회원가입 완료");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -109,7 +109,7 @@ public class MemberDao {
 				m.setIsDelete(rs.getInt("mem_delete"));
 				m.setIsAdmin(rs.getInt("mem_admin"));
 
-				System.out.println("듀플체크 체크 6");
+				System.out.println("듀플체크 체크 완료");
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
