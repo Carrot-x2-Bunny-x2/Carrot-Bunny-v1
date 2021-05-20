@@ -55,6 +55,7 @@ table#tbl-notice {
 			<th>제목</th>
 			<th>작성자</th>
 			<th>첨부파일</th>
+			<th>상품가격</th>
 			<th>작성일</th>
 		</tr>
 		<%
@@ -83,6 +84,7 @@ table#tbl-notice {
 						첨부파일없음
 					<%} %>
 				</td>
+				<td><%=b.getBoardPrice() %></td>
 				<td><%=b.getBoardDate()%></td>
 			</tr>
 		<%	}	

@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.board.model.vo.Board" %>
+
+ 
 <% 
 	Board b=(Board)request.getAttribute("board");
+	HttpSession sess = (HttpSession)request.getSession();
+	
+	Member m = (Member)sess.getAttribute("loginMember");
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
@@ -13,38 +18,45 @@
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
 </style>
 <div id="notice-container">
-	<h2>상품 게시판 목록</h2>
-        <table id="tbl-notice">
-        <tr>
-            <th>제 목</th>
-            <td><%=b.getBoardTitle() %></td>
-        </tr>
-        <tr>
-            <th>작성자</th>
-            <td><%=b.getBoardWriter() %></td>
-        </tr>
-        <tr>
-            <th>첨부파일</th>
-            <td>
-           		<%if(b.getBoardFilePath()!=null) {%>
+	<h2>상품 상세보기</h2>
+        <div>
+        	<p>이미지 오는 곳</p>
+        	<%if(b.getBoardFilePath()!=null) {%>
            			<a href="<%=request.getContextPath()%>/board/fileDownload?fname=<%=b.getBoardFilePath()%>"><img src="<%=request.getContextPath()%>/images/file.png" width="16px"></a>
-           		<%} %>
-            </td>
-        </tr>
-        <tr>
-            <th>내 용</th>
-            <td><%=b.getBoardContent() %></td>
-        </tr>
+           	<%} %>
+        </div>
+        <div>
+        	<a>상품명: <%=b.getBoardTitle() %></a><br>
+        	<br>
+        	<a>가격: <%=b.getBoardPrice() %>원</a><br>
+        	<br>
+        	<a>수량: <%=b.getBoardAmount() %>개</a><br>
+        	<br>
+        	<a>
+			<%if(b.getBoardIsSell() == 1) { %>
+        		판매중
+        	<%} else {%>
+        		판매완료
+        	<%} %>
+			</a><br>
+        	<br>
+        	<a>내용: <%=b.getBoardContent() %></a><br>
+        	<br>
+        	<p>
+        	<%if(b.getBoardIsNego() == 1) { %>
+        		<input id="isNego" type="checkbox" checked>가격 협의 가능
+        	<%} else {%>
+        		<input id="isNego" type="checkbox">가격 협의 가능
+        	<%} %>
+        	</p>        	
+        	<p><input id="isLike" type="checkbox" <%=b.getBoardLike().contains(m.getUserId())?"checked":"" %>>찜	</p>
+        </div>
+        
         <%if(loginMember!=null && loginMember.getUserId().equals("admin")){ %>
-        <tr>
-            <th colspan="2">
-                <input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
-                <input type="button" value="삭제하기" onclick="">
-            </th>
-        </tr>
+        	<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
+            <input type="button" value="삭제하기" onclick="">
         <%} %>
-    </table>
-    </div>
+</div>
 
 
 <%@ include file="../common/footer.jsp"%>
