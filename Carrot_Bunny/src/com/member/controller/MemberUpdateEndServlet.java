@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.member.model.service.MemberService;
 import com.member.model.vo.Member;
@@ -52,6 +53,8 @@ public class MemberUpdateEndServlet extends HttpServlet {
 		String loc="/memberUpdate.do?userId="+userId;
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginMember", m);
 		
 		request.getRequestDispatcher("/views/common/msg.jsp")
 		.forward(request, response);
