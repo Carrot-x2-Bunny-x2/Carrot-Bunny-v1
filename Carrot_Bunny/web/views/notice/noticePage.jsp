@@ -70,23 +70,24 @@
 	<!-- 공지사항 리스트 -->
 	<div class="noticeList">
 		<table class="noticetb">
-			<tr>
-				<th>제목</th>
-				<th>작성일자</th>
-			</tr>
-			<%if(list.isEmpty()) {%>
+            <tr>
+                <th>제목</th>
+                <th>작성일</th>
+            </tr>
+			<%if(list.isEmpty()){ %>
 				<tr>
-					<td> 조회된 공지사항이 없습니다.</td>
+					<td colspan="2">조회된 공지사항이 없습니다.</td>
 				</tr>
-			<%}else{
-				for(Notice n : list){  %>
-				<tr>
-					<td><%=n.getNoticeTitle()%></td>
-					<td><%=n.getNoticeDate()%></td>
-				</tr>
-			<%}%>
-		<%}%>
-			
+			<%}else{ 
+				for(Notice n : list){%>
+					<tr>
+						<td>
+							<a href=""><%=n.getNoticeTitle() %></a>
+						</td>
+						<td><%=n.getNoticeDate() %></td>
+					</tr>
+				<%}
+			}%>
 		</table>
 		<input class="noticewrite" type="button" value="공지사항 등록"
 		onclick="location.assign('<%=request.getContextPath()%>/noticewrite')">

@@ -34,7 +34,7 @@ public class NoticePageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		List<Notice> list = new NoticeService().noticeList();
-		request.setAttribute("notice", list); //notice다 
+		request.setAttribute("list", list); //notice를 list로 가지고온다.
 		
 		request.getRequestDispatcher("/views/notice/noticePage.jsp").forward(request, response);
 		
