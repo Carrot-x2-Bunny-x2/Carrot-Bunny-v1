@@ -164,6 +164,23 @@ ul.join_box {
 <script>
 
 		$(function(){
+			
+			var replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}(\s*)]/gi;
+			var replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ가-힣]/gi;
+			
+			//아이디 특수문자, 한글, 공백 제거
+			$("#userId_").on("focusout", function() { 
+				var x = $(this).val();
+					if (x.length > 0) { 
+						if (x.match(replaceChar) || x.match(replaceNotFullKorean)) { 
+							x = x.replace(replaceChar, "").replace(replaceNotFullKorean, "").replace(/ /g,""); 
+							} 
+						$(this).val(x);
+						} 
+					}).on("keyup", function() { 
+						$(this).val($(this).val().replace(replaceChar, "")); 
+						});
+
 			//비밀번호와 비밀번호확인의 값이 일치하는지 check
 			$("#password_2").blur((e)=>{
 				const pwck=$(e.target).val();
@@ -173,9 +190,9 @@ ul.join_box {
 					$("#password_").focus();
 				}
 			});
+			
 		});	
 		
-		//너무 빡치는 이녀석;;;;; 아예 안돌아가는듯 -
 		const fn_enroll_validate=()=>{
 			const userId=$("#userId_");
 			const pwck=$("#password_");
