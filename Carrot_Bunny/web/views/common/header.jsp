@@ -46,7 +46,7 @@
 		<!-- 상단 로그인 , 메뉴바 아이콘 -->
 		<ul class="navbar_icon">
 		<%if(loginMember==null){ %>
-			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;">login</a>
+			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;" >login</a>
 			<a href="<%=request.getContextPath()%>/myinfo"><img class="loginicon" src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
 		<%} else{%>
 			<p style ="font-size: 15px; text-decoration:none; color : #646464;"><%=loginMember.getUserName() %>님, 환영합니다.</p>
@@ -67,7 +67,7 @@
 				<!-- 메뉴바 이동 -->
 				<div class="menubar">
 					<ul>
-					<li><a href="<%=request.getContextPath()%>/views/notice/noticePage.jsp">공지사항</a></li>
+					<li><a href="<%=request.getContextPath()%>/noticePage">공지사항</a></li>
 					</ul>
 					<ul>
 					<%if(loginMember==null){ %>

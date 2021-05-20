@@ -8,7 +8,7 @@
 		margin:200px;
 	}
 </style>
-<section id="content" style="width=1300px; height:800px;">
+<section id="content" style="width=1300px; min-height:400px;">
 	<div class ="maincontainer">
     	<h1> 
     	당근당근 바니바니 공사중입니다.<br>
