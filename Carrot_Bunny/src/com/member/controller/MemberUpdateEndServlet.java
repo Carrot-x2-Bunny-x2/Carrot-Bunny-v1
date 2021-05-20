@@ -14,7 +14,7 @@ import com.member.model.vo.Member;
 /**
  * Servlet implementation class MemberUpdateServlet
  */
-@WebServlet(name="memberupdateendservlet",urlPatterns = "/memberupdateend.do")
+@WebServlet("/memberupdateend.do")
 public class MemberUpdateEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
