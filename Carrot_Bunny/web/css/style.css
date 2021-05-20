@@ -4,7 +4,7 @@
 .logo {
 	width: 150px;
 	height: 150px;
-	margin: auto;
+	margin-left : -5px;
 }
 
 .navbar_logo {
@@ -23,17 +23,15 @@
 }
 
 .navbar {
-	display: flex; /*한줄에 나란히 */
-	justify-content: space-between; /*중간중간 spacing 같은 중심축에서 넣는다.*/
+	display: flex;
 	align-items: center;
-	/* padding: 5px 10px; */
-	margin:0;
-	padding :0;
+	margin-bottom: 0px;
 	
 }
 .navbaricon{
 	position:fixed;
 	display: flex;
+
 	
 }
 .loginfrm{
@@ -147,7 +145,7 @@ html.open {
 
 
 .menubar {
-	margin-top : 55%;
+	margin-top : 50%;
 }
 
 .menubar a {
@@ -156,15 +154,4 @@ html.open {
 	font-size : 12px;
 }
 
-/* 로그인 페이지(스타일 적용이 안됨) */
-.login-container {
-	display: flex;
-	justify-content: center;
-	align-items: centers;
-}
-
-.login-page-logo {
-	width: 30px;
-	height: 30px;
-}
 

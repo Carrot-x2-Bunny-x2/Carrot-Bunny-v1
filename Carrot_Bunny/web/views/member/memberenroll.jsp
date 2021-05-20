@@ -25,8 +25,7 @@ section#enroll-container table td {
 	text-align: left;
 }
 
-<!--
-이용약관 css -->* {
+<!--이용약관 css -->* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box
