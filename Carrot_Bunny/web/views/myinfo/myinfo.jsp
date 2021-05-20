@@ -122,7 +122,7 @@
 		<table>
 		<tr >
 			<td><input type="button" value="회원 정보 수정 및 탈퇴" style="width :200px; height: 100px;"
-				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">
+				onclick="location.assign('<%=request.getContextPath()%>/memberUpdate.do')">
 			</td>
 			<td><input type="button" value="판매상품 조회‧삭제‧수정" style="width :200px; height: 100px;"
 				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">

@@ -13,7 +13,6 @@ public class NoticeService {
 
 		private NoticeDao dao = new NoticeDao();
 		
-//		리스트 
 		public List<Notice> noticeList(){
 			Connection conn = getConnection();
 			List<Notice> list = dao.noticeList(conn);

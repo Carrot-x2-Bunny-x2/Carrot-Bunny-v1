@@ -67,7 +67,7 @@
 				<!-- 메뉴바 이동 -->
 				<div class="menubar">
 					<ul>
-					<li><a href="<%=request.getContextPath()%>/views/notice/noticePage.jsp">공지사항</a></li>
+					<li><a href="<%=request.getContextPath()%>/noticePage">공지사항</a></li>
 					</ul>
 					<ul>
 					<%if(loginMember==null){ %>
