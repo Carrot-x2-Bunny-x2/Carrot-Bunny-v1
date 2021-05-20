@@ -83,6 +83,7 @@
 			<button type="button" onclick="fn_password_update();">비밀번호변경</button>
 			<input type="button" value="탈퇴" onclick="fn_delete_member();"/>
 		</form>
+		
 	</div>
 </div>
 
