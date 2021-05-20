@@ -120,4 +120,57 @@ public class MemberDao {
 		return m;
 	}
 	
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		System.out.println("회원정보수정 체크 1");
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));
+			pstmt.setString(1, m.getUserName());
+			pstmt.setString(2,m.getPhone());
+			pstmt.setString(3, m.getEmail());
+			pstmt.setString(4,m.getUserId());
+			result=pstmt.executeUpdate();
+			System.out.println("회원정보수정 완료");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int deleteMember(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteMember"));
+			pstmt.setString(1,userId);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
+	
+	public int updatePassword(Connection conn,String userId, String newPw) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updatePassword"));
+			pstmt.setString(1, newPw);
+			pstmt.setString(2, userId);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
 }

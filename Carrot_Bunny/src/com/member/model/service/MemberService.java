@@ -41,4 +41,32 @@ public class MemberService {
 		return m;
 	}
 	
+	public int updateMember(Member m) {
+		Connection conn=getConnection();
+		int result=dao.updateMember(conn,m);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int deleteMember(String userId) {
+		Connection conn=getConnection();
+		int result=dao.deleteMember(conn,userId);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int updatePassword(String userId, String newPw) {
+		Connection conn=getConnection();
+		int result=dao.updatePassword(conn,userId,newPw);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	
 }
