@@ -152,5 +152,6 @@ $RECYCLE.BIN/
 *.lnk
 
 .classpath
+testfile.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,macos,windows,java-web
