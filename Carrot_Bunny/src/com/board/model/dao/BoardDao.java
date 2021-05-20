@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.board.model.vo.Board;
+import com.notice.model.vo.Notice;
 
 public class BoardDao {
 
@@ -38,20 +39,20 @@ public class BoardDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Board b = new Board();
-				b.setBoardNumber(rs.getInt("b_number"));
+				b.setBoardNumber(rs.getInt("b_num"));
 				b.setBoardTitle(rs.getString("b_title"));
 				b.setBoardWriter(rs.getString("b_writer"));
 				b.setBoardContent(rs.getString("b_content"));
 				b.setBoardPrice(rs.getInt("b_price"));
 				b.setBoardAmount(rs.getInt("b_amount"));
-				b.setBoardIsSell(rs.getInt("b_isSell"));
+				b.setBoardIsSell(rs.getInt("b_sell"));
 				b.setBoardLike(rs.getString("b_like"));
-				b.setBoardIsNego(rs.getInt("b_isNego"));
-				b.setBoardIsDelete(rs.getInt("b_isDelete"));
-				b.setBoardFilePath(rs.getString("b_filePath"));
-				b.setBoardReFilePath(rs.getString("b_reFilePath"));
+				b.setBoardIsNego(rs.getInt("b_nego"));
+				b.setBoardIsDelete(rs.getInt("b_delete"));
+				b.setBoardFilePath(rs.getString("b_original_filename"));
+				b.setBoardReFilePath(rs.getString("b_renamed_filename"));
 				b.setBoardDate(rs.getDate("b_date"));
-				b.setBoardReadCount(rs.getInt("b_readCount"));
+				b.setBoardReadCount(rs.getInt("b_readcount"));
 				list.add(b);
 			}
 		}catch(SQLException e) {
@@ -61,5 +62,56 @@ public class BoardDao {
 			close(pstmt);
 		}
 		return list;
+	}
+	
+	public int selectBoardCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectBoardCount"));
+			rs = pstmt.executeQuery();
+			if(rs.next()) result = rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public Board selectBoard(Connection conn, int num) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Board b = null;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectBoard"));
+			pstmt.setInt(1, num);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				b = new Board();
+				b.setBoardNumber(rs.getInt("b_num"));
+				b.setBoardTitle(rs.getString("b_title"));
+				b.setBoardWriter(rs.getString("b_writer"));
+				b.setBoardContent(rs.getString("b_content"));
+				b.setBoardPrice(rs.getInt("b_price"));
+				b.setBoardAmount(rs.getInt("b_amount"));
+				b.setBoardIsSell(rs.getInt("b_sell"));
+				b.setBoardLike(rs.getString("b_like"));
+				b.setBoardIsNego(rs.getInt("b_nego"));
+				b.setBoardIsDelete(rs.getInt("b_delete"));
+				b.setBoardFilePath(rs.getString("b_original_filename"));
+				b.setBoardReFilePath(rs.getString("b_renamed_filename"));
+				b.setBoardDate(rs.getDate("b_date"));
+				b.setBoardReadCount(rs.getInt("b_readcount"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return b;
 	}
 }
