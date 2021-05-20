@@ -14,7 +14,7 @@
     	당근당근 바니바니 공사중입니다.<br>
     	공사야 끝나라~~!!!
     	</h1>
-    	<a href="<%=request.getContextPath()%>/views/board/boardPage.jsp">임시 상품등록 게시판</a>
+    	<a href="<%=request.getContextPath()%>/board/boardPage">임시 상품등록 게시판</a>
       </div>
 </section>
 

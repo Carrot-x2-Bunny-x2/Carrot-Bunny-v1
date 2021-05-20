@@ -57,20 +57,20 @@ table#tbl-notice {
 			<th>첨부파일</th>
 			<th>작성일</th>
 		</tr>
-		<%-- <%
+		<%
 		if (list.isEmpty()) {
-		%> --%>
+		%>
 			<tr>
 				<td colspan="5">조회된 공지사항이 없습니다.</td>
 			</tr>
-		<%-- <%
+		<%
 		} else {
 			for (Board b : list) {
 		%>
 			<tr>
 				<td><%=b.getBoardNumber()%></td>
 				<td>
-					<a href="<%=request.getContextPath()%>/board/boardView?boardNo=<%=b.getBoardNumber()%>">
+					<a href="<%=request.getContextPath()%>/board/boardView?boardNumber=<%=b.getBoardNumber()%>">
 					<%=b.getBoardTitle()%>
 					</a>
 				</td>
@@ -86,10 +86,16 @@ table#tbl-notice {
 				<td><%=b.getBoardDate()%></td>
 			</tr>
 		<%	}	
-		} %> --%>
+		} %>
 	</table>
 	<div id="pageBar">
 		<%=request.getAttribute("pageBar")%>
 	</div>
 </section>
+<script>
+		const fn_noticeWrite=()=>{
+			location.assign("<%=request.getContextPath()%>/board/boardWrite");			
+		}
+</script>
+	
 <%@ include file="../common/footer.jsp"%>

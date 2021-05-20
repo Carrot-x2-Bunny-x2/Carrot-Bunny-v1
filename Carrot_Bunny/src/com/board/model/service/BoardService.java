@@ -19,5 +19,18 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
-
+	
+	public int selectBoardCount() {
+		Connection conn = getConnection();
+		int result = dao.selectBoardCount(conn);
+		close(conn);
+		return result;
+	}
+	
+	public Board selectBoard(int num) {
+		Connection conn = getConnection();
+		Board b = dao.selectBoard(conn, num);
+		close(conn);
+		return b;
+	}
 }
