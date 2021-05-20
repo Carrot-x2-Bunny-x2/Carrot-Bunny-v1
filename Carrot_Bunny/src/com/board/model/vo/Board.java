@@ -1,7 +1,7 @@
 package com.board.model.vo;
 
 import java.util.Date;
-
+// 주석 ㅜ추가
 public class Board {
 	
 	private int boardNumber;
