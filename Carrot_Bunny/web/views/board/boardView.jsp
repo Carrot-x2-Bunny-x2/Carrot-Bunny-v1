@@ -16,6 +16,40 @@
     table#tbl-notice{width:500px; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
     table#tbl-notice th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
+    
+    [id="isLike"] {
+  		position: absolute;
+  		left: -100vw;
+	}
+
+	[for="isLike"] {
+  		color: #aab8c2;
+  		cursor: pointer;
+  		font-size: 6em;
+  		align-self: center;  
+  		transition: color 0.2s ease-in-out;
+	}
+
+	[for="isLike"]:hover {
+	  color: grey;
+	}
+	
+	[for="isLike"]::selection {
+	  color: none;
+	  background: transparent;
+	}
+	
+	[for="isLike"]::moz-selection {
+	  color: none;
+	  background: transparent;
+	}
+	
+	[id="isLike"]:checked + label {
+	  color: #e2264d;
+	  will-change: font-size;
+	  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+	}
+	
 </style>
 <div id="notice-container">
 	<h2>상품 상세보기</h2>
@@ -44,16 +78,16 @@
         	<br>
         	<p>
         	<%if(b.getBoardIsNego() == 1) { %>
-        		<input id="isNego" type="checkbox" checked>가격 협의 가능
+        		가격 협의 가능
         	<%} else {%>
-        		<input id="isNego" type="checkbox">가격 협의 가능
+        		가격 협의 불가능
         	<%} %>
         	</p>
         	<p>
-        	<%if (b.getBoardLike() != null) { %>   	
-        		<input id="isLike" type="checkbox" <%=b.getBoardLike().contains(m.getUserId())?"checked":"" %>>찜
+        	<%if (b.getBoardLike() != null && b.getBoardLike().contains(m.getUserId())) { %>   	
+        		<input id="isLike" type="checkbox" checked><label for="isLike">❤</label>
         	<%} else {%>
-        		<input id="isLike" type="checkbox">찜
+        		<input id="isLike" type="checkbox"><label for="isLike">❤</label>
         	<%} %>
         	</p>
         </div>

@@ -72,7 +72,7 @@ public class boardWriteEndServlet extends HttpServlet {
 		b.setBoardPrice(Integer.parseInt(mr.getParameter("boardPrice")));
 		b.setBoardAmount(Integer.parseInt(mr.getParameter("boardAmount")));
 		String isNego = mr.getParameter("boardIsNego");
-		if (isNego.equals("가능")) {
+		if (isNego != null) {
 			b.setBoardIsNego(1);
 		} else {
 			b.setBoardIsNego(0);

@@ -43,7 +43,7 @@ public class BoardPageServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=5;
+			numPerPage=10;
 		}
 		
 		
@@ -53,7 +53,7 @@ public class BoardPageServlet extends HttpServlet {
 		int totalData=new BoardService().selectBoardCount();
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
-		int pageBarSize=5;
+		int pageBarSize=10;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";

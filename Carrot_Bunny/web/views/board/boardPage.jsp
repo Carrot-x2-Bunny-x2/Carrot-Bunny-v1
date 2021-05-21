@@ -53,9 +53,9 @@ table#tbl-notice {
 
 			<th>번호</th>
 			<th>제목</th>
-			<th>작성자</th>
-			<th>첨부파일</th>
+			<th>수량</th>
 			<th>상품가격</th>
+			<th>작성자</th>
 			<th>작성일</th>
 		</tr>
 		<%
@@ -75,16 +75,9 @@ table#tbl-notice {
 					<%=b.getBoardTitle()%>
 					</a>
 				</td>
-				<td><%=b.getBoardWriter()%></td>
-				<td>
-					<%if (b.getBoardFilePath() != null) {%> 
-						<img src="<%=request.getContextPath()%>/images/file.png"
-						width="16px" height="16px"> 
-					<%} else { %> 
-						첨부파일없음
-					<%} %>
-				</td>
+				<td><%=b.getBoardAmount() %></td>
 				<td><%=b.getBoardPrice() %></td>
+				<td><%=b.getBoardWriter()%></td>
 				<td><%=b.getBoardDate()%></td>
 			</tr>
 		<%	}	
