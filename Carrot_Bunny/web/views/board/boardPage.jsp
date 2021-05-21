@@ -67,6 +67,7 @@ table#tbl-notice {
 		<%
 		} else {
 			for (Board b : list) {
+				if (b.getBoardIsDelete() == 0) {
 		%>
 			<tr>
 				<td><%=b.getBoardNumber()%></td>
@@ -80,7 +81,8 @@ table#tbl-notice {
 				<td><%=b.getBoardWriter()%></td>
 				<td><%=b.getBoardDate()%></td>
 			</tr>
-		<%	}	
+			<%} 
+			}	
 		} %>
 	</table>
 	<div id="pageBar">

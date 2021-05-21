@@ -16,8 +16,7 @@
         <tr>
             <th>첨부파일</th>
             <td>
-            	<input type="file" name="boardFilepath1" ><br>
-            	<input type="file" name="boardFilepath2">
+            	<input type="file" name="boardFilepath1" >
             </td>
         </tr>
         <tr>
