@@ -14,16 +14,15 @@
     method="post" enctype="multipart/form-data">
         <table id="tbl-notice">
         <tr>
+            <th>첨부파일</th>
+            <td>
+            	<input type="file" name="boardFilepath1" ><br>
+            	<input type="file" name="boardFilepath2">
+            </td>
+        </tr>
+        <tr>
             <th>상품명</th>
             <td><input type="text" name="boardTitle" id="noticeTitle" required></td>
-        </tr>
-        <tr>
-            <th>상품가격</th>
-            <td><input type="text" name="boardPrice" id="noticePrice" required></td>
-        </tr>
-        <tr>
-            <th>가격협의 가능</th>
-            <input type="checkbox" name="boardIsNego" value="가능" id="isNego"><label for="isNego">가능</label>
         </tr>
         <tr>
             <th>작성자</th>
@@ -33,11 +32,18 @@
             </td>
         </tr>
         <tr>
-            <th>첨부파일</th>
+            <th>상품가격</th>
+            <td><input type="text" name="boardPrice" id="noticePrice" required>원</td>
+        </tr>
+        <tr>
+            <th>가격협의 가능</th>
             <td>
-            	<input type="file" name="boardFilepath1" ><br>
-            	<input type="file" name="boardFilepath2">
-            </td>
+            	<input type="checkbox" name="boardIsNego" value="가능" id="isNego"><label for="isNego">가능</label>
+        	</td>
+        </tr>
+        <tr>
+            <th>수량</th>
+            <td><input type="text" name="boardAmount" id="noticeAmount" required>개</td>
         </tr>
         <tr>
             <th>내 용</th>
