@@ -3,74 +3,53 @@
 <%@ include file="../common/header.jsp"%>
 
 <style>
-/*공지사항 기본 style*/
-
-#wrap {
-    width: 100%;
-} 
-
-.noticewrite {
-	width: 81%;
-	height: 80%;
-	margin: auto;
-	min-height : 400px;
-}
-
-.nwtitle {
-	text-align: center;
-	height: 50px;
-	font-size: 22px;
-	font-weight: bolder;
-	padding-bottom:20px;
-}
-
-.nwtitle p {
-	text-align: center;
-	font-size: 12px;
-	font-weight: lighter;
-	margin: 5px 0 0 0;
-	padding: 0;
-	
-
-/*공지사항 등록 폼 스타일 */
-
-
-
+    section#notice-container{width:600px; margin:0 auto; text-align:center;}
+    section#notice-container h2{margin:10px 0;}
+    table#tbl-notice{width:500px; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
+    table#tbl-notice th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
+    table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
 </style>
-<div id="wrap">
-	
-	<div class="board-write">
-		<!-- 공지사항 제일 윗 부분 -->
-		<div class="board-title">
-			상품 등록
-			<p>상품을 등록해주세요!</p>
-		</div>
-		<div class="board-write" style="padding-top:30px; margin-left:70px; background-color:#E0E0E0;  width: 950px; height:400px; "  >
-			<table>
-				<tr>
-				<td >제목
-				<input type="text" name="nwtitle" placeholder="제목을 입력해주세요"
-							style="width: 250px; height: 30px; margin-left: 12px; ">
-				</td>
-				</tr>
-				<tr>
-				<td>내용
-				<input type="text" name="nwcontent" placeholder="내용을 입력해주세요."
-							style="width: 850px; height: 300px; margin-left: 12px;">
-				</td>
-				</tr>
-			</table>
-		</div>
-		
-	</div>
-		<div style="text-align:center; padding-bottom: 40px; padding-top:10px;">
-		<input type="button" value="등록" style="width: 100px; height :50px; "
-		onclick="location.assign('<%=request.getContextPath()%>/boardPage)">
-		<input type="button" value="목록"  style="width: 100px; height :50px; "
-		onclick="location.assign('<%=request.getContextPath()%>/boardPage')">
-		</div>
-	
-	
+<div id="notice-container">
+	<form action="<%=request.getContextPath() %>/board/boardWriteEnd" 
+    method="post" enctype="multipart/form-data">
+        <table id="tbl-notice">
+        <tr>
+            <th>상품명</th>
+            <td><input type="text" name="boardTitle" id="noticeTitle" required></td>
+        </tr>
+        <tr>
+            <th>상품가격</th>
+            <td><input type="text" name="boardPrice" id="noticePrice" required></td>
+        </tr>
+        <tr>
+            <th>가격협의 가능</th>
+            <input type="checkbox" name="boardIsNego" value="가능" id="isNego"><label for="isNego">가능</label>
+        </tr>
+        <tr>
+            <th>작성자</th>
+            <td>
+	            <input type="text" name="boardWriter" id="noticeWrite" 
+	            value="<%=loginMember.getUserId()%>" readonly>
+            </td>
+        </tr>
+        <tr>
+            <th>첨부파일</th>
+            <td>
+            	<input type="file" name="boardFilepath1" ><br>
+            	<input type="file" name="boardFilepath2">
+            </td>
+        </tr>
+        <tr>
+            <th>내 용</th>
+            <td><textarea rows="5" cols="50" name="boardContent"></textarea></td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <input type="submit" value="등록하기" onclick="">
+            </th>
+        </tr>
+    	</table>
+    </form>
 </div>
 
 

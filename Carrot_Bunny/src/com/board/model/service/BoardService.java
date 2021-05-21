@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.board.model.dao.BoardDao;
 import com.board.model.vo.Board;
+import static com.common.JDBCTemplate.commit;
+import static com.common.JDBCTemplate.rollback;
 
 public class BoardService {
 	
@@ -32,5 +34,16 @@ public class BoardService {
 		Board b = dao.selectBoard(conn, num);
 		close(conn);
 		return b;
+	}
+	
+	public int insertBoard(Board b) {
+		Connection conn = getConnection();
+		int result = dao.insertBoard(conn, b);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		return result;
 	}
 }
