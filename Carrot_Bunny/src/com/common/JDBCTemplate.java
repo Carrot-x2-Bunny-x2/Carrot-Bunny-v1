@@ -15,8 +15,6 @@ public class JDBCTemplate {
 		Properties prop=new Properties();
 		Connection conn=null;
 		try {
-			System.out.println("driver 잘 도착!");
-			System.out.println(JDBCTemplate.class.getResource("/"));
 			String fileName=JDBCTemplate.class.getResource("/driver/driver.properties").getPath();
 			
 			prop.load(new FileReader(fileName));

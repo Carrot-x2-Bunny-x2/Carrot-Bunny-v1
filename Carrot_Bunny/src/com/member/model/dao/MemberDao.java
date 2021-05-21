@@ -16,13 +16,9 @@ public class MemberDao {
 	
 	public MemberDao() {
 		try {
-			System.out.println("member sql 잘 도착!");
 			System.out.println(MemberDao.class.getResource("/sql/member_sql.properties"));
 			String filePath=MemberDao.class.getResource("/sql/member_sql.properties").getPath();
-			
-			System.out.println("member sql 잘 도착!222");
 			prop.load(new FileReader(filePath));
-			System.out.println("member sql 잘 도착!333");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
