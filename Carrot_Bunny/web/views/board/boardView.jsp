@@ -44,9 +44,9 @@
         	<br>
         	<p>
         	<%if(b.getBoardIsNego() == 1) { %>
-        		<input id="isNego" type="checkbox" checked>가격 협의 가능
+        		가격 협의 가능
         	<%} else {%>
-        		<input id="isNego" type="checkbox">가격 협의 가능
+        		가격 협의 불가능
         	<%} %>
         	</p>
         	<p>
