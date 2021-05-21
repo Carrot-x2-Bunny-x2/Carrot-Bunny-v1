@@ -37,6 +37,9 @@
 
 
 </style>
+
+<script>
+</script>
 <div id="wrap">
 	
 	<div class="noticewrite">
@@ -46,26 +49,29 @@
 			<p>회원에게 보여줄 공지를 등록해주세요!</p>
 		</div>
 		<div class="nwwrite" style="padding-top:30px; margin-left:70px; background-color:#E0E0E0;  width: 950px; height:400px; "  >
+			<form action="<%=request.getContextPath()%>/notice/noticeWrite" method="post">
 			<table>
 				<tr>
-				<td >제목
+				<th>제목</th>
+				<td>
 				<input type="text" name="nwtitle" placeholder="제목을 입력해주세요"
 							style="width: 250px; height: 30px; margin-left: 12px; ">
 				</td>
 				</tr>
 				<tr>
-				<td>내용
-				<input type="text" name="nwcontent" placeholder="내용을 입력해주세요."
-							style="width: 850px; height: 300px; margin-left: 12px;">
+				<th>내용</th>
+				<td>
+				<textarea type="text" name="nwcontent" placeholder="내용을 입력해주세요."
+							style="width: 850px; height: 320px; margin-left: 12px;"></textarea>
 				</td>
 				</tr>
 			</table>
+			</form>
 		</div>
 		
 	</div>
 		<div style="text-align:center; padding-bottom: 40px; padding-top:10px;">
-		<input type="button" value="등록" style="width: 100px; height :50px; "
-		onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
+		<input type="submit" value="등록" style="width: 100px; height :50px; ">
 		<input type="button" value="목록"  style="width: 100px; height :50px; "
 		onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		</div>
