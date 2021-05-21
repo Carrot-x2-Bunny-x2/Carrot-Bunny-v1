@@ -22,7 +22,7 @@
         <div>
         	<p>이미지 오는 곳</p>
         	<%if(b.getBoardFilePath()!=null) {%>
-           			<a href="<%=request.getContextPath()%>/board/fileDownload?fname=<%=b.getBoardFilePath()%>"><img src="<%=request.getContextPath()%>/images/file.png" width="16px"></a>
+           			<a href=""><img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardFilePath()%>" width="200px"></a>
            	<%} %>
         </div>
         <div>
@@ -48,8 +48,14 @@
         	<%} else {%>
         		<input id="isNego" type="checkbox">가격 협의 가능
         	<%} %>
-        	</p>        	
-        	<p><input id="isLike" type="checkbox" <%=b.getBoardLike().contains(m.getUserId())?"checked":"" %>>찜	</p>
+        	</p>
+        	<p>
+        	<%if (b.getBoardLike() != null) { %>   	
+        		<input id="isLike" type="checkbox" <%=b.getBoardLike().contains(m.getUserId())?"checked":"" %>>찜
+        	<%} else {%>
+        		<input id="isLike" type="checkbox">찜
+        	<%} %>
+        	</p>
         </div>
         
         <%if(loginMember!=null && loginMember.getUserId().equals("admin")){ %>
