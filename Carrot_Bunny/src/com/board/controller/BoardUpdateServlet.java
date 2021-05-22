@@ -34,11 +34,9 @@ public class BoardUpdateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 사용자가 수정할 noticeNo를 보냄 -> notice를 가져와 넘겨주기
-		System.out.println("boardUpdateServlet 정상1");
-		Board b = new BoardService().selectBoard(Integer.parseInt(request.getParameter("number")));
+		Board b = new BoardService().selectBoard(Integer.parseInt(request.getParameter("no")));
 
 		request.setAttribute("board", b);
-		System.out.println("boardUpdateServlet 정상3");
 		request.getRequestDispatcher("/views/board/boardUpdate.jsp").forward(request, response);
 	}
 

@@ -91,9 +91,11 @@
         	</p>
         </div>
         
-        <%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { %>
-        	<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?number=<%=b.getBoardNumber()%>')">
-            <input type="button" value="삭제하기" onclick="">
+        <%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { 
+        	if (loginMember.getUserId().equals(b.getBoardWriter())) { %>
+        		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
+            <%} %>
+            <input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>')">
         <%} %>
 </div>
 
