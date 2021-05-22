@@ -54,14 +54,14 @@
 				<tr>
 				<th>제목</th>
 				<td>
-				<input type="text" name="nwtitle" placeholder="제목을 입력해주세요"
+				<input type="text" name="noticeTitle" placeholder="제목을 입력해주세요"
 							style="width: 250px; height: 30px; margin-left: 12px; ">
 				</td>
 				</tr>
 				<tr>
 				<th>내용</th>
 				<td>
-				<textarea type="text" name="nwcontent" placeholder="내용을 입력해주세요."
+				<textarea type="text" name="noticeContent" placeholder="내용을 입력해주세요."
 							style="width: 850px; height: 320px; margin-left: 12px;"></textarea>
 				</td>
 				</tr>
@@ -71,7 +71,8 @@
 		
 	</div>
 		<div style="text-align:center; padding-bottom: 40px; padding-top:10px;">
-		<input type="submit" value="등록" style="width: 100px; height :50px; ">
+		<input type="submit" value="등록" style="width: 100px; height :50px; "
+		onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<input type="button" value="목록"  style="width: 100px; height :50px; "
 		onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		</div>

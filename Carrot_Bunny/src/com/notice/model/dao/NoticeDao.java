@@ -40,7 +40,7 @@ public class NoticeDao {
 				n.setNoticeTitle(rs.getString("n_title"));
 				n.setNoticeContent(rs.getString("n_content"));
 				n.setNoticeDate(rs.getDate("n_date"));
-				n.setNoticeWriter(rs.getString("n_writer"));
+//				n.setNoticeWriter(rs.getString("n_writer"));
 				list.add(n);
 			}
 		}catch(SQLException e) {
@@ -60,7 +60,7 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(prop.getProperty("insertNotice"));
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
-			pstmt.setString(3, n.getNoticeWriter());
+//			pstmt.setString(3, n.getNoticeDate());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

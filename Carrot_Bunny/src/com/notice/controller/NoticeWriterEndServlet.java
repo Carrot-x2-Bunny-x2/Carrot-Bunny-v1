@@ -35,7 +35,6 @@ public class NoticeWriterEndServlet extends HttpServlet {
 		
 		String noticeTitle = request.getParameter("n_title");
 		String noticeContent = request.getParameter("n_content");
-		String noticeWriter = request.getParameter("n_writer");
 		
 		
 		Notice n = new Notice();
