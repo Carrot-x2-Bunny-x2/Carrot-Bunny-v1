@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Notice {
 
+	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContent;
 	private Date noticeDate;
@@ -15,12 +16,19 @@ public class Notice {
 
 	public Notice(String noticeTitle, String noticeContent, Date noticeDate, String noticeWriter) {
 		super();
+		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
 		this.noticeContent = noticeContent;
 		this.noticeDate = noticeDate;
 		this.noticeWriter = noticeWriter;
 	}
 
+	public int getNoticeNo() {
+		return noticeNo;
+	}
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
+	}
 	public String getNoticeTitle() {
 		return noticeTitle;
 	}

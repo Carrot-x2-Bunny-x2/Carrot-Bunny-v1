@@ -37,6 +37,7 @@ public class NoticeDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Notice n = new Notice();
+				n.setNoticeNo(rs.getInt("n_num"));
 				n.setNoticeTitle(rs.getString("n_title"));
 				n.setNoticeContent(rs.getString("n_content"));
 				n.setNoticeDate(rs.getDate("n_date"));
@@ -60,13 +61,35 @@ public class NoticeDao {
 			pstmt = conn.prepareStatement(prop.getProperty("insertNotice"));
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
-//			pstmt.setString(3, n.getNoticeDate());
+//			pstmt.setDate(3, n.getNoticeDate());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
 		}return result;
+	}
+	
+	public Notice selectNoticeDetail(Connection conn, int no) {
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
+		Notice n = null;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectNoticeDetail"));
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				n = new Notice();
+				n.setNoticeNo(rs.getInt("n_num"));
+				n.setNoticeTitle(rs.getString("n_title"));
+				n.setNoticeContent(rs.getString("n_content"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return n;
 	}
 	
 }
