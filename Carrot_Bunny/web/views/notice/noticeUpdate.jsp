@@ -30,26 +30,21 @@
 	font-weight: lighter;
 	margin: 5px 0 0 0;
 	padding: 0;
-	
-
-/*공지사항 등록 폼 스타일 */
-
 
 
 </style>
 
-<script>
-</script>
+<!-- notice 수정하기 -->
 <div id="wrap">
 	
 	<div class="noticewrite">
 		<!-- 공지사항 제일 윗 부분 -->
 		<div class="nwtitle">
-			공지사항 등록
-			<p>회원에게 보여줄 공지를 등록해주세요!</p>
+			공지사항 수정 
+			<p>회원에게 작성한 공지를 수정해주세요!</p>
 		</div>
 		<div class="nwwrite" style="padding-top:30px; margin-left:70px; background-color:#E0E0E0;  width: 950px; height:400px; "  >
-			<form action="<%=request.getContextPath()%>/notice/noticeWriteEnd" method="post">
+			<form action="<%=request.getContextPath()%>/notice/noticeWrite" method="post">
 			<table>
 				<tr>
 				<th>제목</th>
@@ -66,7 +61,7 @@
 				</td>
 				</tr>
 			</table>
-			
+			</form>
 		</div>
 		
 	</div>
@@ -75,7 +70,7 @@
 		<input type="button" value="목록"  style="width: 100px; height :50px; "
 		onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		</div>
-	</form>
+	
 	
 </div>
 
