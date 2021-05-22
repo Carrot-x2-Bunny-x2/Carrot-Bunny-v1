@@ -69,18 +69,18 @@ table#tbl-notice {
 			for (Board b : list) {
 				if (b.getBoardIsDelete() == 0) {
 		%>
-			<tr>
-				<td><%=b.getBoardNumber()%></td>
-				<td>
-					<a href="<%=request.getContextPath()%>/board/boardView?boardNumber=<%=b.getBoardNumber()%>">
-					<%=b.getBoardTitle()%>
-					</a>
-				</td>
-				<td><%=b.getBoardAmount() %></td>
-				<td><%=b.getBoardPrice() %></td>
-				<td><%=b.getBoardWriter()%></td>
-				<td><%=b.getBoardDate()%></td>
-			</tr>
+					<tr>
+						<td><%=b.getBoardNumber()%></td>
+						<td>
+							<a href="<%=request.getContextPath()%>/board/boardView?no=<%=b.getBoardNumber()%>">
+							<%=b.getBoardTitle()%>
+							</a>
+						</td>
+						<td><%=b.getBoardAmount() %></td>
+						<td><%=b.getBoardPrice() %></td>
+						<td><%=b.getBoardWriter()%></td>
+						<td><%=b.getBoardDate()%></td>
+					</tr>
 			<%} 
 			}	
 		} %>

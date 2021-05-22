@@ -22,17 +22,16 @@
 <div id="notice-container">
 	<form action="<%=request.getContextPath() %>/board/boardUpdateEnd" 
     method="post" enctype="multipart/form-data">
+    	<input type="hidden" name="boardNo" value="<%=b.getBoardNumber()%>">
         <table id="tbl-notice">
         <tr>
             <th>첨부파일</th>
             <td>
+            	<input type="file" name="up_file">
 				<%if(b.getBoardFilePath() != null){ %>
-            		<input type="file" name="up_file">
-            		<input type="hidden" name="oriFile" value="<%=b.getBoardFilePath()%>">
-            		<span id="fname"><%=b.getBoardFilePath() %></span>
-            	<%} else { %>	
-            		<input type="file" name="up_file">
-            	<%} %>
+            		<input type="hidden" name="originFile" value="<%=b.getBoardFilePath()%>">
+            		<span id="fileName"><%=b.getBoardFilePath() %></span>
+            	<%}  %>
             </td>
         </tr>
         <tr>
@@ -79,6 +78,17 @@
     	</table>
     </form>
 </div>
+<script>
+   	$(function(){
+   		$("input[name=up_file]").change(e => {
+   			if($(e.target).val()==""){
+   				$("#fname").show();
+   			}else{
+   				$("#fname").hide();
+   			}
+   		});
+   	});
+</script>
 
 
 <%@ include file="../common/footer.jsp"%>
