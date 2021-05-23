@@ -88,7 +88,7 @@
 		<table>
 		<tr >
 			<td><input type="button" value="회원 관리" style="width :200px; height: 100px;"
-				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">
+				onclick="location.assign('<%=request.getContextPath()%>/memberList')">
 			</td>
 			<td><input type="button" value="게시물 관리" style="width :200px; height: 100px;"
 				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">
