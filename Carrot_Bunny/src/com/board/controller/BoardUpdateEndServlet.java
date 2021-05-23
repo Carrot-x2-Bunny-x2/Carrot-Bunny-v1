@@ -58,7 +58,9 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		// MultipartRequest클래스를 생성 -> request로 전송된 데이터가 지정한 경로에 저장
 		// MultipartRequest클래스생성자는 5개의 매개변수를 가지고 있음
 		// 1. HttpServletRequest, 2. 파일경로,3. 파일최대크기, 4. 인코딩, 5.rename규칙
-		MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, encode, new DefaultFileRenamePolicy());
+		
+		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		MultipartRequest mr = new MultipartRequest(request, filepath, maxSize, encode, policy);
 
 		Board b = new Board();
 		b.setBoardTitle(mr.getParameter("boardTitle"));
