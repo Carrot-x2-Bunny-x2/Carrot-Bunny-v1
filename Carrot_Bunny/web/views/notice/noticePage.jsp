@@ -82,7 +82,7 @@
 				for(Notice n : list){%>
 					<tr>
 						<td>
-							<a href=""><%=n.getNoticeTitle() %></a>
+							<a href="<%=request.getContextPath()%>/notice/noticeView?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle() %></a>
 						</td>
 						<td><%=n.getNoticeDate() %></td>
 					</tr>

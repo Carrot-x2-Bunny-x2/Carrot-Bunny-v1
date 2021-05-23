@@ -34,6 +34,7 @@ public class NoticeService {
 			return result;
 		}
 		
+		
 		public Notice selectNoticeDetail(int no) {
 			Connection conn=getConnection();
 			Notice n=dao.selectNoticeDetail(conn, no);

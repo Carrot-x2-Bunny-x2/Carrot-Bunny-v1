@@ -38,7 +38,6 @@ public class NoticeWriteEndServlet extends HttpServlet {
 		n.setNoticeTitle(request.getParameter("n_title"));
 		n.setNoticeContent(request.getParameter("n_content"));
 		
-		
 		int result = new NoticeService().insertNotice(n);
 		
 		String msg="";
