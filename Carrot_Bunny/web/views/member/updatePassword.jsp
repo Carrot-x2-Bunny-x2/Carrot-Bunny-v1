@@ -8,12 +8,9 @@
 </head>
 <body>
 	<style>
-    div#updatePassword-container{
-        background:red;
-    }
     div#updatePassword-container table {
         margin:0 auto;
-        border-spacing: 20px;
+        border-spacing: 13px;
     }
     div#updatePassword-container table tr:last-of-type td {
         text-align:center;
