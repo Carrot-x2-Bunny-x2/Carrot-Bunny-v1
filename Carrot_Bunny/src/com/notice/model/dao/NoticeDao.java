@@ -54,6 +54,7 @@ public class NoticeDao {
 	}
 	
 	
+	//공지사항 등록 
 	public int insertNotice(Connection conn, Notice n) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -70,6 +71,8 @@ public class NoticeDao {
 		}return result;
 	}
 	
+	
+	//상세보기 
 	public Notice selectNoticeDetail(Connection conn, int no) {
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
@@ -91,5 +94,24 @@ public class NoticeDao {
 			close(pstmt);
 		}return n;
 	}
+	
+	
+	//수정 
+	public int noticeUpdate(Connection conn, Notice n) {
+		PreparedStatement pstmt=null;
+		int result =0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("noticeUpdate"));
+			pstmt.setString(1, n.getNoticeTitle());
+			pstmt.setString(2, n.getNoticeContent());
+			pstmt.setInt(3, n.getNoticeNo());
+			result = pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
 	
 }

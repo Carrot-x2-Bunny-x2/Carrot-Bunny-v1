@@ -35,7 +35,7 @@
 	padding: 0;
 }
 
-.noticetb {
+.notice {
 	width: 100%;
 	margin-top: 20px;
 	line-height: 35px;
@@ -51,23 +51,23 @@
 	border-bottom: 1px solid lightgray;
 }
 
-.noticewrite {
+.noticetb {
 	margin-top: 10px;
 	float: right;
 }
 </style>
 <div id="wrap">
 
-	<div class="noticewrite">
+	<div class="notice">
 		<!-- 공지사항 제일 윗 부분 -->
-		<div class="nwtitle">
+		<div class="noticetitle">
 			공지사항 상세화면
 			<p>공지사항을 꼼꼼하게 읽어주세요!</p>
 		</div>
-		<div class="nwwrite"
+		<div class="noticewrite"
 			style="padding-top: 30px; margin-left: 70px; background-color: #E0E0E0; width: 950px; height: 400px;">
 
-			<table>
+			<table class="">
 				<tr>
 					<th>제목</th>
 					<td><%=n.getNoticeTitle()%></td>
@@ -83,8 +83,11 @@
 	<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
 	<div
 		style="text-align: center; padding-bottom: 40px; padding-top: 10px;">
-		<input type="submit" value="수정" style="width: 100px; height: 50px;">
+		<input type="submit" value="수정" style="width: 100px; height: 50px;" 
+		onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
 		<input type="submit" value="삭제" style="width: 100px; height: 50px;">
+		<input type="button" value="목록" style="width: 100px; height: 50px;"
+			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<%} else{%>
 		<input type="button" value="목록" style="width: 100px; height: 50px;"
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
