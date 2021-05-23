@@ -113,5 +113,21 @@ public class NoticeDao {
 		}return result;
 	}
 	
+	//삭제 
+	public int deleteNotice(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("deleteNotice"));
+			pstmt.setInt(1, noticeNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	
 }

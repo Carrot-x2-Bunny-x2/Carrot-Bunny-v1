@@ -66,7 +66,7 @@
 		</div>
 		<div class="noticewrite"
 			style="padding-top: 30px; margin-left: 70px; background-color: #E0E0E0; width: 950px; height: 400px;">
-
+			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
 			<table class="">
 				<tr>
 					<th>제목</th>
@@ -83,9 +83,11 @@
 	<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
 	<div
 		style="text-align: center; padding-bottom: 40px; padding-top: 10px;">
+		
 		<input type="submit" value="수정" style="width: 100px; height: 50px;" 
 		onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
-		<input type="submit" value="삭제" style="width: 100px; height: 50px;">
+		<input type="submit" value="삭제" style="width: 100px; height: 50px;"
+		onclick="fn_delete_notice();">
 		<input type="button" value="목록" style="width: 100px; height: 50px;"
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<%} else{%>
@@ -93,6 +95,15 @@
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<%} %>
 	</div>
+	
+	<script>
+	
+	const fn_delete_notice=()=>{
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.replace("<%=request.getContextPath()%>/deleteNotice?no="+'<%=n.getNoticeNo()%>');
+		}
+	}
+	</script>
 
 
 </div>
