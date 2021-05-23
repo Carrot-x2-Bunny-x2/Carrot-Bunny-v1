@@ -18,7 +18,7 @@ public class AdminDao {
 
 	private Properties props = new Properties();
 	public AdminDao() {
-		String path = AdminDao.class.getResource("/sql/admin.properties").getPath();
+		String path = AdminDao.class.getResource("/sql/admin_sql.properties").getPath();
 		try {
 			props.load(new FileReader(path));
 		}catch(IOException e) {
