@@ -89,7 +89,7 @@ public class MemberListServlet extends HttpServlet {
 			+"/memberList?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar", pageBar);
-		request.getRequestDispatcher("views/admin/memberLisg.jsp").forward(request, response);
+		request.getRequestDispatcher("views/admin/memberList.jsp").forward(request, response);
 		}
 	}
 
