@@ -89,8 +89,13 @@
 				<%}
 			}%>
 		</table>
+			<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
+		<div style="">
 		<input class="noticewrite" type="button" value="공지사항 등록"
 		onclick="location.assign('<%=request.getContextPath()%>/noticewrite')">
-
+		</div>
+		<%} %>
 </div>
+	
+
 <%@ include file="../common/footer.jsp"%>
