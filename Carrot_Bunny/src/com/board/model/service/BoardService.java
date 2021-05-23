@@ -66,4 +66,13 @@ public class BoardService {
 		else rollback(conn);
 		return result;
 	}
+	
+	public int updateLikeBoard(Board b) {
+		Connection conn = getConnection();
+		int result = dao.updateLikeBoard(conn, b);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		return result;
+	}
 }

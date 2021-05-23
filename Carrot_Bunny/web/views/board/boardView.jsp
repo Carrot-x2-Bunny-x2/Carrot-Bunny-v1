@@ -84,9 +84,9 @@
         	</p>
         	<p>
         	<%if (b.getBoardLike() != null && b.getBoardLike().contains(m.getUserId())) { %>   	
-        		<input id="isLike" type="checkbox" checked><label for="isLike">❤</label>
+        		<input id="isLike" type="checkbox" checked onclick="location.assign('<%=request.getContextPath() %>/board/boardLike?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} else {%>
-        		<input id="isLike" type="checkbox"><label for="isLike">❤</label>
+        		<input id="isLike" type="checkbox" onclick="location.assign('<%=request.getContextPath() %>/board/boardLike?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} %>
         	</p>
         </div>

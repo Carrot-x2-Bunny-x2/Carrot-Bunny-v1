@@ -173,4 +173,20 @@ public class BoardDao {
 		}
 		return result;
 	}
+	
+	public int updateLikeBoard(Connection conn, Board b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("updateLikeBoard"));
+			pstmt.setString(1,b.getBoardLike());
+			pstmt.setInt(2,b.getBoardNumber());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
