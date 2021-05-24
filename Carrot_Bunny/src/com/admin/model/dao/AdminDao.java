@@ -107,5 +107,20 @@ public class AdminDao {
 		}return m;
 	}
 
+	
+	public int deleteNotice(Connection conn, int memberNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("deleteMember"));
+			pstmt.setInt(1, memberNum);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
 
