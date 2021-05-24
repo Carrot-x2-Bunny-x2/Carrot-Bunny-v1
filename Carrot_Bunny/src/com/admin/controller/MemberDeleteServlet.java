@@ -13,7 +13,7 @@ import com.admin.model.service.AdminService;
 /**
  * Servlet implementation class MemberDelete
  */
-@WebServlet("/deleteMember")
+@WebServlet("/admindeleteMember")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
