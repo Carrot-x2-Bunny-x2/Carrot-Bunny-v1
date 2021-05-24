@@ -85,7 +85,7 @@ public class BoardPageUserServlet extends HttpServlet {
 			+"/board/boardPage?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar",pageBar);
-		request.getRequestDispatcher("/views/board/boardPage.jsp")
+		request.getRequestDispatcher("/views/board/boardPageUser.jsp")
 		.forward(request, response);
 		
 	}
