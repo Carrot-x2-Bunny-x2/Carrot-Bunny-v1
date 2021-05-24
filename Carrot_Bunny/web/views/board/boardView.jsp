@@ -52,6 +52,12 @@
 </style>
 <div id="notice-container">
 	<h2>상품 상세보기</h2>
+		<%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { 
+        	if (loginMember.getUserId().equals(b.getBoardWriter())) { %>
+        		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
+            <%} %>
+            <input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>')">
+        <%} %>
         <div>
         	<p>이미지 오는 곳</p>
         	<%if(b.getBoardFilePath()!=null) {%>
@@ -90,13 +96,9 @@
         	<%} %>
         	</p>
         </div>
+        <input type="button" value="상품 목록" onclick="location.assign('<%=request.getContextPath() %>/board/boardPage')">
         
-        <%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { 
-        	if (loginMember.getUserId().equals(b.getBoardWriter())) { %>
-        		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
-            <%} %>
-            <input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>')">
-        <%} %>
+        
 </div>
 
 

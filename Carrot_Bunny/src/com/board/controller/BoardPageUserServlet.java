@@ -8,21 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.member.model.vo.Member;
 
 /**
- * Servlet implementation class BoardPageServlet
+ * Servlet implementation class BoardPageUserServlet
  */
-@WebServlet("/board/boardPage")
-public class BoardPageServlet extends HttpServlet {
+@WebServlet("/board/boardPageUser")
+public class BoardPageUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPageServlet() {
+    public BoardPageUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +34,6 @@ public class BoardPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		int cPage;
 		int numPerPage;
 		try {
@@ -45,12 +46,13 @@ public class BoardPageServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerPage=10;
 		}
+		HttpSession session = request.getSession(false);
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		
-		
-		List<Board> list=new BoardService().selectAliveBoardList(cPage,numPerPage);
+		List<Board> list=new BoardService().selectUserBoardList(cPage,numPerPage,loginMember);
 		request.setAttribute("list", list);
 		
-		int totalData=new BoardService().selectAliveBoardCount();
+		int totalData=new BoardService().selectUserBoardCount(loginMember);
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
 		int pageBarSize=10;
@@ -85,7 +87,8 @@ public class BoardPageServlet extends HttpServlet {
 		request.setAttribute("pageBar",pageBar);
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);
-		}
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
