@@ -8,7 +8,7 @@ import static com.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.List;
 
-import com.notice.model.vo.Notice;
+import com.board.model.vo.Board;
 import com.qna.model.dao.QnaDao;
 import com.qna.model.vo.Qna;
 
@@ -16,46 +16,39 @@ public class QnaService {
 	
 	private QnaDao dao=new QnaDao();
 	
-	public List<Qna> selectBoardList(int cPage, int numPerpage){
-		Connection conn=getConnection();
-		List<Qna> list=dao.selectQnaList(conn,cPage,numPerpage);
+	// admin이 볼 때 전부 뜨기
+	public List<Qna> QnaList(){
+		Connection conn = getConnection();
+		List<Qna> list = dao.qnaList(conn);
 		close(conn);
 		return list;
 	}
 	
-	public Qna selectQnaDetail(int no) {
-		Connection conn=getConnection();
-		Qna n=dao.selectQnaDetail(conn, no);
+	//USER이 볼 때 ID 값으로 찾기
+	public List<Qna> QnaListUser(String id){
+		Connection conn = getConnection();
+		List<Qna> list = dao.qnaListUser(conn, id);
 		close(conn);
-		return n;
+		return list;
 	}
-	
-	
-	
-	
-	public int selectBoardCount() {
+
+	public Qna selectQna(int no) {
+		
 		Connection conn=getConnection();
-		int result=dao.selectBoardCount(conn);
+		Qna q=dao.selectQna(conn, no);
 		close(conn);
-		return result;
+		
+		return q;
 	}
 	
 	public int insertBoard(Qna b) {
-		Connection conn=getConnection();
-		int result=dao.insertBoard(conn, b);
-		if(result>0) commit(conn);
-		else rollback(conn);
-		close(conn);
-		return result;
+		
+		return 0;
 	}
 	
 	public int deleteNotice(int noticeNo) {
-		Connection conn=getConnection();
-		int result = dao.deleteQna(conn,noticeNo);
-		if(result>0) commit(conn);
-		else rollback(conn);
-		close(conn);
-		return result;
+		
+		return 0;
 	}
 	
 	

@@ -4,94 +4,75 @@ import java.util.Date;
 
 public class Qna {
 
-	private int QnaNo;
-	private String QnaTitle;
-	private String QnaWriter;
-	private String QnaContent;
-	private String originalFileName;
-	private String renamedFileName;
-	private Date QnaDate;
-	private int isChecked;
-	
+	private int qnaNo;
+	private String qnaTitle;
+	private String qnaWriter;
+	private String qnaContent;
+	private Date qnaDate;
+	private String qnaAnswer;
+
 	public Qna() {
-		
+
 	}
 
-	public Qna(int qnaNo, String qnaTitle, String qnaWriter, String qnaContent, String originalFileName,
-			String renamedFileName, Date qnaDate, int isChecked) {
+	public Qna(int qnaNo, String qnaTitle, String qnaWriter, String qnaContent, Date qnaDate, String qnaAnswer) {
 		super();
-		this.QnaNo = qnaNo;
-		this.QnaTitle = qnaTitle;
-		this.QnaWriter = qnaWriter;
-		this.QnaContent = qnaContent;
-		this.originalFileName = originalFileName;
-		this.renamedFileName = renamedFileName;
-		this.QnaDate = qnaDate;
-		this.isChecked = isChecked;
+		this.qnaNo = qnaNo;
+		this.qnaTitle = qnaTitle;
+		this.qnaWriter = qnaWriter;
+		this.qnaContent = qnaContent;
+		this.qnaDate = qnaDate;
+		this.qnaAnswer = qnaAnswer;
 	}
 
 	public int getQnaNo() {
-		return QnaNo;
+		return qnaNo;
 	}
 
 	public void setQnaNo(int qnaNo) {
-		this.QnaNo = qnaNo;
+		this.qnaNo = qnaNo;
 	}
 
 	public String getQnaTitle() {
-		return QnaTitle;
+		return qnaTitle;
 	}
 
 	public void setQnaTitle(String qnaTitle) {
-		this.QnaTitle = qnaTitle;
+		this.qnaTitle = qnaTitle;
 	}
 
 	public String getQnaWriter() {
-		return QnaWriter;
+		return qnaWriter;
 	}
 
 	public void setQnaWriter(String qnaWriter) {
-		this.QnaWriter = qnaWriter;
+		this.qnaWriter = qnaWriter;
 	}
 
 	public String getQnaContent() {
-		return QnaContent;
+		return qnaContent;
 	}
 
 	public void setQnaContent(String qnaContent) {
-		this.QnaContent = qnaContent;
-	}
-
-	public String getOriginalFileName() {
-		return originalFileName;
-	}
-
-	public void setOriginalFileName(String originalFileName) {
-		this.originalFileName = originalFileName;
-	}
-
-	public String getRenamedFileName() {
-		return renamedFileName;
-	}
-
-	public void setRenamedFileName(String renamedFileName) {
-		this.renamedFileName = renamedFileName;
+		this.qnaContent = qnaContent;
 	}
 
 	public Date getQnaDate() {
-		return QnaDate;
+		return qnaDate;
 	}
 
 	public void setQnaDate(Date qnaDate) {
-		this.QnaDate = qnaDate;
+		this.qnaDate = qnaDate;
 	}
 
-	public int getIsChecked() {
-		return isChecked;
+	public String getQnaAnswer() {
+		return qnaAnswer;
 	}
 
-	public void setIsChecked(int isChecked) {
-		this.isChecked = isChecked;
+	public void setQnaAnswer(String qnaAnswer) {
+		this.qnaAnswer = qnaAnswer;
 	}
 
+	
+	
 }
