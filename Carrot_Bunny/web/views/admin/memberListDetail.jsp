@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%
-List<Member> list = (List<Member>) request.getAttribute("list");
+Member m = (Member) request.getAttribute("member");
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
@@ -45,53 +45,62 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 	background-color: white;
 	border-radius: 5px;
 }
+
+.memberlistbtn{
+	text-align:center;
+	margin-top : 10px;
+
+}
 </style>
 
 <div id="tbl-member">
 
 	<div class="members">
-		<div class="membertitle">
-			회원상세
-		</div>
+		<div class="membertitle">회원상세</div>
 
 		<!-- 회원 리스트 -->
 		<div class="memberlist">
 			<table class="membertb">
-			<p>관리자는 비매너 회원, 부적절한 게시물을 올린 회원을 삭제 할 수 있습니다. </p>
-				<thead>
-					<tr>
-						<th>회원번호</th>
-						<th>이름</th>
-						<th>핸드폰번호</th>
-						<th>가입일자</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					if (list.isEmpty()) {
-					%>
-					<tr>
-						<td colspan="3" align="center">검색결과가 없습니다.</td>
-					</tr>
-					<%
-					} else {
-					%>
-					<%
-					for (Member m : list) {
-					%>
-					<tr>
-						<td><%=m.getmemberNum()%></td>
-						<td><%=m.getUserId()%></td>
-						<td><%=m.getUserName()%></td>
-					</tr>
-					<%
-					}
-					}
-					%>
-				</tbody>
+				<p align="center">관리자는 비매너 회원, 부적절한 게시물을 올린 회원을 삭제 할 수 있습니다.</p>
+				<!-- <thead> -->
+				<tr>
+					<th>회원번호</th>
+					<td><%=m.getmemberNum()%></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><%=m.getUserName()%></td>
+				</tr>
+				<tr>
+					<th>핸드폰번호</th>
+					<td><%=m.getPhone()%></td>
+				</tr>
+				<tr>
+					<th>가입일자</th>
+					<td><%=m.getenrollDate()%></td>
+				</tr>
 			</table>
+			<div class ="memberlistbtn">
+				<input type="button" value="목록"
+					style="width: 50px; height: 30px;"
+					onclick="location.assign('<%=request.getContextPath()%>/memberList')"></input>
+				<input type="button" value="삭제" style="width: 50px; height: 30px;"
+					onclick="fn_delete_member();"> 
+			</div>
 		</div>
 	</div>
 </div>
+
+	<script>
+	
+	const fn_delete_member=()=>{
+		if(confirm("정말로 삭제하시겠습니까?")){
+			location.replace("<%=request.getContextPath()%>/admindeleteMember?memberNum="+'<%=m.getmemberNum()%>');
+		}
+	}
+	</script>
+
+
+
 
 <%@ include file="/views/common/footer.jsp"%>

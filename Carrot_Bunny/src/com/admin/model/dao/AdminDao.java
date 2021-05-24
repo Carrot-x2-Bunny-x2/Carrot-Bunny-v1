@@ -36,7 +36,7 @@ public class AdminDao {
 			pstmt.setInt(1, (cPage-1)*numPerPage+1);
 			pstmt.setInt(2, cPage*numPerPage);
 			rs= pstmt.executeQuery();
-			while(rs.next()) {
+			while(rs.next()) { //rs -> 완성된 쿼리문이 들어감. 
 				Member m = new Member();
 				m.setmemberNum(rs.getInt("member_num"));
 				m.setUserId(rs.getString("member_id"));
@@ -48,7 +48,7 @@ public class AdminDao {
 				m.setIsDelete(rs.getInt("mem_delete"));
 				m.setIsAdmin(rs.getInt("mem_admin"));
 				m.setenrollDate(rs.getDate("enroll_date")); 
-				list.add(m);
+				list.add(m); //첫번쨰 멤버추가, 2번쨰 행을 ~~~ 추가 반복. 
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class AdminDao {
 			close(rs);
 			close(pstmt);
 		}
-		return list;
+		return list; //멤버리스트 최종반환 
 	}
 	
 	
@@ -86,16 +86,19 @@ public class AdminDao {
 		ResultSet rs = null;
 		Member m = null;
 		try {
-			pstmt = conn.prepareStatement(props.getProperty("selectNoticeDetail"));
-			pstmt.setInt(1, no);
+			pstmt = conn.prepareStatement(props.getProperty("selectMemberDetail")); //쿼리문을 가져오겠다 
+			pstmt.setInt(1, no); //set으로 채워넣음. 
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				m = new Member();
 				m.setmemberNum(rs.getInt("member_num"));
-				m.setUserName(rs.getString("member_name"));
+				m.setUserName(rs.getString("mem_name"));
 				m.setPhone(rs.getString("mem_phone"));
-				m.setenrollDate(rs.getDate("enroll_date"));
+				m.setenrollDate(rs.getDate("enroll_date")); 
 			}
+			//다 받아오는게 좋은 이유 :
+			//selectMemberDetail 쿼리문을 다른곳에서 쓸때 다시만들필요없이 필요한것만 골라서 편하게 사용 가능 ! ! 
+	
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -104,5 +107,20 @@ public class AdminDao {
 		}return m;
 	}
 
+	
+	public int deleteNotice(Connection conn, int memberNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("deleteMember"));
+			pstmt.setInt(1, memberNum);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
 

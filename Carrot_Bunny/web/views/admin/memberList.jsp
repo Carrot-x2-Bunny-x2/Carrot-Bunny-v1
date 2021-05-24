@@ -80,7 +80,10 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 					%>
 					<tr>
 						<td><%=m.getmemberNum()%></td>
-						<td><%=m.getUserId()%></td>
+						<td>
+						<a
+							href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
+							</a></td>
 						<td><%=m.getUserName()%></td>
 					</tr>
 					<%
@@ -91,11 +94,11 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 
 			</table>
 
-			<div id="pageBar" style="text-align: center; margin-top:20px;">
+			<div id="pageBar" style="text-align: center; margin-top: 20px;">
 				<%=request.getAttribute("pageBar")%>
 			</div>
 		</div>
-</div>
+	</div>
 </div>
 
-		<%@ include file="/views/common/footer.jsp"%>
+<%@ include file="/views/common/footer.jsp"%>

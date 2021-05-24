@@ -5,15 +5,6 @@
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
 
-int selling = 0;
-int sold = 0;
-for (Board b : list) {
-	if (b.getBoardIsSell() == 1) {
-		selling += 1;
-	} else {
-		sold += 1;
-	}
-}
 %>
 
 <%@ include file="../common/header.jsp"%>
@@ -53,24 +44,25 @@ table#tbl-notice {
 	border-collapse: collapse;
 	clear: both;
 }
+
+p#heart {
+	margin: 0 auto;
+	font-size: 100px;
+}
 </style>
 <section id="notice-container">
-	<h2>나의 판매상품</h2>
-	<input type="button" value="글쓰기" id="btn-add"
-		onclick="fn_noticeWrite();">
-	<p>판매중 <%=selling %> / 판매완료 <%=sold %></p>
+	<h2>나의 관심목록</h2>
+	<p id="heart">❤</p>
 	<table id="tbl-notice">
 		<tr>
 			<th>판매여부</th>
 			<th>상품명</th>
-			<th>수량</th>
-			<th>상품가격</th>
 		</tr>
 		<%
 		if (list.isEmpty()) {
 		%>
 			<tr>
-				<td colspan="5">조회된 등록상품이 없습니다.</td>
+				<td colspan="5">조회된 관심목록이 없습니다.</td>
 			</tr>
 		<%
 		} else {
@@ -88,8 +80,6 @@ table#tbl-notice {
 							<%=b.getBoardTitle()%>
 							</a>
 						</td>
-						<td><%=b.getBoardAmount() %></td>
-						<td><%=b.getBoardPrice() %></td>
 					</tr>
 			<%} 
 			}	
@@ -99,10 +89,5 @@ table#tbl-notice {
 		<%=request.getAttribute("pageBar")%>
 	</div>
 </section>
-<script>
-		const fn_noticeWrite=()=>{
-			location.assign("<%=request.getContextPath()%>/board/boardWrite");			
-		}
-</script>
 	
 <%@ include file="../common/footer.jsp"%>

@@ -129,7 +129,7 @@
 			</td>
 			<tr>
 			<td><input type="button" value="관심목록 조회" style="width :200px; height: 100px;"
-				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">
+				onclick="location.assign('<%=request.getContextPath()%>/board/boardPageLike')">
 			</td>
 			<td><input type="button" value="나의 1:1 문의내역 조회" style="width :200px; height: 100px;"
 				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">

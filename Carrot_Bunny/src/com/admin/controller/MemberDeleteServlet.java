@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.admin.model.service.AdminService;
-import com.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberListDetailServlet
+ * Servlet implementation class MemberDelete
  */
-@WebServlet("/memberlistDetail")
-public class MemberListDetailServlet extends HttpServlet {
+@WebServlet("/admindeleteMember")
+public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberListDetailServlet() {
+    public MemberDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +31,20 @@ public class MemberListDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	
-		int no = Integer.parseInt(request.getParameter("memberNum"));
+		int memberNum = (Integer.parseInt(request.getParameter("memberNum")));
 		
-		Member m = new AdminService().selectMemberDetail(no);
-		request.setAttribute("member", m);
-		request.getRequestDispatcher("/views/admin/memberListDetail.jsp").forward(request,response);
+		int result = new AdminService().deleteMember(memberNum);
+		
+		String msg=result>0?"정상적으로 회원이 삭제 되었습니다.":"삭제에 실패했습니다 다시 시도하세요";
+		String loc=result>0?"/memberList":"/memberlistDetail";
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.getRequestDispatcher("/views/common/msg.jsp")
+		.forward(request, response);
+	
+	
+	
 	}
 
 	/**
