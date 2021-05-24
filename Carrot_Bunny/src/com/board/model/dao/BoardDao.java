@@ -303,4 +303,20 @@ public class BoardDao {
 		}
 		return result;
 	}
+	
+	public int sellBoard(Connection conn, Board b) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("sellBoard"));
+			pstmt.setInt(1,b.getBoardIsSell());
+			pstmt.setInt(2,b.getBoardNumber());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }

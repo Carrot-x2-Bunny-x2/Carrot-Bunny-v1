@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import ="java.util.List,com.notice.model.vo.Notice" %>
+<%@ page import ="java.util.List,com.qna.model.vo.Qna" %>
 <%
-	List<Notice> list =(List<Notice>)request.getAttribute("list");
+	List<Qna> list =(List<Qna>)request.getAttribute("qna");
 %>
 <%@ include file="../common/header.jsp"%>
 
@@ -63,39 +63,41 @@
 	<div class="notice">
 		<!--1:1문의 제목-->
 		<div class="noticetitle">
-			공지사항
-			<p>당근당근바니바니를 이용하기 전 꼭 읽어주세요!</p>
+			1:1 문의
+			<p>1:1 문의를 등록해주세요!</p>
 		</div>
 
-	<!-- 공지사항 리스트 -->
-	<div class="noticeList">
-		<table class="noticetb">
-            <tr>
-                <th>제목</th>
-                <th>작성일</th>
-            </tr>
-			<%if(list.isEmpty()){ %>
-				<tr>
-					<td colspan="2">조회된 공지사항이 없습니다.</td>
-				</tr>
-			<%}else{ 
-				for(Notice n : list){%>
+		<!-- 공지사항 리스트 -->
+		<div class="noticeList">
+			<table class="noticetb">
+	            <tr>
+	                <th>제목</th>
+	                <th>작성일</th>
+	            </tr>
+				<%if(list.isEmpty()){ %>
 					<tr>
-						<td>
-							<a href="<%=request.getContextPath()%>/notice/noticeView?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle() %></a>
-						</td>
-						<td><%=n.getNoticeDate() %></td>
+						<td colspan="2">등록된 1:1 문의가 없습니다.</td>
 					</tr>
-				<%}
-			}%>
-		</table>
-			<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
-		<div style="">
-		<input class="noticewrite" type="button" value="1:1 문의 등록"
-		onclick="location.assign('<%=request.getContextPath()%>/noticewrite')">
+				<%}else{ 
+					for(Qna q : list){%>
+						<tr>
+							<td>
+								<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo()%>"><%=q.getQnaTitle() %></a>
+							</td>
+							<td><%=q.getQnaDate() %></td>
+						</tr>
+					<%}
+				}%>
+			</table>
+			<%if(loginMember!=null&&!(loginMember.getUserId().equals("admin"))){ %>
+				<div style="">
+					<input class="noticewrite" type="button" value="1:1 문의 등록"
+					onclick="location.assign('<%=request.getContextPath()%>/qnawrite')">
+				</div>
+			<%} %>
 		</div>
-		<%} %>
-</div>
+	</div>
+</div>	
 	
 
 <%@ include file="../common/footer.jsp"%>

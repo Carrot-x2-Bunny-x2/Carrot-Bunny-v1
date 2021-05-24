@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MemberEnrollServlet
  */
-@WebServlet("/qnaUpdateEnd.do")
-public class QnaUpdateEnd extends HttpServlet {
+@WebServlet("/qnaUpdate.do")
+public class QnaUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QnaUpdateEnd() {
+    public QnaUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class QnaUpdateEnd extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		request.getRequestDispatcher("/views/index.jsp")
+		request.getRequestDispatcher("/views/qna/qnaUpdate.jsp")
 		.forward(request, response);
 	
 	
