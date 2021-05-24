@@ -37,6 +37,7 @@ public class MemebrEnrollEndServlet extends HttpServlet {
 		//회원가입로직 처리하기
 		//1. 클라이언트가 가입을 위해 전송하는 데이터를 받아옴
 		// request.getParameter, getParameterValues()
+		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 		String userId=request.getParameter("userId");
 		String password=request.getParameter("password");
 		String userName=request.getParameter("userName");
@@ -53,8 +54,8 @@ public class MemebrEnrollEndServlet extends HttpServlet {
 			
 		//다중값을 보관하기 위해 -> vo객체를 생성해놓음
 		
-		Member m=new Member(userId, password, userName, email, phone,
-				isAgree, isDelete, isAdmin);
+		Member m=new Member(memberNum,userId, password, userName, email, phone,
+				isAgree, isDelete, isAdmin,null);
 		System.out.println(m);
 		
 		//전달받은 데이터를 DB에 저장
