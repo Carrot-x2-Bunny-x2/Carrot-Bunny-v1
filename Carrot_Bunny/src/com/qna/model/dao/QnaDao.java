@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.board.model.vo.Board;
+import com.notice.model.vo.Notice;
 import com.qna.model.vo.Qna;
 
 import static com.common.JDBCTemplate.close;
@@ -18,6 +20,7 @@ public class QnaDao {
 	
 	private Properties prop=new Properties();
 	
+	//db와 연결
 	public QnaDao() {
 		String path=QnaDao.class.getResource("/sql/qna_sql.properties").getPath();
 		try {
@@ -27,107 +30,103 @@ public class QnaDao {
 		}
 	}
 	
-	public List<Qna> selectQnaList(Connection conn, int cPage, int numPerpage){
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Qna> list=new ArrayList();
+	//QNA데이터들 불러오기  ADMIN
+	public List<Qna> qnaList(Connection conn){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Qna> list = new ArrayList();
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectQnaList"));
-			pstmt.setInt(1, (cPage-1)*numPerpage+1);
-			pstmt.setInt(2, cPage*numPerpage);
-			rs=pstmt.executeQuery();
-			while(rs.next()){
-				Qna b=new Qna();
-				b.setQnaNo(rs.getInt("board_no"));
-				b.setQnaTitle(rs.getString("board_title"));
-				b.setQnaWriter(rs.getString("board_writer"));
-				b.setQnaContent(rs.getString("board_content"));
-				b.setOriginalFileName(rs.getString("board_original_filename"));
-				b.setRenamedFileName(rs.getString("board_renamed_filename"));
-				b.setQnaDate(rs.getDate("board_date"));
-				b.setIsChecked(rs.getInt("board_readcount"));
-				list.add(b);
+			pstmt = conn.prepareStatement(prop.getProperty("selectQna"));
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Qna q = new Qna();
+				q.setQnaNo(rs.getInt("n_num"));
+				q.setQnaTitle(rs.getString("n_title"));
+				q.setQnaWriter(rs.getString("n_content"));
+				q.setQnaContent(rs.getString("n_content"));
+				q.setQnaDate(rs.getDate("n_date"));
+				list.add(q);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return list;
+		}
+		return list;
+	}
+	
+	//QNA데이터들 불러오기   USER
+		public List<Qna> qnaListUser(Connection conn, String id){
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			List<Qna> list = new ArrayList();
+			try {
+				pstmt = conn.prepareStatement(prop.getProperty("selectQna"));
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					Qna q = new Qna();
+					q.setQnaNo(rs.getInt("n_num"));
+					q.setQnaTitle(rs.getString("n_title"));
+					q.setQnaWriter(rs.getString("n_content"));
+					q.setQnaContent(rs.getString("n_content"));
+					q.setQnaDate(rs.getDate("n_date"));
+					list.add(q);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}
+			return list;
+		}
+	
+	
+	//선택한 1:1문의 글 내용 불러오기
+	public Qna selectQna(Connection conn, int no) {
 		
-	}
-	
-	public int selectBoardCount(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		int result=0;
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectBoardCount"));
-			rs=pstmt.executeQuery();
-			if(rs.next()) result=rs.getInt(1);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(rs);
-			close(pstmt);
-		}return result;
-	}
-	
-	public Qna selectBoard(Connection conn, int boardNo) {
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		Qna b=null;
+		Qna q=null;
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("selectBoard"));
-			pstmt.setInt(1, boardNo);
+			pstmt.setInt(1, no);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				b=new Qna();
-				b.setQnaNo(rs.getInt("board_no"));
-				b.setQnaTitle(rs.getString("board_title"));
-				b.setQnaWriter(rs.getString("board_writer"));
-				b.setQnaContent(rs.getString("board_content"));
-				b.setOriginalFileName(rs.getString("board_original_filename"));
-				b.setRenamedFileName(rs.getString("board_renamed_filename"));
-				b.setQnaDate(rs.getDate("board_date"));
-				b.setIsChecked(rs.getInt("board_readcount"));
+				q = new Qna();
+				q.setQnaNo(rs.getInt("n_num"));
+				q.setQnaTitle(rs.getString("n_title"));
+				q.setQnaWriter(rs.getString("n_content"));
+				q.setQnaContent(rs.getString("n_content"));
+				q.setQnaDate(rs.getDate("n_date"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return b;
+		}return q;
 	}
 
+	// 새로운 QNA 등록하기 (USER)
 	public int insertBoard(Connection conn, Qna b) {
-		PreparedStatement pstmt=null;
-		int result=0;
-		try {
-			pstmt=conn.prepareStatement(prop.getProperty("insertBoard"));
-			pstmt.setString(1, b.getQnaTitle());
-			pstmt.setString(2, b.getQnaWriter());
-			pstmt.setString(3, b.getQnaContent());
-			pstmt.setString(4, b.getOriginalFileName());
-			pstmt.setString(5, b.getRenamedFileName());
-			result=pstmt.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}return result;
 		
+		return 0;		
 	}
+	
+	// 선택한 QNA에 ANSWER 등록하기 (ADMIN)
+	public int inserAnswer(Connection conn, Qna b) {
 
+		return 0;		
+	}
+	
+	// QNA 삭제하기 ONLY ADMIN
 	public int deleteQna(Connection conn, int noticeNo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public Qna selectQnaDetail(Connection conn, int no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	

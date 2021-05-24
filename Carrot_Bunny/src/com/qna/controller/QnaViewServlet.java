@@ -32,9 +32,10 @@ public class QnaViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int no = Integer.parseInt(request.getParameter("QnaNo"));
+		int num = Integer.parseInt(request.getParameter("no"));
 		
-		Qna q = new QnaService().selectQnaDetail(no);
+		Qna q = new QnaService().selectQna(num);
+		
 		request.setAttribute("qna", q);
 		request.getRequestDispatcher("/views/qna/qnaView.jsp").forward(request,response);
 	}

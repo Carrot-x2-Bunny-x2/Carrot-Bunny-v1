@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import ="java.util.List,com.qna.model.vo.Qna" %>
+<%@ page import="com.member.model.vo.Member" %>
 <%
 	List<Qna> list =(List<Qna>)request.getAttribute("qna");
 %>
@@ -63,7 +64,7 @@
 	<div class="notice">
 		<!--1:1문의 제목-->
 		<div class="noticetitle">
-			1:1 문의
+			<p><%=loginMember.getUserName() %> 님의</p>1:1 문의
 			<p>1:1 문의를 등록해주세요!</p>
 		</div>
 
@@ -82,7 +83,7 @@
 					for(Qna q : list){%>
 						<tr>
 							<td>
-								<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo()%>"><%=q.getQnaTitle() %></a>
+								<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
 							</td>
 							<td><%=q.getQnaDate() %></td>
 						</tr>
