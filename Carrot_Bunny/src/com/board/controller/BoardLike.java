@@ -38,54 +38,61 @@ public class BoardLike extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("loginMember");
-		// 우선 no에 해당하는 board를 불러옵니다.
+		// 우선 no에 해당하는 board를 불러옴 .
 		Board board = new BoardService().selectBoard(Integer.parseInt(request.getParameter("no")));
-		// 불러온 board에서 isLike에 저장된 userId를 ,를 기준으로 split해 가져옵니다.
+		// 불러온 board에서 isLike에 저장된 userId를 ,를 기준으로 split해 가져옴.
 		String[] likeList;
 		if (board.getBoardLike() != null) {
 			System.out.println("좋아요 목록 가져옴");
 			likeList = board.getBoardLike().split(",");
-		} else {
+		} else { //null일때는 아무것도 안넣어쥼 
 			likeList = new String[0];
 		}
-		// 로그인 한 사용자의 아이디를 session으로 가져옵니다.
+		
+		// 로그인 한 사용자의 아이디를 session으로 가져옴.
 		String likeUserId = m.getUserId();
-		// 사용자의 아이디가 likeList에 있는지 check합니다.
+		
+		// 사용자의 아이디가 likeList에 있는지 check ! 
 		int check = 0;
 		
+		//likelist는 string 형, 문자열로 되어있음.
+		//likelist에있는걸 하나씩 참조해서 들고오기. 
+		//String str : likelist안에 있는건 string이다. 
 		for (String str : likeList) {
 			if (str.equals(likeUserId)) {
-				System.out.println("일치 목록 있음");
-				check = 1;
+				System.out.println("일치 목록 있다아");
+				check = 1; //일치목록있으면 1 
 			}
 		}
 		int result = 0;
-		// 사용자의 아이디를 isLike에 추가할지 결정합니다.
+		// 사용자의 아이디를 isLike에 추가할지 결정! 
+		
+		//회색하트일때 빨간색 하트 만들때 
 		if (check == 0) {
 			System.out.println("찜 추가");
-			//Steps to add a new element
-	        //Get the current length of the array
+			//찜추가를 하면 처음에 초기화 된 리스트 길이를 늘려줘야 하기 때문에 설정하는것. 
 	        int N = likeList.length;
-	        //Create a new array of length N+1 and copy all the previous elements to this new array
+	        //공간을 1을 늘려서 배열을 만들겠다. 배열복사해서 새로 배열을 만든다. 
 	        likeList = Arrays.copyOf(likeList, N + 1);
-	        //Add a new element to the array
+	        //userid를 넣어준다. 
 	        likeList[N] = likeUserId;
 	        String resultList = String.join(",", likeList);
 	        board.setBoardLike(resultList);
 			result = new BoardService().updateLikeBoard(board);
 		}
 	
+		//1일때 삭제 !빨간 하트를 누르면 삭제됨//
 		if (check != 0) {
 			System.out.println("찜 삭제");
 			int index = 0;
 			for (String str : likeList) {
 				if (str.equals(likeUserId)) {
-					likeList[index] = "";
+					likeList[index] = ""; //likelist일치하면 빈공간으로 만들어준다.
 				}
 				index += 1;
 			}
-			String resultList = String.join(",", likeList);
-	        board.setBoardLike(resultList);
+			String resultList = String.join(",", likeList); //쉼표를 구분자로 넣어주겠당 
+	        board.setBoardLike(resultList); 
 	        System.out.println(resultList);
 			result = new BoardService().updateLikeBoard(board);
 		}
