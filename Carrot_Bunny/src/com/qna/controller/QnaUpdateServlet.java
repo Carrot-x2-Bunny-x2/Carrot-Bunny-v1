@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MemberEnrollServlet
  */
-@WebServlet("/qnaUpdate.do")
+@WebServlet("/qna/qnaUpdate")
 public class QnaUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

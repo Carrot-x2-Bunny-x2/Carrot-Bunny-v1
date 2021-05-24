@@ -92,7 +92,7 @@
 			<%if(loginMember!=null&&!(loginMember.getUserId().equals("admin"))){ %>
 				<div style="">
 					<input class="noticewrite" type="button" value="1:1 문의 등록"
-					onclick="location.assign('<%=request.getContextPath()%>/qnawrite')">
+					onclick="location.assign('<%=request.getContextPath()%>/qna/qnaWrite')">
 				</div>
 			<%} %>
 		</div>
