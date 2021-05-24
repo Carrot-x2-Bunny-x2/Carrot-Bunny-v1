@@ -73,11 +73,13 @@ public class boardWriteEndServlet extends HttpServlet {
 		b.setBoardContent(mr.getParameter("boardContent"));
 		b.setBoardPrice(Integer.parseInt(mr.getParameter("boardPrice")));
 		b.setBoardAmount(Integer.parseInt(mr.getParameter("boardAmount")));
+		
+		
 		String isNego = mr.getParameter("boardIsNego");
 		if (isNego != null) {
-			b.setBoardIsNego(1);
+			b.setBoardIsNego(1); //체크 
 		} else {
-			b.setBoardIsNego(0);
+			b.setBoardIsNego(0); //체크아님 
 		}
 
 		// 파일명을 DB에 저장해야함. -> rename된 파일을 가져오기

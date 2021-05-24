@@ -79,10 +79,11 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 					for (Member m : list) {
 					%>
 					<tr>
-						<td><a
-							href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getmemberNum()%></a>
-						</td>
-						<td><%=m.getUserId()%></td>
+						<td><%=m.getmemberNum()%></td>
+						<td>
+						<a
+							href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
+							</a></td>
 						<td><%=m.getUserName()%></td>
 					</tr>
 					<%

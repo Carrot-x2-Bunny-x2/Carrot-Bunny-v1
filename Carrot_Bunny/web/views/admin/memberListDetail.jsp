@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%
-List<Member> list = (List<Member>) request.getAttribute("list");
+  Member m = (Member)request.getAttribute("member");
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
@@ -50,14 +50,12 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 <div id="tbl-member">
 
 	<div class="members">
-		<div class="membertitle">
-			회원상세
-		</div>
+		<div class="membertitle">회원상세</div>
 
 		<!-- 회원 리스트 -->
 		<div class="memberlist">
 			<table class="membertb">
-			<p>관리자는 비매너 회원, 부적절한 게시물을 올린 회원을 삭제 할 수 있습니다. </p>
+				<p align="center">관리자는 비매너 회원, 부적절한 게시물을 올린 회원을 삭제 할 수 있습니다.</p>
 				<thead>
 					<tr>
 						<th>회원번호</th>
@@ -68,27 +66,22 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 				</thead>
 				<tbody>
 					<%
-					if (list.isEmpty()) {
+					if (m == null) {
 					%>
 					<tr>
-						<td colspan="3" align="center">검색결과가 없습니다.</td>
+						<td colspan="4" align="center">검색결과가 없습니다.</td>
 					</tr>
 					<%
 					} else {
 					%>
-					<%
-					for (Member m : list) {
-					%>
 					<tr>
 						<td><%=m.getmemberNum()%></td>
-						
-						<td><%=m.getUserId()%></td>
 						<td><%=m.getUserName()%></td>
+						<td><%=m.getPhone()%></td>
+						<td><%=m.getenrollDate()%></td>
 					</tr>
-					<%
-					}
-					}
-					%>
+					<%}%>
+
 				</tbody>
 			</table>
 		</div>
