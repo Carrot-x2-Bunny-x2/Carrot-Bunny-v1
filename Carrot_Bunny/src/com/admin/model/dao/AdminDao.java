@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.member.model.vo.Member;
+import com.notice.model.vo.Notice;
 
 public class AdminDao {
 
@@ -77,5 +78,31 @@ public class AdminDao {
 		}
 		return result;
 	}
+	
+	
+	public Member selectMemberDetail(Connection conn, int no) {
+
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
+		Member m = null;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("selectNoticeDetail"));
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m = new Member();
+				m.setmemberNum(rs.getInt("member_num"));
+				m.setUserName(rs.getString("member_name"));
+				m.setPhone(rs.getString("mem_phone"));
+				m.setenrollDate(rs.getDate("enroll_date"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return m;
+	}
+
 }
 

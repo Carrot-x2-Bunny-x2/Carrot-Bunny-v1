@@ -38,7 +38,7 @@ public class Member {
 	}
 	
 	public int setmemberNum(int memberNum) {
-		return memberNum;
+		return this.memberNum=memberNum;
 	}
 
 	public String getUserId() {

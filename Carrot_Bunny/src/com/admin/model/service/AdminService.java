@@ -27,4 +27,11 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
+	
+	public Member selectMemberDetail(int no) {
+		Connection conn = getConnection();
+		Member m = dao.selectMemberDetail(conn, no);
+		close(conn);
+		return m;
+	}
 }

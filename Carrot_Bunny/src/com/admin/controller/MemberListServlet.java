@@ -20,21 +20,21 @@ import com.member.model.vo.Member;
 @WebServlet("/memberList")
 public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MemberListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MemberListServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		HttpSession session = request.getSession(false);
 		Member loginMember=(Member)session.getAttribute("loginMember");
 		if(session == null || loginMember == null||!loginMember.getUserId().equals("admin")) {
@@ -43,67 +43,69 @@ public class MemberListServlet extends HttpServlet {
 			request.setAttribute("loc", "/");
 			RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg.jsp");
 			rd.forward(request, response);
-			
+
 		}else { 
-		
-		//현재 페이지
-		int cPage;
-		try {
-			cPage = Integer.parseInt(request.getParameter("cPage"));
-		}catch(NumberFormatException e) {
-			cPage =1;
-		}
-		
-		//페이지당 데이터수 설정 
-		int numPerPage;
-		try {
-			numPerPage =Integer.parseInt(request.getParameter("numPerpage"));
-		}catch(NumberFormatException e) {
-			numPerPage = 10;
-		}
-		
-		List<Member> list = new AdminService().selectMemberList(cPage, numPerPage);
-		request.setAttribute("list", list);
-		
-		int totalData = new AdminService().selectMemberCount();
-		int totalPage = (int)Math.ceil((double)totalData/numPerPage);
-		
-		int pageBarSize = 5;
-		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
-		int pageEnd= pageNo+pageBarSize-1;
-		
-		
-		String pageBar="";
-		
-		if(pageNo==1) {
-			pageBar+="<span>[이전]</span>";
-		}else {
-			pageBar +="<a href='"+request.getContextPath()
-			+"/memberList?cPage="+(pageNo-1)+"&numPerpage="+numPerPage+"'>[이전]</a>";
-		}
-		
-		
-		//pageBar의 숫자를 출력하게 하는 구문 
-		while(!(pageNo>pageEnd||pageNo>totalPage)) { //pageEnd or totalpage를 넘기지 않을때 돌아가는 구문 
-			// == while(pageNo<=pageEnd&&pageNo<=totalPage)
-			if(cPage==pageNo) { //분기처리 
-				pageBar+="<span style='background-color:yellow;'>"+pageNo+"</span>";
-			}else {
-				pageBar+="<a href='"+request.getContextPath()+"/memberList?cPage="+pageNo+"&numPerpage="+numPerPage+"'>"+pageNo+"</a>";
+
+			//현재 페이지
+			int cPage;
+			int numPerPage;
+			try {
+				cPage=Integer.parseInt(request.getParameter("cPage"));
+			}catch(NumberFormatException e) {
+				cPage=1;
 			}
-			pageNo++;
-		}
-	
-		if(pageNo>totalPage) {
-			pageBar+="<span>[다음]</span>";
-		}else {
-			pageBar+="<a href='"+request.getContextPath()
-			+"/memberList?cPage="+pageNo+"'>[다음]</a>";
-		}
-		request.setAttribute("pageBar", pageBar);
-		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/admin/memberList.jsp").forward(request, response);
+			try {
+				numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
+			}catch(NumberFormatException e) {
+				numPerPage=10;
+			}
+
+			List<Member> list = new AdminService().selectMemberList(cPage, numPerPage);
+			request.setAttribute("list", list);
+			
+			for(Member m : list) {
+				System.out.println(m.getmemberNum());
+			}
+			
+
+			int totalData = new AdminService().selectMemberCount();
+			int totalPage = (int)Math.ceil((double)totalData/numPerPage);
+
+			int pageBarSize = 5;
+			int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
+			int pageEnd= pageNo+pageBarSize-1;
+
+
+			String pageBar="";
+
+			if(pageNo==1) {
+				pageBar+="<span>[이전]</span>";
+			}else {
+				pageBar +="<a href='"+request.getContextPath()
+				+"/memberList?cPage="+(pageNo-1)+"&numPerpage="+numPerPage+"'>[이전]</a>";
+			}
+
+
+			//pageBar의 숫자를 출력하게 하는 구문 
+			while(!(pageNo>pageEnd||pageNo>totalPage)) { 
+				if(cPage==pageNo) { //분기처리 
+					pageBar+="<span style='background-color:yellow;'>"+pageNo+"</span>";
+				}else {
+					pageBar+="<a href='"+request.getContextPath()+"/memberList?cPage="+pageNo+"&numPerpage="+numPerPage+"'>"+pageNo+"</a>";
+				}
+				pageNo++;
+			}
+
+			if(pageNo>totalPage) {
+				pageBar+="<span>[다음]</span>";
+			}else {
+				pageBar+="<a href='"+request.getContextPath()
+				+"/memberList?cPage="+pageNo+"'>[다음]</a>";
+			}
+			request.setAttribute("pageBar", pageBar);
+
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("views/admin/memberList.jsp").forward(request, response);
 		}
 	}
 

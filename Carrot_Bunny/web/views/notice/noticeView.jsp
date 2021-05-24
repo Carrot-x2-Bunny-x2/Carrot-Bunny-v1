@@ -88,7 +88,7 @@
 		onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
 		<form action="<%=request.getContextPath()%>/deleteNotice?no="+'<%=n.getNoticeNo()%>" method="get">
 			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-		<input type="submit" value="삭제" style="width: 100px; height: 50px;"
+		<input type="button" value="삭제" style="width: 100px; height: 50px;"
 		onclick="fn_delete_notice();">
 		</form>
 		<input type="button" value="목록" style="width: 100px; height: 50px;"
@@ -100,15 +100,15 @@
 	</div>
 	
 	
+
 	<script>
 	
 	const fn_delete_notice=()=>{
 		if(confirm("정말로 삭제하시겠습니까?")){
-			location.replace("<%=request.getContextPath()%>/deleteNotice?no="+'<%=n.getNoticeNo()%>');
+			location.replace("<%=request.getContextPath()%>/deleteNotice?noticeNo="+'<%=n.getNoticeNo()%>');
 		}
 	}
 	</script>
-
 
 </div>
 <%@ include file="../common/footer.jsp"%>
