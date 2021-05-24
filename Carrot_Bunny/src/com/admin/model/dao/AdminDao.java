@@ -37,6 +37,7 @@ public class AdminDao {
 			rs= pstmt.executeQuery();
 			while(rs.next()) {
 				Member m = new Member();
+				m.setmemberNum(rs.getInt("member_num"));
 				m.setUserId(rs.getString("member_id"));
 				m.setPassword(rs.getString("member_pwd"));
 				m.setUserName(rs.getString("mem_name"));
@@ -45,6 +46,7 @@ public class AdminDao {
 				m.setIsAgree(rs.getInt("mem_agree"));
 				m.setIsDelete(rs.getInt("mem_delete"));
 				m.setIsAdmin(rs.getInt("mem_admin"));
+				m.setenrollDate(rs.getDate("enroll_date")); 
 				list.add(m);
 			}
 		}catch(SQLException e) {
