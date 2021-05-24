@@ -81,6 +81,7 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 					%>
 					<tr>
 						<td><%=m.getmemberNum()%></td>
+						
 						<td><%=m.getUserId()%></td>
 						<td><%=m.getUserName()%></td>
 					</tr>

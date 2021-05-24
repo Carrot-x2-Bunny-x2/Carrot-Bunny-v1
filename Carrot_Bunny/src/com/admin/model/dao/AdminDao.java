@@ -86,7 +86,7 @@ public class AdminDao {
 		ResultSet rs = null;
 		Member m = null;
 		try {
-			pstmt = conn.prepareStatement(props.getProperty("selectNoticeDetail"));
+			pstmt = conn.prepareStatement(props.getProperty("selectAdminDetail"));
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
