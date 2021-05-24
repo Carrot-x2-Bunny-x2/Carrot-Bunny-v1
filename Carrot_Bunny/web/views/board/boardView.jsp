@@ -57,7 +57,7 @@
         		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
                 <input type="button" value="판매완료" onclick="fn_sell_product();">
             <%} %>
-            <input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>')">
+            <input type="button" value="삭제하기" onclick="fn_delete_product();">
         <%} %>
         <div>
         	<%if(b.getBoardFilePath()!=null) {%>
@@ -105,6 +105,12 @@
 		if(confirm("판매 완료 처리하시겠습니까?")){
 			//판매완료 진행
 			location.replace("<%=request.getContextPath() %>/board/boardSell?no=<%=b.getBoardNumber()%>");
+		}
+	}
+	const fn_delete_product=()=>{
+		if(confirm("글을 삭제하시겠습니까?")){
+			//글 삭제 진행
+			location.replace("<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>");
 		}
 	}
 </script>
