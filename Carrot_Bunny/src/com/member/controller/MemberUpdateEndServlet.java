@@ -40,9 +40,14 @@ public class MemberUpdateEndServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		
-		Member m=new Member(userId, password, userName, email, phone,
-				0, 0, 0);
-		System.out.println(m);	
+		Member m=new Member();
+		
+		m.setUserId(userId);
+		m.setPassword(password);
+		m.setUserName(userName);
+		m.setEmail(email);
+		m.setPhone(phone);
+		
 		
 		int result=new MemberService().updateMember(m);
 		

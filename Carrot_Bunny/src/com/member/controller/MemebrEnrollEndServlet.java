@@ -37,26 +37,27 @@ public class MemebrEnrollEndServlet extends HttpServlet {
 		//회원가입로직 처리하기
 		//1. 클라이언트가 가입을 위해 전송하는 데이터를 받아옴
 		// request.getParameter, getParameterValues()
-		int memberNum = Integer.parseInt(request.getParameter("memberNum"));
+		//int memberNum = Integer.parseInt(request.getParameter("memberNum"));
 		String userId=request.getParameter("userId");
 		String password=request.getParameter("password");
 		String userName=request.getParameter("userName");
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
+		
 		/*
 		 * try { email=AESCryptor.encrypt(email);//암호화처리
 		 * phone=AESCryptor.encrypt(phone); }catch(Exception e) { e.printStackTrace(); }
 		 */
-		
-		int isAgree= 0;
-		int isDelete= 0;
-		int isAdmin= 0;
 			
 		//다중값을 보관하기 위해 -> vo객체를 생성해놓음
 		
-		Member m=new Member(memberNum,userId, password, userName, email, phone,
-				isAgree, isDelete, isAdmin,null);
-		System.out.println(m);
+		Member m=new Member();
+		
+		m.setUserId(userId);
+		m.setPassword(password);
+		m.setUserName(userName);
+		m.setEmail(email);
+		m.setPhone(phone);
 		
 		//전달받은 데이터를 DB에 저장
 		int result=new MemberService().insertMember(m);

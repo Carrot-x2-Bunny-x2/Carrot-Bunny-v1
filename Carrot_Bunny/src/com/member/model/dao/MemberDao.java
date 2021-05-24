@@ -66,11 +66,8 @@ public class MemberDao {
 			pstmt.setString(1,m.getUserId());
 			pstmt.setString(2, m.getPassword());
 			pstmt.setString(3, m.getUserName());
-			pstmt.setString(4,m.getPhone());
-			pstmt.setInt(5, m.getIsAgree());
-			pstmt.setInt(6, m.getIsDelete());
-			pstmt.setInt(7, m.getIsAdmin());
-			pstmt.setString(8, m.getEmail());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getPhone());
 			result=pstmt.executeUpdate();
 			System.out.println("회원가입 완료");
 		}catch(SQLException e) {
@@ -123,7 +120,7 @@ public class MemberDao {
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("updateMember"));
 			pstmt.setString(1, m.getUserName());
-			pstmt.setString(2,m.getPhone());
+			pstmt.setString(2, m.getPhone());
 			pstmt.setString(3, m.getEmail());
 			pstmt.setString(4,m.getUserId());
 			result=pstmt.executeUpdate();
