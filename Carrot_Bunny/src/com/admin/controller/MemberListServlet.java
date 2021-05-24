@@ -68,19 +68,31 @@ public class MemberListServlet extends HttpServlet {
 		int totalData = new AdminService().selectMemberCount();
 		int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 		
-		int pageBarSize = 10;
+		int pageBarSize = 5;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd= pageNo+pageBarSize-1;
+		
+		
 		String pageBar="";
 		
 		if(pageNo==1) {
-			pageBar="<span>[이전]</span>";
+			pageBar+="<span>[이전]</span>";
 		}else {
-			pageBar="<a href='"+request.getContextPath()
-			+"/memberList?cPage="+pageNo+"'>"+pageNo+"</a>";
+			pageBar +="<a href='"+request.getContextPath()
+			+"/memberList?cPage="+(pageNo-1)+"&numPerpage="+numPerPage+"'>[이전]</a>";
 		}
-		pageNo++;
-	
+		
+		
+		//pageBar의 숫자를 출력하게 하는 구문 
+		while(!(pageNo>pageEnd||pageNo>totalPage)) { //pageEnd or totalpage를 넘기지 않을때 돌아가는 구문 
+			// == while(pageNo<=pageEnd&&pageNo<=totalPage)
+			if(cPage==pageNo) { //분기처리 
+				pageBar+="<span style='background-color:yellow;'>"+pageNo+"</span>";
+			}else {
+				pageBar+="<a href='"+request.getContextPath()+"/memberList?cPage="+pageNo+"&numPerpage="+numPerPage+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+		}
 	
 		if(pageNo>totalPage) {
 			pageBar+="<span>[다음]</span>";
@@ -89,6 +101,8 @@ public class MemberListServlet extends HttpServlet {
 			+"/memberList?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar", pageBar);
+		
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/admin/memberList.jsp").forward(request, response);
 		}
 	}
