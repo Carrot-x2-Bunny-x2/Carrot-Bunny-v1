@@ -3,6 +3,7 @@ package com.member.model.vo;
 import java.util.Date;
 
 public class Member {
+	private int memberNum;
 	private String userId;
 	private String password;
 	private String userName;
@@ -11,14 +12,16 @@ public class Member {
 	private int isAgree;
 	private int isDelete;
 	private int isAdmin;
+	private Date enrollDate;
 	
 	public Member() {
 		
 	}
 
-	public Member(String userId, String password, String userName, String email, String phone, int isAgree,
-			int isDelete, int isAdmin) {
+	public Member(int memberNum, String userId, String password, String userName, String email, String phone, int isAgree,
+			int isDelete, int isAdmin, Date enrollDate) {
 		super();
+		this.memberNum= memberNum;
 		this.userId = userId;
 		this.password = password;
 		this.userName = userName;
@@ -27,6 +30,15 @@ public class Member {
 		this.isAgree = isAgree;
 		this.isDelete = isDelete;
 		this.isAdmin = isAdmin;
+		this.enrollDate = enrollDate;
+	}
+	
+	public int getmemberNum() {
+		return memberNum;
+	}
+	
+	public int setmemberNum(int memberNum) {
+		return memberNum;
 	}
 
 	public String getUserId() {
@@ -92,12 +104,23 @@ public class Member {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	
+	public Date getenrollDate() {
+		return enrollDate;
+	}
+	
+	public void setenrollDate(Date enrollDate) {
+		this.enrollDate = enrollDate;
+	}
 
 	@Override
 	public String toString() {
-		return "Member [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email=" + email
-				+ ", phone=" + phone + ", isAgree=" + isAgree + ", isDelete=" + isDelete + ", isAdmin=" + isAdmin + "]";
+		return "Member [memberNum=" + memberNum + ", userId=" + userId + ", password=" + password + ", userName="
+				+ userName + ", email=" + email + ", phone=" + phone + ", isAgree=" + isAgree + ", isDelete=" + isDelete
+				+ ", isAdmin=" + isAdmin + ", enrollDate=" + enrollDate + "]";
 	}
+	
+	
 
 	
 }
