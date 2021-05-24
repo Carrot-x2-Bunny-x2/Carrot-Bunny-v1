@@ -57,22 +57,22 @@ public class BoardPageLikeServlet extends HttpServlet {
 		//다시 리스트에서 loginMember의 id가 있는 것을 찾는다. 이때 count도 계산한다.
 		//해당 board를 새로운 resultBoardList에 add한다.
 		int totalData = 0;
-		List<Board> resultList = new ArrayList<Board>();
-		String[] like;
-		for (Board b : list) {
-			if (b.getBoardLike() != null) {
-				like = b.getBoardLike().split(",");
+		List<Board> resultList = new ArrayList<Board>(); //빈깡통 
+		String[] like; //빈리스트 
+		for (Board b : list) { //삭제안된 리스트중에서 for문을 돌린다. 
+			if (b.getBoardLike() != null) { //좋아요 목록이 있으면 
+				like = b.getBoardLike().split(","); //split해서 들고와 like에 저장해준다. 
 			} else {
-				like = new String[0];
+				like = new String[0]; //아무것도 없으면 0 
 			}
-			for (String str : like) {
-				if (str.equals(loginMember.getUserId())) {
-					totalData += 1;
-					resultList.add(b);
+			for (String str : like) { //like안에 내 이름이 있는지 찾아야함. 
+				if (str.equals(loginMember.getUserId())) { 
+					totalData += 1; //찾으면 totaldata 하나씩 올린다. 
+					resultList.add(b); //list에 저장 
 				}
 			}
 		}
-		request.setAttribute("list", resultList);
+		request.setAttribute("list", resultList); //result에 저장한걸 넘겨준다. 
 		
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
