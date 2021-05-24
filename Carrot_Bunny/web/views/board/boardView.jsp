@@ -55,11 +55,11 @@
 		<%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { 
         	if (loginMember.getUserId().equals(b.getBoardWriter())) { %>
         		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
+                <input type="button" value="판매완료" onclick="fn_sell_product();">
             <%} %>
             <input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>')">
         <%} %>
         <div>
-        	<p>이미지 오는 곳</p>
         	<%if(b.getBoardFilePath()!=null) {%>
            			<a href=""><img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardFilePath()%>" width="200px"></a>
            	<%} %>
@@ -100,6 +100,13 @@
         
         
 </div>
-
+<script>
+	const fn_sell_product=()=>{
+		if(confirm("판매 완료 처리하시겠습니까?")){
+			//판매완료 진행
+			location.replace("<%=request.getContextPath() %>/board/boardSell?no=<%=b.getBoardNumber()%>");
+		}
+	}
+</script>
 
 <%@ include file="../common/footer.jsp"%>

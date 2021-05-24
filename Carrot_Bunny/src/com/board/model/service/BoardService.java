@@ -104,4 +104,13 @@ public class BoardService {
 		else rollback(conn);
 		return result;
 	}
+	// 상품 판매완료 처리
+	public int sellBoard(Board b) {
+		Connection conn = getConnection();
+		int result = dao.sellBoard(conn, b);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		return result;
+	}
 }

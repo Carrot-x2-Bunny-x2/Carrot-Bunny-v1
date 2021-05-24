@@ -89,20 +89,18 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		}
 		// 파일명을 DB에 저장해야함. -> rename된 파일을 가져오기
 		// n.setFilePath(mr.getParameter("up_file"));
-		b.setBoardFilePath(mr.getFilesystemName("boardFilepath1"));
+		b.setBoardFilePath(mr.getFilesystemName("up_file"));
 		b.setBoardNumber(Integer.parseInt(mr.getParameter("boardNo")));
 		int result = new BoardService().updateBoard(b);
 
 		// 등록성공하면 등록성공 메세지출력 후 리스트화면으로 이동
 		// 등록실패하면 등록실패 메세지출력 후 등록화면으로 이동
 		String msg = "";
-		String loc = "";
+		String loc = "/board/boardView?no="+b.getBoardNumber();
 		if (result > 0) {
-			msg = "상품등록 성공";
-			loc = "/board/boardPage";
+			msg = "상품수정 성공";
 		} else {
-			msg = "상품등록 실패";
-			loc = "/board/boardUpdate?no="+b.getBoardNumber();
+			msg = "상품수정 실패";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
