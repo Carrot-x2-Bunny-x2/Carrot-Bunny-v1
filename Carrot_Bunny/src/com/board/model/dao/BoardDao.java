@@ -64,6 +64,44 @@ public class BoardDao {
 		return list;
 	}
 	
+	public List<Board> selectAliveBoardList(Connection conn, int cPage, int numPerPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectAliveBoardList"));
+			pstmt.setInt(1, 0);
+			pstmt.setInt(2, (cPage-1)*numPerPage + 1);
+			pstmt.setInt(3, cPage*numPerPage);
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Board b = new Board();
+				b.setBoardNumber(rs.getInt("b_num"));
+				b.setBoardTitle(rs.getString("b_title"));
+				b.setBoardWriter(rs.getString("b_writer"));
+				b.setBoardContent(rs.getString("b_content"));
+				b.setBoardPrice(rs.getInt("b_price"));
+				b.setBoardAmount(rs.getInt("b_amount"));
+				b.setBoardIsSell(rs.getInt("b_sell"));
+				b.setBoardLike(rs.getString("b_like"));
+				b.setBoardIsNego(rs.getInt("b_nego"));
+				b.setBoardIsDelete(rs.getInt("b_delete"));
+				b.setBoardFilePath(rs.getString("b_original_filename"));
+				b.setBoardReFilePath(rs.getString("b_renamed_filename"));
+				b.setBoardDate(rs.getDate("b_date"));
+				b.setBoardReadCount(rs.getInt("b_readcount"));
+				list.add(b);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
 	public int selectBoardCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -22,6 +22,13 @@ public class BoardService {
 		return list;
 	}
 	
+	public List<Board> selectAliveBoardList(int cpage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Board> list = dao.selectAliveBoardList(conn, cpage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
 	public int selectBoardCount() {
 		Connection conn = getConnection();
 		int result = dao.selectBoardCount(conn);

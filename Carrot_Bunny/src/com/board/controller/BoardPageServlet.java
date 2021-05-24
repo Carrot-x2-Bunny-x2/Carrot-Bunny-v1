@@ -47,9 +47,11 @@ public class BoardPageServlet extends HttpServlet {
 		}
 		
 		
-		List<Board> list=new BoardService().selectBoardList(cPage,numPerPage);
+		List<Board> list=new BoardService().selectAliveBoardList(cPage,numPerPage);
 		request.setAttribute("list", list);
-		
+		for (Board b : list) {
+			System.out.println(b.getBoardNumber());
+		}
 		int totalData=new BoardService().selectBoardCount();
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
