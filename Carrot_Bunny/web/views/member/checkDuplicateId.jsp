@@ -47,6 +47,7 @@ span#duplicated {
 	</div>
 	
 <script>
+		/* 적용 안됨
 		$(function(){
 			
 			var replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}(\s*)]/gi;
@@ -64,7 +65,7 @@ span#duplicated {
 					}).on("keyup", function() { 
 						$(this).val($(this).val().replace(replaceChar, "")); 
 						});
-		});
+		});*/
 	
 	
 		const fn_close=()=>{
