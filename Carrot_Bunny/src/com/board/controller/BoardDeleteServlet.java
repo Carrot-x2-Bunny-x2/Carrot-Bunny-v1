@@ -30,6 +30,12 @@ public class BoardDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int cPage;
+		try {
+			cPage=Integer.parseInt(request.getParameter("cPage"));
+		}catch(NumberFormatException e) {
+			cPage=1;
+		}
 		Board b = new Board();
 		b.setBoardIsDelete(1);
 		b.setBoardNumber(Integer.parseInt(request.getParameter("no")));
@@ -37,13 +43,11 @@ public class BoardDeleteServlet extends HttpServlet {
 		int result = new BoardService().deleteBoard(b);
 		
 		String msg = "";
-		String loc = "";
+		String loc = "/board/boardPage?cPage="+cPage;
 		if (result > 0) {
 			msg = "상품삭제 성공";
-			loc = "/board/boardPage";
 		} else {
 			msg = "상품삭제 실패. 관리자에게 문의하십시오.";
-			loc = "/board/boardView?no=?"+b.getBoardNumber();
 		}
 		
 		
