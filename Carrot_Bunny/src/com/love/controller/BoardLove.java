@@ -1,8 +1,8 @@
-package com.board.controller;
+package com.love.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +15,16 @@ import com.board.model.vo.Board;
 import com.member.model.vo.Member;
 
 /**
- * Servlet implementation class BoardViewServlet
+ * Servlet implementation class BoardLike
  */
-@WebServlet("/board/boardView")
-public class BoardViewServlet extends HttpServlet {
+@WebServlet("/board/boardLove")
+public class BoardLove extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardViewServlet() {
+    public BoardLove() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,30 +34,31 @@ public class BoardViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int cPage;
-		try {
-			cPage=Integer.parseInt(request.getParameter("cPage"));
-		}catch(NumberFormatException e) {
-			cPage=1;
-		}
-		request.setAttribute("cPage", cPage);
+		// 이 서블릿은 찜을 눌렀을 때 실행된다.
 		
 		HttpSession session = request.getSession(false);
-		Member loginMember = (Member)session.getAttribute("loginMember");
-		if(session == null || loginMember == null) {
-			request.setAttribute("msg", "로그인 후 이용할 수 있습니다.");
-			request.setAttribute("loc", "/board/boardPage");
-			RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg.jsp");
-			rd.forward(request, response);
+		Member m = (Member)session.getAttribute("loginMember");
+		// 우선 no에 해당하는 board를 불러옴 .
+		Board board = new BoardService().selectBoard(Integer.parseInt(request.getParameter("no")));
+		
+		
+		int result = 0;
+		
+		String msg = "";
+		String loc = "";
+		if (result > 0) {
+			msg = "찜 설정 성공";
+			loc = "/board/boardView?no="+board.getBoardNumber();
 		} else {
-			int num = Integer.parseInt(request.getParameter("no"));
-			
-			Board b = new BoardService().selectBoard(num);
-			
-			request.setAttribute("board", b);
-			request.getRequestDispatcher("/views/board/boardView.jsp").forward(request, response);
+			msg = "찜 설정 실패";
+			loc = "/board/boardView?no="+board.getBoardNumber();
 		}
-	}
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
+		request.setAttribute("board", board);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+
+	}	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

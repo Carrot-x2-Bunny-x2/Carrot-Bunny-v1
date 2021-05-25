@@ -69,13 +69,14 @@ public class BoardPageServlet extends HttpServlet {
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
 		
+		// [이전] 출력
 		if(pageNo==1) {
 			pageBar="<span>[이전]</span>";
 		}else {
 			pageBar="<a href='"+request.getContextPath()
 			+"/board/boardPage?cPage="+(pageNo-1)+"'>[이전]</a>";
 		}
-	
+		// [이전]과 [다음]사이에 오는 page 숫자를 출력
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
 				pageBar+="<span>"+pageNo+"</span>";
@@ -85,7 +86,7 @@ public class BoardPageServlet extends HttpServlet {
 			}
 			pageNo++;
 		}
-		
+		// [다음] 출력
 		if(pageNo>totalPage) {
 			pageBar+="<span>[다음]</span>";
 		}
@@ -93,7 +94,9 @@ public class BoardPageServlet extends HttpServlet {
 			pageBar+="<a href='"+request.getContextPath()
 			+"/board/boardPage?cPage="+pageNo+"'>[다음]</a>";
 		}
+		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
+		request.setAttribute("cPage",cPage);
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);
 		}

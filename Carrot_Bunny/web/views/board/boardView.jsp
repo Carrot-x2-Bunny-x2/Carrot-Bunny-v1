@@ -97,7 +97,7 @@
         	<%} %>
         	</p>
         </div>
-        <input type="button" value="상품 목록" onclick="location.assign('<%=request.getContextPath() %>/board/boardPage')">
+        <input type="button" value="상품 목록" onclick="location.assign('<%=request.getContextPath() %>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">
         
         
 </div>
@@ -105,7 +105,7 @@
 	const fn_sell_product=()=>{
 		if(confirm("판매 완료 처리하시겠습니까?")){
 			//판매완료 진행
-			location.replace("<%=request.getContextPath() %>/board/boardSell?no=<%=b.getBoardNumber()%>");
+			location.replace("<%=request.getContextPath() %>/board/boardSell?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
 	const fn_delete_product=()=>{

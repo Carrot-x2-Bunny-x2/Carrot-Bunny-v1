@@ -194,7 +194,7 @@ public class BoardDao {
 		}
 		return result;
 	}
-	
+	// b_num == num 인 board를 select해온다.
 	public Board selectBoard(Connection conn, int num) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

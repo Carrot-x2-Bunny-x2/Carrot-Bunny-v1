@@ -72,7 +72,7 @@ table#tbl-notice {
 					<tr>
 						<td><%=b.getBoardNumber()%></td>
 						<td>
-							<a href="<%=request.getContextPath()%>/board/boardView?no=<%=b.getBoardNumber()%>">
+							<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 							<%=b.getBoardTitle()%>
 							</a>
 						</td>
