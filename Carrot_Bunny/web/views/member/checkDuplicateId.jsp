@@ -20,6 +20,9 @@ span#duplicated {
 	font-weight: bolder;
 }
 </style>
+
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+
 </head>
 <body>
 	<div id="checkId-container">
@@ -38,7 +41,7 @@ span#duplicated {
 		<!-- 아이디 재입력창 구성 -->
 		<form action="<%=request.getContextPath()%>/checkDuplicateId"
 			method="post">
-			<input type="text" name="userId" id="userId"> <input
+			<input type="text" name="userId" id="userId_"> <input
 				type="submit" value="중복검사">
 		</form>
 		<%
@@ -47,14 +50,14 @@ span#duplicated {
 	</div>
 	
 <script>
-		/* 적용 안됨
+		
 		$(function(){
 			
 			var replaceChar = /[~!@\#$%^&*\()\-=+_'\;<>\/.\`:\"\\,\[\]?|{}(\s*)]/gi;
 			var replaceNotFullKorean = /[ㄱ-ㅎㅏ-ㅣ가-힣]/gi;
 			
 			//아이디 특수문자, 한글, 공백 제거
-			$("#userId").on("focusout", function() { 
+			$("#userId_").on("focusout", function() { 
 				var x = $(this).val();
 					if (x.length > 0) { 
 						if (x.match(replaceChar) || x.match(replaceNotFullKorean)) { 
@@ -65,7 +68,7 @@ span#duplicated {
 					}).on("keyup", function() { 
 						$(this).val($(this).val().replace(replaceChar, "")); 
 						});
-		});*/
+		});
 	
 	
 		const fn_close=()=>{
