@@ -23,6 +23,7 @@
 	<form action="<%=request.getContextPath() %>/board/boardUpdateEnd" 
     method="post" enctype="multipart/form-data">
     	<input type="hidden" name="boardNo" value="<%=b.getBoardNumber()%>">
+    	<input type="hidden" name="cPage" value="<%=request.getAttribute("cPage")%>">
         <table id="tbl-notice">
         <tr>
             <th>첨부파일</th>

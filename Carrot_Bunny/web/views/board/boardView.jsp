@@ -55,7 +55,7 @@
 	<h2>상품 상세보기</h2>
 		<%if(loginMember!=null && (loginMember.getUserId().equals("admin") || loginMember.getUserId().equals(b.getBoardWriter()))) { 
         	if (loginMember.getUserId().equals(b.getBoardWriter())) { %>
-        		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?no=<%=b.getBoardNumber()%>')">
+        		<input type="button" value="수정하기" onclick="location.assign('<%=request.getContextPath() %>/board/boardUpdate?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')">
                 <input type="button" value="판매완료" onclick="fn_sell_product();">
             <%} %>
             <input type="button" value="삭제하기" onclick="fn_delete_product();">
@@ -111,7 +111,7 @@
 	const fn_delete_product=()=>{
 		if(confirm("글을 삭제하시겠습니까?")){
 			//글 삭제 진행
-			location.replace("<%=request.getContextPath() %>/board/boardDelete?no=<%=b.getBoardNumber()%>");
+			location.replace("<%=request.getContextPath() %>/board/boardDelete?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
 </script>

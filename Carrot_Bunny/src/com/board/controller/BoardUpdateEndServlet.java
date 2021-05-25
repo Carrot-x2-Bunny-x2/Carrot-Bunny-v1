@@ -97,10 +97,11 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		b.setBoardNumber(Integer.parseInt(mr.getParameter("boardNo")));
 		int result = new BoardService().updateBoard(b);
 
+		int cPage = Integer.parseInt(mr.getParameter("cPage"));
 		// 등록성공하면 등록성공 메세지출력 후 리스트화면으로 이동
 		// 등록실패하면 등록실패 메세지출력 후 등록화면으로 이동
 		String msg = "";
-		String loc = "/board/boardView?no="+b.getBoardNumber();
+		String loc = "/board/boardPage?cPage="+cPage;
 		if (result > 0) {
 			msg = "상품수정 성공";
 		} else {

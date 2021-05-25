@@ -18,14 +18,14 @@ import com.member.model.vo.Member;
 /**
  * Servlet implementation class BoardPageLikeServlet
  */
-@WebServlet("/board/boardPageLike")
-public class BoardPageLikeServlet extends HttpServlet {
+@WebServlet("/board/boardPageLove")
+public class BoardPageLoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPageLikeServlet() {
+    public BoardPageLoveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

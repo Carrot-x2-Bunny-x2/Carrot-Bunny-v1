@@ -40,6 +40,12 @@ public class BoardViewServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
+		int user;
+		try {
+			user=Integer.parseInt(request.getParameter("user"));
+		}catch(NumberFormatException e) {
+			user=0;
+		}
 		request.setAttribute("cPage", cPage);
 		
 		HttpSession session = request.getSession(false);
