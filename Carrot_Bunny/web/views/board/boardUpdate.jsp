@@ -29,7 +29,7 @@
             <td>
             	<input type="file" name="up_file">
 				<%if(b.getBoardFilePath() != null){ %>
-            		<input type="hidden" name="originFile" value="<%=b.getBoardFilePath()%>">
+            		<input type="hidden" name="boardFilepath1" value="<%=b.getBoardFilePath()%>">
             		<span id="fileName"><%=b.getBoardReFilePath() %></span>
             	<%}  %>
             </td>

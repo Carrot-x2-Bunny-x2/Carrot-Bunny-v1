@@ -86,14 +86,14 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		if(f != null && f.length() > 0) {
 			//새로추가된 파일이 있음.
 			//이전파일을 지워줌
-			File deleteFile=new File(filepath + mr.getParameter("originFile"));
+			File deleteFile=new File(filepath + mr.getParameter("boardFilepath1"));
 			System.out.println(deleteFile.delete());
 		}else {
-			fPath = mr.getParameter("originFile");
+			fPath = mr.getParameter("boardFilepath1");
 		}
 		// 파일명을 DB에 저장해야함. -> rename된 파일을 가져오기
 		// n.setFilePath(mr.getParameter("up_file"));
-		b.setBoardFilePath(mr.getFilesystemName("up_file"));
+		b.setRenamedFileName(fPath);
 		b.setBoardNumber(Integer.parseInt(mr.getParameter("boardNo")));
 		int result = new BoardService().updateBoard(b);
 

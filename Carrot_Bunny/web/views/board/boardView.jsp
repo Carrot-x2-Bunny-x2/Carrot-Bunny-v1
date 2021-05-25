@@ -61,7 +61,7 @@
             <input type="button" value="삭제하기" onclick="fn_delete_product();">
         <%} %>
         <div>
-        	<%if(b.getBoardFilePath()!=null) {%>
+        	<%if(b.getBoardReFilePath()!=null) {%>
            			<a href=""><img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" width="200px"></a>
            	<%} %>
         </div>
