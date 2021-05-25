@@ -16,16 +16,15 @@ public class Board {
 	private int boardIsDelete;
 	private String boardFilePath;
 	private String boardReFilePath;
-	private Date boardDate;
+	private Date boardDate; 
 	private int boardReadCount;
-	
-	public Board() {
-		// TODO Auto-generated constructor stub
-	}
+	private String originalFileName;
+	private String renamedFileName;
 	
 	public Board(int boardNumber, String boardTitle, String boardWriter, String boardContent, int boardPrice,
 			int boardAmount, int boardIsSell, String boardLike, int boardIsNego, int boardIsDelete,
-			String boardFilePath, String boardReFilePath, Date boardDate, int boardReadCount) {
+			String boardFilePath, String boardReFilePath, Date boardDate, int boardReadCount, String originalFileName,
+			String renamedFileName) {
 		super();
 		this.boardNumber = boardNumber;
 		this.boardTitle = boardTitle;
@@ -41,6 +40,29 @@ public class Board {
 		this.boardReFilePath = boardReFilePath;
 		this.boardDate = boardDate;
 		this.boardReadCount = boardReadCount;
+		this.originalFileName = originalFileName;
+		this.renamedFileName = renamedFileName;
+	}
+
+	public Board() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+
+	public String getRenamedFileName() {
+		return renamedFileName;
+	}
+
+	public void setRenamedFileName(String renamedFileName) {
+		this.renamedFileName = renamedFileName;
 	}
 
 	public int getBoardNumber() {
