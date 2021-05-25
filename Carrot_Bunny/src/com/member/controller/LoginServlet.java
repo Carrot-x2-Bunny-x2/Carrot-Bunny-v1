@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 		// 1. client가 보낸 값 가져오기 -> request.getParameter()매소드를 이용
 		String userId = request.getParameter("userId");
 		String pw = request.getParameter("password");
+//		int IsDelete = Integer.parseInt(request.getParameter("mem_delete"));
 		// 2. 가져온 값이 DB(web계정의 member테이블)에 있는지 확인
 		Member m = new MemberService().login(userId, pw);
 		System.out.println("login 로직 실행");
@@ -68,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
 		// 3. DB에서 반환받은 결과를 가지고 응답할 페이지를 선정
 		// m변수가 null이면 로그인실패, m값이 null이 아니면 로그인 성공
-		if (m != null) {
+		if (m != null ) {
 			// 로그인 성공
 			// 로그인 성공에 대한 데이터를 유지하기 위해서 그 정보를 보관
 			// 보관 객체는 request, session, context 3가지 객체가 있음
