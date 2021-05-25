@@ -35,11 +35,14 @@ public class BoardPageServlet extends HttpServlet {
 		
 		int cPage;
 		int numPerPage;
+		// 데이터를 가져올때 원하는 구역 가져오기
+		// 1. 사용자가 원하는 page -> 현재 페이지
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
+		// 2. 페이지당 데이터 수 -> 사용자가 설정
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
@@ -50,11 +53,19 @@ public class BoardPageServlet extends HttpServlet {
 		List<Board> list=new BoardService().selectAliveBoardList(cPage,numPerPage);
 		request.setAttribute("list", list);
 		
+		// 사용자가 원하는 페이지를 호출할 수 있게 pageBar 구성
+		// board의 총 개수
 		int totalData=new BoardService().selectAliveBoardCount();
+		// 1. 전체 페이지에 대한 수(전체자료에서 페이지당 수 나누기, 자동 올림처리)
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
+		// pageBar에 출력될 페이지숫자 갯수
 		int pageBarSize=10;
+		// pageNo는 pageBar에 출력되는 페이지숫자의 시작값
+		// 예를 들어 pageBarSize=5라는 가정 하에
+		// cPage가 1~5는 pageNo=1, cPage가 6~10이면 pageNo=6
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
+		// pageEnd는 당연히 끝나는 값이겠죠
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
 		
