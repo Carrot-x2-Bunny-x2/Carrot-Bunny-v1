@@ -72,8 +72,8 @@ public class boardWriteEndServlet extends HttpServlet {
 		b.setBoardContent(mr.getParameter("boardContent"));
 		b.setBoardPrice(Integer.parseInt(mr.getParameter("boardPrice")));
 		b.setBoardAmount(Integer.parseInt(mr.getParameter("boardAmount")));
-		b.setOriginalFileName(mr.getOriginalFileName("up_file"));
-		b.setRenamedFileName(mr.getFilesystemName("up_file"));
+		b.setOriginalFileName(mr.getOriginalFileName("boardFilepath1"));
+		b.setRenamedFileName(mr.getFilesystemName("boardFilepath1"));
 		
 		
 		String isNego = mr.getParameter("boardIsNego");

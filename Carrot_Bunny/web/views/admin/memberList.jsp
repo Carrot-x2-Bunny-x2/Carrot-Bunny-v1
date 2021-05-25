@@ -45,6 +45,8 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 	background-color: white;
 	border-radius: 5px;
 }
+div#search-container{margin:0 0 10px 0; padding : 3px; text-align:center;}
+
 </style>
 
 <div id="tbl-member">
@@ -53,6 +55,26 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 		<div class="membertitle">
 			회원조회
 			<p>당근당근바니바니를 이용하는 회원들을 관리 해주세요!</p>
+		</div>
+		<div id = "search-container">
+			검색타입 : <select id="searchType">
+				<option value="userId">아이디</option>
+				<option value="userName">회원이름</option>
+			</select>
+			<div id ="search-userId">
+				<form action ="">
+					<input type="hidden" name="searchType" value="userId">
+					<input type="text" name="searchKeyword" size="20" placeholder="검색할 아이디를 입력하세요" value="">
+					<button type="submit">검색</button>
+				</form>
+			</div>
+			<div id ="search-userName">
+				<form action="">
+					<input type="hidden" name="searchType" value="userName">
+					<input type="text" name="searchKeyword" size="20" placeholder="검색할 이름을 입력하세요" value="">
+					<button type="submit">검색</button>
+				</form>
+			</div>
 		</div>
 
 		<!-- 회원 리스트 -->
@@ -80,10 +102,9 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 					%>
 					<tr>
 						<td><%=m.getmemberNum()%></td>
-						<td>
-						<a
+						<td><a
 							href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
-							</a></td>
+						</a></td>
 						<td><%=m.getUserName()%></td>
 					</tr>
 					<%

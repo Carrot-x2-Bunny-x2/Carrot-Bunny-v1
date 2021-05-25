@@ -62,7 +62,7 @@
         <%} %>
         <div>
         	<%if(b.getBoardFilePath()!=null) {%>
-           			<a href=""><img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardFilePath()%>" width="200px"></a>
+           			<a href=""><img src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" width="200px"></a>
            	<%} %>
         </div>
         <div>

@@ -16,7 +16,7 @@ public class Board {
 	private int boardIsDelete;
 	private String boardFilePath;
 	private String boardReFilePath;
-	private Date boardDate;
+	private Date boardDate; 
 	private int boardReadCount;
 	private String originalFileName;
 	private String renamedFileName;
