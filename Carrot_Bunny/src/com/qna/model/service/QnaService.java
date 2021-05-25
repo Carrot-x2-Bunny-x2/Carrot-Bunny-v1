@@ -32,10 +32,10 @@ public class QnaService {
 		return list;
 	}
 
-	public Qna selectQna(int no) {
+	public Qna selectQna(int num) {
 		
 		Connection conn=getConnection();
-		Qna q=dao.selectQna(conn, no);
+		Qna q=dao.selectQna(conn, num);
 		close(conn);
 		
 		return q;

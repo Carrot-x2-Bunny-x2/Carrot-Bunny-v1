@@ -86,7 +86,7 @@
 						for(Qna q : list){%>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
+									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo() %>"><%=q.getQnaTitle() %></a>
 								</td>
 								<td><%=q.getQnaWriter() %></td>
 								<td><%=q.getQnaDate() %></td>
@@ -119,7 +119,7 @@
 						for(Qna q : list){%>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
+									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo()%>"><%=q.getQnaTitle() %></a>
 								</td>
 								<td><%=q.getQnaDate() %></td>
 								<%if(q.getQnaAnswer() == null){ %>

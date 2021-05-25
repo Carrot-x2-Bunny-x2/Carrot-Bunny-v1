@@ -87,22 +87,23 @@ public class QnaDao {
 	
 	
 	//선택한 1:1문의 글 내용 불러오기
-	public Qna selectQna(Connection conn, int no) {
+	public Qna selectQna(Connection conn, int num) {
 		
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		Qna q=null;
 		try {
-			pstmt=conn.prepareStatement(prop.getProperty("selectBoard"));
-			pstmt.setInt(1, no);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
+			pstmt = conn.prepareStatement(prop.getProperty("selectQnaNo"));
+			pstmt.setInt(1,num);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
 				q = new Qna();
-				q.setQnaNo(rs.getInt("n_num"));
-				q.setQnaTitle(rs.getString("n_title"));
-				q.setQnaWriter(rs.getString("n_content"));
-				q.setQnaContent(rs.getString("n_content"));
-				q.setQnaDate(rs.getDate("n_date"));
+				q.setQnaNo(rs.getInt("q_num"));
+				q.setQnaTitle(rs.getString("q_title"));
+				q.setQnaWriter(rs.getString("q_writer"));
+				q.setQnaContent(rs.getString("q_content"));
+				q.setQnaAnswer(rs.getString("q_answer"));
+				q.setQnaDate(rs.getDate("q_date"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
