@@ -62,10 +62,10 @@ public class MemberListServlet extends HttpServlet {
 
 			List<Member> list = new AdminService().selectMemberList(cPage, numPerPage);
 			request.setAttribute("list", list);
-			
-			for(Member m : list) {
-				System.out.println(m.getmemberNum());
-			}
+//			
+//			for(Member m : list) {
+//				System.out.println(m.getmemberNum());
+//			}
 			
 
 			int totalData = new AdminService().selectMemberCount();

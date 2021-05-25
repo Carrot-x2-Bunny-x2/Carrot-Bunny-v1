@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-/* 메인 화면 로고 */
-.logo {
+/* /* 메인 화면 로고 */
+/* .logo {
 	width: 150px;
 	height: 150px;
 	margin-left : -5px;
-}
+} */
 
-.navbar_logo {
+/* .navbar_logo {
 	display: block;
 	margin: 0px;
 	padding-left:624px;
@@ -33,7 +33,8 @@
 	display: flex;
 
 	
-}
+} */ */
+
 .loginfrm{
 	padding-right:10px;
 
