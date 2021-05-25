@@ -66,36 +66,82 @@
 		<div class="noticetitle">
 			<p><%=loginMember.getUserName() %> 님의</p>1:1 문의
 		</div>
-
-		<!-- 공지사항 리스트 -->
-		<div class="noticeList">
-			<table class="noticetb">
-	            <tr>
-	                <th>제목</th>
-	                <th>작성일</th>
-	            </tr>
-				<%if(list.isEmpty()){ %>
-					<tr>
-						<td colspan="2">등록된 1:1 문의가 없습니다.</td>
-					</tr>
-				<%}else{ 
-					for(Qna q : list){%>
+		
+		<%if(loginMember.getUserId().equals("admin")) {%>
+			
+			<!-- 1:1 admin 리스트 -->
+			<div class="noticeList">
+				<table class="noticetb">
+		            <tr>
+		                <th>제목</th>
+		                <th>작성자</th>
+		                <th>작성일</th>
+		                <th>답변여부</th>
+		            </tr>
+					<%if(list.isEmpty()){ %>
 						<tr>
-							<td>
-								<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
-							</td>
-							<td><%=q.getQnaDate() %></td>
+							<td colspan="2">등록된 1:1 문의가 없습니다.</td>
 						</tr>
-					<%}
-				}%>
-			</table>
-			<%if(loginMember!=null&&!(loginMember.getUserId().equals("admin"))){ %>
-				<div style="">
-					<input class="noticewrite" type="button" value="1:1 문의 등록"
-					onclick="location.assign('<%=request.getContextPath()%>/qna/qnaWrite')">
-				</div>
-			<%} %>
-		</div>
+					<%}else{ 
+						for(Qna q : list){%>
+							<tr>
+								<td>
+									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
+								</td>
+								<td><%=q.getQnaWriter() %></td>
+								<td><%=q.getQnaDate() %></td>
+								<%if(q.getQnaAnswer() == null){ %>
+									<td style="color: red; font-weight: bold;">답변 대기 중</td>
+								<%}else{%>
+									<td style="color: blue;">답변완료</td>
+								<%}%>
+							</tr>
+						<%}
+					}%>
+				</table>
+			</div>
+			
+		<%}else{ %>
+			
+			<!-- 1:1 USER 리스트 -->
+			<div class="noticeList">
+				<table class="noticetb">
+		            <tr>
+		                <th>제목</th>
+		                <th>작성일</th>
+		                <th>답변여부</th>
+		            </tr>
+					<%if(list.isEmpty()){ %>
+						<tr>
+							<td colspan="2">등록된 1:1 문의가 없습니다.</td>
+						</tr>
+					<%}else{ 
+						for(Qna q : list){%>
+							<tr>
+								<td>
+									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaWriter=<%=loginMember.getUserName() %>"><%=q.getQnaTitle() %></a>
+								</td>
+								<td><%=q.getQnaDate() %></td>
+								<%if(q.getQnaAnswer() == null){ %>
+									<td style="color: red;">답변 대기 중</td>
+								<%}else{%>
+									<td style="color: blue;">답변완료</td>
+								<%}%>
+							</tr>
+						<%}
+					}%>
+				</table>
+					<div style="">
+						<input class="noticewrite" type="button" value="1:1 문의 등록"
+						onclick="location.assign('<%=request.getContextPath()%>/qna/qnaWrite')">
+					</div>
+			</div>
+	            
+		<%}%>
+		
+		
+		
+		
 	</div>
 </div>	
 	

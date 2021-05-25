@@ -38,16 +38,21 @@ public class QnaServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String userId = loginMember.getUserId();
-		
+		System.out.println("id가져오는지 테스트");
+		System.out.println(userId);
 		List<Qna> list=null;
+		String admin = "admin";
 		
-		if(userId == "admin") {
+		if(userId.equals(admin)) {
+			System.out.println("관리자가 보는 1:1");
 			list = new QnaService().QnaList();
-		}else if(userId != null){
+		}else{
+			System.out.println("문의 작성자가 보는 1:1");
 			list = new QnaService().QnaListUser(userId);
-		}else {
-			
 		}
+		
+		System.out.println("List 받았는지 테스트");
+		System.out.println(list.toString());
 		
 		request.setAttribute("qna", list);
 		
