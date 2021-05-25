@@ -14,7 +14,6 @@ import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
 import com.common.MyRename;
 import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 /**
  * Servlet implementation class BoardUpdateEndServlet

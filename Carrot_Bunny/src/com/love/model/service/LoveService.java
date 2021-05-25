@@ -12,12 +12,39 @@ import com.member.model.vo.Member;
 
 public class LoveService {
 	private LoveDao dao = new LoveDao();
-	
-	public List<Love> selectLoveList(int cpage, int numPerPage, Member m) {
+	// Love 테이블의 모든 row를 리스트에 받아온다.
+	public List<Love> selectLoveList() {
 		Connection conn = getConnection();
-		List<Love> list = dao.selectLoveList(conn, cpage, numPerPage, m);
+		List<Love> list = dao.selectLoveList(conn);
 		close(conn);
 		return list;
-		
+	}
+	
+	public List<Love> selectUserLoveList(int cpage, int numPerPage, Member m) {
+		Connection conn = getConnection();
+		List<Love> list = dao.selectUserLoveList(conn, cpage, numPerPage, m);
+		close(conn);
+		return list;
+	}
+	
+	public int findLove(Member m, int boardNumber) {
+		Connection conn = getConnection();
+		int result = dao.findLove(conn, m, boardNumber);
+		close(conn);
+		return result;
+	}
+	
+	public int insertLove(Love love) {
+		Connection conn = getConnection();
+		int result = dao.insertLove(conn, love);
+		close(conn);
+		return result;
+	}
+	
+	public int deleteLove(Love love) {
+		Connection conn = getConnection();
+		int result = dao.deleteLove(conn, love);
+		close(conn);
+		return result;
 	}
 }

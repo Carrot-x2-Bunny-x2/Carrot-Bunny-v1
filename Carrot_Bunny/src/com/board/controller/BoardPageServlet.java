@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.love.model.service.LoveService;
+import com.love.model.vo.Love;
 
 /**
  * Servlet implementation class BoardPageServlet
@@ -97,6 +99,8 @@ public class BoardPageServlet extends HttpServlet {
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
 		request.setAttribute("cPage",cPage);
+		
+
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);
 		}

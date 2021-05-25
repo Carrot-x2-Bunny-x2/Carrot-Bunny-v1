@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.board.model.vo.Board" %>
+<%@ page import="java.util.List,
+com.board.model.vo.Board,
+com.love.model.vo.Love" %>
 
  
 <% 
 	Board b=(Board)request.getAttribute("board");
 	
 	Member m = (Member)session.getAttribute("loginMember");
+	
+	List<Love> loveList = (List<Love>) request.getAttribute("loveList");
+	int check = 0;
+	for (Love lo : loveList) {
+		if (lo.getUserId().equals(m.getUserId()) && lo.getBoardNumber()==b.getBoardNumber()) {
+			check = 1;
+		}
+	}
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
@@ -90,10 +100,10 @@
         	<%} %>
         	</p>
         	<p>
-        	<%if (b.getBoardLike() != null && b.getBoardLike().contains(m.getUserId())) { %>   	
-        		<input id="isLike" type="checkbox" checked onclick="location.assign('<%=request.getContextPath() %>/board/boardLike?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
+        	<%if (check == 1) { %>   	
+        		<input id="isLike" type="checkbox" checked onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} else {%>
-        		<input id="isLike" type="checkbox" onclick="location.assign('<%=request.getContextPath() %>/board/boardLike?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
+        		<input id="isLike" type="checkbox" onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} %>
         	</p>
         </div>

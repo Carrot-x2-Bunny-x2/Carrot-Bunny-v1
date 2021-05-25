@@ -52,7 +52,7 @@ public class LovePageServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
-		List<Love> loveList=new LoveService().selectLoveList(cPage,numPerPage,loginMember);
+		List<Love> loveList=new LoveService().selectUserLoveList(cPage,numPerPage,loginMember);
 		List<Board> boardList = new ArrayList<>();
 		int totalData = 0;
 		if (loveList != null) {
