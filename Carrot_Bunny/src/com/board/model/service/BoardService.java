@@ -59,7 +59,7 @@ public class BoardService {
 		return result;
 	}
 	
-	// 전체 상품 조회 
+	// 상품 하나의 정보를 가져온다.
 	public Board selectBoard(int num) {
 		Connection conn = getConnection();
 		Board b = dao.selectBoard(conn, num);

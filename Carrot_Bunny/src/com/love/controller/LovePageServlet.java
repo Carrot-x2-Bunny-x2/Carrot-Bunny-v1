@@ -1,4 +1,4 @@
-package com.board.controller;
+package com.love.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,19 +13,21 @@ import javax.servlet.http.HttpSession;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.love.model.service.LoveService;
+import com.love.model.vo.Love;
 import com.member.model.vo.Member;
 
 /**
  * Servlet implementation class BoardPageLikeServlet
  */
-@WebServlet("/board/boardPageLove")
-public class BoardPageLoveServlet extends HttpServlet {
+@WebServlet("/love/lovePage")
+public class LovePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardPageLoveServlet() {
+    public LovePageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,29 +52,22 @@ public class BoardPageLoveServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
-		List<Board> list=new BoardService().selectAliveBoardList(cPage,numPerPage);
-		
-		
-		//board 에서 B_LIKE에 있는 문자열을 리스트로 저장한 후
-		//다시 리스트에서 loginMember의 id가 있는 것을 찾는다. 이때 count도 계산한다.
-		//해당 board를 새로운 resultBoardList에 add한다.
+		List<Love> loveList=new LoveService().selectLoveList(cPage,numPerPage,loginMember);
+		List<Board> boardList = new ArrayList<>();
 		int totalData = 0;
-		List<Board> resultList = new ArrayList<Board>(); //빈깡통 
-		String[] like; //빈리스트 
-		for (Board b : list) { //삭제안된 리스트중에서 for문을 돌린다. 
-			if (b.getBoardLike() != null) { //좋아요 목록이 있으면 
-				like = b.getBoardLike().split(","); //split해서 들고와 like에 저장해준다. 
-			} else {
-				like = new String[0]; //아무것도 없으면 0 
+		if (loveList != null) {
+			for (Love lo : loveList) {
+				Board b = new BoardService().selectBoard(lo.getBoardNumber());
+				boardList.add(b);
+				totalData += 1;
 			}
-			for (String str : like) { //like안에 내 이름이 있는지 찾아야함. 
-				if (str.equals(loginMember.getUserId())) { 
-					totalData += 1; //찾으면 totaldata 하나씩 올린다. 
-					resultList.add(b); //list에 저장 
-				}
-			}
+		} else {
+			boardList = null;
 		}
-		request.setAttribute("list", resultList); //result에 저장한걸 넘겨준다. 
+		
+		
+		
+		request.setAttribute("list", boardList); 
 		
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
@@ -106,7 +101,7 @@ public class BoardPageLoveServlet extends HttpServlet {
 			+"/board/boardPage?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar",pageBar);
-		request.getRequestDispatcher("/views/board/boardPageLike.jsp")
+		request.getRequestDispatcher("/views/love/lovePage.jsp")
 		.forward(request, response);
 	}
 
