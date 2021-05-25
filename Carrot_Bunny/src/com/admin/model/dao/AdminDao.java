@@ -122,5 +122,25 @@ public class AdminDao {
 		}
 		return result;
 	}
+	
+	
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(props.getProperty("updateMember"));
+			pstmt.setInt(1, m.getIsDelete());
+			pstmt.setInt(2, m.getmemberNum());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
+	
 }
 

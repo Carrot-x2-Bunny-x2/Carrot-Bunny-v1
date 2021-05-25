@@ -95,7 +95,7 @@ Member m = (Member) request.getAttribute("member");
 	
 	const fn_delete_member=()=>{
 		if(confirm("정말로 삭제하시겠습니까?")){
-			location.replace("<%=request.getContextPath()%>/admindeleteMember?memberNum="+'<%=m.getmemberNum()%>');
+			location.replace("<%=request.getContextPath()%>/adminupdatemember?memberNum="+'<%=m.getmemberNum()%>');
 		}
 	}
 	</script>
