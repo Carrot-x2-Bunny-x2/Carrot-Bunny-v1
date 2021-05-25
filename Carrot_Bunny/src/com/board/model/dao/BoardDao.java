@@ -240,7 +240,8 @@ public class BoardDao {
 			pstmt.setInt(4,b.getBoardPrice());
 			pstmt.setInt(5,b.getBoardAmount());
 			pstmt.setInt(6,b.getBoardIsNego());
-			pstmt.setString(7,b.getBoardFilePath());
+			pstmt.setString(7,b.getOriginalFileName());
+			pstmt.setString(8, b.getRenamedFileName());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
