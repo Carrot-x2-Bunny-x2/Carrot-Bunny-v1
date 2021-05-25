@@ -65,7 +65,6 @@
 		<!--1:1문의 제목-->
 		<div class="noticetitle">
 			<p><%=loginMember.getUserName() %> 님의</p>1:1 문의
-			<p>1:1 문의를 등록해주세요!</p>
 		</div>
 
 		<!-- 공지사항 리스트 -->

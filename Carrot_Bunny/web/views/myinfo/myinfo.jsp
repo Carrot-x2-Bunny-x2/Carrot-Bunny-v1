@@ -98,7 +98,7 @@
 				onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 			</td>
 			<td><input type="button" value="나의 1:1 문의관리" style="width :200px; height: 100px;"
-				onclick="location.assign('<%=request.getContextPath()%>/index.jsp')">
+				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 			</td>
 			</tr>
 		</tr>

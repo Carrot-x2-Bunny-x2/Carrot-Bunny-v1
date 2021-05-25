@@ -36,15 +36,16 @@ public class QnaDao {
 		ResultSet rs = null;
 		List<Qna> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(prop.getProperty("selectQna"));
+			pstmt = conn.prepareStatement(prop.getProperty("selectQnaList"));
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();
-				q.setQnaNo(rs.getInt("n_num"));
-				q.setQnaTitle(rs.getString("n_title"));
-				q.setQnaWriter(rs.getString("n_content"));
-				q.setQnaContent(rs.getString("n_content"));
-				q.setQnaDate(rs.getDate("n_date"));
+				q.setQnaNo(rs.getInt("q_num"));
+				q.setQnaTitle(rs.getString("q_title"));
+				q.setQnaWriter(rs.getString("q_writer"));
+				q.setQnaContent(rs.getString("q_content"));
+				q.setQnaAnswer(rs.getString("q_answer"));
+				q.setQnaDate(rs.getDate("q_date"));
 				list.add(q);
 			}
 		}catch(SQLException e) {
@@ -62,15 +63,17 @@ public class QnaDao {
 			ResultSet rs = null;
 			List<Qna> list = new ArrayList();
 			try {
-				pstmt = conn.prepareStatement(prop.getProperty("selectQna"));
+				pstmt = conn.prepareStatement(prop.getProperty("selectQnaUser"));
+				pstmt.setString(1,id);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					Qna q = new Qna();
-					q.setQnaNo(rs.getInt("n_num"));
-					q.setQnaTitle(rs.getString("n_title"));
-					q.setQnaWriter(rs.getString("n_content"));
-					q.setQnaContent(rs.getString("n_content"));
-					q.setQnaDate(rs.getDate("n_date"));
+					q.setQnaNo(rs.getInt("q_num"));
+					q.setQnaTitle(rs.getString("q_title"));
+					q.setQnaWriter(rs.getString("q_writer"));
+					q.setQnaContent(rs.getString("q_content"));
+					q.setQnaAnswer(rs.getString("q_answer"));
+					q.setQnaDate(rs.getDate("q_date"));
 					list.add(q);
 				}
 			}catch(SQLException e) {

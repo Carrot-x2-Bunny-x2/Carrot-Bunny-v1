@@ -35,7 +35,7 @@ public class QnaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String userId = loginMember.getUserId();
 		
@@ -49,7 +49,7 @@ public class QnaServlet extends HttpServlet {
 			
 		}
 		
-		request.setAttribute("list", list);
+		request.setAttribute("qna", list);
 		
 		request.getRequestDispatcher("/views/qna/qna.jsp").forward(request, response);
 	

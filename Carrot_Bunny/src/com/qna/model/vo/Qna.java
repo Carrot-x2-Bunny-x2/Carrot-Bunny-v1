@@ -73,6 +73,10 @@ public class Qna {
 		this.qnaAnswer = qnaAnswer;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "Qna [qnaNo=" + qnaNo + ", qnaTitle=" + qnaTitle + ", qnaWriter=" + qnaWriter + ", qnaContent="
+				+ qnaContent + ", qnaDate=" + qnaDate + ", qnaAnswer=" + qnaAnswer + "]";
+	}
+
 }
