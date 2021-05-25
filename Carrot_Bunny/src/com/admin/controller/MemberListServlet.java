@@ -57,7 +57,7 @@ public class MemberListServlet extends HttpServlet {
 			try {
 				numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 			}catch(NumberFormatException e) {
-				numPerPage=10;
+				numPerPage=5;
 			}
 
 			List<Member> list = new AdminService().selectMemberList(cPage, numPerPage);
@@ -71,7 +71,7 @@ public class MemberListServlet extends HttpServlet {
 			int totalData = new AdminService().selectMemberCount();
 			int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 
-			int pageBarSize = 5;
+			int pageBarSize = 4;
 			int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 			int pageEnd= pageNo+pageBarSize-1;
 

@@ -3,6 +3,10 @@
 <%@ page import="java.util.List"%>
 <%
 List<Member> list = (List<Member>) request.getAttribute("list");
+
+String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
+String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
+out.print(searchType + " : " + keyword);
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
@@ -45,33 +49,55 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 	background-color: white;
 	border-radius: 5px;
 }
-div#search-container{margin:0 0 10px 0; padding : 3px; text-align:center;}
 
+div#search-container {
+	margin: 0 0 10px 0;
+	padding: 3px;
+	text-align: center;
+}
+
+div#search-userId {
+	display: inline-block;
+}
+
+div#search-userName {
+	display: none;
+}
+
+div#numPerpage-container {
+	float: right;
+}
+
+form#numperPageFrm {
+	display: inline;
+}
 </style>
 
-<div id="tbl-member">
+<section id="tbl-member">
 
 	<div class="members">
 		<div class="membertitle">
 			회원조회
 			<p>당근당근바니바니를 이용하는 회원들을 관리 해주세요!</p>
 		</div>
-		<div id = "search-container">
+		<div id="search-container">
 			검색타입 : <select id="searchType">
 				<option value="userId">아이디</option>
 				<option value="userName">회원이름</option>
 			</select>
-			<div id ="search-userId">
-				<form action ="">
-					<input type="hidden" name="searchType" value="userId">
-					<input type="text" name="searchKeyword" size="20" placeholder="검색할 아이디를 입력하세요" value="">
+			<div id="search-userId">
+				<form action="">
+					<input type="hidden" name="searchType" value="userId"> <input
+						type="text" name="searchKeyword" size="30"
+						placeholder="검색할 아이디를 입력하세요" value="">
 					<button type="submit">검색</button>
 				</form>
 			</div>
-			<div id ="search-userName">
+			<div id="search-userName">
 				<form action="">
-					<input type="hidden" name="searchType" value="userName">
-					<input type="text" name="searchKeyword" size="20" placeholder="검색할 이름을 입력하세요" value="">
+					<input type="hidden" name="searchType" value="userName"> <input
+						type="text" name="searchKeyword" size="30"
+						placeholder="검색할 이름을 입력하세요" value="">
 					<button type="submit">검색</button>
 				</form>
 			</div>
@@ -112,14 +138,61 @@ div#search-container{margin:0 0 10px 0; padding : 3px; text-align:center;}
 					}
 					%>
 				</tbody>
-
 			</table>
 
-			<div id="pageBar" style="text-align: center; margin-top: 20px;">
+			<div id="pageBar" align="center" style="margin-top: 10px;">
 				<%=request.getAttribute("pageBar")%>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+<script>
+    	$("#searchType").change(e => {
+    		const userId=$("#search-userId");
+    		const userName=$("#search-userName");
+    		const value=$(e.target).val();//userId OR userName 
+    		
+    		userId.css("display","none");
+    		userName.css("display","none");
+    		
+    		$("#search-"+value).css("display","inline-block");
+    		
+    	});
+    	$(function(){   		
+    		$("#searchType").change();
+    	})
+    		$("#numPerpage").change((e)=>{
+    		
+    		if(<%=keyword.equals("")%>){
+    			//검색을 안했음
+    			$("#numPerFrm").attr("action","<%=request.getContextPath()%>/memberList");
+    			$("#numPerFrm").append($("<input>").attr({
+    				type:"hidden",name:"cPage",value:"<%=request.getParameter("cPage")%>"
+    			}));
+    			$("#numPerFrm").append($("<input>").attr({
+    				type:"hidden",name:"numPerPage",value:"<%=request.getParameter("numPerPage")%>"
+    			}));
+    		}else{ 
+    			//검색을 했음
+    			$("#numPerFrm").attr("action","<%=request.getContextPath()%>/admin/searchMember");
+    			$("#numPerFrm").append($("<input>").attr({
+    				type:"hidden",name:"cPage",value:"<%=request.getParameter("cPage")%>"
+    			}));
+    			$("#numPerFrm").append($("<input>").attr({
+    				type:"hidden",name:"searchType",value:"<%=searchType%>"
+    			}));
+    			$("#numPerFrm").append($("<input>").attr({
+    				type:"hidden",name:"searchKeyword",value:"<%=keyword%>"
+    			}));
+    		}
+    		
+    		
+    		$("#numPerFrm").submit();//제출하기
+    	});
+
+    </script>
+
+
+
 
 <%@ include file="/views/common/footer.jsp"%>

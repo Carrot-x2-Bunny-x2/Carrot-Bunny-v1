@@ -140,7 +140,64 @@ public class AdminDao {
 		return result;
 	}
 	
+	public List<Member> searchMember(Connection conn, String searchType, String keyword, int cPage, int numPerPage){
+		//searchType - 컬럼명 , keyword - 비교대상이 되는 값 
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<Member> list=new ArrayList();
+		String sql=props.getProperty("searchMember");
+//		switch(searchType) {
+//			case "userId" : sql="searchMemberId";break;
+//			case "userName" : sql="searchMemberName";break;
+//			case "gender" : sql="searchMemberGender";break;
+//		}
+		try {
+			pstmt=conn.prepareStatement(sql.replace("@", searchType));
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerPage);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Member m=new Member();
+				m.setmemberNum(rs.getInt("member_num"));
+				m.setUserId(rs.getString("member_id"));
+				m.setPassword(rs.getString("member_pwd"));
+				m.setUserName(rs.getString("mem_name"));
+				m.setEmail(rs.getString("mem_email"));
+				m.setPhone(rs.getString("mem_phone"));
+				m.setIsAgree(rs.getInt("mem_agree"));
+				m.setIsDelete(rs.getInt("mem_delete"));
+				m.setIsAdmin(rs.getInt("mem_admin"));
+				m.setenrollDate(rs.getDate("enroll_date")); 
+				list.add(m);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return list;
+		
+	}
 	
+	//CONNECTION객체를 보내주는 곳 ! 
+	public int searchMemberCount(Connection conn, String searchType, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = props.getProperty("searchMemberCount");
+		try {
+			pstmt= conn.prepareStatement(sql.replace("@", searchType));
+			pstmt.setString(1,keyword);
+			rs=pstmt.executeQuery();
+			if(rs.next()) result = rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return result;
+	}
 	
 }
 
