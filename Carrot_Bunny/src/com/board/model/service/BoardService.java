@@ -16,48 +16,50 @@ public class BoardService {
 	
 	private BoardDao dao = new BoardDao();
 	
-	// 삭제가 된 상품까지 모두 select 한다.
+	// 삭제가 된 상품까지 모두 select
 	public List<Board> selectBoardList(int cpage, int numPerPage) {
 		Connection conn = getConnection();
 		List<Board> list = dao.selectBoardList(conn, cpage, numPerPage);
 		close(conn);
 		return list;
 	}
-	// 삭제되지 않은 상품만 select한다.
+	// 삭제되지 않은 상품만 select
 	public List<Board> selectAliveBoardList(int cpage, int numPerPage) {
 		Connection conn = getConnection();
 		List<Board> list = dao.selectAliveBoardList(conn, cpage, numPerPage);
 		close(conn);
 		return list;
 	}
-	// user의 상품만 select 한다.(삭제되지 않은)
+	// user의 상품만 select(삭제되지 않은)
 	public List<Board> selectUserBoardList(int cpage, int numPerPage,Member m) {
 		Connection conn = getConnection();
 		List<Board> list = dao.selectUserBoardList(conn, cpage, numPerPage, m);
 		close(conn);
 		return list;
 	}
-	// 삭제된 상품까지 모두 count한다.
+	// 삭제된 상품까지 모두 count
 	public int selectBoardCount() {
 		Connection conn = getConnection();
 		int result = dao.selectBoardCount(conn);
 		close(conn);
 		return result;
 	}
-	// 삭제되지 않은 상품만 count한다.
+	// 삭제되지 않은 상품만 count
 	public int selectAliveBoardCount() {
 		Connection conn = getConnection();
 		int result = dao.selectAliveBoardCount(conn);
 		close(conn);
 		return result;
 	}
-	// 삭제되지 않은 상품만 count한다.
+	// 삭제되지 않은 상품만 count
 	public int selectUserBoardCount(Member m) {
 		Connection conn = getConnection();
 		int result = dao.selectUserBoardCount(conn, m);
 		close(conn);
 		return result;
 	}
+	
+	// 전체 상품 조회 
 	public Board selectBoard(int num) {
 		Connection conn = getConnection();
 		Board b = dao.selectBoard(conn, num);
@@ -65,6 +67,7 @@ public class BoardService {
 		return b;
 	}
 	
+	//게시물 작성 
 	public int insertBoard(Board b) {
 		Connection conn = getConnection();
 		int result = dao.insertBoard(conn, b);
@@ -76,6 +79,7 @@ public class BoardService {
 		return result;
 	}
 	
+	//게시물 수정 
 	public int updateBoard(Board b) {
 		Connection conn = getConnection();
 		int result = dao.updateBoard(conn, b);
@@ -87,6 +91,7 @@ public class BoardService {
 		return result;
 	}
 	
+	//게시물 삭제 
 	public int deleteBoard(Board b) {
 		Connection conn = getConnection();
 		int result = dao.deleteBoard(conn, b);
@@ -96,6 +101,7 @@ public class BoardService {
 		return result;
 	}
 	
+	//좋아요 업데이트  
 	public int updateLikeBoard(Board b) {
 		Connection conn = getConnection();
 		int result = dao.updateLikeBoard(conn, b);
