@@ -38,24 +38,33 @@
 <style>
 
 
-.header >{
+.logo {
+   width: 150px;
+   height: 150px;
+   margin-left: 45%;   
+}
+
+.navbar_logo {
+    display: block; 
+    margin: 0px auto;
+}
+
+.loginicon {
+   width: 30px;
+   height: 30px;
+}
+.menubar{
+    width: 60px;
+    height:30px;
+}
+
+.header {
    display: flex; /*한줄에 나란히 */
    justify-content: space-between; /*중간중간 spacing 같은 중심축에서 넣는다.*/
    align-items: center;
-   text-align:center;
-}
-
-.logo h1{
-	display : block;
-	width:150px;
-	height:150px;	
-}
-
-.logo img {
-   width: 150px;
-   height: 150px;
-   display :block;
- 
+   /* padding: 5px 10px; */
+   margin-top: 0px;
+    
 }
 
 
@@ -77,32 +86,22 @@
 
 <body>
 
-	<div class="header">
-
-		<h1 class="logo"><a href="<%=request.getContextPath()%>/index.jsp"><img
-			src="<%=request.getContextPath()%>/images/carrotlogo.png";></a></h1>
-		<div class="nav">
-			<%if(loginMember==null){ %>
-			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm"
-				style="font-size: 15px; text-decoration: none; color: #646464;">login</a>
-			<a href="<%=request.getContextPath()%>/myinfo"><img
-				class="loginicon"
-				src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
-			<%} else{%>
-			<p style="font-size: 15px; text-decoration: none; color: #646464;"><%=loginMember.getUserName() %>님,
-				환영합니다.
-			</p>
-			<a href="<%=request.getContextPath()%>/logout" class="loginfrm"
-				style="font-size: 15px; text-decoration: none; color: #646464;">logout</a>
-			<a href="<%=request.getContextPath()%>/myinfo"><img
-				class="loginicon"
-				src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
-			<%} %>
-			<!-- 메뉴 바 -->
-			<img class="btn"
-				src="<%=request.getContextPath()%>/images/menubar.png"></img>
-		</div>
-	</div>
+<div class="header">
+  
+    <a href="<%=request.getContextPath()%>/index.jsp"><img class="logo" src="<%=request.getContextPath()%>/images/carrotlogo.png";></a>
+    <div class="nav">
+ <%if(loginMember==null){ %>
+                    <a href="<%=request.getContextPath()%>/loginPage" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;" >login</a>
+            <a href="<%=request.getContextPath()%>/myinfo"><img class="loginicon" src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
+        <%} else{%>
+            <p style ="font-size: 15px; text-decoration:none; color : #646464;"><%=loginMember.getUserName() %>님, 환영합니다.</p>
+            <a href="<%=request.getContextPath()%>/logout" class="loginfrm" style ="font-size: 15px; text-decoration:none; color : #646464;">logout</a>
+            <a href="<%=request.getContextPath()%>/myinfo"><img class="loginicon" src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
+        <%} %>
+        <!-- 메뉴 바 -->
+            <img class="btn" src="<%=request.getContextPath()%>/images/menubar.png"></img>
+    </div>
+</div>
 
 
 
