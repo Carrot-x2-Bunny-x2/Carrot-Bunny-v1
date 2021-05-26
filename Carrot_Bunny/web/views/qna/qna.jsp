@@ -113,7 +113,7 @@
 		            </tr>
 					<%if(list.isEmpty()){ %>
 						<tr>
-							<td colspan="2">등록된 1:1 문의가 없습니다.</td>
+							<td colspan="3">등록된 1:1 문의가 없습니다.</td>
 						</tr>
 					<%}else{ 
 						for(Qna q : list){%>
