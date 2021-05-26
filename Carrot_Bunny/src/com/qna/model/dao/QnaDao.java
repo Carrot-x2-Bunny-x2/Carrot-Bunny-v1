@@ -119,6 +119,9 @@ public class QnaDao {
 		PreparedStatement pstmt=null;
 		int result=0;
 		System.out.println("QNA 등록 체크 1");
+		System.out.println(q.getQnaTitle());
+		System.out.println(q.getQnaWriter());
+		System.out.println(q.getQnaContent());
 		try {
 			pstmt=conn.prepareStatement(prop.getProperty("insertQna"));
 			pstmt.setString(1, q.getQnaTitle());
