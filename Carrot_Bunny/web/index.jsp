@@ -10,7 +10,7 @@
 .mainproduct {
 	width: 100%;
 	height: 400px;
-	margin-top: 132px;
+	margin-top: 3%;
 	margin-bottom: 100px;
 	background: #f1f2f3;
 }
