@@ -171,7 +171,8 @@ div#pageBar>* {
     	$(function(){   		
     		$("#searchType").change();
     	})
-</script>
+
+	</script>
 
 
 
