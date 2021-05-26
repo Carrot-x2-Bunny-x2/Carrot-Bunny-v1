@@ -135,7 +135,7 @@ ul.join_box {
 						<li>이용약관 동의(필수)</li>
 						<li class="checkBtn"><input type="checkbox" name="pointcheck" id="pointcheck" value="0" />
 						</li>
-					</ul> <textarea name="" id="">여러분을 환영합니다.
+					</ul> <textarea name="" id="" readonly="readonly">여러분을 환영합니다.
 바니바니당근당근 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 바니바니당근당근 서비스의 이용과 관련하여 바니바니당근당근 서비스를 제공하는 바니바니당근당근 주식회사(이하 ‘바니바니당근당근’)와 이를 이용하는 바니바니당근당근 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 바니바니당근당근 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
        </textarea>
 				</li>
@@ -144,7 +144,7 @@ ul.join_box {
 						<li>개인정보 수집 및 이용에 대한 안내(필수)</li>
 						<li class="checkBtn"><input type="checkbox" name="pointcheck2" id="pointcheck2" value="0" />
 						</li>
-					</ul> <textarea name="" id="">여러분을 환영합니다.
+					</ul> <textarea name="" id="" readonly="readonly">여러분을 환영합니다.
 바니바니당근당근 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 바니바니당근당근 서비스의 이용과 관련하여 바니바니당근당근 서비스를 제공하는 바니바니당근당근 주식회사(이하 ‘바니바니당근당근’)와 이를 이용하는 바니바니당근당근 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 바니바니당근당근 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
        </textarea>
 				</li>

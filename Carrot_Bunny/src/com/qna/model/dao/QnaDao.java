@@ -114,21 +114,64 @@ public class QnaDao {
 	}
 
 	// 새로운 QNA 등록하기 (USER)
-	public int insertBoard(Connection conn, Qna b) {
+	public int insertQna(Connection conn, Qna q) {
 		
-		return 0;		
+		PreparedStatement pstmt=null;
+		int result=0;
+		System.out.println("QNA 등록 체크 1");
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("insertQna"));
+			pstmt.setString(1, q.getQnaTitle());
+			pstmt.setString(2, q.getQnaWriter());
+			pstmt.setString(3, q.getQnaContent());
+			result=pstmt.executeUpdate();
+			System.out.println("QNA 등록 완료");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 	// 선택한 QNA에 ANSWER 등록하기 (ADMIN)
-	public int inserAnswer(Connection conn, Qna b) {
-
-		return 0;		
+	public int updateAnswer(Connection conn, int num, String answer) {
+		
+		PreparedStatement pstmt=null;
+		int result=0;
+		System.out.println("QNA 답변 등록 체크 1");
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("updateQna"));
+			pstmt.setString(1, answer);
+			pstmt.setInt(2, num);
+			result=pstmt.executeUpdate();
+			System.out.println("QNA 답변 등록 완료");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 	
 	// QNA 삭제하기 ONLY ADMIN
-	public int deleteQna(Connection conn, int noticeNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteQna(Connection conn, int num) {
+
+		PreparedStatement pstmt=null;
+		int result=0;
+		System.out.println("QNA 삭제 체크 1");
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("deleteQna"));
+			pstmt.setInt(1, num);
+			result=pstmt.executeUpdate();
+			System.out.println("QNA 삭제 완료");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
 	}
 
 	

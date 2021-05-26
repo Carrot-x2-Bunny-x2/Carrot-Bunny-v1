@@ -37,13 +37,29 @@ table#tbl-notice td {
 	padding: 5px 0 5px 10px;
 	text-align: left;
 }
+
+textarea {
+	width : 88%;
+	height : auto;
+}
+
+.noticetitle {
+	text-align: center;
+	height: 50px;
+	font-size: 22px;
+	font-weight: bolder;
+}
 </style>
 
 <%
 if (loginMember != null && loginMember.getUserId().equals("admin")) {
 %>
 <div id="notice-container">
-	<h2>1:1 문의 상세화면</h2>
+	<div class="noticetitle">
+	<p>1:1 문의 상세화면</p>
+	</div>
+	<form name="qnaUpdate" action="<%=request.getContextPath()%>/qna/qnaUpdate"
+			method="post">
 	<table id="tbl-notice">
 		<tr>
 			<th>제 목</th>
@@ -59,7 +75,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 		</tr>
 		<tr>
 			<th>문의 내용</th>
-			<td><%=q.getQnaContent()%></td>
+			<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
 		</tr>
 		<tr>
 			<th>답변 내용</th>
@@ -67,31 +83,35 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 			if (q.getQnaAnswer() == null) {
 			%>
 			<td>
-			<form name="qnaUpdate" action="<%=request.getContextPath()%>/index.jsp"
-			method="post">
-			<input type="text" placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer"	id="answer"><br>
-					</form>
-					<input type="submit" value="등록하기"></td>
+			<input type="hidden" name="qnaNo" value="<%=q.getQnaNo()%>">
+			<textarea placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer" id="answer"></textarea><br>
+			<input type="submit" value="등록하기">
+			</td>
 			<%
 			} else {
 			%>
-			<td><%=q.getQnaAnswer()%></td>
+			<td><input type="hidden" name="qnaNo" value="<%=q.getQnaNo()%>">
+			<textarea placeholder="<%=q.getQnaAnswer()%>" name="answer" id="answer"></textarea><br>
+			<input type="submit" value="수정하기"></td>
 			<%
 			}
 			%>
 		</tr>
 		<tr>
-			<th colspan="2"><input type="button" value="수정하기"
-				onclick="">
-				<input type="button" value="삭제하기" onclick=""></th>
+			<th colspan="2">
+			<input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath()%>/qna/qnaDelete?qnaNo=<%=q.getQnaNo()%>')">
+			</th>
 		</tr>
 	</table>
+	</form>
 </div>
 <%
 } else {
 %>
 <div id="notice-container">
-	<h2>1:1 문의 상세화면</h2>
+	<div class="noticetitle">
+	<p>1:1 문의 상세화면</p>
+	</div>
 	<table id="tbl-notice">
 		<tr>
 			<th>제 목</th>
@@ -103,18 +123,20 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 		</tr>
 		<tr>
 			<th>문의 내용</th>
-			<td><%=q.getQnaContent()%></td>
+			<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
 		</tr>
 		<tr>
 			<%
 			if (q.getQnaAnswer() == null) {
 			%>
-			<th colspan="2">문의에 대한 답변이 아직 등록되지 않았습니다.</th>
+			<th colspan="2"><p style="color: blue;">문의에 대한 답변이 아직 등록되지 않았습니다.<p></th>
 			<%
 			} else {
 			%>
 			<th>답변 내용</th>
-			<td><%=q.getQnaAnswer()%></td>
+			<td>
+			<textarea readonly="readonly"><%=q.getQnaAnswer()%></textarea>
+			</td>
 			<%
 			}
 			%>

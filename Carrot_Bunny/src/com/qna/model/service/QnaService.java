@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.board.model.vo.Board;
+import com.member.model.vo.Member;
 import com.qna.model.dao.QnaDao;
 import com.qna.model.vo.Qna;
 
@@ -41,14 +42,36 @@ public class QnaService {
 		return q;
 	}
 	
-	public int insertBoard(Qna b) {
+	public int insertQna(Qna q) {
 		
-		return 0;
+		Connection conn=getConnection();
+		int result=dao.insertQna(conn,q);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 	
-	public int deleteNotice(int noticeNo) {
+	public int updateAnswer(int num, String answer) {
 		
-		return 0;
+		Connection conn=getConnection();
+		int result=dao.updateAnswer(conn, num, answer);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	
+	public int deleteQna(int num) {
+		Connection conn=getConnection();
+		int result=dao.deleteQna(conn, num);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
 	}
 	
 	
