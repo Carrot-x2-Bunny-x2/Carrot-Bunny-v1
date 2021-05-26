@@ -30,8 +30,6 @@ public class QnaWriteServlet extends HttpServlet {
 
 		request.getRequestDispatcher("/views/qna/qnaWrite.jsp")
 		.forward(request, response);
-	
-	
 	}
 
 	/**
