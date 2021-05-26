@@ -6,7 +6,7 @@ List<Member> list = (List<Member>) request.getAttribute("list");
 
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
 String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
-out.print(searchType + " : " + keyword);
+/* out.print(searchType + " : " + keyword); */
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
@@ -170,7 +170,7 @@ div#pageBar>* {
     	});
     	$(function(){   		
     		$("#searchType").change();
-    	})
+    	}) 
 
 	</script>
 
