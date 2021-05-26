@@ -136,7 +136,7 @@
 					<li><a href="">상품등록</a></li>
 				</ul>
 				<ul>
-					<li><a href="">1:1 문의</a></li>
+					<li><a href="<%=request.getContextPath()%>/qna.do">1:1 문의</a></li>
 				</ul>
 			</div>
 		</div>
