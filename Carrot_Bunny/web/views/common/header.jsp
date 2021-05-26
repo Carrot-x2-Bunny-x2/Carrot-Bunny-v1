@@ -38,16 +38,26 @@
 <style>
 
 
-.logo {
-   width: 150px;
-   height: 150px;
-   padding-left: 300%;   
+.header >{
+   display: flex; /*한줄에 나란히 */
+   justify-content: space-between; /*중간중간 spacing 같은 중심축에서 넣는다.*/
+   align-items: center;
+   text-align:center;
 }
 
-.navbar_logo {
-    display: block; 
-    margin: 0px auto;
+.logo h1{
+	display : block;
+	width:150px;
+	height:150px;	
 }
+
+.logo img {
+   width: 150px;
+   height: 150px;
+   display :block;
+ 
+}
+
 
 .loginicon {
    width: 30px;
@@ -58,14 +68,7 @@
     height:30px;
 }
 
-.header {
-   display: flex; /*한줄에 나란히 */
-   justify-content: space-between; /*중간중간 spacing 같은 중심축에서 넣는다.*/
-   align-items: center;
-   /* padding: 5px 10px; */
-   margin-top: 0px;
-    
-}
+
 </style>
 
 </head>
@@ -76,9 +79,8 @@
 
 	<div class="header">
 
-		<a href="<%=request.getContextPath()%>/index.jsp"><img
-			class="logo"
-			src="<%=request.getContextPath()%>/images/carrotlogo.png";></a>
+		<h1 class="logo"><a href="<%=request.getContextPath()%>/index.jsp"><img
+			src="<%=request.getContextPath()%>/images/carrotlogo.png";></a></h1>
 		<div class="nav">
 			<%if(loginMember==null){ %>
 			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm"
@@ -100,6 +102,7 @@
 			<img class="btn"
 				src="<%=request.getContextPath()%>/images/menubar.png"></img>
 		</div>
+	</div>
 
 
 

@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Properties;
 
 import com.member.model.vo.Member;
-import com.notice.model.vo.Notice;
 
 public class AdminDao {
 
@@ -60,6 +59,7 @@ public class AdminDao {
 	}
 	
 	
+	//전체자료 가져오기.
 	public int selectMemberCount (Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -139,22 +139,22 @@ public class AdminDao {
 		}
 		return result;
 	}
+
 	
-	public List<Member> searchMember(Connection conn, String searchType, String keyword, int cPage, int numPerPage){
-		//searchType - 컬럼명 , keyword - 비교대상이 되는 값 
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		List<Member> list=new ArrayList();
+	
+	public List<Member> searchMember(Connection conn, String searchType, String keyword , int cPage, int numPerPage){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Member> list = new ArrayList();
 		String sql=props.getProperty("searchMember");
 //		switch(searchType) {
-//			case "userId" : sql="searchMemberId";break;
-//			case "userName" : sql="searchMemberName";break;
-//			case "gender" : sql="searchMemberGender";break;
+//			case "userId" : sql ="searchMemberId"; break;
+//			case "userName" : sql ="searchMemberName"; break;
 //		}
 		try {
 			pstmt=conn.prepareStatement(sql.replace("@", searchType));
 			pstmt.setString(1, "%"+keyword+"%");
-			pstmt.setInt(2, (cPage-1)*numPerPage);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
 			pstmt.setInt(3, cPage*numPerPage);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -176,9 +176,10 @@ public class AdminDao {
 		}finally {
 			close(rs);
 			close(pstmt);
-		}return list;
-		
+		}return list; 
 	}
+	
+
 	
 	//CONNECTION객체를 보내주는 곳 ! 
 	public int searchMemberCount(Connection conn, String searchType, String keyword) {

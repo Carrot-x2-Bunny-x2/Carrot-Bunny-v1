@@ -56,9 +56,9 @@ public class AdminService {
 	}
 	
 	
-	public List<Member> searchMember(String searchType, String keyword, int cPage, int numPerpage){
+	public List<Member> searchMember(String searchType, String keyword,int cPage, int numPerPage){
 		Connection conn= getConnection();
-		List<Member> list = dao.searchMember(conn,searchType, keyword, cPage, numPerpage);
+		List<Member> list = dao.searchMember(conn,searchType, keyword, cPage, numPerPage);
 		close(conn);
 		return list;
 	}

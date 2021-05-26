@@ -102,7 +102,8 @@ public class SearchMemberServlet extends HttpServlet {
 		List<Member> result = new AdminService().searchMember(searchType,keyword,cPage,numPerPage);
 		
 		request.setAttribute("list", result);
-		request.getRequestDispatcher("views/admin/memberList.jsp")
+		System.out.println("aaaaaaaaa");
+		request.getRequestDispatcher("/views/admin/memberList.jsp") //.....,... ㅇ...ㅇㄹ,ㅡ나ㅣㅗㅓ존나 짜증 "/"...
 		.forward(request, response);
 		
 	
