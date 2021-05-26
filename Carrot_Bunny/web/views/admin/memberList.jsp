@@ -72,9 +72,9 @@ form#numperPageFrm {
 	display: inline;
 }
 
-div#pageBar> * {
- 	margin-right:20px;
- 	text-decoration:none;
+div#pageBar>* {
+	margin-right: 20px;
+	text-decoration: none;
 }
 </style>
 
@@ -87,22 +87,26 @@ div#pageBar> * {
 		</div>
 		<div id="search-container">
 			검색타입 : <select id="searchType">
-				<option value="userId">아이디</option>
-				<option value="userName">회원이름</option>
+				<option value="userId"
+					<%=searchType.equals("userId") ? "selected" : ""%>>아이디</option>
+				<option value="userName"
+					<%=searchType.equals("userName") ? "selected" : ""%>>회원이름</option>
 			</select>
 			<div id="search-userId">
-				<form action="">
-					<input type="hidden" name="searchType" value="userId"> <input
+				<form action="<%=request.getContextPath()%>/admin/searchMember">
+					<input type="hidden" name="searchType" value="member_id"> <input
 						type="text" name="searchKeyword" size="30"
-						placeholder="검색할 아이디를 입력하세요" value="">
+						placeholder="검색할 아이디를 입력하세요"
+						value='<%=searchType.equals("UserId") ? keyword : ""%>'>
 					<button type="submit">검색</button>
 				</form>
 			</div>
 			<div id="search-userName">
-				<form action="">
-					<input type="hidden" name="searchType" value="userName"> <input
+				<form action="<%=request.getContextPath()%>/admin/searchMember">
+					<input type="hidden" name="searchType" value="mem_name"> <input
 						type="text" name="searchKeyword" size="30"
-						placeholder="검색할 이름을 입력하세요" value="">
+						placeholder="검색할 이름을 입력하세요"
+						value='<%=searchType.equals("UserName") ? keyword : ""%>'>
 					<button type="submit">검색</button>
 				</form>
 			</div>
@@ -146,7 +150,8 @@ div#pageBar> * {
 			</table>
 
 			<div id="pageBar" align="center" style="margin-top: 10px;">
-				<%=request.getAttribute("pageBar")%> <!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
+				<%=request.getAttribute("pageBar")%>
+				<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 			</div>
 		</div>
 	</div>
@@ -166,36 +171,7 @@ div#pageBar> * {
     	$(function(){   		
     		$("#searchType").change();
     	})
-    		$("#numPerpage").change((e)=>{
-    		
-    		if(<%=keyword.equals("")%>){
-    			//검색을 안했음
-    			$("#numPerFrm").attr("action","<%=request.getContextPath()%>/memberList");
-    			$("#numPerFrm").append($("<input>").attr({
-    				type:"hidden",name:"cPage",value:"<%=request.getParameter("cPage")%>"
-    			}));
-    			$("#numPerFrm").append($("<input>").attr({
-    				type:"hidden",name:"numPerPage",value:"<%=request.getParameter("numPerPage")%>"
-    			}));
-    		}else{ 
-    			//검색을 했음
-    			$("#numPerFrm").attr("action","<%=request.getContextPath()%>/admin/searchMember");
-    			$("#numPerFrm").append($("<input>").attr({
-    				type:"hidden",name:"cPage",value:"<%=request.getParameter("cPage")%>"
-    			}));
-    			$("#numPerFrm").append($("<input>").attr({
-    				type:"hidden",name:"searchType",value:"<%=searchType%>"
-    			}));
-    			$("#numPerFrm").append($("<input>").attr({
-    				type:"hidden",name:"searchKeyword",value:"<%=keyword%>"
-    			}));
-    		}
-    		
-    		
-    		$("#numPerFrm").submit();//제출하기
-    	});
-
-    </script>
+</script>
 
 
 

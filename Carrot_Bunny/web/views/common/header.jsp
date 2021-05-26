@@ -54,13 +54,8 @@
 .logo img {
    width: 150px;
    height: 150px;
-   display : block;
+   display :block;
  
-}
-
-.logo a{
-	display : block;
-	width: 100%;
 }
 
 
