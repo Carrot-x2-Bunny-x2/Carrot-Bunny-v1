@@ -37,6 +37,13 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+	// searchType, keyword를 이용하여 boardList 받아오기
+	public List<Board> searchBoardList(int cpage, int numPerPage, String searchType, String keyword) {
+		Connection conn = getConnection();
+		List<Board> list = dao.searchBoardList(conn, cpage, numPerPage, searchType, keyword);
+		close(conn);
+		return list;
+	}
 	// 삭제된 상품까지 모두 count
 	public int selectBoardCount() {
 		Connection conn = getConnection();
@@ -55,6 +62,13 @@ public class BoardService {
 	public int selectUserBoardCount(Member m) {
 		Connection conn = getConnection();
 		int result = dao.selectUserBoardCount(conn, m);
+		close(conn);
+		return result;
+	}
+	// searchType, keyword를 받아와 검색 후 count를 반환
+	public int searchBoardCount(String searchType, String keyword) {
+		Connection conn = getConnection();
+		int result = dao.searchBoardCount(conn, searchType, keyword);
 		close(conn);
 		return result;
 	}
