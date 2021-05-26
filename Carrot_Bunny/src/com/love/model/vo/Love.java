@@ -2,6 +2,7 @@ package com.love.model.vo;
 
 public class Love {
 	
+	private int loveNumber;
 	private int boardNumber;
 	private String userId;
 	
@@ -9,10 +10,19 @@ public class Love {
 		
 	}
 
-	public Love(int boardNumber, String userId) {
+	public Love(int loveNumber, int boardNumber, String userId) {
 		super();
+		this.loveNumber = loveNumber;
 		this.boardNumber = boardNumber;
 		this.userId = userId;
+	}
+
+	public int getLoveNumber() {
+		return loveNumber;
+	}
+
+	public void setLoveNumber(int loveNumber) {
+		this.loveNumber = loveNumber;
 	}
 
 	public int getBoardNumber() {
@@ -30,5 +40,6 @@ public class Love {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
 	
 }

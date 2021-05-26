@@ -37,7 +37,14 @@ public class LoveClickServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("loginMember");
-		
+		int cPage;
+		// 데이터를 가져올때 원하는 구역 가져오기
+		// 1. 사용자가 원하는 page -> 현재 페이지
+		try {
+			cPage=Integer.parseInt(request.getParameter("cPage"));
+		}catch(NumberFormatException e) {
+			cPage=1;
+		}
 		int boardNumber = Integer.parseInt(request.getParameter("no"));
 		int cnt = new LoveService().findLove(m, boardNumber);
 		
@@ -57,17 +64,18 @@ public class LoveClickServlet extends HttpServlet {
 		}
 		
 		String msg = "";
-		String loc = "/board/boardView?no="+boardNumber;
+		// String loc = "/board/boardView?cPage="+cPage+"&no="+boardNumber;
 		if (result > 0) {
 			msg = "찜 설정 성공";
 		} else {
 			msg = "찜 설정 실패";
 		}
 		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-
-	}	
+		// request.setAttribute("loc", loc);
+		request.setAttribute("cPage", cPage);
+		request.setAttribute("no", boardNumber);
+		request.getRequestDispatcher("/views/love/loveMsg.jsp").forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
