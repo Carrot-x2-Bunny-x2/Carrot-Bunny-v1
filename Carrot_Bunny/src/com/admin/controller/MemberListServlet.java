@@ -46,12 +46,13 @@ public class MemberListServlet extends HttpServlet {
 
 		}else { 
 
-			//현재 페이지
-			int cPage;
-			int numPerPage;
+			int cPage; //보고있는 현재 페이지
+			int numPerPage; //페이지당 데이터수 -> 사용자가 설정한다. 
+			
+			//쿼리스트링으로 데이터를 넘겨도 된다. 
 			try {
 				cPage=Integer.parseInt(request.getParameter("cPage"));
-			}catch(NumberFormatException e) {
+			}catch(NumberFormatException e) { 
 				cPage=1;
 			}
 			try {
@@ -60,7 +61,11 @@ public class MemberListServlet extends HttpServlet {
 				numPerPage=5;
 			}
 
-			List<Member> list = new AdminService().selectMemberList(cPage, numPerPage);
+				
+			// 사용자가 원하는 페이지를 호출할 수 있게 페이지바를 구성 ! 
+			
+			
+			List<Member> list = new AdminService().selectMemberList(cPage, numPerPage); //cpage,numperpage를 넘긴다.
 			request.setAttribute("list", list);
 //			
 //			for(Member m : list) {
@@ -71,6 +76,7 @@ public class MemberListServlet extends HttpServlet {
 			int totalData = new AdminService().selectMemberCount();
 			int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 
+			
 			int pageBarSize = 4;
 			int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 			int pageEnd= pageNo+pageBarSize-1;
@@ -78,31 +84,35 @@ public class MemberListServlet extends HttpServlet {
 
 			String pageBar="";
 
+			//이전 출력하기 
 			if(pageNo==1) {
 				pageBar+="<span>[이전]</span>";
 			}else {
 				pageBar +="<a href='"+request.getContextPath()
-				+"/memberList?cPage="+(pageNo-1)+"&numPerpage="+numPerPage+"'>[이전]</a>";
+				+"/memberList?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
 			}
 
-
+			
 			//pageBar의 숫자를 출력하게 하는 구문 
 			while(!(pageNo>pageEnd||pageNo>totalPage)) { 
 				if(cPage==pageNo) { //분기처리 
-					pageBar+="<span style='background-color:yellow;'>"+pageNo+"</span>";
+					pageBar+="<span style='background-color:orange;'>"+pageNo+"</span>";
 				}else {
-					pageBar+="<a href='"+request.getContextPath()+"/memberList?cPage="+pageNo+"&numPerpage="+numPerPage+"'>"+pageNo+"</a>";
+					pageBar+="<a href='"+request.getContextPath()+"/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 				}
-				pageNo++;
+				pageNo++; //1부터 while문이 돈다. 
 			}
 
+			
+			//다음 페이지 
 			if(pageNo>totalPage) {
 				pageBar+="<span>[다음]</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()
-				+"/memberList?cPage="+pageNo+"'>[다음]</a>";
+				+"/memberList?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
 			}
-			request.setAttribute("pageBar", pageBar);
+			
+			request.setAttribute("pageBar", pageBar); //memberlist.jsp에 페이지바를 넘긴다. 
 
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("views/admin/memberList.jsp").forward(request, response);

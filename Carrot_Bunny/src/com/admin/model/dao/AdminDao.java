@@ -60,6 +60,7 @@ public class AdminDao {
 	}
 	
 	
+	//전체자료 가져오기.
 	public int selectMemberCount (Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

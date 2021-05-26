@@ -71,6 +71,11 @@ div#numPerpage-container {
 form#numperPageFrm {
 	display: inline;
 }
+
+div#pageBar> * {
+ 	margin-right:20px;
+ 	text-decoration:none;
+}
 </style>
 
 <section id="tbl-member">
@@ -141,7 +146,7 @@ form#numperPageFrm {
 			</table>
 
 			<div id="pageBar" align="center" style="margin-top: 10px;">
-				<%=request.getAttribute("pageBar")%>
+				<%=request.getAttribute("pageBar")%> <!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 			</div>
 		</div>
 	</div>
