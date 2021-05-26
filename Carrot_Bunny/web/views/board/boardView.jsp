@@ -101,9 +101,9 @@ com.love.model.vo.Love" %>
         	</p>
         	<p>
         	<%if (check == 1) { %>   	
-        		<input id="isLike" type="checkbox" checked onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
+        		<input id="isLike" type="checkbox" checked onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} else {%>
-        		<input id="isLike" type="checkbox" onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
+        		<input id="isLike" type="checkbox" onclick="location.assign('<%=request.getContextPath() %>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label for="isLike">❤</label>
         	<%} %>
         	</p>
         </div>
