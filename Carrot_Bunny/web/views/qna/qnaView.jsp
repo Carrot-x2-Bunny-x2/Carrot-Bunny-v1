@@ -91,7 +91,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 			} else {
 			%>
 			<td><input type="hidden" name="qnaNo" value="<%=q.getQnaNo()%>">
-			<textarea placeholder="<%=q.getQnaAnswer()%>" name="answer" id="answer"></textarea><br>
+			<textarea placeholder="<%=q.getQnaAnswer()%>" name="answer" id="answer"><%=q.getQnaAnswer()%></textarea><br>
 			<input type="submit" value="수정하기"></td>
 			<%
 			}
@@ -99,7 +99,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 		</tr>
 		<tr>
 			<th colspan="2">
-			<input type="button" value="삭제하기" onclick="location.assign('<%=request.getContextPath()%>/qna/qnaDelete?qnaNo=<%=q.getQnaNo()%>')">
+			<input type="button" value="삭제하기" onclick="fn_delete_qna();">
 			</th>
 		</tr>
 	</table>
@@ -146,6 +146,21 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 <%
 }
 %>
+
+
+<script>
+
+const fn_delete_qna=()=>{
+	if(confirm("정말로 삭제하시겠습니까?")){
+		//삭제 로직 진행
+		location.replace("<%=request.getContextPath()%>/qna/qnaDelete?qnaNo=<%=q.getQnaNo()%>");
+	}
+}
+
+</script>
+
+
+
 
 
 <%@ include file="../common/footer.jsp"%>
