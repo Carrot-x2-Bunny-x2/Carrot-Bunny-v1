@@ -72,7 +72,6 @@ public class MemberListServlet extends HttpServlet {
 //				System.out.println(m.getmemberNum());
 //			}
 			
-
 			int totalData = new AdminService().selectMemberCount();
 			int totalPage = (int)Math.ceil((double)totalData/numPerPage);
 
