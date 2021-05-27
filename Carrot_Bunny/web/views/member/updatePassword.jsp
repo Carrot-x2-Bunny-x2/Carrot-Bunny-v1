@@ -43,7 +43,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="hidden" name="userId" value="<%=request.getParameter("userId") %>">
+			<input type="hidden" name="userId" value="<%=request.getParameter("userId") %>"><!-- 보이지 않는 로그인 -->
 		</form>
 	</div>
 	

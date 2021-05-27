@@ -16,13 +16,13 @@ import com.member.model.vo.Member;
  * Servlet implementation class MemebrEnrollEndServlet
  */
 @WebServlet(name="enrollendservlet",urlPatterns = "/memberenrollend.do")
-public class MemebrEnrollEndServlet extends HttpServlet {
+public class MemeberEnrollEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemebrEnrollEndServlet() {
+    public MemeberEnrollEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,10 +44,6 @@ public class MemebrEnrollEndServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		
-		/*
-		 * try { email=AESCryptor.encrypt(email);//암호화처리
-		 * phone=AESCryptor.encrypt(phone); }catch(Exception e) { e.printStackTrace(); }
-		 */
 			
 		//다중값을 보관하기 위해 -> vo객체를 생성해놓음
 		

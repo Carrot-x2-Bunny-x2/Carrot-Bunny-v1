@@ -58,7 +58,7 @@ public class MemberUpdateEndServlet extends HttpServlet {
 		String loc="/memberUpdate.do?userId="+userId;
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(); //세션을 다시 담는다. 
 		session.setAttribute("loginMember", m);
 		
 		request.getRequestDispatcher("/views/common/msg.jsp")
