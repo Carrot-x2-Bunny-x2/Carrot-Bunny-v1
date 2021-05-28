@@ -105,7 +105,7 @@ h5 {
 				</td>
 			</tr>
 		</table>
-		<a href="" class="find-login">아이디/비밀번호 찾기</a>
+		<a href="javascript:alert('준비중입니다.ㅠ 보채지마세요.ㅜㅠ 관리자 홍서연 01053033196으로 연락주시면 알려드려요');" onfocus="this.blur()" class="find-login">아이디/비밀번호 찾기</a>
 		<h5>*찾기 어려우실 경우 고객센터에 문의주세요.</h5>
 	</form>
 	<%} else{%>

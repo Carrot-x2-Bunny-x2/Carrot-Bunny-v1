@@ -49,7 +49,7 @@ public class QnaWriteEndServlet extends HttpServlet {
 		
 		int result = new QnaService().insertQna(q);
 		
-		String msg=result>0?"1:1 문의 등록 완료":"1:1 문의 답변 등록 실패";
+		String msg=result>0?"1:1 문의 등록 완료":"1:1 문의 등록 실패";
 		//String loc="/";
 		//수정페이지로 이동해보자
 		String loc="/qna.do";

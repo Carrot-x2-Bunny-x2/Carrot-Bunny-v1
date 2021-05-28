@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.admin.model.dao.AdminDao;
+import com.board.model.vo.Board;
 import com.member.model.vo.Member;
 
 
@@ -72,7 +73,22 @@ public class AdminService {
 	}
 	
 	
+	public List<Board> selectBoardList(int cPage, int numPerPage){
+		Connection conn= getConnection();
+		List<Board> list = dao.selectBoardList(conn,cPage, numPerPage);
+		close(conn);
+		return list;
+	}
 	
+	public int selectBoardListCount() {
+		Connection conn = getConnection();
+		int result = dao.selectMemberCount(conn);
+		close(conn);
+		return result;
+	}
+
+
+
 	
-	
+
 }
