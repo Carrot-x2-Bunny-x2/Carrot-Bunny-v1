@@ -11,7 +11,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 <%@ include file="/views/common/header.jsp"%>
 <style>
 #tbl-member {
-	width: 90%;
+	width: 100%;
 	min-height: 300px;
 	/* position: relative; */
 }
