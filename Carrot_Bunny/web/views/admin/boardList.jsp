@@ -95,18 +95,27 @@ div#pageBar>* {
 					<button type="submit">검색</button>
 				</form>
 			</div>
+			<div id="b_sell" style="text-align:left; margin-left : 60px; ">
+				<select class="type-1"> 
+					<option value="판매여부">판매여부</option>
+					<option value="판매중">판매중</option>
+					<option value="판매완료">판매완료</option>
+				</select>
+			</div>
 		</div>
 		<div class="aliveboardlist">
 			<table class="boardtb">
 				<thead>
 					<tr>
-						<th>
-						<select name="sellorsold">
-						<option value="" selected>판매여부</option>
-						<option value="sell">판매중</option>
-						<option value="sold">판매완료</option>
-						</select>
-						</th>
+						<!-- <th>
+							<form id="sellsoldFrm" action="">
+								<select name="b_sell" id="b_sell">
+									<option value="" selected>판매여부</option>
+									<option value="1" >판매중</option>
+									<option value="0">판매완료</option>
+								</select>
+							</form>
+						</th> -->
 						<th>제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
@@ -117,26 +126,15 @@ div#pageBar>* {
 					if (list.isEmpty()) {
 					%>
 					<tr>
-						<td colspan="4" align="center">검색결과가 없습니다.</td>
+						<td colspan="3" align="center">검색결과가 없습니다.</td>
 					</tr>
 					<%
 					} else {
 					%>
 					<%
-					for (Board b : list) {
+					for (Board b : list ) {
 					%>
 					<tr>
-						<%
-						if (b.getBoardIsSell() == 1) {
-						%>
-						<td>판매중</td>
-						<%
-						} else {
-						%>
-						<td>판매완료</td>
-						<%
-						}
-						%>
 						<td><%=b.getBoardTitle()%></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>
@@ -159,6 +157,8 @@ div#pageBar>* {
 	$("#searchType").change(e=>{
 		location.assign('<%=request.getContextPath()%>/searchBoardList?searchType='+$(e.target).val());
 	})
+
+
     	
 </script>
 
