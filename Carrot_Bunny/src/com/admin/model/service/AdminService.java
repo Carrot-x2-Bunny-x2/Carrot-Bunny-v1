@@ -87,12 +87,18 @@ public class AdminService {
 		return result;
 	}
 	
-	public List<Board> searchBoard(String searchType, String keyword, int cPage, int numPerPage){
+	public int searchBoardCount(String searchType, String keyword) {
 		Connection conn = getConnection();
-		List<Board> list = dao.searchBoard(conn, searchType, keyword, cPage, numPerPage);
+		int result = dao.searchBoardCount(conn, searchType, keyword);
+		close(conn);
+		return result;
+	}
+	
+	public List<Board> searchBoard(int cpage, int numPerPage, String searchType, String keyword) {
+		Connection conn = getConnection();
+		List<Board> list = dao.searchBoard(conn, cpage, numPerPage, searchType, keyword);
 		close(conn);
 		return list;
-				
 	}
 
 

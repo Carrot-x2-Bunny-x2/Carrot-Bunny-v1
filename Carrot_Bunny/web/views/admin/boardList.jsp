@@ -66,7 +66,7 @@ div#search-boardNamesold {
 
 div#numPerpage-container {
 	float: left;
-	margin-left : 50px;
+	margin-left: 50px;
 }
 
 form#numperPageFrm {
@@ -86,22 +86,12 @@ div#pageBar>* {
 			<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
 		</div>
 		<div id="search-container">
-			판매여부 :<form id="numPerFrm" action="">
-				<select name="numPerpage" id="numPerpage">
-					<option value="10"
-						<%=request.getParameter("numPerpage")!=null&&request.getParameter("numPerpage").equals("10")?"selected":"" %>>판매중/판매완료</option>
-					<option value="5"
-						<%=request.getParameter("numPerpage")==null||request.getParameter("numPerpage").equals("5")?"selected":"" %>>판매중</option>
-					<option value="3"
-						<%=request.getParameter("numPerpage")!=null&&request.getParameter("numPerpage").equals("3")?"selected":"" %>>판매완료</option>
-				</select>
-			</form>
 			<div id="search-boardName">
 				<form action="<%=request.getContextPath()%>/searchBoardList">
 					<input type="hidden" name="searchType" value="B_TITLE"> <input
 						type="text" name="searchKeyword" size="25"
 						placeholder="검색할 상품이름을 입력하세요"
-						value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
+						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'>
 					<button type="submit">검색</button>
 				</form>
 			</div>
@@ -110,7 +100,13 @@ div#pageBar>* {
 			<table class="boardtb">
 				<thead>
 					<tr>
-						<th>판매여부</th>
+						<th>
+						<select name="sellorsold">
+						<option value="" selected>판매여부</option>
+						<option value="sell">판매중</option>
+						<option value="sold">판매완료</option>
+						</select>
+						</th>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>작성일</th>

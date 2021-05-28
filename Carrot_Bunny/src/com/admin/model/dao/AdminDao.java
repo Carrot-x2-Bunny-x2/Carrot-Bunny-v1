@@ -258,7 +258,26 @@ public class AdminDao {
 		return result;
 	}
 	
-	public List<Board> searchBoard(Connection conn,  String searchType, String keyword,int cPage, int numPerPage){
+	public int searchBoardCount(Connection conn, String searchType, String keyword) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = props.getProperty("searchBoardCount");
+		try {
+			pstmt = conn.prepareStatement(sql.replace("@", searchType));
+			pstmt.setString(1,keyword);
+			rs=pstmt.executeQuery();
+			if(rs.next()) result = rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List<Board> searchBoard(Connection conn, int cPage, int numPerPage, String searchType, String keyword){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Board> list = new ArrayList();
