@@ -86,6 +86,14 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
+	
+	public List<Board> searchBoard(String searchType, String keyword, int cPage, int numPerPage){
+		Connection conn = getConnection();
+		List<Board> list = dao.searchBoard(conn, searchType, keyword, cPage, numPerPage);
+		close(conn);
+		return list;
+				
+	}
 
 
 

@@ -258,6 +258,46 @@ public class AdminDao {
 		return result;
 	}
 	
+	public List<Board> searchBoard(Connection conn,  String searchType, String keyword,int cPage, int numPerPage){
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList();
+		String sql = props.getProperty("searchBoard");
+		try {
+			pstmt = conn.prepareStatement(sql.replace("@", searchType));
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerPage + 1);
+			pstmt.setInt(3, cPage*numPerPage);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Board b = new Board();
+				b.setBoardNumber(rs.getInt("b_num"));
+				b.setBoardTitle(rs.getString("b_title"));
+				b.setBoardWriter(rs.getString("b_writer"));
+				b.setBoardContent(rs.getString("b_content"));
+				b.setBoardPrice(rs.getInt("b_price"));
+				b.setBoardAmount(rs.getInt("b_amount"));
+				b.setBoardIsSell(rs.getInt("b_sell"));
+				b.setBoardLike(rs.getString("b_like"));
+				b.setBoardIsNego(rs.getInt("b_nego"));
+				b.setBoardIsDelete(rs.getInt("b_delete"));
+				b.setBoardFilePath(rs.getString("b_original_filename"));
+				b.setBoardReFilePath(rs.getString("b_renamed_filename"));
+				b.setBoardDate(rs.getDate("b_date"));
+				b.setBoardReadCount(rs.getInt("b_readcount"));
+				list.add(b);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	
 	
 	
 	
