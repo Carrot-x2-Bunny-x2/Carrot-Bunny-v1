@@ -70,7 +70,7 @@ div#search-boardNamesold {
 
 div#numPerpage-container {
 	float: left;
-	margin-left : 50px;
+	margin-left: 50px;
 }
 
 form#numperPageFrm {
@@ -82,6 +82,7 @@ div#pageBar>* {
 	text-decoration: none;
 }
 </style>
+<<<<<<< HEAD
 <div class="wrapper">
 	<section id="tbl-board" style="min-height: 400px;">
 	
@@ -100,6 +101,23 @@ div#pageBar>* {
 						<option value="3"
 							<%=request.getParameter("numPerpage")!=null&&request.getParameter("numPerpage").equals("3")?"selected":"" %>>판매완료</option>
 					</select>
+=======
+<section id="tbl-board">
+
+	<div class="boardlist">
+		<div class="boardtitle">
+			게시글 조회
+			<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
+		</div>
+		<div id="search-container">
+			<div id="search-boardName">
+				<form action="<%=request.getContextPath()%>/searchBoardList">
+					<input type="hidden" name="searchType" value="B_TITLE"> <input
+						type="text" name="searchKeyword" size="25"
+						placeholder="검색할 상품이름을 입력하세요"
+						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'>
+					<button type="submit">검색</button>
+>>>>>>> 7b0985637df2f96771e36f30824c142b83ac2dc3
 				</form>
 				<div id="search-boardName">
 					<form action="<%=request.getContextPath()%>/searchBoardList">
@@ -111,6 +129,7 @@ div#pageBar>* {
 					</form>
 				</div>
 			</div>
+<<<<<<< HEAD
 			<div class="aliveboardlist">
 				<table class="boardtb">
 					<thead>
@@ -122,6 +141,39 @@ div#pageBar>* {
 						</tr>
 					</thead>
 					<tbody>
+=======
+		</div>
+		<div class="aliveboardlist">
+			<table class="boardtb">
+				<thead>
+					<tr>
+						<th>
+						<select name="sellorsold">
+						<option value="" selected>판매여부</option>
+						<option value="sell">판매중</option>
+						<option value="sold">판매완료</option>
+						</select>
+						</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+					if (list.isEmpty()) {
+					%>
+					<tr>
+						<td colspan="4" align="center">검색결과가 없습니다.</td>
+					</tr>
+					<%
+					} else {
+					%>
+					<%
+					for (Board b : list) {
+					%>
+					<tr>
+>>>>>>> 7b0985637df2f96771e36f30824c142b83ac2dc3
 						<%
 						if (list.isEmpty()) {
 						%>
