@@ -32,9 +32,25 @@ if (cookies != null) {
 
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" rel="stylesheet" type="text/css">
+
 <script src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+
+
 
 <style>
+html, body {
+
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width : 100%;
+
+}
+
 .logo {
 	width: 150px;
 	height: 150px;
@@ -73,7 +89,6 @@ if (cookies != null) {
 </style>
 </head>
 <body>
-
 	<div class="header">
 		<div class="carrot">
 			<a href="<%=request.getContextPath()%>/index.jsp"><img

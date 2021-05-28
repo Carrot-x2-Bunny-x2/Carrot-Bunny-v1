@@ -1,45 +1,22 @@
 @charset "UTF-8";
 
-/* /* 메인 화면 로고 */
-/* .logo {
-	width: 150px;
-	height: 150px;
-	margin-left : -5px;
-} */
-
-/* .navbar_logo {
-	display: block;
-	margin: 0px;
-	padding-left:624px;
-	
-	
+html, body {
+	margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
 }
 
-.loginicon {
-	width: 30px;
-	height: 30px;
+.wrapper {
+	height : auto;
+	min-height:70%;
+	padding-bottom:60px;
 }
-
-.navbar {
-	display: flex;
-	align-items: center;
-	margin-bottom: 0px;
-	
-}
-.navbaricon{
-	position:fixed;
-	display: flex;
-
-	
-} */ */
 
 .loginfrm{
 	padding-right:10px;
 
 }
-	
-	
-	
 
 /*메뉴 바*/
 html.open {
@@ -107,6 +84,8 @@ html.open {
 
 /* footer  */
 .footer_line {
+	position :relative;
+ 	transform:translateY(-100%);
 	display: flex;
 	align-items: center;
 	margin-bottom: 0px;
