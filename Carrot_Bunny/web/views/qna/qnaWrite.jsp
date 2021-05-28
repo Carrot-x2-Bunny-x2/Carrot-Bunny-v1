@@ -60,7 +60,7 @@ textarea {
 	<table id="tbl-notice">
 		<tr>
 			<th>문의 제목</th>
-			<td><textarea name="qnaTitle" id="qnaTitle" required> </textarea>
+			<td><textarea name="qnaTitle" id="qnaTitle" required></textarea>
 			</tr>
 			<tr>
 				<th>문의 내용</th>
