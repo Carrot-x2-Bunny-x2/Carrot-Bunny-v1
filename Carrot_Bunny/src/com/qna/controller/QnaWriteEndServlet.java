@@ -41,23 +41,33 @@ public class QnaWriteEndServlet extends HttpServlet {
 
 		System.out.println("이름 : " + userId + "제목 : " + qnaTitle + "내용 : " + qnaContent);	
 		
-		Qna q = new Qna();
+		if(qnaTitle == null || qnaContent == null) {
+			
+			String msg="1:1 문의 제목 또는 내용을 작성해주세요";
+			String loc="/qn/qnaWrite";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
+			
+		}else {
+
+			Qna q = new Qna();
+			
+			q.setQnaTitle(qnaTitle);
+			q.setQnaWriter(userId);
+			q.setQnaContent(qnaContent);
+			
+			int result = new QnaService().insertQna(q);
+			
+			String msg=result>0?"1:1 문의 등록 완료":"1:1 문의 등록 실패";
+			String loc="/qna.do";
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
+		}
 		
-		q.setQnaTitle(qnaTitle);
-		q.setQnaWriter(userId);
-		q.setQnaContent(qnaContent);
-		
-		int result = new QnaService().insertQna(q);
-		
-		String msg=result>0?"1:1 문의 등록 완료":"1:1 문의 등록 실패";
-		//String loc="/";
-		//수정페이지로 이동해보자
-		String loc="/qna.do";
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request,response);
-	
 	}
 
 	/**
