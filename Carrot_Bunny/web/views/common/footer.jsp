@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <style>
+ 	.footer_line {
+ 		position :relative;
+ 		left:0;
+ 		width:100%;
+ 		transform:translateY(-100%);
+ 	}
  
+ </style>
 
     <footer class="footer_line">
         <p>&emsp;@2021당근당근바니바니&nbsp;&nbsp;</p>

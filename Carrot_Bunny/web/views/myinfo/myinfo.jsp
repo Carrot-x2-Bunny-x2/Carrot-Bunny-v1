@@ -5,6 +5,12 @@
 
 <style>
 
+.wrapper {
+	height : auto;
+	min-height:70%;
+	padding-bottom:60px;
+}
+
 /* myinfo */
 
 .myinfo-container {
@@ -67,6 +73,7 @@
 
 
 </style>
+<div class="wrapper">
 	<%if(loginMember!=null){%>
 	<div>
 	<%if(loginMember.getUserId().equals("admin")) {%>
@@ -143,4 +150,5 @@
 <%} %>
 </div>
 <%} %>
+</div>
 <%@ include file="../common/footer.jsp"%>
