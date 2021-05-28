@@ -86,7 +86,7 @@ if (cookies != null) {
 			%>
 			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm"
 				style="font-size: 15px; text-decoration: none; color: #646464;">login</a>
-			<a href="<%=request.getContextPath()%>/index.jsp"><img
+			<a href="<%=request.getContextPath()%>/loginPage"><img
 				class="loginicon"
 				src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
 			<%
