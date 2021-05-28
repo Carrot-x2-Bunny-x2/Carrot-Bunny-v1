@@ -207,9 +207,10 @@ public class AdminDao {
 		ResultSet rs = null;
 		List<Board> list = new ArrayList();
 		try {
-			pstmt = conn.prepareStatement(props.getProperty("selectBoardList"));
-			pstmt.setInt(1, (cPage-1)*numPerPage + 1);
-			pstmt.setInt(2,  cPage*numPerPage);
+			pstmt= conn.prepareStatement(props.getProperty("selectBoardList"));
+			pstmt.setInt(1, 0);
+			pstmt.setInt(2, (cPage-1)*numPerPage + 1);
+			pstmt.setInt(3, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Board b = new Board();
@@ -238,17 +239,16 @@ public class AdminDao {
 		return list;
 	}
 	
-	
-	
-	public int selectBoardListCount(Connection conn) {
+	public int selectBoardList (Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
 		try {
-			pstmt = conn.prepareStatement(props.getProperty("selectAliveBoardCount"));
-			pstmt.setInt(1, 0);
-			rs = pstmt.executeQuery();
-			if(rs.next()) result = rs.getInt(1);
+			pstmt=conn.prepareStatement(props.getProperty("selectAlivBoardCount"));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -257,6 +257,9 @@ public class AdminDao {
 		}
 		return result;
 	}
+	
+	
+	
 	
 }
 

@@ -75,16 +75,20 @@ public class AdminService {
 	
 	public List<Board> selectBoardList(int cPage, int numPerPage){
 		Connection conn= getConnection();
-		List<Board> list = dao.selectBoardList(conn, cPage, numPerPage);
+		List<Board> list = dao.selectBoardList(conn,cPage, numPerPage);
 		close(conn);
 		return list;
 	}
 	
 	public int selectBoardListCount() {
 		Connection conn = getConnection();
-		int result = dao.selectBoardListCount(conn);
+		int result = dao.selectMemberCount(conn);
 		close(conn);
 		return result;
 	}
+
+
+
 	
+
 }
