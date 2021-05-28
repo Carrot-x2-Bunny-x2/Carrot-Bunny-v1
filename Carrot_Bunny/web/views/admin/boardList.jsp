@@ -5,7 +5,7 @@
 List<Board> list = (List<Board>) request.getAttribute("list");
 
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
-String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword"); 
+String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
 /* out.print(searchType + " : " + keyword); */
 %>
 <%@ include file="/views/common/header.jsp"%>
@@ -65,7 +65,8 @@ div#search-boardNamesold {
 }
 
 div#numPerpage-container {
-	float: right;
+	float: left;
+	margin-left : 50px;
 }
 
 form#numperPageFrm {
@@ -85,22 +86,17 @@ div#pageBar>* {
 			<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
 		</div>
 		<div id="search-container">
-			검색타입 : <select id="searchType">
-				<option value="BoardIsSell"
-					<%=searchType.equals("BoardIsSell") ? "selected" : ""%>>판매중</option>
-				<option value="BoardIsSold"
-					<%=searchType.equals("BoardIsSell") ? "selected" : ""%>>판매완료</option>
-			</select>
-			<div id="search-boardNameSell">
-				<form action="<%=request.getContextPath()%>/searchBoardList">
-					<input type="hidden" name="searchType" value="B_TITLE"> <input
-						type="text" name="searchKeyword" size="25"
-						placeholder="검색할 상품이름을 입력하세요"
-						value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
-					<button type="submit">검색</button>
-				</form>
-			</div>
-			<div id="search-boardNameSold">
+			판매여부 :<form id="numPerFrm" action="">
+				<select name="numPerpage" id="numPerpage">
+					<option value="10"
+						<%=request.getParameter("numPerpage")!=null&&request.getParameter("numPerpage").equals("10")?"selected":"" %>>판매중/판매완료</option>
+					<option value="5"
+						<%=request.getParameter("numPerpage")==null||request.getParameter("numPerpage").equals("5")?"selected":"" %>>판매중</option>
+					<option value="3"
+						<%=request.getParameter("numPerpage")!=null&&request.getParameter("numPerpage").equals("3")?"selected":"" %>>판매완료</option>
+				</select>
+			</form>
+			<div id="search-boardName">
 				<form action="<%=request.getContextPath()%>/searchBoardList">
 					<input type="hidden" name="searchType" value="B_TITLE"> <input
 						type="text" name="searchKeyword" size="25"
@@ -134,17 +130,25 @@ div#pageBar>* {
 					for (Board b : list) {
 					%>
 					<tr>
-						<%if (b.getBoardIsSell() == 1) { %>
+						<%
+						if (b.getBoardIsSell() == 1) {
+						%>
 						<td>판매중</td>
-						<%}else{ %>
+						<%
+						} else {
+						%>
 						<td>판매완료</td>
-						<%} %>
+						<%
+						}
+						%>
 						<td><%=b.getBoardTitle()%></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>
 					</tr>
-					<%}
-					}%>
+					<%
+					}
+					}
+					%>
 				</tbody>
 			</table>
 
@@ -156,23 +160,9 @@ div#pageBar>* {
 	</div>
 </section>
 <script>
-		const fn_noticeWrite=()=>{
-			location.assign("<%=request.getContextPath()%>/board/boardWrite");			
-		}
-		$("#searchType").change(e => {
-    		const BoardIsSell=$("#search-boardNameSell");
-    		const BoardIsSold=$("#search-boardNameSold");
-    		const value=$(e.target).val();//userId OR userName OR gender
-    		
-    		BoardIsSell.css("display","none");
-    		BoardIsSold.css("display","none");
-    		
-    		$("#search-"+value).css("display","inline-block");
-    		
-    	});
-    	$(function(){   		
-    		$("#searchType").change();
-    	})
+	$("#searchType").change(e=>{
+		location.assign('<%=request.getContextPath()%>/searchBoardList?searchType='+$(e.target).val());
+	})
     	
 </script>
 
