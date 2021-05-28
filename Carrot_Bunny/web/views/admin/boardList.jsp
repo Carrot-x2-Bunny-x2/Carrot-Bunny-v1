@@ -3,9 +3,9 @@
 <%@ page import="java.util.List,com.board.model.vo.Board"%>
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
-/* 
+
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
-String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword"); */
+String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword"); 
 /* out.print(searchType + " : " + keyword); */
 %>
 <%@ include file="/views/common/header.jsp"%>
@@ -56,13 +56,14 @@ div#search-container {
 	text-align: center;
 }
 
-div#search-userId {
+div#search-boardNameSell {
 	display: inline-block;
 }
 
-div#search-userName {
+div#search-boardNamesold {
 	display: none;
 }
+
 div#numPerpage-container {
 	float: right;
 }
@@ -82,6 +83,32 @@ div#pageBar>* {
 		<div class="boardtitle">
 			게시글 조회
 			<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
+		</div>
+		<div id="search-container">
+			검색타입 : <select id="searchType">
+				<option value="BoardIsSell"
+					<%=searchType.equals("BoardIsSell") ? "selected" : ""%>>판매중</option>
+				<option value="BoardIsSold"
+					<%=searchType.equals("BoardIsSell") ? "selected" : ""%>>판매완료</option>
+			</select>
+			<div id="search-boardNameSell">
+				<form action="<%=request.getContextPath()%>/searchBoardList">
+					<input type="hidden" name="searchType" value="B_TITLE"> <input
+						type="text" name="searchKeyword" size="25"
+						placeholder="검색할 상품이름을 입력하세요"
+						value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
+					<button type="submit">검색</button>
+				</form>
+			</div>
+			<div id="search-boardNameSold">
+				<form action="<%=request.getContextPath()%>/searchBoardList">
+					<input type="hidden" name="searchType" value="B_TITLE"> <input
+						type="text" name="searchKeyword" size="25"
+						placeholder="검색할 상품이름을 입력하세요"
+						value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
+					<button type="submit">검색</button>
+				</form>
+			</div>
 		</div>
 		<div class="aliveboardlist">
 			<table class="boardtb">
@@ -128,7 +155,26 @@ div#pageBar>* {
 		</div>
 	</div>
 </section>
-
+<script>
+		const fn_noticeWrite=()=>{
+			location.assign("<%=request.getContextPath()%>/board/boardWrite");			
+		}
+		$("#searchType").change(e => {
+    		const BoardIsSell=$("#search-boardNameSell");
+    		const BoardIsSold=$("#search-boardNameSold");
+    		const value=$(e.target).val();//userId OR userName OR gender
+    		
+    		BoardIsSell.css("display","none");
+    		BoardIsSold.css("display","none");
+    		
+    		$("#search-"+value).css("display","inline-block");
+    		
+    	});
+    	$(function(){   		
+    		$("#searchType").change();
+    	})
+    	
+</script>
 
 
 
