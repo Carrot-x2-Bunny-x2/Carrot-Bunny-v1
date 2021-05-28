@@ -99,6 +99,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 		</tr>
 		<tr>
 			<th colspan="2">
+			<input type="button" value="문의 목록" onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 			<input type="button" value="삭제하기" onclick="fn_delete_qna();">
 			</th>
 		</tr>
@@ -140,6 +141,11 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 			<%
 			}
 			%>
+		</tr>
+		<tr>
+			<th colspan="2">
+			<input type="button" value="문의 목록" onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
+			</th>
 		</tr>
 	</table>
 </div>
