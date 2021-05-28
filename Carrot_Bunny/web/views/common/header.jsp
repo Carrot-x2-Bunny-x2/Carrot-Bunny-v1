@@ -86,14 +86,13 @@ if (cookies != null) {
 			%>
 			<a href="<%=request.getContextPath()%>/loginPage" class="loginfrm"
 				style="font-size: 15px; text-decoration: none; color: #646464;">login</a>
-			<a href="<%=request.getContextPath()%>/myinfo"><img
+			<a href="<%=request.getContextPath()%>/index.jsp"><img
 				class="loginicon"
 				src="<%=request.getContextPath()%>/images/loginicon.png"></img></a>
 			<%
 			} else {
 			%>
-			<p style="font-size: 15px; text-decoration: none; color: #646464;"><%=loginMember.getUserName()%>님,
-				환영합니다.
+			<p style="font-size: 15px; text-decoration: none; color: #646464; margin-bottom : 5px; margin-right: 10px;"><%=loginMember.getUserName()%>님 앙뇽!
 			</p>
 			<a href="<%=request.getContextPath()%>/logout" class="loginfrm"
 				style="font-size: 15px; text-decoration: none; color: #646464;">logout</a>
