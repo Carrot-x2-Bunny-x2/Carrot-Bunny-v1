@@ -93,62 +93,7 @@ div#pageBar>* {
 				게시글 조회
 				<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
 			</div>
-<<<<<<< HEAD
-			<div id="b_sell" style="text-align:left; margin-left : 60px; ">
-				<select class="type-1"> 
-					<option value="판매여부">판매여부</option>
-					<option value="판매중">판매중</option>
-					<option value="판매완료">판매완료</option>
-				</select>
-			</div>
 		</div>
-		<div class="aliveboardlist">
-			<table class="boardtb">
-				<thead>
-					<tr>
-						<!-- <th>
-							<form id="sellsoldFrm" action="">
-								<select name="b_sell" id="b_sell">
-									<option value="" selected>판매여부</option>
-									<option value="1" >판매중</option>
-									<option value="0">판매완료</option>
-								</select>
-							</form>
-						</th> -->
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					if (list.isEmpty()) {
-					%>
-					<tr>
-						<td colspan="3" align="center">검색결과가 없습니다.</td>
-					</tr>
-					<%
-					} else {
-					%>
-					<%
-					for (Board b : list ) {
-					%>
-					<tr>
-						<td><%=b.getBoardTitle()%></td>
-						<td><%=b.getBoardWriter()%></td>
-						<td><%=b.getBoardDate()%></td>
-					</tr>
-					<%
-					}
-					}
-					%>
-				</tbody>
-			</table>
-
-			<div id="pageBar" align="center" style="margin-top: 10px;">
-				<%=request.getAttribute("pageBar")%>
-				<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
-=======
 			<div id="search-container">
 				<div id="search-boardName">
 					<form action="<%=request.getContextPath()%>/searchBoardList">
@@ -171,15 +116,7 @@ div#pageBar>* {
 				<table class="boardtb">
 					<thead>
 						<tr>
-							<!-- <th>
-								<form id="sellsoldFrm" action="">
-									<select name="b_sell" id="b_sell">
-										<option value="" selected>판매여부</option>
-										<option value="1" >판매중</option>
-										<option value="0">판매완료</option>
-									</select>
-								</form>
-							</th> -->
+							<th>판매여부</th>
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일</th>
@@ -199,6 +136,17 @@ div#pageBar>* {
 						for (Board b : list ) {
 						%>
 						<tr>
+						<%
+						if (b.getBoardIsSell() == 1) {
+						%>
+						<td>판매중</td>
+						<%
+						} else {
+						%>
+						<td>판매완료</td>
+						<%
+						}
+						%>
 							<td><%=b.getBoardTitle()%></td>
 							<td><%=b.getBoardWriter()%></td>
 							<td><%=b.getBoardDate()%></td>
@@ -214,7 +162,6 @@ div#pageBar>* {
 					<%=request.getAttribute("pageBar")%>
 					<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 				</div>
->>>>>>> branch 'master' of https://github.com/Carrot-x2-Bunny-x2/Carrot-Bunny-v1.git
 			</div>
 		</div>
 	</section>
