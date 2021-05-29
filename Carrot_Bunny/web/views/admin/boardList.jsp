@@ -105,9 +105,9 @@ div#pageBar>* {
 			</div>
 			<div id="b_sell" style="text-align: left; margin-left: 60px;">
 				<select id="isSell" name="isSell" onchange="if(this.value)location.href=(this.value);">
-					<option value="<%=request.getContextPath()%>/boardListPage">판매여부</option>
+					<option value="<%=request.getContextPath()%>/boardListPage" >판매여부</option>
 					<option value="<%=request.getContextPath()%>/adminCheckSell" >판매중</option>
-					<option value="<%=request.getContextPath()%>/adminCheckSold">판매완료</option>
+					<option value="<%=request.getContextPath()%>/adminCheckSold" >판매완료</option>
 				</select>
 
 			</div>
