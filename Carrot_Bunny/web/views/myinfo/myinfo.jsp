@@ -8,7 +8,7 @@
 .wrapper {
 	height : auto;
 	min-height:70%;
-	padding-bottom:60px;
+	padding-bottom: 0px;
 }
 
 /* myinfo */
@@ -17,7 +17,8 @@
 	display: flex;
 	justify-content: center;
 /* 	align-items: center; */
-	min-height: 500px;
+	min-height: 600px;
+	margin-top : 30px;
 }
 .myicon {
 	display : center;
@@ -42,20 +43,21 @@
 	padding: 0;
 }
 
-/* admin */
+/* 관리자 정보  */
 .admin-container {
 	display: flex;
 	justify-content: center;
 /* 	align-items: center; */
-	min-height: 500px;
+	min-height: 600px;
+	margin-top : 30px;
 }
-.adminicon {
+/* .adminicon {
 	display : center;
 	height : 100px;
 	width : 100px;
 	margin-bottom : 0px;
 	font-size : 12px;
-}
+} */
 
 .admininfo {
 	text-align: center;
@@ -68,8 +70,14 @@
 	text-align: center;
 	font-size: 12px;
 	font-weight: lighter;
-	margin: 5px 0 0 0;
+	margin: 5px 0 70px 0;
 	padding: 0;
+}
+
+.adminbox {
+	margin-bottom : 100px;
+}
+
 
 
 </style>
@@ -87,24 +95,25 @@
 			<p>회원관리 및 게시물 관리를 해보세요.</p>
 		</div>
 		
-		<div>
+	<%-- 	<div>
 			<img class="adminicon"
 			src="<%=request.getContextPath()%>/images/loginicon.png" ></img>
 			<p colspan="2" style="display:center;font-size : 12px;">관리자</p>
-		</div>
-		<table>
+		</div> --%>
+		<table class="adminbox">
 		<tr >
-			<td><input type="button" value="회원 관리" style="width :200px; height: 100px;"
+			<td><input type="button" value="회원 관리" style="width :230px; height: 150px; font-size:18px;"
 				onclick="location.assign('<%=request.getContextPath()%>/memberList')">
+				
 			</td>
-			<td><input type="button" value="게시물 관리" style="width :200px; height: 100px;"
+			<td><input type="button" value="게시물 관리" style="width :230px; height: 150px;  font-size:18px"
 				onclick="location.assign('<%=request.getContextPath()%>/boardListPage')">
 			</td>
 			<tr>
-			<td><input type="button" value="공지사항 관리" style="width :200px; height: 100px;"
+			<td><input type="button" value="공지사항 관리" style="width :230px; height: 150px;  font-size:18px"
 				onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 			</td>
-			<td><input type="button" value="1:1 문의관리" style="width :200px; height: 100px;"
+			<td><input type="button" value="1:1 문의관리" style="width :230px; height: 150px; font-size:18px"
 				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 			</td>
 			</tr>
@@ -122,23 +131,23 @@
 		</div>
 		
 		<div>
-			<img class="myicon"
-			src="<%=request.getContextPath()%>/images/loginicon.png" ></img>
-			<p colspan="2" style="display:center;font-size : 12px;"><%=loginMember.getUserName() %></p>
+<%-- 			<img class="myicon"
+			src="<%=request.getContextPath()%>/images/loginicon.png" ></img> --%>
+			<p colspan="2" style="display:center;font-size : 12px; margin-top:20px; margin-bottom:40px;"><%=loginMember.getUserName() %></p>
 		</div>
 		<table>
 		<tr >
-			<td><input type="button" value="회원 정보 수정 및 탈퇴" style="width :200px; height: 100px;"
+			<td><input type="button" value="회원 정보 수정 및 탈퇴" style="width :230px; height: 150px; font-size:18px;"
 				onclick="location.assign('<%=request.getContextPath()%>/memberUpdate.do')">
 			</td>
-			<td><input type="button" value="판매상품 조회‧삭제‧수정" style="width :200px; height: 100px;"
+			<td><input type="button" value="판매상품 조회‧삭제‧수정" style="width :230px; height: 150px; font-size:18px;"
 				onclick="location.assign('<%=request.getContextPath()%>/board/boardPageUser')">
 			</td>
 			<tr>
-			<td><input type="button" value="관심목록 조회" style="width :200px; height: 100px;"
+			<td><input type="button" value="관심목록 조회" style="width :230px; height: 150px; font-size:18px;"
 				onclick="location.assign('<%=request.getContextPath()%>/love/lovePage')">
 			</td>
-			<td><input type="button" value="나의 1:1 문의내역 조회" style="width :200px; height: 100px;"
+			<td><input type="button" value="나의 1:1 문의내역 조회" style="width :230px; height: 150px; font-size:18px;"
 				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 			</td>
 			</tr>

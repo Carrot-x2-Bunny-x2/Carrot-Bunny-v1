@@ -102,7 +102,32 @@ public class AdminService {
 	}
 
 
-
+	public List<Board> SellBoardList(int cpage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Board> list = dao.SellBoardList(conn, cpage, numPerPage);
+		close(conn);
+		return list;
+	}
 	
+	public int SellBoardListCount() {
+		Connection conn = getConnection();
+		int result = dao.SellBoardListCount(conn);
+		close(conn);
+		return result;
+	}
+
+	public List<Board> SoldBoardList(int cpage, int numPerPage) {
+		Connection conn = getConnection();
+		List<Board> list = dao.SoldBoardList(conn, cpage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	public int SoldBoardListCount() {
+		Connection conn = getConnection();
+		int result = dao.SoldBoardListCount(conn);
+		close(conn);
+		return result;
+	}
 
 }

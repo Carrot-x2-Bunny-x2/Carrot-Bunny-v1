@@ -6,6 +6,7 @@
  		left:0;
  		width:100%;
  		transform:translateY(-100%);
+ 		padding-bottom: 0px];
  	}
  
  </style>
