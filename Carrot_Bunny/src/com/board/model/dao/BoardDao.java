@@ -223,7 +223,7 @@ public class BoardDao {
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("selectUserBoardCount"));
 			pstmt.setInt(1, 0);
-			pstmt.setString(1, m.getUserId());
+			pstmt.setString(2, m.getUserId());
 			rs = pstmt.executeQuery();
 			if(rs.next()) result = rs.getInt(1);
 		}catch(SQLException e) {
