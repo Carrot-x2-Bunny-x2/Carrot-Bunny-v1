@@ -147,7 +147,7 @@ div#pageBar>* {
 						<%
 						}
 						%>
-						<td><%=b.getBoardTitle()%></td>
+						<td><a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"><%=b.getBoardTitle()%></a></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>
 					</tr>
