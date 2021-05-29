@@ -10,6 +10,13 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
+
+.wrapper {
+	height : auto;
+	min-height:70%;
+	padding-bottom:60px;
+}
+
 #tbl-member {
 	width: 100%;
 	min-height: 300px;
@@ -20,7 +27,6 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 	width: 81%;
 	height: 80%;
 	margin: auto;
-	min-height: 500px;
 }
 
 .membertitle {
@@ -78,83 +84,85 @@ div#pageBar>* {
 }
 </style>
 
-<section id="tbl-member">
-
-	<div class="members">
-		<div class="membertitle">
-			회원조회
-			<p>당근당근바니바니를 이용하는 회원들을 관리 해주세요!</p>
-		</div>
-		<div id="search-container">
-			검색타입 : <select id="searchType">
-				<option value="userId"
-					<%=searchType.equals("userId") ? "selected" : ""%>>아이디</option>
-				<option value="userName"
-					<%=searchType.equals("userName") ? "selected" : ""%>>회원이름</option>
-			</select>
-			<div id="search-userId">
-				<form action="<%=request.getContextPath()%>/admin/searchMember">
-					<input type="hidden" name="searchType" value="member_id"> <input
-						type="text" name="searchKeyword" size="30"
-						placeholder="검색할 아이디를 입력하세요"
-						value='<%=searchType.equals("UserId") ? keyword : ""%>'>
-					<button type="submit">검색</button>
-				</form>
+<div class="wrapper">
+	<section id="tbl-member">
+	
+		<div class="members">
+			<div class="membertitle">
+				회원조회
+				<p>당근당근바니바니를 이용하는 회원들을 관리 해주세요!</p>
 			</div>
-			<div id="search-userName">
-				<form action="<%=request.getContextPath()%>/admin/searchMember">
-					<input type="hidden" name="searchType" value="mem_name"> <input
-						type="text" name="searchKeyword" size="30"
-						placeholder="검색할 이름을 입력하세요"
-						value='<%=searchType.equals("UserName") ? keyword : ""%>'>
-					<button type="submit">검색</button>
-				</form>
+			<div id="search-container">
+				검색타입 : <select id="searchType">
+					<option value="userId"
+						<%=searchType.equals("userId") ? "selected" : ""%>>아이디</option>
+					<option value="userName"
+						<%=searchType.equals("userName") ? "selected" : ""%>>회원이름</option>
+				</select>
+				<div id="search-userId">
+					<form action="<%=request.getContextPath()%>/admin/searchMember">
+						<input type="hidden" name="searchType" value="member_id"> <input
+							type="text" name="searchKeyword" size="30"
+							placeholder="검색할 아이디를 입력하세요"
+							value='<%=searchType.equals("UserId") ? keyword : ""%>'>
+						<button type="submit">검색</button>
+					</form>
+				</div>
+				<div id="search-userName">
+					<form action="<%=request.getContextPath()%>/admin/searchMember">
+						<input type="hidden" name="searchType" value="mem_name"> <input
+							type="text" name="searchKeyword" size="30"
+							placeholder="검색할 이름을 입력하세요"
+							value='<%=searchType.equals("UserName") ? keyword : ""%>'>
+						<button type="submit">검색</button>
+					</form>
+				</div>
+			</div>
+	
+			<!-- 회원 리스트 -->
+			<div class="memberlist">
+				<table class="membertb">
+					<thead>
+						<tr>
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>이름</th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						if (list.isEmpty()) {
+						%>
+						<tr>
+							<td colspan="3" align="center">검색결과가 없습니다.</td>
+						</tr>
+						<%
+						} else {
+						%>
+						<%
+						for (Member m : list) {
+						%>
+						<tr>
+							<td><%=m.getmemberNum()%></td>
+							<td><a
+								href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
+							</a></td>
+							<td><%=m.getUserName()%></td>
+						</tr>
+						<%
+						}
+						}
+						%>
+					</tbody>
+				</table>
+	
+				<div id="pageBar" align="center" style="margin-top: 10px;">
+					<%=request.getAttribute("pageBar")%>
+				</div>
 			</div>
 		</div>
-
-		<!-- 회원 리스트 -->
-		<div class="memberlist">
-			<table class="membertb">
-				<thead>
-					<tr>
-						<th>회원번호</th>
-						<th>아이디</th>
-						<th>이름</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					if (list.isEmpty()) {
-					%>
-					<tr>
-						<td colspan="3" align="center">검색결과가 없습니다.</td>
-					</tr>
-					<%
-					} else {
-					%>
-					<%
-					for (Member m : list) {
-					%>
-					<tr>
-						<td><%=m.getmemberNum()%></td>
-						<td><a
-							href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
-						</a></td>
-						<td><%=m.getUserName()%></td>
-					</tr>
-					<%
-					}
-					}
-					%>
-				</tbody>
-			</table>
-
-			<div id="pageBar" align="center" style="margin-top: 10px;">
-				<%=request.getAttribute("pageBar")%>
-			</div>
-		</div>
-	</div>
-</section>
+	</section>
+</div>
 <script>
     	$("#searchType").change(e => {
     		const userId=$("#search-userId");
