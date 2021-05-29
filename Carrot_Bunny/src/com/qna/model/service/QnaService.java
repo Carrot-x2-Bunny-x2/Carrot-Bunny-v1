@@ -18,11 +18,18 @@ public class QnaService {
 	private QnaDao dao=new QnaDao();
 	
 	// admin이 볼 때 전부 뜨기
-	public List<Qna> QnaList(){
+	public List<Qna> QnaList(int cPage, int numPerPage){
 		Connection conn = getConnection();
-		List<Qna> list = dao.qnaList(conn);
+		List<Qna> list = dao.qnaList(conn, cPage, numPerPage);
 		close(conn);
 		return list;
+	}
+	
+	public int QnaListCount() {
+		Connection conn = getConnection();
+		int result = dao.QnaListCount(conn);
+		close(conn);
+		return result;
 	}
 	
 	//USER이 볼 때 ID 값으로 찾기

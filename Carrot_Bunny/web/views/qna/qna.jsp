@@ -99,6 +99,9 @@
 						<%}
 					}%>
 				</table>
+				<div id="pageBar" align="center" style="margin-top: 10px;">
+				<%=request.getAttribute("pageBar")%>
+			</div>
 			</div>
 			
 		<%}else{ %>

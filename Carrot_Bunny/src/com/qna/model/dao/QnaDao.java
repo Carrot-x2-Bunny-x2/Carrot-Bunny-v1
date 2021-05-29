@@ -31,12 +31,14 @@ public class QnaDao {
 	}
 	
 	//QNA데이터들 불러오기  ADMIN
-	public List<Qna> qnaList(Connection conn){
+	public List<Qna> qnaList(Connection conn, int cPage, int numPerPage){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Qna> list = new ArrayList();
 		try {
 			pstmt = conn.prepareStatement(prop.getProperty("selectQnaList"));
+			pstmt.setInt(1, (cPage-1)*numPerPage+1);
+			pstmt.setInt(2, cPage*numPerPage);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Qna q = new Qna();
@@ -56,6 +58,27 @@ public class QnaDao {
 		}
 		return list;
 	}
+	
+	public int QnaListCount (Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(prop.getProperty("selectQnaCount"));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	
 	
 	//QNA데이터들 불러오기   USER
 		public List<Qna> qnaListUser(Connection conn, String id){
