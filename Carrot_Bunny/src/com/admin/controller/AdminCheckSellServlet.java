@@ -95,7 +95,7 @@ public class AdminCheckSellServlet extends HttpServlet {
 		}
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
-		request.setAttribute("cPage",cPage);
+	//	request.setAttribute("cPage",cPage);
 		
 
 		List<Board> list=new AdminService().SellBoardList(cPage, numPerPage);

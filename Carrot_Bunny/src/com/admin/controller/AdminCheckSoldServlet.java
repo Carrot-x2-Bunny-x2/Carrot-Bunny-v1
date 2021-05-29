@@ -52,14 +52,10 @@ public class AdminCheckSoldServlet extends HttpServlet {
 		int totalData=new AdminService().SoldBoardListCount();
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
-		// pageBar에 출력될 페이지숫자 갯수
 		int pageBarSize=4;
-		// pageNo는 pageBar에 출력되는 페이지숫자의 시작값
-		// 예를 들어 pageBarSize=5라는 가정 하에
-		// cPage가 1~5는 pageNo=1, cPage가 6~10이면 pageNo=6
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
-		// pageEnd는 당연히 끝나는 값이겠죠
 		int pageEnd=pageNo+pageBarSize-1;
+		
 		String pageBar="";
 		
 		if(pageNo==1) {
@@ -88,7 +84,7 @@ public class AdminCheckSoldServlet extends HttpServlet {
 		}
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
-		request.setAttribute("cPage",cPage);
+		//request.setAttribute("cPage",cPage);
 		
 
 		List<Board> list=new AdminService().SoldBoardList(cPage, numPerPage);

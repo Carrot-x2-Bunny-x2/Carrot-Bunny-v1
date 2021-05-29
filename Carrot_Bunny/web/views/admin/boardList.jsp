@@ -104,10 +104,9 @@ div#pageBar>* {
 				</form>
 			</div>
 			<div id="b_sell" style="text-align: left; margin-left: 60px;">
-
-				<select onchange="if(this.value)location.href=(this.value);">
-					<option value="<%=request.getContextPath()%>/searchBoardList">판매여부</option>
-					<option value="<%=request.getContextPath()%>/adminCheckSell">판매중</option>
+				<select id="isSell" name="isSell" onchange="if(this.value)location.href=(this.value);">
+					<option value="<%=request.getContextPath()%>/boardListPage">판매여부</option>
+					<option value="<%=request.getContextPath()%>/adminCheckSell" >판매중</option>
 					<option value="<%=request.getContextPath()%>/adminCheckSold">판매완료</option>
 				</select>
 
@@ -178,11 +177,8 @@ div#pageBar>* {
     		$("#searchType").change();
     })
     
-<%--     $("#b_sell").change(e=>{
-    	if(e.value==1)location.assign('<%=request.getContextPath()%>/adminCheckSell');
-    })
-     --%>
-    
+	
+
     
 
 
