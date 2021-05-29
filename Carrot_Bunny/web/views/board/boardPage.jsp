@@ -53,11 +53,15 @@ table#tbl-notice {
 	border-collapse: collapse;
 	clear: both;
 }
+
+div#search-container{
+margin-top : 8px;
+}
 </style>
 <div class="wrapper">
 	<section id="notice-container">
 		<h2>상품 게시판</h2>
-		<div id="search-container">
+		<div id="search-container" >
 	        	검색타입 : 
 	        	<select id="searchType">
 	        		<option value="userId" <%=searchType.equals("userId")?"selected":"" %>>아이디</option>
