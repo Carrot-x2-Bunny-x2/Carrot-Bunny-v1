@@ -11,6 +11,13 @@
 
 <%@ include file="../common/header.jsp"%>
 <style>
+
+.wrapper {
+	height : auto;
+	min-height:70%;
+	padding-bottom:60px;
+}
+
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
@@ -47,74 +54,76 @@ table#tbl-notice {
 	clear: both;
 }
 </style>
-<section id="notice-container">
-	<h2>상품 게시판</h2>
-	<div id="search-container">
-        	검색타입 : 
-        	<select id="searchType">
-        		<option value="userId" <%=searchType.equals("userId")?"selected":"" %>>아이디</option>
-        		<option value="boardName" <%=searchType.equals("boardName")?"selected":"" %>>상품이름</option>
-        	</select>
-        	<div id="search-userId">
-        		<form action="<%=request.getContextPath()%>/board/boardSearch">
-        			<input type="hidden" name="searchType" value="B_WRITER" >
-        			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 아이디를 입력하세요" value='<%=searchType.equals("userId")?keyword:"" %>'>
-        			<button type="submit">검색</button>
-        		</form>
-        	</div>
-        	<div id="search-boardName">
-        		<form action="<%=request.getContextPath()%>/board/boardSearch">
-        			<input type="hidden" name="searchType" value="B_TITLE">
-        			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 상품이름을 입력하세요" value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
-        			<button type="submit">검색</button>
-        		</form>
-        	</div>
-        </div>
-	<input type="button" value="글쓰기" id="btn-add"
-		onclick="fn_noticeWrite();">
-	<table id="tbl-notice">
-		<tr>
-
-			<th>번호</th>
-			<th>제목</th>
-			<th>수량</th>
-			<th>상품가격</th>
-			<th>작성자</th>
-			<th>작성일</th>
-		</tr>
-		<%
-		if (list.isEmpty()) {
-		%>
+<div class="wrapper">
+	<section id="notice-container">
+		<h2>상품 게시판</h2>
+		<div id="search-container">
+	        	검색타입 : 
+	        	<select id="searchType">
+	        		<option value="userId" <%=searchType.equals("userId")?"selected":"" %>>아이디</option>
+	        		<option value="boardName" <%=searchType.equals("boardName")?"selected":"" %>>상품이름</option>
+	        	</select>
+	        	<div id="search-userId">
+	        		<form action="<%=request.getContextPath()%>/board/boardSearch">
+	        			<input type="hidden" name="searchType" value="B_WRITER" >
+	        			<input type="text" name="searchKeyword" size="25" 
+	        			placeholder="검색할 아이디를 입력하세요" value='<%=searchType.equals("userId")?keyword:"" %>'>
+	        			<button type="submit">검색</button>
+	        		</form>
+	        	</div>
+	        	<div id="search-boardName">
+	        		<form action="<%=request.getContextPath()%>/board/boardSearch">
+	        			<input type="hidden" name="searchType" value="B_TITLE">
+	        			<input type="text" name="searchKeyword" size="25" 
+	        			placeholder="검색할 상품이름을 입력하세요" value='<%=searchType.equals("boardTitle")?keyword:"" %>'>
+	        			<button type="submit">검색</button>
+	        		</form>
+	        	</div>
+	        </div>
+		<input type="button" value="글쓰기" id="btn-add"
+			onclick="fn_noticeWrite();">
+		<table id="tbl-notice">
 			<tr>
-				<td colspan="5">조회된 공지사항이 없습니다.</td>
+	
+				<th>번호</th>
+				<th>제목</th>
+				<th>수량</th>
+				<th>상품가격</th>
+				<th>작성자</th>
+				<th>작성일</th>
 			</tr>
-		<%
-		} else {
-			for (Board b : list) {
-				if (b.getBoardIsDelete() == 0) {
-		%>
-					<tr>
-						<td><%=b.getBoardNumber()%></td>
-						<td>
-							<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-							<%=b.getBoardTitle()%>
-							</a>
-						</td>
-						<td><%=b.getBoardAmount() %></td>
-						<td><%=b.getBoardPrice() %></td>
-						<td><%=b.getBoardWriter()%></td>
-						<td><%=b.getBoardDate()%></td>
-					</tr>
-			<%} 
-			}	
-		} %>
-	</table>
-	<div id="pageBar">
-		<%=request.getAttribute("pageBar")%>
-	</div>
-</section>
+			<%
+			if (list.isEmpty()) {
+			%>
+				<tr>
+					<td colspan="5">조회된 공지사항이 없습니다.</td>
+				</tr>
+			<%
+			} else {
+				for (Board b : list) {
+					if (b.getBoardIsDelete() == 0) {
+			%>
+						<tr>
+							<td><%=b.getBoardNumber()%></td>
+							<td>
+								<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
+								<%=b.getBoardTitle()%>
+								</a>
+							</td>
+							<td><%=b.getBoardAmount() %></td>
+							<td><%=b.getBoardPrice() %></td>
+							<td><%=b.getBoardWriter()%></td>
+							<td><%=b.getBoardDate()%></td>
+						</tr>
+				<%} 
+				}	
+			} %>
+		</table>
+		<div id="pageBar">
+			<%=request.getAttribute("pageBar")%>
+		</div>
+	</section>
+</div>
 <script>
 		const fn_noticeWrite=()=>{
 			location.assign("<%=request.getContextPath()%>/board/boardWrite");			
