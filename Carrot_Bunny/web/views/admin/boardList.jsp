@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,com.board.model.vo.Board"%>
 <%
-List<Board> list = (List<Board>)request.getAttribute("list");
+List<Board> list = (List<Board>) request.getAttribute("list");
 
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
 String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
@@ -104,10 +104,11 @@ div#pageBar>* {
 				</form>
 			</div>
 			<div id="b_sell" style="text-align: left; margin-left: 60px;">
-				<select id="isSell" name="isSell" onchange="if(this.value)location.href=(this.value);">
-					<option value="<%=request.getContextPath()%>/boardListPage" >판매여부</option>
-					<option value="<%=request.getContextPath()%>/adminCheckSell" >판매중</option>
-					<option value="<%=request.getContextPath()%>/adminCheckSold" >판매완료</option>
+				<select id="isSell" name="isSell"
+					onchange="if(this.value)location.href=(this.value);">
+					<option value="<%=request.getContextPath()%>/boardListPage">판매여부</option>
+					<option value="<%=request.getContextPath()%>/adminCheckSell">판매중</option>
+					<option value="<%=request.getContextPath()%>/adminCheckSold">판매완료</option>
 				</select>
 
 			</div>
@@ -124,17 +125,17 @@ div#pageBar>* {
 				</thead>
 				<tbody>
 					<%
-						if (list.isEmpty()) {
-						%>
+					if (list.isEmpty()) {
+					%>
 					<tr>
 						<td colspan="3" align="center">검색결과가 없습니다.</td>
 					</tr>
 					<%
-						} else {
-						%>
+					} else {
+					%>
 					<%
-						for (Board b : list ) {
-						%>
+					for (Board b : list) {
+					%>
 					<tr>
 						<%
 						if (b.getBoardIsSell() == 1) {
@@ -147,27 +148,24 @@ div#pageBar>* {
 						<%
 						}
 						%>
-						<td><a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"><%=b.getBoardTitle()%></a></td>
+						<td><a
+							href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"><%=b.getBoardTitle()%></a></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>
 					</tr>
 					<%
-						}
-						}
-						%>
+					}
+					}
+					%>
 				</tbody>
 			</table>
-
 			<div id="pageBar" align="center" style="margin-top: 10px;">
 				<%=request.getAttribute("pageBar")%>
 				<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 			</div>
 		</div>
+	</section>
 </div>
-</section>
-
-</div>
-
 <script>
 	$("#searchType").change(e=>{
 		location.assign('<%=request.getContextPath()%>/searchBoardList?searchType='+$(e.target).val());
@@ -175,15 +173,7 @@ div#pageBar>* {
 	
 	$(function(){   		
     		$("#searchType").change();
-    })
-    
-	
-
-    
-
-
-
-    	
+    })    	
 </script>
 
 
