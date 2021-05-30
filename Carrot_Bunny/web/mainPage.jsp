@@ -16,14 +16,14 @@ List<Board> list = (List<Board>) request.getAttribute("list");
 .mainproduct {
 	width: 100%;
 	height: 400px;
-	margin-top: 3%;
-	margin-bottom: 100px;
+	margin-bottom: 50px;
 	background: #f1f2f3;
 }
 
 .mainproduct>h1 {
 	padding-top: 40px;
 	text-align: center;
+    margin-bottom:10px;
 }
 
 p {
@@ -108,6 +108,22 @@ h3 {
     padding: 0;
 }
 
+.adbox {
+	width: 100%;
+    height: 250px;
+    margin-top: 3%;
+    background: #f1f2f3;
+}
+
+.adbox>h1 {
+	padding-top: 20px;
+	text-align: center;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-bottom:5px;
+}
+
 </style>
 
 <div class="wrapper">
@@ -141,7 +157,6 @@ h3 {
 				<%} %>
 			</div>
 		</div>
-		
 	</div>
 
 </section>
@@ -150,6 +165,30 @@ h3 {
 		<%} else {%>
 			<input type="hidden" id="loginCheck" value="1">
 		<%}%>
+		
+		
+	<div class="adbox">	
+		<h1>Ad</h1>
+		<p>당근당근바니바니가 추천하는 상품들</p>
+		<div class="ad">
+			<table>
+				<tr>
+					<td>
+					<p>AESOP</p><br>
+					<a href="https://www.aesop.com/kr/"><img class="" src="" /></a>
+					</td>
+					<td>
+					<p>디지털 가전 광고</p><br>
+					<a href=""><img class="" src="" /></a>
+					</td>
+					<td>
+					<p>패션 광고</p><br>
+					<a href=""><img class="" src="" /></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+		
 </div>
 
 <script>
