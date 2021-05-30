@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.love.model.service.LoveService;
 import com.love.model.vo.Love;
 import com.member.model.vo.Member;
@@ -60,6 +61,9 @@ public class BoardViewServlet extends HttpServlet {
 			Board b = new BoardService().selectBoard(num);
 			
 			request.setAttribute("board", b);
+			List<Comment> comments = new BoardService().selectComment(num);
+			request.setAttribute("comments", comments);
+
 			request.getRequestDispatcher("/views/board/boardView.jsp").forward(request, response);
 		}
 	}
