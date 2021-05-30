@@ -44,7 +44,7 @@ public class BoardPageUserServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=5;
+			numPerPage=10;
 		}
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
@@ -55,7 +55,7 @@ public class BoardPageUserServlet extends HttpServlet {
 		int totalData=new BoardService().selectUserBoardCount(loginMember);
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
-		int pageBarSize=4;
+		int pageBarSize=5;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";

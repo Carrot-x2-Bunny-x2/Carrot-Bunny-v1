@@ -71,7 +71,7 @@ public class LovePageServlet extends HttpServlet {
 		
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
-		int pageBarSize=10;
+		int pageBarSize=5;
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
