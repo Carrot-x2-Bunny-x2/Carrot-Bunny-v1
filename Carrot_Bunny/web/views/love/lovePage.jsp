@@ -50,44 +50,47 @@ p#heart {
 	font-size: 100px;
 }
 </style>
-<section id="notice-container">
-	<h2>나의 관심목록</h2>
-	<p id="heart">❤</p>
-	<table id="tbl-notice">
-		<tr>
-			<th>판매여부</th>
-			<th>상품명</th>
-		</tr>
-		<%
-		if (list.isEmpty()) {
-		%>
+
+<div class="wrapper">
+	<section id="notice-container">
+		<h2>나의 관심목록</h2>
+		<p id="heart">❤</p>
+		<table id="tbl-notice">
 			<tr>
-				<td colspan="5">조회된 관심목록이 없습니다.</td>
+				<th>판매여부</th>
+				<th>상품명</th>
 			</tr>
-		<%
-		} else {
-			for (Board b : list) {
-				if (b.getBoardIsDelete() == 0) {
-		%>
-					<tr>
-						<%if (b.getBoardIsSell() == 1) { %>
-							<td>판매중</td>
-						<%} else { %>
-							<td>판매완료</td>
-						<%} %>
-						<td>
-							<a href="<%=request.getContextPath()%>/board/boardView?no=<%=b.getBoardNumber()%>">
-							<%=b.getBoardTitle()%>
-							</a>
-						</td>
-					</tr>
-			<%} 
-			}	
-		} %>
-	</table>
-	<div id="pageBar">
-		<%=request.getAttribute("pageBar")%>
-	</div>
-</section>
+			<%
+			if (list.isEmpty()) {
+			%>
+				<tr>
+					<td colspan="5">조회된 관심목록이 없습니다.</td>
+				</tr>
+			<%
+			} else {
+				for (Board b : list) {
+					if (b.getBoardIsDelete() == 0) {
+			%>
+						<tr>
+							<%if (b.getBoardIsSell() == 1) { %>
+								<td>판매중</td>
+							<%} else { %>
+								<td>판매완료</td>
+							<%} %>
+							<td>
+								<a href="<%=request.getContextPath()%>/board/boardView?no=<%=b.getBoardNumber()%>">
+								<%=b.getBoardTitle()%>
+								</a>
+							</td>
+						</tr>
+				<%} 
+				}	
+			} %>
+		</table>
+		<div id="pageBar">
+			<%=request.getAttribute("pageBar")%>
+		</div>
+	</section>
+</div>
 	
 <%@ include file="../common/footer.jsp"%>

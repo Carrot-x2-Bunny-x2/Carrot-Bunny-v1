@@ -48,7 +48,7 @@ public class BoardPageServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=10;
+			numPerPage=9;
 		}
 		
 		
@@ -62,7 +62,7 @@ public class BoardPageServlet extends HttpServlet {
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
 		// pageBar에 출력될 페이지숫자 갯수
-		int pageBarSize=10;
+		int pageBarSize=5;
 		// pageNo는 pageBar에 출력되는 페이지숫자의 시작값
 		// 예를 들어 pageBarSize=5라는 가정 하에
 		// cPage가 1~5는 pageNo=1, cPage가 6~10이면 pageNo=6

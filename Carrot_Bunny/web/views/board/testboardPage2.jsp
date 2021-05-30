@@ -306,50 +306,25 @@ main {
 	<main>
 		<div class="responsive-container">
 			<div class="grid">
+				<div class="grid-column">
+					<a class="product" href="#">
 					
-					<%
-			if (list.isEmpty()) {
-			%>
-				<tr>
-					<td colspan="5">조회된 상품이 없습니다.</td>
-				</tr>
-			<%} else {
-				
-				int i = 0;
-				
-				for (Board b : list) {
-					if (b.getBoardIsDelete() == 0) {
-						%>
-						<div class="grid-column">
-						<a class="product" href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-							<div class="product-image">
-								<img class="new"
-									src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
-							</div>
-							<div class="product-content">
-								<div class="product-info">
-									<h2 class="product-title"><%=b.getBoardTitle()%></h2>
-									<p class="product-price"><%=b.getBoardPrice() %> 원</p>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-								</div>
-								<button class="product-action">
-									<i class="material-icons-outlined"></i>
-								</button>
-							</div>
-						</a>	 
+						<div class="product-image">
+							<img class="new"
+								src="https://assets.codepen.io/285131/cosmonaut.jpg" />
 						</div>
-						<%i = 0;%>
-					<%}%>
-				<%}%>	
-			<%} %>	
-			<div id="pageBar">
-			<%=request.getAttribute("pageBar")%>
-		</div>	
+						<div class="product-content">
+							<div class="product-info">
+								<h2 class="product-title">Cosmonaut</h2>
+								<p class="product-price">$ 10</p>
+							</div>
+							<button class="product-action">
+								<i class="material-icons-outlined"></i>
+							</button>
+						</div>
+					</a> 
 					
-					<!-- <a class="product" href="#">
+					<a class="product" href="#">
 					
 						<div class="product-image">
 							<img class="new"
@@ -470,7 +445,7 @@ main {
 							</button>
 						</div>
 					</a>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</main>
