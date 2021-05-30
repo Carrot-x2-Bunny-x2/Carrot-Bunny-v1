@@ -160,19 +160,7 @@ main {
 	border-radius: 0.25rem 0.25rem 0 0;
 	overflow: hidden;
 }
-/* 
-.product-content {
-	padding: 1rem;
-	border-left: 1px solid #dedede;
-	border-right: 1px solid #dedede;
-	border-bottom: 1px solid #dedede;
-	border-radius: 0 0 0.25rem 0.25rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	transition: .15s ease;
-	background-color: #FFF;
-} */
+
 .product-action {
 	color: #000;
 	width: 2.5rem;
@@ -267,7 +255,9 @@ main {
 		</div>
 		<input type="button" value="글쓰기" id="btn-add"
 			onclick="fn_noticeWrite();" style= "margin-bottom:50px; margin-top:10px; ">
-		<%-- 		<table id="tbl-notice">
+			
+			
+	<%--   <table id="tbl-notice">
 			<tr>
 	
 				<th>번호</th>
