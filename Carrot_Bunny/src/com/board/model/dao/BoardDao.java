@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.member.model.vo.Member;
 
 public class BoardDao {
@@ -371,6 +372,53 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(prop.getProperty("sellBoard"));
 			pstmt.setInt(1,b.getBoardIsSell());
 			pstmt.setInt(2,b.getBoardNumber());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List<Comment> selectComment(Connection conn, int boardNum) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Comment> list = new ArrayList();
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectComment"));
+			pstmt.setInt(1, boardNum);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Comment c = new Comment();
+				c.setCommentNumber(rs.getInt("c_num"));
+				c.setCommentWriter(rs.getString("c_writer"));
+				c.setCommentContent(rs.getString("c_content"));
+				c.setBoardNumber(rs.getInt("b_num"));
+				c.setRefNumber(rs.getInt("c_refnum"));
+				c.setCommentLevel(rs.getInt("c_level"));
+				c.setCommentDate(rs.getDate("c_date"));
+				list.add(c);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int insertComment(Connection conn, Comment c) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("insertComment"));
+			pstmt.setString(1,c.getCommentWriter());
+			pstmt.setString(2,c.getCommentContent());
+			pstmt.setInt(3,c.getBoardNumber());
+			pstmt.setString(4,c.getRefNumber()==0?null:String.valueOf(c.getRefNumber()));
+			pstmt.setInt(5,c.getCommentLevel());
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
