@@ -50,14 +50,38 @@ public class BoardPageServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerPage=9;
 		}
+		String[] soldCheck;
+		int sold;
 		
-		
-		List<Board> list=new BoardService().selectAliveBoardList(cPage,numPerPage);
-		request.setAttribute("list", list);
-		
+		try {
+			soldCheck = request.getParameterValues("soldCheck");
+			
+		}catch(NumberFormatException e) {
+			soldCheck = null;
+		}
+		try {
+			sold = Integer.parseInt(request.getParameter("sold"));
+			if (soldCheck != null) {
+				sold = 1;
+			}
+		} catch(NumberFormatException e) {
+			sold = 0;
+		}
+		List<Board> list;
 		// 사용자가 원하는 페이지를 호출할 수 있게 pageBar 구성
 		// board의 총 개수
-		int totalData=new BoardService().selectAliveBoardCount();
+		int totalData;
+		// sold==1 일 때 판매완료된 상품까지 검색 아니면 판매중인 상품만 검색
+		if (sold == 1) {
+			list=new BoardService().selectAliveBoardList(cPage,numPerPage);
+			totalData=new BoardService().selectAliveBoardCount();
+		} else {
+			list=new BoardService().selectSoldBoardList(cPage,numPerPage);
+			totalData=new BoardService().selectSoldBoardCount();
+		}
+		request.setAttribute("list", list);
+		
+		
 		// 1. 전체 페이지에 대한 수(전체자료에서 페이지당 수 나누기, 자동 올림처리)
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
@@ -99,7 +123,7 @@ public class BoardPageServlet extends HttpServlet {
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
 		request.setAttribute("cPage",cPage);
-		
+		request.setAttribute("sold",sold);
 
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);

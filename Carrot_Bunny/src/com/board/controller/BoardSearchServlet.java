@@ -47,26 +47,42 @@ public class BoardSearchServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerPage=10;
 		}
+		String[] soldCheck;
+		int sold;
 		
+		try {
+			soldCheck = request.getParameterValues("soldCheck");
+			
+		}catch(NumberFormatException e) {
+			soldCheck = null;
+		}
+		if (soldCheck != null) {
+			sold = 1;
+		} else {
+			try {
+				sold = Integer.parseInt(request.getParameter("sold"));
+				
+			} catch(NumberFormatException e) {
+				sold = 0;
+			}
+		}
 		String searchType=request.getParameter("searchType");
 		String keyword=request.getParameter("searchKeyword");
 		
-		System.out.println(searchType);
-
-		System.out.println(keyword);
-		// 사용자가 원하는 페이지를 호출할 수 있게 pageBar 구성
-		// board의 총 개수
-		int totalData=new BoardService().searchBoardCount(searchType, keyword);
-		// 1. 전체 페이지에 대한 수(전체자료에서 페이지당 수 나누기, 자동 올림처리)
+		List<Board> list;
+		int totalData;
+		// sold==1 일 때 판매완료된 상품까지 검색 아니면 판매중인 상품만 검색
+		if (sold == 1) {
+			list=new BoardService().searchBoardList(cPage, numPerPage, searchType, keyword);
+			totalData=new BoardService().searchBoardCount(searchType, keyword);
+		} else {
+			list=new BoardService().searchSoldBoardList(cPage, numPerPage, searchType, keyword);
+			totalData=new BoardService().searchSoldBoardCount(searchType, keyword);
+		}
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
 		
-		// pageBar에 출력될 페이지숫자 갯수
 		int pageBarSize=10;
-		// pageNo는 pageBar에 출력되는 페이지숫자의 시작값
-		// 예를 들어 pageBarSize=5라는 가정 하에
-		// cPage가 1~5는 pageNo=1, cPage가 6~10이면 pageNo=6
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
-		// pageEnd는 당연히 끝나는 값이겠죠
 		int pageEnd=pageNo+pageBarSize-1;
 		String pageBar="";
 		
@@ -75,7 +91,7 @@ public class BoardSearchServlet extends HttpServlet {
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+(pageNo-1)
 					+"&numPerpage="+numPerPage
-					+"&searchType="+searchType+"&searchKeyword="+keyword+"'>[이전]</a>";
+					+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>[이전]</a>";
 		}
 	
 		
@@ -85,7 +101,7 @@ public class BoardSearchServlet extends HttpServlet {
 			}else {
 				pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+pageNo
 						+"&numPerpage="+numPerPage
-						+"&searchType="+searchType+"&searchKeyword="+keyword+"'>"+pageNo+"</a>";
+						+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -95,14 +111,14 @@ public class BoardSearchServlet extends HttpServlet {
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+pageNo
 					+"&numPerpage="+numPerPage
-					+"&searchType="+searchType+"&searchKeyword="+keyword+"'>[다음]</a>";
+					+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>[다음]</a>";
 		}
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
 		request.setAttribute("cPage",cPage);
-		
+		System.out.println("여기서 sold는"+sold);
+		request.setAttribute("sold",sold);
 
-		List<Board> list=new BoardService().searchBoardList(cPage, numPerPage, searchType, keyword);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);

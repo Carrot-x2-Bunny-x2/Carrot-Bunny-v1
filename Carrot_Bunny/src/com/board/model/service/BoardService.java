@@ -31,6 +31,13 @@ public class BoardService {
 		close(conn);
 		return list;
 	}
+	// 삭제되지 않으며 판매되지 않은 상품만 select
+		public List<Board> selectSoldBoardList(int cpage, int numPerPage) {
+			Connection conn = getConnection();
+			List<Board> list = dao.selectSoldBoardList(conn, cpage, numPerPage);
+			close(conn);
+			return list;
+		}
 	// user의 상품만 select(삭제되지 않은)
 	public List<Board> selectUserBoardList(int cpage, int numPerPage,Member m) {
 		Connection conn = getConnection();
@@ -42,6 +49,13 @@ public class BoardService {
 	public List<Board> searchBoardList(int cpage, int numPerPage, String searchType, String keyword) {
 		Connection conn = getConnection();
 		List<Board> list = dao.searchBoardList(conn, cpage, numPerPage, searchType, keyword);
+		close(conn);
+		return list;
+	}
+	// searchType, keyword를 이용하여 판매중인 boardList 받아오기
+	public List<Board> searchSoldBoardList(int cpage, int numPerPage, String searchType, String keyword) {
+		Connection conn = getConnection();
+		List<Board> list = dao.searchSoldBoardList(conn, cpage, numPerPage, searchType, keyword);
 		close(conn);
 		return list;
 	}
@@ -59,7 +73,14 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-	// 삭제되지 않은 상품만 count
+	// 삭제되지 않고 판매 중인 상품만 count
+	public int selectSoldBoardCount() {
+		Connection conn = getConnection();
+		int result = dao.selectSoldBoardCount(conn);
+		close(conn);
+		return result;
+	}
+	// 사용자가 판매한 상품만 count
 	public int selectUserBoardCount(Member m) {
 		Connection conn = getConnection();
 		int result = dao.selectUserBoardCount(conn, m);
@@ -73,7 +94,13 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
-	
+	// searchType, keyword를 받아와 검색 후 판매중인 상품만 count를 반환
+	public int searchSoldBoardCount(String searchType, String keyword) {
+		Connection conn = getConnection();
+		int result = dao.searchSoldBoardCount(conn, searchType, keyword);
+		close(conn);
+		return result;
+	}
 	// 상품 하나의 정보를 가져온다.
 	public Board selectBoard(int num) {
 		Connection conn = getConnection();

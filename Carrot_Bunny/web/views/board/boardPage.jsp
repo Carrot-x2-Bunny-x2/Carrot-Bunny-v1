@@ -4,9 +4,9 @@
 <%@ page import="java.util.List,com.board.model.vo.Board"%>
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
-
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
 String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
+/*out.print(request.getAttribute("sold"));*/
 /* out.print(searchType+" : "+keyword); */
 %>
 
@@ -261,7 +261,11 @@ select {
 						placeholder="검색할 아이디를 입력하세요"
 						value='<%=searchType.equals("userId") ? keyword : ""%>'>
 					<button type="submit">검색</button>
-
+					<%if((int)request.getAttribute("sold")==1) { %>
+						<input name="soldCheck" type="checkbox" value="판매 완료" checked><label for="sold">판매 완료 포함</label>
+					<%} else { %>
+						<input name="soldCheck" type="checkbox" value="판매 완료"><label for="sold">판매 완료 포함</label>
+					<%} %>
 				</form>
 			</div>
 			<div id="search-boardName">
@@ -270,8 +274,12 @@ select {
 						type="text" name="searchKeyword" size="25"
 						placeholder="검색할 상품이름을 입력하세요"
 						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'>
-					<button type="submit"
-						style="width: 60px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;">검색</button>
+					<button type="submit">검색</button>
+					<%if((int)request.getAttribute("sold")==1) { %>
+						<input name="soldCheck" type="checkbox" value="판매 완료" checked><label for="sold">판매 완료 포함</label>
+					<%} else { %>
+						<input name="soldCheck" type="checkbox" value="판매 완료"><label for="sold">판매 완료 포함</label>
+					<%} %>
 				</form>
 			</div>
 		</div>
