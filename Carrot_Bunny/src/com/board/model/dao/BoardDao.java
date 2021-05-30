@@ -148,10 +148,9 @@ public class BoardDao {
 		String sql=prop.getProperty("searchBoardList");
 		try {
 			pstmt = conn.prepareStatement(sql.replace("@", searchType));
-			pstmt.setInt(1, 0);
-			pstmt.setString(2, "%"+keyword+"%");
-			pstmt.setInt(3, (cPage-1)*numPerPage + 1);
-			pstmt.setInt(4, cPage*numPerPage);
+			pstmt.setString(1, "%"+keyword+"%");
+			pstmt.setInt(2, (cPage-1)*numPerPage + 1);
+			pstmt.setInt(3, cPage*numPerPage);
 			
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
