@@ -43,7 +43,7 @@ if (cookies != null) {
 
 <style>
 html, body {
-
+	font-family: 'RIDIBatang';
 	margin: 0;
 	padding: 0;
 	height: 100%;

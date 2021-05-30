@@ -11,10 +11,19 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 %>
 
 <%@ include file="../common/header.jsp"%>
+
+
+
+
 <style>
+
+
+
+
 .wrapper {
 	height: auto;
 	min-height: 70%;
+	
 	padding-bottom: 10px;
 }
 
@@ -28,9 +37,7 @@ section#notice-container h2 {
 	margin: 10px 0;
 }
 
-@import
-	url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap')
-	;
+
 
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -49,6 +56,7 @@ h1, h2, h3, h4, ul, ol, li, figure, figcaption, blockquote, dl, dd {
 a {
 	color: inherit;
 	font-weight: bold;
+	
 }
 
 button {
@@ -57,7 +65,7 @@ button {
 }
 
 body {
-	font-family: "DM Sans", sans-serif;
+	font-family: 'RIDIBatang', sans-serif;
 }
 
 .link-button {
@@ -166,6 +174,9 @@ a.product {
 	.grid-column { & > * + * {
 		margin-top: 1.5rem;
 	}
+	
+	.*{
+	font-family: "RIDIBatang", sans-serif;}
 }
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.board.model.dao.BoardDao;
 import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.member.model.vo.Member;
 
 public class BoardService {
@@ -131,6 +132,25 @@ public class BoardService {
 		
 		if (result > 0) commit(conn);
 		else rollback(conn);
+		return result;
+	}
+	
+	// board의 댓글 리스트 받아오기
+	public List<Comment> selectComment(int boardNum) {
+		Connection conn = getConnection();
+		List<Comment> list = dao.selectComment(conn, boardNum);
+		close(conn);
+		return list;
+	}
+	// 댓글 작성 
+	public int insertComment(Comment c) {
+		Connection conn = getConnection();
+		int result = dao.insertComment(conn, c);
+		
+		if (result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
 		return result;
 	}
 }

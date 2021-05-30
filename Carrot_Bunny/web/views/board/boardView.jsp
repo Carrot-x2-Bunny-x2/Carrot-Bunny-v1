@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,
 com.board.model.vo.Board,
-com.love.model.vo.Love" %>
+com.love.model.vo.Love,
+com.board.model.vo.Comment" %>
 
  
 <% 
@@ -17,9 +18,31 @@ com.love.model.vo.Love" %>
 			check = 1;
 		}
 	}
+	List<Comment> comments = (List<Comment>) request.getAttribute("comments");
+
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
+    /*댓글테이블*/
+    table#tbl-comment{width:580px; margin:0 auto; border-collapse:collapse; clear:both; } 
+    table#tbl-comment tr td{border-bottom:1px solid; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
+    table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
+    table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
+    table#tbl-comment button.btn-reply{display:none;}
+    table#tbl-comment button.btn-delete{display:none;}
+    table#tbl-comment tr:hover {background:lightgray;}
+    table#tbl-comment tr:hover button.btn-reply{display:inline;}
+    table#tbl-comment tr:hover button.btn-delete{display:inline;}
+    
+    table#tbl-comment sub.comment-writer {color:navy; font-size:14px}
+    table#tbl-comment sub.comment-date {color:tomato; font-size:10px}
+    table#tbl-comment tr.level2 td:first-of-type{padding-left:100px;}
+    table#tbl-comment tr.level2 sub.sub-comment-writer {color:#8e8eff; font-size:14px}
+    table#tbl-comment tr.level2 sub.sub-comment-date {color:#ff9c8a; font-size:10px}
+    /*답글관련*/
+    table#tbl-comment textarea{margin: 4px 0 0 0;}
+    table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; background:#3300ff; position:relative; top:-5px; left:10px;}    
+
 
 	.wrapper {
 	height : auto;
@@ -7451,62 +7474,56 @@ header #nav-icon {
 
 
 
-<!-- 댓글 창 -->
-								<div class="detailBox">
-									<div class="titleBox">
-										<label>거래를 원하시면 댓글을 달아주세요!</label>
-									</div>
-									<div class="commentBox">
-
-										<p class="taskDescription">Lorem Ipsum is simply dummy
-											text of the printing and typesetting industry.</p>
-									</div>
-									<div class="actionBox">
-										<ul class="commentList">
-											<li>
-												<div class="commenterImage">
-													<img src="http://placekitten.com/50/50" />
-												</div>
-												<div class="commentText">
-													<p class="">Hello this is a test comment.</p>
-													<span class="date sub-text">on March 5th, 2014</span>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://placekitten.com/45/45" />
-												</div>
-												<div class="commentText">
-													<p class="">Hello this is a test comment and this
-														comment is particularly very long and it goes on and on
-														and on.</p>
-													<span class="date sub-text">on March 5th, 2014</span>
-
-												</div>
-											</li>
-											<li>
-												<div class="commenterImage">
-													<img src="http://placekitten.com/40/40" />
-												</div>
-												<div class="commentText">
-													<p class="">Hello this is a test comment.</p>
-													<span class="date sub-text">on March 5th, 2014</span>
-
-												</div>
-											</li>
-										</ul>
-										<form class="form-inline" role="form">
-											<div class="form-group">
-												<input class="form-control" type="text"
-													placeholder="Your comments" />
-											</div>
-											<div class="form-group">
-												<button class="btn btn-default">Add</button>
-											</div>
-										</form>
-									</div>
-								</div>
+								<!-- 댓글 창 -->
+								<div id="comment-container">
+							    	
+									<table id="tbl-comment">
+										<%if(comments!=null){ 
+											for(Comment c : comments){
+												if(c.getCommentLevel()==1){%>
+													<tr class="level1">
+														<td>
+															<sub class="comment-writer"><%=c.getCommentWriter() %></sub>
+															<sub class="comment-date"><%=c.getCommentDate() %></sub>
+															<br>
+															<%=c.getCommentContent() %>
+														</td>
+														<td>
+															<%if(loginMember!=null){%>
+															<button class="btn-reply" value="<%=c.getCommentNumber()%>">답글</button>
+															<%} %>
+															<%if(loginMember!=null&&(loginMember.getUserId().equals("admin")
+																	||loginMember.getUserId().equals(c.getCommentWriter()))){ %>
+															<button class="btn-delete">삭제</button>
+															<%} %>
+														</td>
+													</tr>	
+												<%}else{%>
+													<tr class="level2">
+														<td>
+															<sub class="sub-comment-writer"><%=c.getCommentWriter() %></sub>
+															<sub class="sub-comment-date"><%=c.getCommentDate() %></sub>
+															<br>
+															<%=c.getCommentContent() %>
+														</td>
+														<td>
+														</td>
+													</tr>		
+												<%}
+											}	 
+										}%>
+									</table>
+									<div class="comment-editor">
+							    		<form action="<%=request.getContextPath() %>/board/comment" method="post">
+							    			<textarea name="commentContent" cols="55" rows="3"></textarea>
+							    			<input type="hidden" name="boardNum" value="<%=b.getBoardNumber() %>">
+							    			<input type="hidden" name="commentWriter" value="<%=loginMember!=null?loginMember.getUserId():""%>">
+							    			<input type="hidden" name="commentLevel" value="1">
+							    			<input type="hidden" name="refNum" value="0">
+							    			<button type="submit" id="btn-insert">등록</button>
+							    		</form>
+							    	</div>
+							    </div>
 								<div class="updatebutton" style="float: right;">
 									<%
 									if (loginMember != null
@@ -7562,6 +7579,30 @@ header #nav-icon {
 			location.replace("<%=request.getContextPath() %>/board/boardDelete?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
+	$(function(){
+		$(".comment-editor textarea").focus(e=>{
+			if(<%=loginMember==null%>){
+				alert("로그인 후 이용하실 수 있습니다.");
+				$("#userId").focus();
+			}
+		});
+		
+		
+		$(".btn-reply").click(e=>{
+			const tr=$("<tr>");
+			const form=$(".comment-editor>form").clone();
+			form.find("textarea").attr("rows","1");
+			form.find("[name=commentLevel]").val("2");
+			form.find("[name=refNum]").val($(e.target).val());
+			form.find("button").removeAttr("id").addClass("btn-insert2");
+			const td=$("<td>").attr("colspan","2");
+			tr.append(td.append(form));
+			tr.find("td").css("display","none");
+			
+			tr.insertAfter($(e.target).parents("tr")).children("td").slideDown(800);
+			$(e.target).off("click");
+		});
+	});
 	
 </script>
 
