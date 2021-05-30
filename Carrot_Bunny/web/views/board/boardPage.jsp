@@ -36,7 +36,7 @@ section#notice-container h2 {
 	box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, p, ul, ol, li, figure, figcaption, blockquote, dl,
+body, h1, h2, h3, h4, ul, ol, li, figure, figcaption, blockquote, dl,
 	dd {
 	margin: 0;
 }
@@ -106,26 +106,16 @@ main {
 
 }
 .product {
-	border-radius: 0.25rem;
+
 	text-decoration: none;
 	font-weight: 400;
-	transition: .15s ease;
-	overflow: hidden; &: hover , & : focus { 
-		 outline : none;
-	box-shadow: 0 0 0 0.25rem pink;
-	.
-	product-content
-	{
-	border-color
-	:
-	transparent;
-}
 
 }
-}
-.product-image {
+a.product {
 	border-radius: 0.25rem 0.25rem 0 0;
 	overflow: hidden;
+	max-width:400px;
+	max-height:600px;
 }
 
 .product-action {
@@ -246,17 +236,17 @@ main {
 				for (Board b : list) {
 					if (b.getBoardIsDelete() == 0) {
 						%>
-				<div class="grid-column">
+				<div class="grid-column" style="align:center;">
 					<a class="product"
 						href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 						<div class="product-image">
 							<img class="new"
 								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
 						</div>
-						<div class="product-content">
+						<div class="product-content" >
 							<div class="product-info">
-								<h2 class="product-title"><%=b.getBoardTitle()%></h2>
-								<p class="product-price"><%=b.getBoardPrice() %>
+								<h2 class="product-title" ><%=b.getBoardTitle()%></h2>
+								<p class="product-price"  ><%=b.getBoardPrice() %>
 									원
 								</p>
 								<input type="hidden"></input> <input type="hidden"></input> <input
@@ -272,12 +262,14 @@ main {
 				<%}%>
 				<%}%>
 				<%} %>
-				<div id="pageBar" style="text-align:center;">
-					<%=request.getAttribute("pageBar")%>
-				</div>
+				
 			</div>
 		</div>
+	<div id="pageBar" style="text-align:center;">
+					<%=request.getAttribute("pageBar")%>
+				</div>
 	</main>
+
 
 </div>
 
