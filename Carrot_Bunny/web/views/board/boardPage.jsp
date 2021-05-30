@@ -19,7 +19,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 }
 
 section#notice-container {
-	width: 600px;
+	/* width: 600px; */
 	margin: 0 auto;
 	text-align: center;
 }
@@ -36,21 +36,17 @@ section#notice-container h2 {
 	box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, ul, ol, li, figure, figcaption, blockquote, dl,
+ h1, h2, h3, h4, ul, ol, li, figure, figcaption, blockquote, dl,
 	dd {
 	margin: 0;
 }
 
-body {
-	scroll-behavior: smooth;
-	line-height: 1.0;
-	background-color: #FFF;
-}
 
 /* 푸터 괴롭히는놈 */
 .new {
 	max-width: 100%;
-	display: block;
+	/* display: block; */
+
 }
 
 a {
@@ -180,9 +176,47 @@ a.product {
 	}
 }
 }
+
+
+.writebutton input {
+	-moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+    line-height: 80%;
+    font-family: "montserratbold", sans-serif;
+    -moz-border-radius: 26px;
+    -webkit-border-radius: 26px;
+    border-radius: 26px;
+    -moz-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
+    -webkit-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
+    box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
+    background-color: #ff9800;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 16px 26px;
+    border : 0;
+    outline : 0;
+   
+}
+
+
+
+
+
+
+
+
 </style>
 
 <div class="wrapper">
+
+
+
+
+
 	<section id="notice-container">
 		<h2>상품 게시판</h2>
 		<div id="search-container">
@@ -211,16 +245,17 @@ a.product {
 				</form>
 			</div>
 		</div>
+		<div class="writebutton" style="text-align: right; margin-right:60px; margin-bottom:10px; " >
 		<input type="button" value="글쓰기" id="btn-add"
 			onclick="fn_noticeWrite();"
-			style="margin-bottom: 50px; margin-top: 10px;">
-
+			style="margin-bottom: 50px; margin-top: 10px; margin-right:20px;"  >
+		</div>
 
 	</section>
 
 
-	<main>
-		<div class="responsive-container">
+ 	<main> 
+		<div class="responsive-container" >
 			<div class="grid">
 
 				<%
@@ -239,12 +274,12 @@ a.product {
 				<div class="grid-column" style="align:center;">
 					<a class="product"
 						href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-						<div class="product-image">
-							<img class="new"
+						<div class="product-image" style="text-align:center;">
+							<img class="new" 
 								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
 						</div>
 						<div class="product-content" >
-							<div class="product-info">
+							<div class="product-info" style="text-align:center;">
 								<h2 class="product-title" ><%=b.getBoardTitle()%></h2>
 								<p class="product-price"  ><%=b.getBoardPrice() %>
 									원
@@ -265,10 +300,11 @@ a.product {
 				
 			</div>
 		</div>
-	<div id="pageBar" style="text-align:center;">
+	<div id="pageBar" style="text-align:center; letter-spacing: 10px;
+    font-size: 19px;">
 					<%=request.getAttribute("pageBar")%>
 				</div>
-	</main>
+ 	</main> 
 
 
 </div>
@@ -291,6 +327,14 @@ a.product {
     	$(function(){   		
     		$("#searchType").change();
     	})
+    	
+    	
+    	
+    	
+	
+    	
+    	
+    	
     	
 </script>
 
