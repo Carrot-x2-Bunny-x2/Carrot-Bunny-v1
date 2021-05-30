@@ -130,10 +130,10 @@ h3 {
 					if (b.getBoardIsDelete() == 0) {
 						%>
 				<div class="ex">
-						<input type="hidden" id="bNum" value="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"/>
 						<h3>
+							<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 							<img class="new"
-								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
+								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" /></a>
 						</h3>
 						</div>
 					<%}%>
