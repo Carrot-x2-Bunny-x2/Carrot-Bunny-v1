@@ -16,7 +16,7 @@
 		//페이지 닫아 주기 
 		<%=script!=null?script:""%>
 		//페이지전환하는 로직구성
-		location.replace('<%=request.getContextPath()%><%=request.getAttribute("loc")%>');
+		location.replace('<%=request.getContextPath()%>/loginPage<%-- <%=request.getAttribute("loc")%> --%>');
 	</script>
 </body>
 </html>
