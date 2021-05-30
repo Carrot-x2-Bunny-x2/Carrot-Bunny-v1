@@ -12,6 +12,65 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 
 <%@ include file="../common/header.jsp"%>
 <style>
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+.wrapper2{
+  position: absolute;
+  text-align:center;
+}
+
+.container2{
+  position: relative;
+  padding: 20px 50px;
+}
+
+.input2{
+  width: 400px;
+  border: 3px solid #fc913a;
+  background: transparent;
+  padding: 15px 30px;
+  border-radius: 50px;
+  outline: none;
+  font-size: 18px;
+  color: #fc913a;
+}
+
+::-webkit-input2-placeholder { /* Chrome/Opera/Safari */
+  color: #fc913a;
+  font-family: Roboto;
+  text-transform: uppercase;
+}
+
+
+.close-btn{
+  position: absolute;
+  top: 21px;
+  right: 50px;
+  cursor: pointer;
+  color: #fff;
+  background: #fc913a;
+  border: 0px;
+  width: 120px;
+  height: 55px;
+  border-radius: 50px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
 .wrapper {
 	height: auto;
 	min-height: 70%;
@@ -206,12 +265,26 @@ a.product {
 
 
 
-
-
-
 </style>
 
+
+
+
+
 <div class="wrapper">
+
+
+
+
+<div class="wrapper2">
+  <div class="container2">
+  	<input type="hidden" name="searchType" value="B_WRITER">
+    <input type="text" class="input2"  name="searchKeyword" size="25"
+						placeholder="검색할 아이디를 입력하세요"
+						value='<%=searchType.equals("userId") ? keyword : ""%>'>
+    <input type="button" value="search" class="close-btn">
+  </div>
+</div>
 
 
 
@@ -252,6 +325,8 @@ a.product {
 		</div>
 
 	</section>
+	
+
 
 
  	<main> 
@@ -331,6 +406,7 @@ a.product {
     	
     	
     	
+ 
 	
     	
     	
