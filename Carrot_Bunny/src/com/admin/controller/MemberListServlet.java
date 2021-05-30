@@ -40,7 +40,7 @@ public class MemberListServlet extends HttpServlet {
 		if(session == null || loginMember == null||!loginMember.getUserId().equals("admin")) {
 			//잘못된 경로로 접근하셨습니다. ㅇㅣ페이지의 사용권한이 없습니다 -> 에러메세지 띄워주고 메인화면으로 돌아가게 
 			request.setAttribute("msg", "잘못된 경로로 접근하셨습니다. 이 페이지 사용권한이 없습니다!!!!돌아가");
-			request.setAttribute("loc", "/");
+			request.setAttribute("loc", "/loginPage");
 			RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg.jsp");
 			rd.forward(request, response);
 

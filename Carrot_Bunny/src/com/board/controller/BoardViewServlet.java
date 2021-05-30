@@ -52,7 +52,7 @@ public class BoardViewServlet extends HttpServlet {
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		if(session == null || loginMember == null) {
 			request.setAttribute("msg", "로그인 후 이용할 수 있습니다.");
-			request.setAttribute("loc", "/board/boardPage");
+			request.setAttribute("loc", "/loginPage");
 			RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg.jsp");
 			rd.forward(request, response);
 		} else {
