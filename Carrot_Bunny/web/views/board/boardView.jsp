@@ -7454,7 +7454,7 @@ header #nav-icon {
 <!-- 댓글 창 -->
 								<div class="detailBox">
 									<div class="titleBox">
-										<label>Comment Box</label>
+										<label>거래를 원하시면 댓글을 달아주세요!</label>
 									</div>
 									<div class="commentBox">
 
