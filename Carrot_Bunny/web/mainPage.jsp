@@ -178,6 +178,20 @@ p {
 
 }
 
+
+/* 공사중 */
+h3 {
+    background: #fff;
+    color: #ff9800;
+    font-size: 36px;
+    line-height: 210px;
+    margin: 10px;
+    padding: 2%;
+    position: relative;
+    text-align: center;
+    height: 150%;
+}
+
 </style>
 
 <div class="wrapper">
@@ -187,7 +201,7 @@ p {
 		<h1> 당근당근바니바니 상점 </h1>
 		<p>당근당근바니바니 판매상품을 확인해주세요.</p>
 		<div class="main">
-			<div class="slider slider-nav">
+			<%-- <div class="slider slider-nav">
 			<%
 			if (list.isEmpty()) {
 			%>
@@ -209,7 +223,37 @@ p {
 					<%}
 				}
 				} %>
+			</div> --%>
+			
+			
+			<!--위에 꼬여서 다시이렇게해둠.  -->
+			<div class="main">
+			<div class="slider slider-nav">
+				<div>
+					<h3>지</h3>
+				</div>
+				<div>
+					<h3>금</h3>
+				</div>
+				<div>
+					<h3>은</h3>
+				</div>
+				<div>
+					<h3>공</h3>
+				</div>
+				<div>
+					<h3>사</h3>
+				</div>
+				<div>
+					<h3>중</h3>
+				</div>
+				<div>
+					<h3>  ☹ </h3>
+				</div>
 			</div>
+		</div>
+			
+			
 		</div>
 	</div>
 

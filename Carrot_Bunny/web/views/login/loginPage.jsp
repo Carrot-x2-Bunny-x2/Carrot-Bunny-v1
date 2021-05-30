@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp"%>
-<%@ page import="com.member.model.vo.Member" %> <!--멤버 가져오기-->
+<%@ page import="com.member.model.vo.Member"%>
+<!--멤버 가져오기-->
 
 <style>
-
 .wrapper {
-	height : auto;
-	min-height:70%;
-	padding-bottom:60px;
+	height: auto;
+	min-height: 70%;
+	padding-bottom: 60px;
 }
 
 .login-container {
@@ -17,7 +17,6 @@
 	align-items: center;
 	min-height: 400px;
 	margin-bottom: 30px;
-	
 }
 
 .id-form {
@@ -68,58 +67,69 @@ h5 {
 	margin: 5px 0 0 0;
 	padding: 0;
 }
-
 </style>
 <div class="wrapper">
 	<div class="login-container" style="min-height: 400px;">
-	
+
 		<%if(loginMember==null){ %>
 		<form id="loginForm" action="<%=request.getContextPath() %>/login"
 			method="post" onsubmit="return fn_login_validate();">
+
+			<div class="logintitle">
+				로그인
+				<p>로그인을 해주세요 뿌잉뿌잉~</p>
+			</div>
+
+			<div class="logintb" >
 			<table>
-				<div class="logintitle">
-					로그인
-					<p>로그인을 해주세요 뿌잉뿌잉~</p>
-				</div>
-	
 				<tr>
 					<td class="id-form">
+						<p>아이디</p>
 						<h4>
-							아이디
+							<!-- 아이디 -->
 							<%-- <img class="login-page-logo" src="<%=request.getContextPath()%>/images/loginicon.png";></img>  --%>
 							<input type="text" name="userId" placeholder="User Email"
-								style="width: 150px; height: 30px; margin-left: 12px;">
+								style="width: 250px; height: 30px; margin-left: 12px;">
 						</h4>
 					</td>
 					<td></td>
 				</tr>
-	
+
+
 				<tr>
 					<td class="pw-form">
+						<p>비밀번호</p>
 						<h4>
-							비밀번호
+							<!-- 비밀번호 -->
 							<%-- <img class="login-page-logo" src="<%=request.getContextPath()%>/images/key.png";></img>  --%>
 							<input type="password" name="password" placeholder="Password"
-								style="width: 150px; height: 30px;">
+								style="width: 250px; height: 30px; margin-left: 12px;">
 						</h4>
 					</td>
 					<td></td>
 				</tr>
 				<tr>
-					<td colspan="2" >
-					<input type="submit" value="로그인" style="width: 100px; height: 30px; margin-top:10px;"> 
-					<input type="button" value="회원가입" onclick="location.replace('<%=request.getContextPath()%>/memberenroll.do')" style="width: 100px; height: 30px; margin-top:10px; ">
+					<td colspan="2"><input type="submit" value="로그인"
+						style="width: 130px; height: 30px; margin-top: 20px; margin-left: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px;">
+						<input type="button" value="회원가입"
+						onclick="location.replace('<%=request.getContextPath()%>/memberenroll.do')"
+						style="width: 130px; height: 30px; margin-top: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px;">
 					</td>
 				</tr>
 			</table>
-			<a href="javascript:alert('준비중입니다.ㅠ 보채지마세요.ㅜㅠ 관리자 홍서연 01053033196으로 연락주시면 알려드려요');" onfocus="this.blur()" class="find-login">아이디/비밀번호 찾기</a>
-			<h5>*찾기 어려우실 경우 고객센터에 문의주세요.</h5>
+			</div>
+			<div style="margin-left: 20px; margin-top: 10px;">
+				<a
+					href="javascript:alert('준비중입니다.ㅠ 보채지마세요.ㅜㅠ 관리자 홍서연 01053033196으로 연락주시면 알려드려요');"
+					onfocus="this.blur()" class="find-login">아이디/비밀번호 찾기</a>
+				<h5>*찾기 어려우실 경우 고객센터에 문의주세요.</h5>
+			</div>
 		</form>
 		<%} else{%>
-		 	<!-- 분기처리 -->
-			 	<% request.setAttribute("loc", "/views/myinfo/myinfo.jsp");%>
-				<% 	RequestDispatcher rd=request.getRequestDispatcher("/views/common/loginmsg.jsp");%>
-					<% rd.forward(request, response);%>
+		<!-- 분기처리 -->
+		<% request.setAttribute("loc", "/views/myinfo/myinfo.jsp");%>
+		<% 	RequestDispatcher rd=request.getRequestDispatcher("/views/common/loginmsg.jsp");%>
+		<% rd.forward(request, response);%>
 		<%} %>
 	</div>
 </div>
