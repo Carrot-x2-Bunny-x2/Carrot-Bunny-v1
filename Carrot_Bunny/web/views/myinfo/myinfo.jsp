@@ -9,6 +9,7 @@
 	height : auto;
 	min-height:70%;
 	padding-bottom: 0px;
+	font-family: "RIDIBatang", sans-serif;
 }
 
 /* myinfo */
@@ -78,6 +79,8 @@
 
 
 
+
+
 </style>
 <div class="wrapper">
 	<%if(loginMember!=null){%>
@@ -92,19 +95,20 @@
 				</div>
 				<table class="adminbox">
 					<tr>
-						<td><input type="button" value="회원 관리" style="width :230px; height: 150px; font-size:18px;"
+						<td><input type="button" value="회원관리" style="width :230px; height: 150px; font-size:18px; font-family: 'RIDIBatang';"
 							onclick="location.assign('<%=request.getContextPath()%>/memberList')">
+						
 							
 						</td>
-						<td><input type="button" value="게시물 관리" style="width :230px; height: 150px;  font-size:18px"
+						<td><input type="button" value="게시물 관리" style="width :230px; height: 150px;  font-size:18px; font-family: 'RIDIBatang';"
 							onclick="location.assign('<%=request.getContextPath()%>/boardListPage')">
 						</td>
 					</tr>
 					<tr>
-						<td><input type="button" value="공지사항 관리" style="width :230px; height: 150px;  font-size:18px"
+						<td><input type="button" value="공지사항 관리" style="width :230px; height: 150px;  font-size:18px; font-family: 'RIDIBatang';"
 							onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 						</td>
-						<td><input type="button" value="1:1 문의관리" style="width :230px; height: 150px; font-size:18px"
+						<td><input type="button" value="1:1 문의관리" style="width :230px; height: 150px; font-size:18px;font-family: 'RIDIBatang';"
 							onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 						</td>
 					</tr>
@@ -124,18 +128,18 @@
 				</div>
 				<table>
 				<tr>
-					<td><input type="button" value="회원 정보 수정 및 탈퇴" style="width :230px; height: 150px; font-size:18px;"
+					<td><input type="button" value="회원 정보 수정 및 탈퇴" style="width :230px; height: 150px; font-size:18px; font-family: 'RIDIBatang';"
 						onclick="location.assign('<%=request.getContextPath()%>/memberUpdate.do')">
 					</td>
-					<td><input type="button" value="판매상품 조회‧삭제‧수정" style="width :230px; height: 150px; font-size:18px;"
+					<td><input type="button" value="판매상품 조회‧삭제‧수정" style="width :230px; height: 150px; font-size:18px; font-family: 'RIDIBatang';"
 						onclick="location.assign('<%=request.getContextPath()%>/board/boardPageUser')">
 					</td>
 					</tr>
 					<tr>
-					<td><input type="button" value="관심목록 조회" style="width :230px; height: 150px; font-size:18px;"
+					<td><input type="button" value="관심목록 조회" style="width :230px; height: 150px; font-size:18px; font-family: 'RIDIBatang';"
 						onclick="location.assign('<%=request.getContextPath()%>/love/lovePage')">
 					</td>
-					<td><input type="button" value="나의 1:1 문의내역 조회" style="width :230px; height: 150px; font-size:18px;"
+					<td><input type="button" value="나의 1:1 문의내역 조회" style="width :230px; height: 150px; font-size:18px; font-family: 'RIDIBatang';"
 						onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 					</td>
 					</tr>
