@@ -132,7 +132,7 @@ html, body {
 		<!-- 뒤로가기 버튼 -->
 		<div onclick="history.back();">
 			<img class="close"
-				src="<%=request.getContextPath()%>/images/rabbiticon.png";></img>
+				src="<%=request.getContextPath()%>/images/rabbiticon.png"></img>
 		</div>
 		<!-- 메뉴바 이동 -->
 		<div class="menubar">

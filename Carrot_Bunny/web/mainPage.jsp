@@ -110,7 +110,7 @@ h3 {
 
 .adbox {
 	width: 100%;
-    height: 250px;
+    height: 100%;
     margin-top: 3%;
     background: #f1f2f3;
 }
@@ -122,6 +122,36 @@ h3 {
 	margin-block-start: 0.83em;
     margin-block-end: 0.83em;
     margin-bottom:5px;
+}
+
+.ad{
+	width:100%;
+    height:100%;
+	display: flex;
+	justify-content: center;
+    vertical-align:middle;
+}
+
+.ad td{
+	padding-right:13px;
+	padding-left:13px
+}
+
+.adimgbox {
+	width:380px;
+    height:220px;
+    overflow:hidden;
+    margin:0 auto;
+}
+
+.ad td p{
+	margin-bottom:6px;
+}
+
+.adimg {
+  	width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 </style>
@@ -174,16 +204,23 @@ h3 {
 			<table>
 				<tr>
 					<td>
-					<p>AESOP</p><br>
-					<a href="https://www.aesop.com/kr/"><img class="" src="" /></a>
+					<div class="adimgbox">
+						<a href="https://www.aesop.com/kr/"><img class="adimg" src="<%=request.getContextPath()%>/images/asope.jpg" /></a>
+					</div>
+					<p>AESOP</p>
 					</td>
 					<td>
-					<p>디지털 가전 광고</p><br>
-					<a href=""><img class="" src="" /></a>
+					<div class="adimgbox">
+					<a href="https://www.aesop.com/kr/"><img class="adimg" src="<%=request.getContextPath()%>/images/ohHouse.jpg" /></a>
+					</div>
+					<p>오늘의 집</p>
 					</td>
 					<td>
-					<p>패션 광고</p><br>
-					<a href=""><img class="" src="" /></a></td>
+					<div class="adimgbox">
+					<a href="https://www.aesop.com/kr/"><img class="adimg" src="<%=request.getContextPath()%>/images/chanel.jpg" /></a>
+					</div>
+					<p>CHANEL</p>
+					</td>
 				</tr>
 			</table>
 		</div>
