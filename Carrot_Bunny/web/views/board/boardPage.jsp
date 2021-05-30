@@ -28,39 +28,6 @@ section#notice-container h2 {
 	margin: 10px 0;
 }
 
-/*
-table#tbl-notice {
-	width: 100%;
-	margin: 0 auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-table#tbl-notice th, table#tbl-notice td {
-	border: 1px solid;
-	padding: 5px 0;
-	text-align: center;
-}
-
-input#btn-add {
-	float: right;
-	margin: 0 0 15px;
-}
-
-table#tbl-notice {
-	width: 100%;
-	margin: 0 auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-	clear: both;
-}
-
-div#search-container{
-margin-top : 8px;
-}
- --> */
-
-/* 주어온것  */
 @import
 	url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap')
 	;
@@ -224,6 +191,7 @@ main {
 }
 }
 </style>
+
 <div class="wrapper">
 	<section id="notice-container">
 		<h2>상품 게시판</h2>
@@ -254,125 +222,45 @@ main {
 			</div>
 		</div>
 		<input type="button" value="글쓰기" id="btn-add"
-			onclick="fn_noticeWrite();" style= "margin-bottom:50px; margin-top:10px; ">
-			
-			
-	<%--   <table id="tbl-notice">
-			<tr>
-	
-				<th>번호</th>
-				<th>제목</th>
-				<th>수량</th>
-				<th>상품가격</th>
-				<th>작성자</th>
-				<th>작성일</th>
-			</tr>
-			<%
-			if (list.isEmpty()) {
-			%>
-				<tr>
-					<td colspan="5">조회된 상품이 없습니다.</td>
-				</tr>
-			<%
-			} else {
-				for (Board b : list) {
-					if (b.getBoardIsDelete() == 0) {
-			%>
-						<tr>
-							<td><%=b.getBoardNumber()%></td>
-							<td>
-								<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-								<%=b.getBoardTitle()%>
-								</a>
-							</td>
-							<td><%=b.getBoardAmount() %></td>
-							<td><%=b.getBoardPrice() %></td>
-							<td><%=b.getBoardWriter()%></td>
-							<td><%=b.getBoardDate()%></td>
-						</tr>
-				<%} 
-				}	
-			} %>
-		</table>
-		<div id="pageBar">
-			<%=request.getAttribute("pageBar")%>
-		</div> --%>
+			onclick="fn_noticeWrite();"
+			style="margin-bottom: 50px; margin-top: 10px;">
+
+
 	</section>
 
-
-
-	<!-- 주어온것 -->
 
 	<main>
 		<div class="responsive-container">
 			<div class="grid">
-					
-					<%
+
+				<%
 			if (list.isEmpty()) {
 			%>
 				<tr>
 					<td colspan="5">조회된 상품이 없습니다.</td>
 				</tr>
-			<%} else {
+				<%} else {
 				
 				int i = 0;
 				
 				for (Board b : list) {
 					if (b.getBoardIsDelete() == 0) {
 						%>
-						<div class="grid-column">
-						<a class="product" href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-							<div class="product-image">
-								<img class="new"
-									src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
-							</div>
-							<div class="product-content">
-								<div class="product-info">
-									<h2 class="product-title"><%=b.getBoardTitle()%></h2>
-									<p class="product-price"><%=b.getBoardPrice() %> 원</p>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-									<input type="hidden"></input>
-								</div>
-								<button class="product-action">
-									<i class="material-icons-outlined"></i>
-								</button>
-							</div>
-						</a>	 
-						</div>
-						<%i = 0;%>
-					<%}%>
-				<%}%>	
-			<%} %>	
-			<div id="pageBar">
-			<%=request.getAttribute("pageBar")%>
-		</div>	
-					
-					<!-- <a class="product" href="#">
-					
+				<div class="grid-column">
+					<a class="product"
+						href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 						<div class="product-image">
 							<img class="new"
-								src="https://assets.codepen.io/285131/hand-drawn-monster-milkshake.jpg" />
+								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
 						</div>
 						<div class="product-content">
 							<div class="product-info">
-								<h2 class="product-title">Monster Milkshake</h2>
-								<p class="product-price">$ 9</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a> <a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/pink-pastel-juicy-banana.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Juicy Banana</h2>
-								<p class="product-price">$ 9</p>
+								<h2 class="product-title"><%=b.getBoardTitle()%></h2>
+								<p class="product-price"><%=b.getBoardPrice() %>
+									원
+								</p>
+								<input type="hidden"></input> <input type="hidden"></input> <input
+									type="hidden"></input> <input type="hidden"></input>
 							</div>
 							<button class="product-action">
 								<i class="material-icons-outlined"></i>
@@ -380,103 +268,16 @@ main {
 						</div>
 					</a>
 				</div>
-				<div class="grid-column">
-					<a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/palmistry.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Palmistry</h2>
-								<p class="product-price">$ 9</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a> <a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/fish-gas-mark.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Fish With Gas Mask</h2>
-								<p class="product-price">$ 12</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a> <a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/mysterious-gangster-character-style.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Gangster</h2>
-								<p class="product-price">$ 5</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a>
-
+				<%i = 0;%>
+				<%}%>
+				<%}%>
+				<%} %>
+				<div id="pageBar" style="text-align:center;">
+					<%=request.getAttribute("pageBar")%>
 				</div>
-				<div class="grid-column">
-					<a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/adventure.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Adventure Bottle</h2>
-								<p class="product-price">$ 15</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a> <a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Smoking Ain't Cool</h2>
-								<p class="product-price">$ 5</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a> <a class="product" href="#">
-						<div class="product-image">
-							<img class="new"
-								src="https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg" />
-						</div>
-						<div class="product-content">
-							<div class="product-info">
-								<h2 class="product-title">Smoking Ain't Cool</h2>
-								<p class="product-price">$ 5</p>
-							</div>
-							<button class="product-action">
-								<i class="material-icons-outlined"></i>
-							</button>
-						</div>
-					</a>
-				</div> -->
 			</div>
 		</div>
 	</main>
-	<%-- 	<div id="pageBar">
-			<%=request.getAttribute("pageBar")%>
-		</div> --%>
 
 </div>
 
