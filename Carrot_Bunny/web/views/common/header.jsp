@@ -52,9 +52,9 @@ html, body {
 }
 
 .logo {
-	width: 150px;
-	height: 150px;
-	margin-left: 58.3%;
+	width: 160px;
+	height: 160px;
+	margin-left: 41.3%;
 }
 
 .navbar_logo {
@@ -84,15 +84,28 @@ html, body {
 }
 
 .carrot {
-	margin: auto;
+	/* margin: auto; */
 }
+
+.market{
+	margin-left:10px;
+	width:80px;
+	height:90px;
+}
+
 </style>
 </head>
 <body>
 	<div class="header">
+	
+		<div class="boardPage">
+			<a href="<%=request.getContextPath()%>/board/boardPage">
+			<img class="market"
+				src="<%=request.getContextPath()%>/images/page.png";></a>
+		</div>
 		<div class="carrot">
-			<a href="<%=request.getContextPath()%>/index.jsp"><img
-				class="logo"
+			<a href="<%=request.getContextPath()%>/index.jsp">
+			<img class="logo"
 				src="<%=request.getContextPath()%>/images/carrotlogo.png";></a>
 		</div>
 		<div class="nav">

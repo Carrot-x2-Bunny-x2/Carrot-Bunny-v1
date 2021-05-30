@@ -11,39 +11,45 @@ List<Board> list = (List<Board>) request.getAttribute("list");
 .maincontainer {
 	text-align: center;
 	margin: 200px;
+	
 }
 
 .mainproduct {
 	width: 100%;
-	height: 400px;
+	height: 500px;
 	margin-bottom: 50px;
 	background: #f1f2f3;
+	
 }
 
 .mainproduct>h1 {
 	padding-top: 40px;
 	text-align: center;
     margin-bottom:10px;
+    
 }
 
 p {
 	text-align: center;
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: lighter;
-	margin: 5px 0 0 0;
+	margin: 5px 0 10px 0;
+	
 }
 
 .products {
 	display: flex;
+	
 }
 
 .products>li {
 	flex: 1;
 	background: white;
 	margin-top: 49px;
-	height: 200px;
+	height: 400px;
 	margin-right: 20px;
 	padding-left: 0px;
+	  
 }
 
 .products>li:not(:last-child) {
@@ -52,29 +58,32 @@ p {
 
 /* 메인 이미지 슬라이드  */
 .main {
+
   font-family:Arial;
-  height: 72%;
-  width: 65%;
+ height: 72%;
+  width: 70%;
   display:block;
   margin:0 auto;
   background: #f1f2f3;
+  
 }
 
 .slick-slider {
     margin-bottom: 30px;
-    height: 85%;
+    height: 90%;
 }
 
-h3 {
-    background: #fff;
+.imgclass {
+    background: 
+    
     color: #3498db;
     font-size: 36px;
-    line-height: 100px;
+   /*  line-height: 100px; */
     margin: 10px;
     padding: 2%;
     position: relative;
     text-align: center;
-    height: 100%;
+    /* height: 100%; */
 }
 .action{
   display:block;
@@ -108,10 +117,13 @@ h3 {
     padding: 0;
 }
 
+
+
 .adbox {
 	width: 100%;
-    height: 100%;
+    height: 500%;
     margin-top: 3%;
+    margin-bottom:30px;
     background: #f1f2f3;
 }
 
@@ -121,7 +133,7 @@ h3 {
 	font-size: 1.5em;
 	margin-block-start: 0.83em;
     margin-block-end: 0.83em;
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
 .ad{
@@ -137,6 +149,10 @@ h3 {
 	padding-left:13px
 }
 
+.ad p{
+	font-sie
+}
+
 .adimgbox {
 	width:380px;
     height:220px;
@@ -145,7 +161,7 @@ h3 {
 }
 
 .ad td p{
-	margin-bottom:6px;
+	margin-bottom:10px;
 }
 
 .adimg {
@@ -154,13 +170,21 @@ h3 {
     object-fit:cover;
 }
 
+.img new{
+
+	width:640px;
+	width:728px;
+	
+
+}
+
 </style>
 
 <div class="wrapper">
 <section id="content" style="min-height: 400px;">
 
 	<div class="mainproduct">
-		<h1>Now Selling</h1>
+		<h1> 당근당근바니바니 상점 </h1>
 		<p>당근당근바니바니 판매상품을 확인해주세요.</p>
 		<div class="main">
 			<div class="slider slider-nav">
@@ -176,15 +200,15 @@ h3 {
 					if (b.getBoardIsDelete() == 0) {
 						%>
 				<div class="ex">
-						<h3>
+						<div class="imgclass">
 							<a href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-							<img class="new"
+							<img class="new" 
 								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" /></a>
-						</h3>
+						</div>>
 						</div>
-					<%}%>
-				<%}%>
-				<%} %>
+					<%}
+				}
+				} %>
 			</div>
 		</div>
 	</div>
@@ -198,8 +222,8 @@ h3 {
 		
 		
 	<div class="adbox">	
-		<h1>Ad</h1>
-		<p>당근당근바니바니가 추천하는 상품들</p>
+		<h1>앞광고</h1>
+		<p>당근당근바니바니에 광고를 걸어보세요.</p>
 		<div class="ad">
 			<table>
 				<tr>
