@@ -32,18 +32,21 @@
 	font-weight: lighter;
 	margin: 5px 0 0 0;
 	padding: 0;
+	
 }
 
 .noticetb {	
     width: 100%;
-    margin-top:20px;
-    line-height: 35px;
+    margin-top:40px;
+    line-height: 60px;
     text-align: center;
     font-size: 13px;
 	border: 1px solid lightgray;
-	border-collapse: collapse;
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 10px;
+	margin-bottom: 50px;
+	text-decoration : none;
+	
 }
 
 .noticetb th, td {
@@ -84,20 +87,20 @@
 						for(Qna q : list){%>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo() %>"><%=q.getQnaTitle() %></a>
+									<a style="text-decoration : none; color:black;" href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo() %>"><%=q.getQnaTitle() %></a>
 								</td>
 								<td><%=q.getQnaWriter() %></td>
 								<td><%=q.getQnaDate() %></td>
 								<%if(q.getQnaAnswer() == null){ %>
 									<td style="color: red; font-weight: bold;">답변 대기 중</td>
 								<%}else{%>
-									<td style="color: blue;">답변완료</td>
+									<td style="color: orange;">답변완료</td>
 								<%}%>
 							</tr>
 						<%}
 					}%>
 				</table>
-				<div id="pageBar" align="center" style="margin-top: 10px;">
+				<div id="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 19px; margin-top:10px;">
 				<%=request.getAttribute("pageBar")%>
 			</div>
 			</div>
