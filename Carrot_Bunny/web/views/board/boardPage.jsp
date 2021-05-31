@@ -24,7 +24,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 	height: auto;
 	min-height: 70%;
 	
-	padding-bottom: 10px;
+	padding-bottom: 40px;
 }
 
 section#notice-container {
@@ -85,7 +85,7 @@ body {
 }
 
 main {
-	padding-top: 0;
+	padding-top: 0px;
 	padding-bottom: 6rem;
 }
 
@@ -221,6 +221,7 @@ a.product {
     height: 38px;
     border-radius: 10px;
 	border : none;
+	margin-left:50px;
 }
 
 
@@ -231,6 +232,27 @@ select {
     margin-right: 10px;
 	font-size: 13px;
 }
+
+.search-boardName button {
+	width: 60px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #ff9800;
+    border: none;
+    color: white; 
+    
+   
+}
+
+
+.search-boardName input{
+    height: 38px;
+    border-radius: 10px;
+	border : none;
+	margin-left:50px;
+}
+
+
 </style>
 
 
@@ -268,7 +290,7 @@ select {
 					<%} %>
 				</form>
 			</div>
-			<div id="search-boardName">
+			<div id="search-boardName" class="search-boardName">
 				<form action="<%=request.getContextPath()%>/board/boardSearch">
 					<input type="hidden" name="searchType" value="B_TITLE"> <input
 						type="text" name="searchKeyword" size="25"
@@ -342,7 +364,7 @@ select {
 			</div>
 		</div>
 		<div id="pageBar"
-			style="text-align: center; letter-spacing: 10px; font-size: 19px;">
+			style="text-align: center; letter-spacing: 10px; font-size: 19px; margin-top:10px;">
 			<%=request.getAttribute("pageBar")%>
 		</div>
 	</main>
