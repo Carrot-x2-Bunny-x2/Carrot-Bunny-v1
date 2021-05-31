@@ -42,7 +42,10 @@ com.board.model.vo.Comment" %>
     table#tbl-comment tr.level2 sub.sub-comment-date {color:#ff9c8a; font-size:10px}
     /*답글관련*/
     table#tbl-comment textarea{margin: 4px 0 0 0;}
-    table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; background:#3300ff; position:relative; top:-5px; left:10px;}    
+    table#tbl-comment button.btn-insert2{
+    	width:45px; height:23px; color:white; position:relative; background-color: #ff9800; 
+    	font-family: 'RIDIBatang'; border-radius: 26px; border: 0; font-size: 20%;
+    }    
 
 
 	.wrapper {
@@ -5893,7 +5896,7 @@ header #nav-icon {
 							</div>
 						</div>
 						<div class="right-col">
-							<h1 itemprop="name" style="font-weight: bold"><%=loginMember.getUserName()%>🥕 님의 <%=b.getBoardTitle()%></h1>
+							<h1 itemprop="name" style="font-weight: bold"><%=b.getBoardWriter()%>🥕 님의 <%=b.getBoardTitle()%></h1>
 							<div style="float: right;">
 								<%
 								if (check == 1) {
