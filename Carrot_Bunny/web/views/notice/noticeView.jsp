@@ -25,14 +25,14 @@ Notice n = (Notice) request.getAttribute("notice");
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
-	padding-bottom: 30px;
+	padding-bottom: 80px;
 }
 
 .noticetitle p {
 	text-align: center;
 	font-size: 12px;
 	font-weight: lighter;
-	margin: 5px 0 0 0;
+	margin: 15px 0 0 0;
 	padding: 0;
 }
 
@@ -54,7 +54,7 @@ Notice n = (Notice) request.getAttribute("notice");
 }
 
 .noticetb {
-	margin-top: 10px;
+	margin-top: 20px;
 	float: right;
 }
 
@@ -103,6 +103,14 @@ input {
 .noticewrite tr{
 
 font-size:13px;
+
+}
+
+.memberbtn{
+	padding-bottom: 20px;
+	padding-top: 50px;
+	display: flex;
+	margin-left: 740px;
 
 }
 </style>
@@ -156,7 +164,7 @@ font-size:13px;
 	<%
 	} else {
 	%>
-	<div>
+	<div class="memberbtn">
 		<input class="btn4" type="button" value="목록"
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<%
