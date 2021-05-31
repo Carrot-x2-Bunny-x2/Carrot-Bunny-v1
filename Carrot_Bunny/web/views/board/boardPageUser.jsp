@@ -18,21 +18,18 @@ for (Board b : list) {
 
 <%@ include file="../common/header.jsp"%>
 <style>
-
-
 .wrapper {
-	height : auto;
-	min-height:70%;
-	padding-bottom:60px;
+	height: 1000px;
+	min-height: 100%;
+	padding-bottom: 60px;
 }
-
 
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
-	margin-bottom:20px;
+	margin-bottom: 20px;
 	text-align: center;
-	
+	height: 900px;
 }
 
 section#notice-container h2 {
@@ -60,10 +57,7 @@ table#tbl-notice {
 	clear: both;
 }
 
-
-
 /* 멤버에서 가져옴*/
-
 #tbl-member {
 	width: 100%;
 	min-height: 300px;
@@ -74,6 +68,7 @@ table#tbl-notice {
 	width: 81%;
 	height: 80%;
 	margin: auto;
+	
 }
 
 .membertitle {
@@ -81,7 +76,6 @@ table#tbl-notice {
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
-	
 }
 
 .membertitle p {
@@ -102,42 +96,35 @@ table#tbl-notice {
 	/*border-collapse: collapse; */
 	background-color: white;
 	border-radius: 10px;
-
 }
 
 div#search-container {
 	text-align: center;
 }
 
-.searchType{
-    height: 38px;
-    width: 80px;
-    border: none;
-    margin-right: 10px;
-    font-size: 13px;
-	margin-left:10px;
+.searchType {
+	height: 38px;
+	width: 80px;
+	border: none;
+	margin-right: 10px;
+	font-size: 13px;
+	margin-left: 10px;
 }
 
-.searchbtn{
- 	width: 60px;
-    height: 38px;
-    border-radius: 10px;
-    background-color: #ff9800;
-    border: none;
-    color: white; 
-
-
-
+.searchbtn {
+	width: 60px;
+	height: 38px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
 }
 
-
-.searchinputid{
-    height: 38px;
-    border-radius: 10px;
-	border : none;
-	margin-left:50px;
-
-
+.searchinputid {
+	height: 38px;
+	border-radius: 10px;
+	border: none;
+	margin-left: 50px;
 }
 
 div#search-userId {
@@ -157,46 +144,47 @@ form#numperPageFrm {
 }
 
 div#pageBar>* {
-	
+	margin-top:20px;
 	margin-right: 20px;
 	text-decoration: none;
 }
 
-.writebutton{
+.writebutton {
 	width: 60px;
-    height: 38px;
-    border-radius: 10px;
-    background-color: #ff9800;
-    border: none;
-    color: white;
+	height: 38px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
 }
 
-.search-container{
+.search-container {
 	align-items: center;
 }
 
 .tbl-member a {
 	text-decoration: none;
-	color : black;
+	color:d2691e;
+	
 }
-
-
 </style>
 <div class="wrapper">
 
 	<section id="tbl-member" class="tbl-member">
 		<div class="members">
-			<div class="membertitle">
-				나의 판매상품
-			</div>
+			<div class="membertitle">나의 판매상품</div>
 			<div id="search-container" class="search-container">
-					<p>	판매중 <%=selling %> / 판매완료	<%=sold %></p>
-					<input class="writebutton" type="button" value="글쓰기" id="btn-add"
-			onclick="fn_noticeWrite();">
+				<p>
+					판매중
+					<%=selling %>
+					/ 판매완료
+					<%=sold %></p>
+				<input  class="writebutton" type="button" value="글쓰기" id="btn-add"
+					onclick="fn_noticeWrite();">
 			</div>
 			<!-- 회원 리스트 -->
-			<div class="memberlist" >
-				<table class="membertb" >
+			<div class="memberlist">
+				<table class="membertb">
 					<thead>
 						<tr>
 							<th>판매여부</th>
@@ -220,26 +208,26 @@ div#pageBar>* {
 							if (b.getBoardIsDelete() == 0) {
 						%>
 						<tr>
-				<%if (b.getBoardIsSell() == 1) { %>
-				<td>판매중</td>
-				<%} else { %>
-				<td>판매완료</td>
-				<%} %>
-				<td><a
-					href="<%=request.getContextPath()%>/board/boardView?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
-						<%=b.getBoardTitle()%>
-				</a></td>
-				<td><%=b.getBoardAmount() %></td>
-				<td><%=b.getBoardPrice() %></td>
-			</tr>
+							<%if (b.getBoardIsSell() == 1) { %>
+							<td>판매중</td>
+							<%} else { %>
+							<td>판매완료</td>
+							<%} %>
+							<td ><a 
+								href="<%=request.getContextPath()%>/board/boardView?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
+									<%=b.getBoardTitle()%>
+							</a></td>
+							<td><%=b.getBoardAmount() %></td>
+							<td><%=b.getBoardPrice() %></td>
+						</tr>
 						<%
 						}
 						}
 						}%>
 					</tbody>
 				</table>
-	
-				<div id="pageBar" align="center" style="margin-top: 10px;">
+
+				<div id="pageBar" align="center" style="margin-top: 40px;">
 					<%=request.getAttribute("pageBar")%>
 				</div>
 			</div>
