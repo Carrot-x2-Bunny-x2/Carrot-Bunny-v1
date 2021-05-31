@@ -34,6 +34,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
+	
 }
 
 .membertitle p {
@@ -47,19 +48,51 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 .membertb {
 	width: 100%;
 	margin-top: 20px;
-	line-height: 35px;
+	line-height: 60px;
 	text-align: center;
-	font-size: 13px;
+	font-size: 15px;
 	border: 1px solid lightgray;
-	border-collapse: collapse;
+	/*border-collapse: collapse; */
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 10px;
+
 }
 
 div#search-container {
-	margin: 0 0 10px 0;
+	margin: 30px 0 20px 0;
 	padding: 3px;
 	text-align: center;
+}
+
+.searchType{
+    height: 38px;
+    width: 80px;
+    border: none;
+    margin-right: 10px;
+    font-size: 13px;
+	margin-left:10px;
+}
+
+.searchbtn{
+ 	width: 60px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #ff9800;
+    border: none;
+    color: white; 
+
+
+
+}
+
+
+.searchinputid{
+    height: 38px;
+    border-radius: 10px;
+	border : none;
+	margin-left:50px;
+
+
 }
 
 div#search-userId {
@@ -79,6 +112,7 @@ form#numperPageFrm {
 }
 
 div#pageBar>* {
+	
 	margin-right: 20px;
 	text-decoration: none;
 }
@@ -93,7 +127,7 @@ div#pageBar>* {
 				<p>당근당근바니바니를 이용하는 회원들을 관리 해주세요!</p>
 			</div>
 			<div id="search-container">
-				검색타입 : <select id="searchType">
+				<select id="searchType" class="searchType">
 					<option value="userId"
 						<%=searchType.equals("userId") ? "selected" : ""%>>아이디</option>
 					<option value="userName"
@@ -103,9 +137,9 @@ div#pageBar>* {
 					<form action="<%=request.getContextPath()%>/admin/searchMember">
 						<input type="hidden" name="searchType" value="member_id"> <input
 							type="text" name="searchKeyword" size="30"
-							placeholder="검색할 아이디를 입력하세요"
+							placeholder="검색할 아이디를 입력하세요" class="searchinputid"
 							value='<%=searchType.equals("UserId") ? keyword : ""%>'>
-						<button type="submit">검색</button>
+						<button type="submit" class="searchbtn">검색</button>
 					</form>
 				</div>
 				<div id="search-userName">
@@ -120,8 +154,8 @@ div#pageBar>* {
 			</div>
 	
 			<!-- 회원 리스트 -->
-			<div class="memberlist">
-				<table class="membertb">
+			<div class="memberlist" >
+				<table class="membertb" >
 					<thead>
 						<tr>
 							<th>회원번호</th>
@@ -156,7 +190,7 @@ div#pageBar>* {
 					</tbody>
 				</table>
 	
-				<div id="pageBar" align="center" style="margin-top: 10px;">
+				<div id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; ">
 					<%=request.getAttribute("pageBar")%>
 				</div>
 			</div>
