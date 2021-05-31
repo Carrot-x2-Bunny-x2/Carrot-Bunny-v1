@@ -272,14 +272,14 @@ h3 {
 					</td>
 					<td>
 						<div class="adimgbox">
-							<a href="https://www.aesop.com/kr/"><img class="adimg"
+							<a href="https://ohou.se/"><img class="adimg"
 								src="<%=request.getContextPath()%>/images/ohHouse.jpg" /></a>
 						</div>
 						<p>오늘의 집</p>
 					</td>
 					<td>
 						<div class="adimgbox">
-							<a href="https://www.aesop.com/kr/"><img class="adimg"
+							<a href="https://www.chanel.com/ko_KR/"><img class="adimg"
 								src="<%=request.getContextPath()%>/images/chanel.jpg" /></a>
 						</div>
 						<p>CHANEL</p>

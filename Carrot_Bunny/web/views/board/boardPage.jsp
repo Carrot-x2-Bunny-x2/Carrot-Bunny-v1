@@ -37,10 +37,7 @@ section#notice-container h2 {
 	margin: 10px 0;
 }
 
-
-
 *, *:before, *:after {
-	box-sizing: border-box;
 }
 
 h1, h2, h3, h4, ul, ol, li, figure, figcaption, blockquote, dl, dd {
