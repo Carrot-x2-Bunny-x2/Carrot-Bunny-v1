@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List,com.notice.model.vo.Notice"%>
-<% 
-	Notice n=(Notice)request.getAttribute("notice");
+<%
+Notice n = (Notice) request.getAttribute("notice");
 %>
 <%@ include file="../common/header.jsp"%>
 
@@ -25,6 +25,7 @@
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
+	padding-bottom: 20px;
 }
 
 .noticetitle p {
@@ -36,15 +37,18 @@
 }
 
 .notice {
-	width: 100%;
+/* 	width: 100%;
 	margin-top: 20px;
 	line-height: 35px;
-	text-align: center;
-	font-size: 13px;
+	text-align: center; font-size : 13px;
 	border: 1px solid lightgray;
 	border-collapse: collapse;
 	background-color: white;
 	border-radius: 5px;
+	font-size: 13px; */
+	
+	
+	
 }
 
 .noticetb th, td {
@@ -55,6 +59,35 @@
 	margin-top: 10px;
 	float: right;
 }
+
+input {
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+}
+
+.buttonbtn {
+	padding-bottom: 40px;
+	padding-top: 10px;
+	display: flex;
+	margin-left: 10px;
+}
+
+.btn1 {
+	margin-right: 10px;
+}
+
+.btn2 {
+	margin-right: 10px;
+}
+
+.btn3 {
+	margin-right: 10px;
+}
+
 </style>
 <div id="wrap">
 
@@ -64,9 +97,12 @@
 			공지사항 상세화면
 			<p>공지사항을 꼼꼼하게 읽어주세요!</p>
 		</div>
+
+
+
 		<div class="noticewrite"
 			style="padding-top: 30px; margin-left: 70px; background-color: #E0E0E0; width: 950px; height: 400px;">
-			
+
 			<table class="">
 				<tr>
 					<th>제목</th>
@@ -80,28 +116,41 @@
 		</div>
 
 	</div>
-	<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
-	<div
-		style="text-align: center; padding-bottom: 40px; padding-top: 10px;">
-		
-		<input type="submit" value="수정" style="width: 100px; height: 50px;" 
-		onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
-		<form action="<%=request.getContextPath()%>/deleteNotice?no="+'<%=n.getNoticeNo()%>" method="get">
-			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-		<input type="button" value="삭제" style="width: 100px; height: 50px;"
-		onclick="fn_delete_notice();">
-		</form>
-		<input type="button" value="목록" style="width: 100px; height: 50px;"
-			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
-		<%} else{%>
-		<input type="button" value="목록" style="width: 100px; height: 50px;"
-			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
-		<%} %>
-	</div>
-	
-	
+	<%
+	if (loginMember != null && loginMember.getUserId().equals("admin")) {
+	%>
 
-	<script>
+	<div class="buttonbtn">
+		
+			<input class="btn1" type="submit" value="수정"
+				onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
+			<form action="<%=request.getContextPath()%>/deleteNotice?no="
+				+'<%=n.getNoticeNo()%>" method="get">
+				<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+				<input class="btn2" type="button" value="삭제"
+					onclick="fn_delete_notice();">
+			</form>
+			<input class="btn3" type="button" value="목록"
+				onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
+		
+	</div>
+	<%
+	} else {
+	%>
+	<div>
+		<input class="btn4" type="button" value="목록"
+			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
+		<%
+		}
+		%>
+	</div>
+
+
+</div>
+
+
+
+<script>
 	
 	const fn_delete_notice=()=>{
 		if(confirm("정말로 삭제하시겠습니까?")){

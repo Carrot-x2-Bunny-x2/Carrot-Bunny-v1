@@ -6,6 +6,8 @@
 /*공지사항 기본 style*/
 #wrap {
 	width: 100%;
+	padding-bottom: 100px;
+	min-height: 70%;
 }
 
 .noticewrite {
@@ -31,7 +33,44 @@
 	padding: 0;
 }
 
-/*공지사항 등록 폼 스타일 */
+.writetb{
+	width: 100%;
+	heigth: 100%;
+	margin-left: 330px;
+
+}
+
+.writetb input{
+	width: 500px; 
+	height: 30px; 
+	margin-left: 12px;	
+	border-radius: 10px;
+	margin-top:10px;
+  
+}
+
+.writetb textarea{
+	width: 500px; 
+	height: 320px; 
+	margin-left: 12px;
+	border-radius: 10px;
+	margin-top : 20px;
+}
+
+
+.boardbtn{
+	margin-top:20px;
+	width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ff9800;
+    border: none;
+    color: white; 
+	
+
+}
+
+
 </style>
 
 <script>
@@ -45,29 +84,33 @@
 			공지사항 등록
 			<p>회원에게 보여줄 공지를 등록해주세요!</p>
 		</div>
-		<div class="nwwrite"
-			style="padding-top: 30px; margin-left: 70px; background-color: #E0E0E0; width: 950px; height: 400px;">
+
+
+
+		<div class="nwwrite">
 			<form action="<%=request.getContextPath()%>/notice/noticeWriteEnd"
 				method="post">
-				<table>
-					<tr>
-						<th>제목</th>
-						<td><input type="text" name="n_title"
-							placeholder="제목을 입력해주세요"
-							style="width: 250px; height: 30px; margin-left: 12px;"></td>
-					</tr>
-					<tr>
-						<th>내용</th>
-						<td><textarea type="text" name="n_content"
-								placeholder="내용을 입력해주세요."
-								style="width: 850px; height: 320px; margin-left: 12px;"></textarea>
-						</td>
-					</tr>
-				</table>
+
+				<div class="writetb">
+					<table>
+						<tr>
+							<th>제목</th>
+							<td><input type="text" name="n_title"
+								placeholder="제목을 입력해주세요"
+								></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td><textarea type="text" name="n_content"
+									placeholder="내용을 입력해주세요."></textarea>
+							</td>
+						</tr>
+					</table>
+				</div>
 				<div
 					style="text-align: center; padding-bottom: 40px; padding-top: 10px;">
-					<input type="submit" value="등록" style="width: 100px; height: 50px;">
-					<input type="button" value="목록" style="width: 100px; height: 50px;"
+					<input class="boardbtn" type="submit" value="등록" >
+					<input class="boardbtn" type="button" value="목록" 
 						onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 				</div>
 			</form>
