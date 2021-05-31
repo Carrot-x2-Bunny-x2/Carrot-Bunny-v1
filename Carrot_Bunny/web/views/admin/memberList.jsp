@@ -178,7 +178,7 @@ div#pageBar>* {
 						%>
 						<tr>
 							<td><%=m.getmemberNum()%></td>
-							<td><a
+							<td><a style="text-decoration : none;"
 								href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
 							</a></td>
 							<td><%=m.getUserName()%></td>

@@ -20,6 +20,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 	width: 80%;
 	min-height: 300px;
 	margin-left: 10%;
+	
 	/* position: relative; */
 }
 
@@ -27,7 +28,7 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 	width: 81%;
 	height: 80%;
 	margin: auto;
-	min-height: 500px;
+	
 }
 
 .boardtitle {
@@ -48,19 +49,20 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 .boardtb {
 	width: 100%;
 	margin-top: 20px;
-	line-height: 35px;
+	line-height: 60px;
 	text-align: center;
 	font-size: 13px;
 	border: 1px solid lightgray;
-	border-collapse: collapse;
+	/* border-collapse: collapse; */
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 10px;
+	text-decoration : none;
 }
 
 div#search-container {
-	margin: 0 0 10px 0;
-	padding: 3px;
+	margin: 30px 0 20px 0;
 	text-align: center;
+	display: flex;
 }
 
 div#search-boardNameSell {
@@ -84,6 +86,33 @@ div#pageBar>* {
 	margin-right: 20px;
 	text-decoration: none;
 }
+
+.searchboard {
+	height: 38px;
+	width: 80px;
+	border: none;
+	/* margin-right: 10px; */
+	font-size: 13px;
+	/* margin-left: 10px; */
+	/* display: inline-block;  */
+}
+
+.searchbtn {
+	width: 60px;
+	height: 38px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+	
+}
+
+.searchinput {
+	height: 38px;
+	border-radius: 10px;
+	border: none;
+	/* margin-left: 50px; */
+}
 </style>
 <div class="wrapper">
 	<section id="tbl-board">
@@ -94,24 +123,27 @@ div#pageBar>* {
 				<p>당근당근바니바니를 이용하는 회원들의 게시물 관리 해주세요!</p>
 			</div>
 		</div>
+
+
 		<div id="search-container">
-			<div id="search-boardName">
-				<form action="<%=request.getContextPath()%>/searchBoardList">
-					<input type="hidden" name="searchType" value="B_TITLE"> <input
-						type="text" name="searchKeyword" size="25"
-						placeholder="검색할 상품이름을 입력하세요"
-						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'>
-					<button type="submit">검색</button>
-				</form>
-			</div>
-			<div id="b_sell" style="text-align: left; margin-left: 60px;">
-				<select id="isSell" name="isSell"
+			<div style="margin: initial; margin-left: auto;">
+				<select id="isSell" name="isSell" class="searchboard"
 					onchange="if(this.value)location.href=(this.value);">
 					<option value="<%=request.getContextPath()%>/boardListPage">판매여부</option>
 					<option value="<%=request.getContextPath()%>/adminCheckSell">판매중</option>
 					<option value="<%=request.getContextPath()%>/adminCheckSold">판매완료</option>
-				</select>
 
+				</select>
+			</div>
+			<div id="search-boardName" style="margin-right: auto; margin-bottom:20px;">
+				<form action="<%=request.getContextPath()%>/searchBoardList">
+					<input type="hidden" name="searchType" value="B_TITLE"> <input
+						type="text" name="searchKeyword" size="25"
+						placeholder="검색할 상품이름을 입력하세요"
+						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'
+						class="searchinput">
+					<button type="submit" class="searchbtn">검색</button>
+				</form>
 			</div>
 		</div>
 		<div class="aliveboardlist">
@@ -149,7 +181,7 @@ div#pageBar>* {
 						<%
 						}
 						%>
-						<td><a
+						<td ><a style="text-decoration : none;"
 							href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"><%=b.getBoardTitle()%></a></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>
@@ -160,7 +192,7 @@ div#pageBar>* {
 					%>
 				</tbody>
 			</table>
-			<div id="pageBar" align="center" style="margin-top: 10px;">
+			<div id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; ">
 				<%=request.getAttribute("pageBar")%>
 				<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 			</div>
