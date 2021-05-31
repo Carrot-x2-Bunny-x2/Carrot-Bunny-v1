@@ -74,14 +74,7 @@ p {
 }
 
 .imgclass {
-	/* 	background: color: #3498db;
-	font-size: 36px;
-	/*  line-height: 100px; */
-	/* 	margin: 10px;
-	padding: 2%;
-	position: relative;
-	text-align: center; */
-	/* height: 100%; */ */
+
 	display: table-cell;
 	vertical-align: middle;
 	position: relative;
@@ -90,8 +83,8 @@ p {
 .new {
 	max-width: 400px;
 	max-height: 300px;
-	/* 	margin-left : 10px;
-	margin-right : 10px; */
+	margin-left : 60px; 
+
 }
 
 .action {
