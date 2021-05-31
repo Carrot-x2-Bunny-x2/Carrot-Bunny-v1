@@ -53,9 +53,10 @@
 
 .noticewrite {
 	margin-top: 10px;
+	margin-right :40px;
 	float: right;
 	width: 100px;
-	height: 38px;
+	height: 40px;
 	border-radius: 10px;
 	background-color: #ff9800;
 	border: none;
@@ -88,7 +89,7 @@
 					<%}else{ 
 				for(Notice n : list){%>
 					<tr>
-						<td><a style="text-decoration: none;"
+						<td><a style="text-decoration: none; color:black;"
 							href="<%=request.getContextPath()%>/notice/noticeView?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle() %></a>
 						</td>
 						<td><%=n.getNoticeDate() %></td>

@@ -181,7 +181,7 @@ div#pageBar>* {
 						<%
 						}
 						%>
-						<td ><a style="text-decoration : none;"
+						<td ><a style="text-decoration : none; color: #d2691e;"
 							href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>"><%=b.getBoardTitle()%></a></td>
 						<td><%=b.getBoardWriter()%></td>
 						<td><%=b.getBoardDate()%></td>

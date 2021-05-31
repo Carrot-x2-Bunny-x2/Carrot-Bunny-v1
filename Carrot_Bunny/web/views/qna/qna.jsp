@@ -87,7 +87,7 @@
 						for(Qna q : list){%>
 							<tr>
 								<td>
-									<a style="text-decoration : none; color:black;" href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo() %>"><%=q.getQnaTitle() %></a>
+									<a style="text-decoration : none; color: #d2691e;" href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo() %>"><%=q.getQnaTitle() %></a>
 								</td>
 								<td><%=q.getQnaWriter() %></td>
 								<td><%=q.getQnaDate() %></td>
