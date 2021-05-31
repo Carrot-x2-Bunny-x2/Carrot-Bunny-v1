@@ -78,7 +78,7 @@ p#heart {
 								<td>판매완료</td>
 							<%} %>
 							<td>
-								<a href="<%=request.getContextPath()%>/board/boardView?no=<%=b.getBoardNumber()%>">
+								<a href="<%=request.getContextPath()%>/board/boardView?love=<%=request.getAttribute("love")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 								<%=b.getBoardTitle()%>
 								</a>
 							</td>

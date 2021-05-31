@@ -37,6 +37,10 @@ public class LovePageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int love = 1;
+		request.setAttribute("love",love);
+		int user = 0;
+		request.setAttribute("user",user);
 		int cPage;
 		int numPerPage;
 		try {
@@ -54,19 +58,15 @@ public class LovePageServlet extends HttpServlet {
 		
 		List<Love> loveList=new LoveService().selectUserLoveList(cPage,numPerPage,loginMember);
 		List<Board> boardList = new ArrayList<>();
-		int totalData = 0;
+		int totalData = new LoveService().selectLoveCount(loginMember);
 		if (loveList != null) {
 			for (Love lo : loveList) {
 				Board b = new BoardService().selectBoard(lo.getBoardNumber());
 				boardList.add(b);
-				totalData += 1;
 			}
 		} else {
 			boardList = null;
 		}
-		
-		
-		
 		request.setAttribute("list", boardList); 
 		
 		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
@@ -80,7 +80,7 @@ public class LovePageServlet extends HttpServlet {
 			pageBar="<span>[이전]</span>";
 		}else {
 			pageBar="<a href='"+request.getContextPath()
-			+"/board/boardPage?cPage="+(pageNo-1)+"'>[이전]</a>";
+			+"/love/lovePage?cPage="+(pageNo-1)+"'>[이전]</a>";
 		}
 	
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
@@ -88,7 +88,7 @@ public class LovePageServlet extends HttpServlet {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()
-				+"/board/boardPage?cPage="+pageNo+"'>"+pageNo+"</a>";
+				+"/love/lovePage?cPage="+pageNo+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -98,9 +98,10 @@ public class LovePageServlet extends HttpServlet {
 		}
 		else {
 			pageBar+="<a href='"+request.getContextPath()
-			+"/board/boardPage?cPage="+pageNo+"'>[다음]</a>";
+			+"/love/lovePage?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar",pageBar);
+		request.setAttribute("cPage",cPage);
 		request.getRequestDispatcher("/views/love/lovePage.jsp")
 		.forward(request, response);
 	}

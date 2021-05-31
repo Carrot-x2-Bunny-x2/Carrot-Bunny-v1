@@ -5902,13 +5902,13 @@ header #nav-icon {
 								if (check == 1) {
 								%>
 								<input id="isLike" type="checkbox" checked
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								} else {
 								%>
 								<input id="isLike" type="checkbox"
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								}
@@ -6062,10 +6062,22 @@ header #nav-icon {
 		</div>
 
 		<div class="more-products" id="more-products-wrap">
-			<span id="more-products" style="background-color: ff9800;"
+			<%if((int)request.getAttribute("user")==1) { %>
+				<span id="more-products" style="background-color: ff9800;"
 				data-rows_per_page="1"
-				onclick="location.assign('<%=request.getContextPath()%>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">상품
+				onclick="location.assign('<%=request.getContextPath()%>/board/boardPageUser?cPage=<%=request.getAttribute("cPage")%>')">상품
 				목록</span>
+			<%} else if((int)request.getAttribute("love")==1) { %>
+				<span id="more-products" style="background-color: ff9800;"
+				data-rows_per_page="1"
+				onclick="location.assign('<%=request.getContextPath()%>/love/lovePage?cPage=<%=request.getAttribute("cPage")%>')">상품
+				목록</span>
+			<%} else { %>
+				<span id="more-products" style="background-color: ff9800;"
+					data-rows_per_page="1"
+					onclick="location.assign('<%=request.getContextPath()%>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">상품
+					목록</span>
+			<%} %>
 		</div>
 	</section>
 </div>

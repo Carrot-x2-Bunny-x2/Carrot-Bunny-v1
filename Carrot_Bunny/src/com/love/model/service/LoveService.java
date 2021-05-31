@@ -26,7 +26,13 @@ public class LoveService {
 		close(conn);
 		return list;
 	}
-	
+	// 사용자의 찜 상품 카운트
+	public int selectLoveCount(Member m) {
+		Connection conn = getConnection();
+		int result = dao.selectLoveCount(conn, m);
+		close(conn);
+		return result;
+	}
 	public int findLove(Member m, int boardNumber) {
 		Connection conn = getConnection();
 		int result = dao.findLove(conn, m, boardNumber);

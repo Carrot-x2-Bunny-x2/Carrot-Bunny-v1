@@ -73,6 +73,24 @@ public class LoveDao {
 		}
 		return list;
 	}
+	
+	public int selectLoveCount(Connection conn, Member m) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("selectLoveCount"));
+			pstmt.setString(1, m.getUserId());
+			rs = pstmt.executeQuery();
+			if(rs.next()) result = rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
 	// m_id와 b_num 둘 다 일치하는 Love를 가져온다.
 	public int findLove(Connection conn, Member m, int boardNumber) {
 		PreparedStatement pstmt = null;
