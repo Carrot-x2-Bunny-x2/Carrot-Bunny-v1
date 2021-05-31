@@ -81,7 +81,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 		</tr>
 		<tr>
 			<th>문의 내용</th>
-			<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
+			<td><textarea readonly="readonly"><%=q.getQnaContent()%></textarea></td>
 		</tr>
 		<tr>
 			<th>답변 내용</th>

@@ -72,7 +72,7 @@ textarea {
 				</tr>
 				<tr>
 					<th>문의 내용</th>
-					<td><textarea name="qnaContent" id="qnaContent" required></textarea><br></td>
+					<td><textarea name="qnaContent" id="qnaContent" required></textarea></td>
 				</tr>
 				<tr>
 					<th colspan="2"><input type="submit" value="문의 등록하기"></th>
