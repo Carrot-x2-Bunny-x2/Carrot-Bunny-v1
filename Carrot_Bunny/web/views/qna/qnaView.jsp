@@ -8,10 +8,11 @@ Qna q = (Qna) request.getAttribute("qna");
 
 <style>
 .wrapper {
-	height : auto;
-	min-height:65%;
-	padding-bottom:60px;
+	height: auto;
+	min-height: 70%;
+	padding-bottom: 60px;
 }
+
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
@@ -23,29 +24,36 @@ section#notice-container h2 {
 }
 
 table#tbl-notice {
-	width: 500px;
-	margin: 0 auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-	clear: both;
+	width: 77%;
+	margin-left: 20px;
+	margin-top: 20px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 13px;
+	border: 1px lightgray;
+	/* border-collapse: collapse; */
+	background-color: white;
+	border-radius: 10px;
+	text-decoration: none;
+	margin-top: 20px;
 }
 
 table#tbl-notice th {
 	width: 125px;
-	border: 1px solid;
 	padding: 5px 0;
 	text-align: center;
 }
 
 table#tbl-notice td {
-	border: 1px solid;
-	padding: 5px 0 5px 10px;
+	border: none;
+	padding: 5px 0 15px 10px;
 	text-align: left;
+	border-radius: 10px;
 }
 
 textarea {
-	width : 88%;
-	height : auto;
+	width: 88%;
+	height: auto;
 }
 
 .noticetitle {
@@ -57,105 +65,117 @@ textarea {
 </style>
 <div class="wrapper">
 
-<%
-if (loginMember != null && loginMember.getUserId().equals("admin")) {
-%>
-<div id="notice-container">
-	<div class="noticetitle">
-	<p>1:1 문의 상세화면</p>
+	<%
+	if (loginMember != null && loginMember.getUserId().equals("admin")) {
+	%>
+	<div id="notice-container">
+		<div class="noticetitle">
+			<p>1:1 문의 상세화면</p>
+		</div>
+		<div>
+			<form name="qnaUpdate"
+				action="<%=request.getContextPath()%>/qna/qnaUpdate" method="post">
+				<div
+					style="border: 1px solid black; width: 800px; border-radius: 10px;" >
+					<table id="tbl-notice">
+						<tr>
+							<th>제 목</th>
+							<td><%=q.getQnaTitle()%></td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td><%=q.getQnaWriter()%></td>
+						</tr>
+						<tr>
+							<th>작성 날짜</th>
+							<td><%=q.getQnaDate()%></td>
+						</tr>
+						<tr>
+							<th>문의 내용</th>
+							<td><p style="border: none;" readonly="readonly"><%=q.getQnaContent()%></p></td>
+						</tr>
+						<tr>
+							<th>답변 내용</th>
+							<%
+							if (q.getQnaAnswer() == null) {
+							%>
+							<td ><input type="hidden" name="qnaNo"
+								value="<%=q.getQnaNo()%>"> <input style="width:400px; height:100px;"
+									placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer"
+									id="answer"></input><br> </td>
+							<%
+							} else {
+							%>
+							<td><input type="hidden" name="qnaNo"
+								value="<%=q.getQnaNo()%>"> <textarea
+									placeholder="<%=q.getQnaAnswer()%>" name="answer" id="answer"><%=q.getQnaAnswer()%></textarea><br>
+								<input type="submit" value="수정하기"></td>
+							<%
+							}
+							%>
+						
+					</table>
+				</div>
+				<div style="text-align: center;">
+					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;" type="submit"
+								value="답변 등록">
+					<input
+						style="width: 70px; height: 38px; margin-right:10px;  margin-top: 20px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						type="button" value="문의 목록"
+						onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
+					<input
+						style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						type="button" value="삭제하기" onclick="fn_delete_qna();">
+				</div>
+			</form>
+		</div>
 	</div>
-	<form name="qnaUpdate" action="<%=request.getContextPath()%>/qna/qnaUpdate"
-			method="post">
-	<table id="tbl-notice">
-		<tr>
-			<th>제 목</th>
-			<td><%=q.getQnaTitle()%></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=q.getQnaWriter()%></td>
-		</tr>
-		<tr>
-			<th>작성 날짜</th>
-			<td><%=q.getQnaDate()%></td>
-		</tr>
-		<tr>
-			<th>문의 내용</th>
-			<td><textarea readonly="readonly"><%=q.getQnaContent()%></textarea></td>
-		</tr>
-		<tr>
-			<th>답변 내용</th>
-			<%
-			if (q.getQnaAnswer() == null) {
-			%>
-			<td>
-			<input type="hidden" name="qnaNo" value="<%=q.getQnaNo()%>">
-			<textarea placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer" id="answer"></textarea><br>
-			<input type="submit" value="등록하기">
-			</td>
-			<%
-			} else {
-			%>
-			<td><input type="hidden" name="qnaNo" value="<%=q.getQnaNo()%>">
-			<textarea placeholder="<%=q.getQnaAnswer()%>" name="answer" id="answer"><%=q.getQnaAnswer()%></textarea><br>
-			<input type="submit" value="수정하기"></td>
-			<%
-			}
-			%>
-		</tr>
-		<tr>
-			<th colspan="2">
-			<input type="button" value="문의 목록" onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
-			<input type="button" value="삭제하기" onclick="fn_delete_qna();">
-			</th>
-		</tr>
-	</table>
-	</form>
-</div>
-<%
+	<%
 } else {
 %>
-<div id="notice-container">
-	<div class="noticetitle">
-	<p>1:1 문의 상세화면</p>
+	<div id="notice-container">
+		<div class="noticetitle">
+			<p>1:1 문의 상세화면</p>
+		</div>
+		<table id="tbl-notice">
+			<tr>
+				<th>제 목</th>
+				<td><%=q.getQnaTitle()%></td>
+			</tr>
+			<tr>
+				<th>작성 날짜</th>
+				<td><%=q.getQnaDate()%></td>
+			</tr>
+			<tr>
+				<th>문의 내용</th>
+				<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
+			</tr>
+			<tr>
+				<%
+				if (q.getQnaAnswer() == null) {
+				%>
+				<th colspan="2"><p style="color: blue;">
+						문의에 대한 답변이 아직 등록되지 않았습니다.
+						<p></th>
+				<%
+				} else {
+				%>
+				<th>답변 내용</th>
+				<td><textarea readonly="readonly"><%=q.getQnaAnswer()%></textarea>
+				</td>
+				<%
+				}
+				%>
+			</tr>
+		</table>
+		<div style="text-align: center;">
+			<input
+				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+				type="button" value="문의 목록"
+				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
+		</div>
 	</div>
-	<table id="tbl-notice">
-		<tr>
-			<th>제 목</th>
-			<td><%=q.getQnaTitle()%></td>
-		</tr>
-		<tr>
-			<th>작성 날짜</th>
-			<td><%=q.getQnaDate()%></td>
-		</tr>
-		<tr>
-			<th>문의 내용</th>
-			<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
-		</tr>
-		<tr>
-			<%
-			if (q.getQnaAnswer() == null) {
-			%>
-			<th colspan="2"><p style="color: blue;">문의에 대한 답변이 아직 등록되지 않았습니다.<p></th>
-			<%
-			} else {
-			%>
-			<th>답변 내용</th>
-			<td>
-			<textarea readonly="readonly"><%=q.getQnaAnswer()%></textarea>
-			</td>
-			<%
-			}
-			%>
-		</tr>
-		<tr>
-			<th colspan="2">
-			<input type="button" value="문의 목록" onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
-			</th>
-		</tr>
-	</table>
-</div>
-<%
+	<%
 }
 %>
 
@@ -175,4 +195,4 @@ const fn_delete_qna=()=>{
 
 
 
-<%@ include file="../common/footer.jsp"%>
+						<%@ include file="../common/footer.jsp"%>
