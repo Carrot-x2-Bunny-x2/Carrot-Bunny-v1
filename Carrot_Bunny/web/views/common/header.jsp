@@ -54,7 +54,7 @@ html, body {
 .logo {
 	width: 160px;
 	height: 160px;
-	margin-left: 41.3%;
+	margin-left: 30.3%;
 }
 
 .navbar_logo {

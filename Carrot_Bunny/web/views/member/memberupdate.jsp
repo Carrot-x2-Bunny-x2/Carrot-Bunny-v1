@@ -6,6 +6,12 @@
 
 <style>
 
+.wrapper {
+	height : auto;
+	min-height:68%;
+	padding-bottom:56px;
+}
+
 /* myinfo */
 .myinfo-container {
 	display: flex;
@@ -37,20 +43,53 @@
 	padding: 0;
 }
 
-</style>
+.btn1 {
+	width: 100px;
+	height: 35px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+	margin-top :10%;
+}
 
+.btn2 {
+	width: 100px;
+	height: 35px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+	margin-top :10%;
+}
+
+.btn3 {
+	width: 100px;
+	height: 35px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+	margin-top :15px;
+}
+
+.memberFrm input{
+	border-radius: 10px;
+}
+
+.memberFrm th{
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+</style>
+<div class="wrapper">
 <div class="myinfo-container">
 	<div class="myinfo">
 		<!-- 메인 코멘트 영역 -->
-		<div class="myinfotitle">
+		<div class="myinfotitle" style="margin-bottom: 15%;">
 			나의 정보
 			<p>나의 정보를 확인해보세요</p>
-		</div>
-
-		<div>
-			<img class="myicon"
-				src="<%=request.getContextPath()%>/images/loginicon.png"></img>
-			<p colspan="2" style="display: center; font-size: 12px;"><%=loginMember.getUserName()%> 님</p>
 		</div>
 		
 		<form id="memberFrm" class="memberFrm"
@@ -79,14 +118,15 @@
 						name="phone" id="phone" maxlength="11" value="<%=loginMember.getPhone() %>"><br></td>
 				</tr>
 			</table>
-			<input type="button" value="정보수정" onclick="fn_update_member();"/>
-			<button type="button" onclick="fn_password_update();">비밀번호변경</button>
-			<input type="button" value="탈퇴" onclick="fn_delete_member();"/>
+			<input class="btn1" type="button" value="정보수정" onclick="fn_update_member();"/>
+			<button class="btn2" type="button" onclick="fn_password_update();">비밀번호변경</button>
+			<br>
+			<input class="btn3" type="button" value="회원탈퇴" onclick="fn_delete_member();"/>
 		</form>
 		
 	</div>
 </div>
-
+</div>
 	<script>
 		const fn_password_update=()=>{
 			const url="<%=request.getContextPath()%>/updatePassword?userId=<%=loginMember.getUserId()%>";

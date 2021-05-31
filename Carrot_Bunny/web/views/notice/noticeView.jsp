@@ -9,13 +9,13 @@ Notice n = (Notice) request.getAttribute("notice");
 <style>
 #wrap {
 	width: 100%;
-	min-height: 700px;
+	min-height: 900px;
 	/* position: relative; */
 }
 
 .notice .noticeList {
-	width: 81%;
-	height: 80%;
+	width: 100%;
+	height: 100%;
 	margin: auto;
 	min-height: 900px;
 }
@@ -25,14 +25,14 @@ Notice n = (Notice) request.getAttribute("notice");
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
-	padding-bottom: 20px;
+	padding-bottom: 80px;
 }
 
 .noticetitle p {
 	text-align: center;
 	font-size: 12px;
 	font-weight: lighter;
-	margin: 5px 0 0 0;
+	margin: 15px 0 0 0;
 	padding: 0;
 }
 
@@ -54,7 +54,7 @@ Notice n = (Notice) request.getAttribute("notice");
 }
 
 .noticetb {
-	margin-top: 10px;
+	margin-top: 20px;
 	float: right;
 }
 
@@ -96,13 +96,21 @@ input {
 }
 
 .noticewrite {
-	margin-left: 515px;
+	margin-left: 410px;
 	margin-top:30px;
 }
 
 .noticewrite tr{
 
 font-size:13px;
+
+}
+
+.memberbtn{
+	padding-bottom: 20px;
+	padding-top: 50px;
+	display: flex;
+	margin-left: 740px;
 
 }
 </style>
@@ -121,15 +129,15 @@ font-size:13px;
 
 			<table>
 				<tr>
-					<th style="padding-right : 15px;">제목</th>
+					<th style="padding-right : 15px;  ">제목</th>
 					<td
 						style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 10px; font-size:14px;"><%=n.getNoticeTitle()%></td>
 				</tr>
 				<tr>
 
-					<th>내용</th>
+					<th style="padding-right : 15px;">내용</th>
 					<td
-						style="width: 500px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
+						style="width: 700px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
 				</tr>
 			</table>
 		</div>
@@ -156,7 +164,7 @@ font-size:13px;
 	<%
 	} else {
 	%>
-	<div>
+	<div class="memberbtn">
 		<input class="btn4" type="button" value="목록"
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
 		<%

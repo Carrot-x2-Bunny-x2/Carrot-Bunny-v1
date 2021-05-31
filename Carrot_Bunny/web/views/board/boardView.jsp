@@ -5893,7 +5893,7 @@ header #nav-icon {
 							</div>
 						</div>
 						<div class="right-col">
-							<h1 itemprop="name" style="font-weight: bold"><%=b.getBoardTitle()%></h1>
+							<h1 itemprop="name" style="font-weight: bold"><%=loginMember.getUserName()%>🥕 님의 <%=b.getBoardTitle()%></h1>
 							<div style="float: right;">
 								<%
 								if (check == 1) {
@@ -5932,11 +5932,11 @@ header #nav-icon {
 											<%
 											if (b.getBoardIsSell() == 1) {
 											%>
-											<p style="color: blue">판매중</p>
+											<p style="color: #646464">판매중</p>
 											<%
 											} else {
 											%>
-											<p style="color: red">판매완료</p>
+											<p style="color: #646464">판매완료</p>
 											<%
 											}
 											%>
