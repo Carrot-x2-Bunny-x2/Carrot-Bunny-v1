@@ -7,6 +7,11 @@ Qna q = (Qna) request.getAttribute("qna");
 <%@ include file="../common/header.jsp"%>
 
 <style>
+.wrapper {
+	height : auto;
+	min-height:65%;
+	padding-bottom:60px;
+}
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
@@ -50,6 +55,7 @@ textarea {
 	font-weight: bolder;
 }
 </style>
+<div class="wrapper">
 
 <%
 if (loginMember != null && loginMember.getUserId().equals("admin")) {
@@ -153,7 +159,7 @@ if (loginMember != null && loginMember.getUserId().equals("admin")) {
 }
 %>
 
-
+</div>
 <script>
 
 const fn_delete_qna=()=>{
