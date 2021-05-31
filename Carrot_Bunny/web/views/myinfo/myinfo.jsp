@@ -8,7 +8,7 @@
 .wrapper {
 	height : auto;
 	min-height:70%;
-	padding-bottom: 0px;
+	padding-bottom: 4%;
 	font-family: "RIDIBatang", sans-serif;
 }
 

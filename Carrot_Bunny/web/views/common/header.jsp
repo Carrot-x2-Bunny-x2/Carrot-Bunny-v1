@@ -93,6 +93,11 @@ html, body {
 	height:90px;
 }
 
+.menubar li{
+	
+}
+
+
 </style>
 </head>
 <body>
@@ -158,7 +163,7 @@ html, body {
 				%>
 				<li><a
 					href="<%=request.getContextPath()%>/views/login/loginPage.jsp">로그인
-						/ 회원가입</a></li>
+						/<br> 회원가입</a></li>
 				<%
 				} else {
 				%>
@@ -169,7 +174,7 @@ html, body {
 			</ul>
 			<ul>
 				<li><a href="<%=request.getContextPath()%>/board/boardPage">상품목록
-						/ 조회</a></li>
+						/<br>조회</a></li>
 			</ul>
 			<ul>
 				<li><a href="<%=request.getContextPath()%>/qna.do">1:1 문의</a></li>
