@@ -31,12 +31,12 @@
 	text-align: center;
 	font-size: 12px;
 	font-weight: lighter;
-	margin: 15px 0 0 0;
+	margin: 25px 0 0 0;
 }
 
 .noticetb {
 	width: 800px;
-	margin-top: 60px;
+	margin-top: 90px;
 	margin-left:265px;
 	margin-bottom: 20px;
 	line-height: 50px;
