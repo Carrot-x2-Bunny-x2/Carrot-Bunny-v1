@@ -37,7 +37,7 @@ Notice n = (Notice) request.getAttribute("notice");
 }
 
 .notice {
-/* 	width: 100%;
+	/* 	width: 100%;
 	margin-top: 20px;
 	line-height: 35px;
 	text-align: center; font-size : 13px;
@@ -46,8 +46,6 @@ Notice n = (Notice) request.getAttribute("notice");
 	background-color: white;
 	border-radius: 5px;
 	font-size: 13px; */
-	
-	
 	
 }
 
@@ -70,10 +68,11 @@ input {
 }
 
 .buttonbtn {
-	padding-bottom: 40px;
-	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-top: 50px;
 	display: flex;
-	margin-left: 10px;
+	margin-left: 631px;
+	
 }
 
 .btn1 {
@@ -88,6 +87,24 @@ input {
 	margin-right: 10px;
 }
 
+.noticewrite {
+	text-align: center;
+	font-size: 12px;
+	font-weight: lighter;
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
+.noticewrite {
+	margin-left: 515px;
+	margin-top:30px;
+}
+
+.noticewrite tr{
+
+font-size:13px;
+
+}
 </style>
 <div id="wrap">
 
@@ -100,17 +117,19 @@ input {
 
 
 
-		<div class="noticewrite"
-			style="padding-top: 30px; margin-left: 70px; background-color: #E0E0E0; width: 950px; height: 400px;">
+		<div class="noticewrite">
 
-			<table class="">
+			<table>
 				<tr>
-					<th>제목</th>
-					<td><%=n.getNoticeTitle()%></td>
+					<th style="padding-right : 15px;">제목</th>
+					<td
+						style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 10px; font-size:14px;"><%=n.getNoticeTitle()%></td>
 				</tr>
 				<tr>
+
 					<th>내용</th>
-					<td><%=n.getNoticeContent()%></td>
+					<td
+						style="width: 500px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
 				</tr>
 			</table>
 		</div>
@@ -121,18 +140,18 @@ input {
 	%>
 
 	<div class="buttonbtn">
-		
-			<input class="btn1" type="submit" value="수정"
-				onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
-			<form action="<%=request.getContextPath()%>/deleteNotice?no="
-				+'<%=n.getNoticeNo()%>" method="get">
-				<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-				<input class="btn2" type="button" value="삭제"
-					onclick="fn_delete_notice();">
-			</form>
-			<input class="btn3" type="button" value="목록"
-				onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
-		
+
+		<input class="btn1" type="submit" value="수정"
+			onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
+		<form action="<%=request.getContextPath()%>/deleteNotice?no="
+			+'<%=n.getNoticeNo()%>" method="get">
+			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+			<input class="btn2" type="button" value="삭제"
+				onclick="fn_delete_notice();">
+		</form>
+		<input class="btn3" type="button" value="목록"
+			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
+
 	</div>
 	<%
 	} else {
