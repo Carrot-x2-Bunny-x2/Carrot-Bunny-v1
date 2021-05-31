@@ -8,6 +8,30 @@ List<Board> list = (List<Board>) request.getAttribute("list");
 
 <%@ include file="views/common/header.jsp"%>
 <style>
+
+
+/* @media all and (max-width: 600px) {
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1.5rem;
+	}
+	.grid-column { & > * + * {
+		margin-top: 1.5rem;
+	}
+	
+	.*{
+	font-family: "RIDIBatang", sans-serif;}
+} */
+
+
+
+
+
+
+
+
+
 .maincontainer {
 	text-align: center;
 	margin: 200px;
@@ -69,8 +93,8 @@ p {
 	text-align: center;
 	display: table;
 	/*  border:1px solid #cecece; */
-	width: 280px;
-	height: 250px;
+	width: 200%;
+	height: 100%;
 }
 
 .imgclass {
@@ -84,7 +108,6 @@ p {
 	max-width: 400px;
 	max-height: 300px;
 	margin-left : 60px; 
-
 }
 
 .action {
@@ -172,10 +195,10 @@ p {
 	object-fit: cover;
 }
 
-.img new {
+/* .img new {
 	width: 640px;
 	width: 728px;
-}
+} */
 
 /* 공사중 */
 h3 {
