@@ -7,15 +7,43 @@ Notice n = (Notice) request.getAttribute("notice");
 <%@ include file="../common/header.jsp"%>
 
 <style>
+.wrap {
+	height: auto;
+	min-height: 70%;
+	padding-bottom: 60px;
+}
+
+.noticeupdate {
+	width: 100%;
+	height: 100%;
+	min-height: 600px;
+	margin-left: 390px;
+}
+
+.noticetitle {
+	text-align: center;
+	height: 50px;
+	font-size: 22px;
+	font-weight: bolder;
+	padding-bottom: 20px;
+}
+
+.noticetitle p {
+	text-align: center;
+	font-size: 12px;
+	font-weight: lighter;
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
 section#notice-container {
 	width: 600px;
-	margin: 0 auto;
+	/* margin: 0 auto; */
 	text-align: center;
 }
 
-section#notice-container h2 {
-	margin: 10px 0;
-}
+
+
 
 table#tbl-notice {
 	width: 500px;
@@ -37,37 +65,64 @@ table#tbl-notice td {
 	padding: 5px 0 5px 10px;
 	text-align: left;
 }
-span#fname{
-	position:absolute;
-	left:80px;
-	top:9px;
-	width:290px;
-	background-color:#F5F5F5;
+
+
+.nobtn {
+	width: 80px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #ff9800;
+	border: none;
+	color: white;
+	
 }
+
+
+
+
 </style>
 
-<div id="notice-container">
-	<form action="<%=request.getContextPath()%>/notice/noticeUpdateEnd" method="post" >
-		<!-- update문에는 noticeno가 필요하다 -->
-		<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-		<table id="tbl-notice">
-			<tr>
-				<th>제 목</th>
-				<td><input type="text" name="n_title" id="noticeTitle"
-					value ="<%=n.getNoticeTitle()%>" required></td>
-			</tr>
-			<tr>
-				<th>내 용</th>
-				<td><textarea rows="5" cols="50" name="n_content"><%=n.getNoticeContent()%></textarea></td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="등록하기" onclick="">
-				</th>
-			</tr>
-		</table>
-	</form>
+<div class="wrap">
+	<div id="noticeupdate">
+		<div class="noticetitle">
+			공지사항 수정
+			<p>공지사항을 수정해주세요!</p>
+		</div>
+
+
+		<form action="<%=request.getContextPath()%>/notice/noticeUpdateEnd"
+			method="post">
+
+			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+
+
+			<div class="noticeupdate">
+
+				<table>
+					<tr>
+						<th style="padding-right: 15px;">제 목</th>
+						<td><input
+							style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px;"
+							type="text" name="n_title" id="noticeTitle"
+							value="<%=n.getNoticeTitle()%>" required></td>
+					</tr>
+					<tr>
+						<th style="padding-right: 15px;" >내 용</th>
+						<td><textarea
+								style="width: 650px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px;"
+								name="n_content"><%=n.getNoticeContent()%></textarea></td>
+					</tr>
+				</table>
+				<div style="padding-top:20px; text-align:center;">
+				<input class="nobtn" type="submit"
+							value="등록하기" onclick="">
+							</div>
+			</div>
+		</form>
+	</div>
+
 </div>
 
 
 
-	<%@ include file="../common/footer.jsp"%>
+<%@ include file="../common/footer.jsp"%>

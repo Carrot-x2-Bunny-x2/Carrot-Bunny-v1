@@ -9,13 +9,13 @@ Notice n = (Notice) request.getAttribute("notice");
 <style>
 #wrap {
 	width: 100%;
-	min-height: 700px;
+	min-height: 900px;
 	/* position: relative; */
 }
 
 .notice .noticeList {
-	width: 81%;
-	height: 80%;
+	width: 100%;
+	height: 100%;
 	margin: auto;
 	min-height: 900px;
 }
@@ -25,7 +25,7 @@ Notice n = (Notice) request.getAttribute("notice");
 	height: 50px;
 	font-size: 22px;
 	font-weight: bolder;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 }
 
 .noticetitle p {
@@ -96,7 +96,7 @@ input {
 }
 
 .noticewrite {
-	margin-left: 515px;
+	margin-left: 410px;
 	margin-top:30px;
 }
 
@@ -121,15 +121,15 @@ font-size:13px;
 
 			<table>
 				<tr>
-					<th style="padding-right : 15px;">제목</th>
+					<th style="padding-right : 15px;  ">제목</th>
 					<td
 						style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 10px; font-size:14px;"><%=n.getNoticeTitle()%></td>
 				</tr>
 				<tr>
 
-					<th>내용</th>
+					<th style="padding-right : 15px;">내용</th>
 					<td
-						style="width: 500px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
+						style="width: 700px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
 				</tr>
 			</table>
 		</div>
