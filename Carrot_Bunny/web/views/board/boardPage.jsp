@@ -5,7 +5,7 @@
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
 String searchType = request.getParameter("searchType") == null ? "" : request.getParameter("searchType");
-String keyword = request.getParameter("searchKeyword") == null ? "" : request.getParameter("searchKeyword");
+String keyword = request.getParameter("keyword") == null ? "" : request.getParameter("keyword");
 /*out.print(request.getAttribute("sold"));*/
 /* out.print(searchType+" : "+keyword); */
 %>
@@ -276,7 +276,7 @@ select {
 			<div id="search-userId" class="search-userId">
 				<form action="<%=request.getContextPath()%>/board/boardSearch">
 					<input type="hidden" name="searchType" value="B_WRITER"> <input
-						type="text" name="searchKeyword" size="25"
+						type="text" name="keyword" size="25"
 						placeholder="검색할 아이디를 입력하세요"
 						value='<%=searchType.equals("userId") ? keyword : ""%>'>
 					<button type="submit">검색</button>
@@ -290,7 +290,7 @@ select {
 			<div id="search-boardName" class="search-boardName">
 				<form action="<%=request.getContextPath()%>/board/boardSearch">
 					<input type="hidden" name="searchType" value="B_TITLE"> <input
-						type="text" name="searchKeyword" size="25"
+						type="text" name="keyword" size="25"
 						placeholder="검색할 상품이름을 입력하세요"
 						value='<%=searchType.equals("boardTitle") ? keyword : ""%>'>
 					<button type="submit">검색</button>
@@ -333,7 +333,7 @@ select {
 						%>
 				<div class="grid-column" style="align: center;">
 					<a class="product"
-						href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
+						href="<%=request.getContextPath()%>/board/boardView?searchType=<%=searchType %>&keyword=<%=keyword %>&sold=<%=request.getAttribute("sold") %>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 						<div class="product-image" style="text-align: center;">
 							<img class="new"
 								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />

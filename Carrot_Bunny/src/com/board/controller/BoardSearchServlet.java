@@ -34,14 +34,11 @@ public class BoardSearchServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int cPage;
 		int numPerPage;
-		// 데이터를 가져올때 원하는 구역 가져오기
-		// 1. 사용자가 원하는 page -> 현재 페이지
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
-		// 2. 페이지당 데이터 수 -> 사용자가 설정
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
@@ -67,7 +64,7 @@ public class BoardSearchServlet extends HttpServlet {
 			}
 		}
 		String searchType=request.getParameter("searchType");
-		String keyword=request.getParameter("searchKeyword");
+		String keyword=request.getParameter("keyword");
 		
 		List<Board> list;
 		int totalData;
@@ -90,8 +87,7 @@ public class BoardSearchServlet extends HttpServlet {
 			pageBar+="<span>[이전]</span>";
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+(pageNo-1)
-					+"&numPerpage="+numPerPage
-					+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>[이전]</a>";
+					+"&searchType="+searchType+"&keyword="+keyword+"&sold="+sold+"'>[이전]</a>";
 		}
 	
 		
@@ -100,8 +96,7 @@ public class BoardSearchServlet extends HttpServlet {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+pageNo
-						+"&numPerpage="+numPerPage
-						+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>"+pageNo+"</a>";
+						+"&searchType="+searchType+"&keyword="+keyword+"&sold="+sold+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -110,14 +105,16 @@ public class BoardSearchServlet extends HttpServlet {
 			pageBar+="<span>[다음]</span>";
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+"/board/boardSearch?cPage="+pageNo
-					+"&numPerpage="+numPerPage
-					+"&searchType="+searchType+"&searchKeyword="+keyword+"&sold="+sold+"'>[다음]</a>";
+					+"&searchType="+searchType+"&keyword="+keyword+"&sold="+sold+"'>[다음]</a>";
 		}
 		// pageBar에는 결국 [이전], 페이지 숫자들, [다음]과 관련된 html 문자열이 들어감
 		request.setAttribute("pageBar",pageBar);
 		request.setAttribute("cPage",cPage);
 		System.out.println("여기서 sold는"+sold);
 		request.setAttribute("sold",sold);
+		request.setAttribute("searchType",searchType);
+		request.setAttribute("keyword",keyword);
+
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/views/board/boardPage.jsp")

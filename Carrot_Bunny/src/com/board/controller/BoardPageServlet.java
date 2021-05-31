@@ -50,22 +50,23 @@ public class BoardPageServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerPage=9;
 		}
-		String[] soldCheck;
 		int sold;
-		
 		try {
-			soldCheck = request.getParameterValues("soldCheck");
-			
+			sold=Integer.parseInt(request.getParameter("sold"));
 		}catch(NumberFormatException e) {
-			soldCheck = null;
+			sold=0;
 		}
+		String searchType;
 		try {
-			sold = Integer.parseInt(request.getParameter("sold"));
-			if (soldCheck != null) {
-				sold = 1;
-			}
-		} catch(NumberFormatException e) {
-			sold = 0;
+			searchType=request.getParameter("searchType");
+		}catch(NumberFormatException e) {
+			searchType="";
+		}
+		String keyword;
+		try {
+			keyword=request.getParameter("keyword");
+		}catch(NumberFormatException e) {
+			keyword="";
 		}
 		List<Board> list;
 		// 사용자가 원하는 페이지를 호출할 수 있게 pageBar 구성
@@ -124,7 +125,8 @@ public class BoardPageServlet extends HttpServlet {
 		request.setAttribute("pageBar",pageBar);
 		request.setAttribute("cPage",cPage);
 		request.setAttribute("sold",sold);
-
+		request.setAttribute("searchType",searchType);
+		request.setAttribute("keyword",keyword);
 		request.getRequestDispatcher("/views/board/boardPage.jsp")
 		.forward(request, response);
 		}

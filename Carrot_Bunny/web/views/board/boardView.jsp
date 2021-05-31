@@ -6069,7 +6069,12 @@ header #nav-icon {
 				data-rows_per_page="1"
 				onclick="location.assign('<%=request.getContextPath()%>/love/lovePage?cPage=<%=request.getAttribute("cPage")%>')">상품
 				목록</span>
-			<%} else { %>
+			<%} else if(request.getAttribute("searchType")!="") { %>
+				<span id="more-products" style="background-color: ff9800;"
+				data-rows_per_page="1"
+				onclick="location.assign('<%=request.getContextPath()%>/board/boardSearch?searchType=<%=request.getAttribute("searchType") %>&keyword=<%=request.getAttribute("keyword") %>&sold=<%=request.getAttribute("sold") %>&cPage=<%=request.getAttribute("cPage")%>')">상품
+				목록</span>
+			<%} else { %>	
 				<span id="more-products" style="background-color: ff9800;"
 					data-rows_per_page="1"
 					onclick="location.assign('<%=request.getContextPath()%>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">상품
