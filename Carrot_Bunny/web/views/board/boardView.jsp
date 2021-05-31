@@ -23,6 +23,7 @@ com.board.model.vo.Comment" %>
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
+
     /*댓글테이블*/
     table#tbl-comment{width:580px; margin:0 auto; border-collapse:collapse; clear:both; } 
     table#tbl-comment tr td{border-bottom:1px solid; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
@@ -162,7 +163,8 @@ body {
     font-size: 81.25%;
     line-height: 184.61538%;
     overflow-x: hidden;
-    position: relative
+    position: relative;
+    font-family: 'RIDIBatang';
 }
 ._cont {
     margin: 0 auto;
@@ -280,7 +282,7 @@ body {
     background-color: #0084ff
 }
 .spinner input {
-    font-family: "montserratlight", sans-serif;
+    
     border: 0 none;
     color: #16161a;
     display: block;
@@ -310,7 +312,6 @@ body {
     z-index: 100
 }
 .tabs .tab-labels span {
-    font-family: "montserratbold", sans-serif;
     font-size: 100%;
     line-height: 123.07692%;
     -moz-border-radius: 1px;
@@ -511,7 +512,7 @@ body {
     text-align: right
 }
 .homepage .main-services span {
-    font-family: "montserratregular", sans-serif;
+    
     font-size: 138.46154%;
     line-height: 144.44444%;
     background: transparent no-repeat left center;
@@ -541,7 +542,7 @@ body {
     z-index: 2
 }
 .homepage .main-text h1 {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 492.30769%;
     line-height: 106.25%;
     letter-spacing: 14px;
@@ -555,7 +556,7 @@ body {
     padding: 44px 0 128px
 }
 .homepage .main-text .links .about {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 128.57143%;
     background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTBweCIgdmlld0JveD0iMCAwIDE2IDEwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDxnIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00ODUuMDAwMDAwLCAtMTM5MC4wMDAwMDApIiBmaWxsPSIjMDg2RkNGIj4KICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDk1Mi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NS4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAzNTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMTIuMzY0Njk0LDkuNzQ1NDg5NzkgTDIwOS4xNjQzMDYsMTIuOTQ1ODc3NCBMMjEwLjIxODgwMSwxNCBMMjE1LjIxODgwMSw5IEwyMTAuMjE4ODAxLDQgTDIwOS4xNjQzMDYsNS4wNTQxMjI1NiBMMjEyLjM2NDY5NCw4LjI1NDUxMDIxIEwyMDAsOC4yNTQ1MTAyMSBMMjAwLDkuNzQ1NDg5NzkgTDIxMi4zNjQ2OTQsOS43NDU0ODk3OSBMMjEyLjM2NDY5NCw5Ljc0NTQ4OTc5IFoiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==') no-repeat right center;
@@ -648,7 +649,7 @@ body {
 .cart h1 {
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratregular", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
     box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
@@ -687,13 +688,13 @@ body {
 .cart .cart-products .p-text {
     font-size: 92.30769%;
     line-height: 133.33333%;
-    font-family: "montserratregular", sans-serif;
+    
     float: left;
     margin-left: 2%;
     width: 78%
 }
 .cart .cart-products .p-text small {
-    font-family: "montserratlight", sans-serif;
+    
     color: #b5b6bd
 }
 .cart .cart-products .p-text a:hover {
@@ -710,7 +711,7 @@ body {
 .cart .cart-products .p-price {
     font-size: 116.66667%;
     line-height: 114.28571%;
-    font-family: "montserratbold", sans-serif;
+    
     color: #ff9800;
     float: left;
     text-align: right;
@@ -725,7 +726,7 @@ body {
     text-align: right
 }
 .cart .price-total strong {
-    font-family: "montserratbold", sans-serif;
+    
     color: #ff9800
 }
 .cart .spinner {
@@ -748,7 +749,7 @@ body {
     border-radius: 25px;
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
@@ -862,7 +863,7 @@ body {
     opacity: 1
 }
 #sign-in-popup h2 {
-    font-family: "montserratregular", sans-serif;
+    
     font-size: 184.61538%;
     line-height: 141.66667%;
     margin-bottom: 21px;
@@ -965,7 +966,7 @@ body {
     background-color: #f7f7fa
 }
 #sign-in-popup form .input {
-    font-family: "montserratlight", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 128.57143%;
     -moz-border-radius: 24px;
@@ -1007,7 +1008,7 @@ body {
     border-radius: 25px;
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
@@ -1312,7 +1313,7 @@ body {
         color: #fff
     }
     header .header nav {
-        font-family: "montserratlight", sans-serif;
+        
         font-size: 92.30769%;
         line-height: 141.66667%;
         background-color: #16161a;
@@ -1661,7 +1662,7 @@ body {
         max-width: 100%
     }
     .collection-list a>span strong {
-        font-family: "robotolight", sans-serif
+        
     }
     .collection-list a .variants .variant {
         float: none;
@@ -1875,7 +1876,7 @@ body {
         bottom: 0
     }
     .social-sharing-btn-wrapper {
-        font-family: "montserratregular", sans-serif;
+        
         font-size: 92.30769%;
         line-height: 133.33333%;
         display: block
@@ -1897,7 +1898,7 @@ body {
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
         border-radius: 50%;
-        font-family: "robotobold", sans-serif;
+        
         font-size: 76.92308%;
         line-height: 110.0%;
         background-color: #16161a;
@@ -2010,7 +2011,7 @@ body {
     margin-right: 0
 }
 .swatch .header {
-    font-family: "montserratbold", sans-serif;
+    
     text-transform: uppercase
 }
 .swatch input {
@@ -2069,7 +2070,7 @@ body {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    font-family: "montserratbold", sans-serif;
+    
     border: 1px solid #ff9800;
     color: #ff9800;
     cursor: pointer;
@@ -2216,7 +2217,7 @@ body {
     margin-bottom: 0
 }
 .swatch.error code {
-    font-family: monospace
+    
 }
 	
 	
@@ -2356,7 +2357,7 @@ body {
 #quick-cart-pay {
   font-size: 100%;
   line-height: 123.07692%;
-  font-family: "robotobold", sans-serif;
+  
   border-radius: 50%;
   -webkit-transform: rotate(70deg);
   -ms-transform: rotate(70deg);
@@ -2403,7 +2404,7 @@ body {
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  font-family: "robotobold", sans-serif;
+  
   border-radius: 11px;
   background-color: #16161a;
   bottom: -4px;
@@ -2436,7 +2437,7 @@ body {
 
 .quick-cart-product > div .s1,
 .quick-cart-product > div .s2 {
-  font-family: "robotobold", sans-serif;
+  
   font-size: 100%;
   line-height: 107.69231%;
   background-color: rgba(22, 22, 26, 0.5);
@@ -2501,7 +2502,7 @@ body {
 .quick-cart-product .removeall:before,
 .quick-cart-product .count {
   border-radius: 10px;
-  font-family: "robotobold", sans-serif;
+  
   font-size: 76.92308%;
   line-height: 110.0%;
   background-color: #16161a;
@@ -2640,56 +2641,6 @@ footer .bottom .left nav ul:after,
     height: 0
 }
 
-/*@font-face {
-    font-family: 'montserratlight';
-    src: url("montserrat-light-webfont.eot");
-    src: url("montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), url("montserrat-light-webfont.woff") format("woff"), url("montserrat-light-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'montserratregular';
-    src: url("montserrat-regular-webfont.eot");
-    src: url("montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"), url("montserrat-regular-webfont.woff") format("woff"), url("montserrat-regular-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'montserratbold';
-    src: url("montserrat-bold-webfont.eot");
-    src: url("montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"), url("montserrat-bold-webfont.woff") format("woff"), url("montserrat-bold-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'robotolight';
-    src: url("roboto-light-webfont.eot");
-    src: url("roboto-light-webfont.eot?#iefix") format("embedded-opentype"), url("roboto-light-webfont.woff") format("woff"), url("roboto-light-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'robotoregular';
-    src: url("roboto-regular-webfont.eot");
-    src: url("roboto-regular-webfont.eot?#iefix") format("embedded-opentype"), url("roboto-regular-webfont.woff") format("woff"), url("roboto-regular-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'robotobold';
-    src: url("roboto-bold-webfont.eot");
-    src: url("roboto-bold-webfont.eot?#iefix") format("embedded-opentype"), url("roboto-bold-webfont.woff") format("woff"), url("roboto-bold-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}
-@font-face {
-    font-family: 'robotoblack';
-    src: url("roboto-black-webfont.eot");
-    src: url("roboto-black-webfont.eot?#iefix") format("embedded-opentype"), url("roboto-black-webfont.woff") format("woff"), url("roboto-black-webfont.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal
-}*/
-
 html,
 body,
 div,
@@ -2776,7 +2727,8 @@ video {
     border: 0;
     font: inherit;
     font-size: 100%;
-    vertical-align: baseline
+    vertical-align: baseline;
+    font-family: 'RIDIBatang';
 }
 html {
     line-height: 1
@@ -2834,7 +2786,8 @@ summary {
 body {
     background-color: #fff;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'RIDIBatang';
 }
 img {
     max-width: 100%
@@ -2903,13 +2856,14 @@ div.grid_info {
     z-index: 99999
 }
 body {
-    font-family: "montserratlight", sans-serif;
+    
     background-color: #fff;
     color: #16161a;
     font-size: 81.25%;
     line-height: 184.61538%;
     overflow-x: hidden;
     position: relative
+    font-family: 'RIDIBatang';
 }
 ._cont {
     margin: 0 auto;
@@ -2945,7 +2899,7 @@ header .header {
     height: 74px
 }
 header .logo {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 128.57143%;
     display: block;
@@ -2957,7 +2911,7 @@ header .logo {
     z-index: 100
 }
 header nav {
-    font-family: "montserratregular", sans-serif;
+    
     left: 0;
     position: absolute;
     text-align: center;
@@ -3014,7 +2968,7 @@ header nav>ul>li ul {
     -moz-column-gap: 50px;
     -webkit-column-gap: 50px;
     column-gap: 50px;
-    font-family: "montserratlight", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 121.42857%;
     -moz-border-radius: 2px;
@@ -3105,7 +3059,7 @@ header form .find-input {
     -o-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    font-family: "montserratlight", sans-serif;
+    
     font-size: 100%;
     line-height: 130.76923%;
     color: #16161a;
@@ -3177,13 +3131,13 @@ header #nav-icon {
     width: 700px
 }
 .text h1 {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 369.23077%;
     line-height: 125%;
     margin-bottom: 60px
 }
 .text h2 {
-    font-family: "montserratregular", sans-serif;
+    
     font-size: 184.61538%;
     line-height: 133.33333%;
     margin: 55px 0 17px
@@ -3194,7 +3148,7 @@ header #nav-icon {
     margin: 17px 0 28px
 }
 .text strong {
-    font-family: "montserratbold", sans-serif
+    
 }
 .text em {
     font-style: italic
@@ -3227,7 +3181,7 @@ header #nav-icon {
     padding-top: 0
 }
 .collection h1 {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 369.23077%;
     line-height: 116.66667%;
     color: #ff9800;
@@ -3272,7 +3226,7 @@ header #nav-icon {
 .collection .no-products {
     font-size: 115.38462%;
     line-height: 120%;
-    font-family: "montserratregular", sans-serif;
+    
     padding-top: 70px;
     text-align: center
 }
@@ -3287,7 +3241,7 @@ header #nav-icon {
     transition: all 0.3s ease-in-out;
     font-size: 107.69231%;
     line-height: 121.42857%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-border-radius: 26px;
     -webkit-border-radius: 26px;
     border-radius: 26px;
@@ -3547,16 +3501,16 @@ header #nav-icon {
     position: absolute
 }
 .collection-list a .text strong {
-    font-family: "robotoregular", sans-serif;
+    
     display: block
 }
 .collection-list a .text>span {
-    font-family: "robotoblack", sans-serif;
+    
     display: block;
     margin-bottom: 2px
 }
 .collection-list a .text>span>span {
-    font-family: "robotoregular", sans-serif;
+    
     opacity: 0.5
 }
 .collection-list a:hover>span {
@@ -3571,7 +3525,7 @@ header #nav-icon {
     -webkit-transition: all 200ms cubic-bezier(0.64, 0.57, 0.67, 1.53);
     -webkit-transition-delay: 0s;
     transition: all 200ms cubic-bezier(0.64, 0.57, 0.67, 1.53) 0s;
-    font-family: "robotoregular", sans-serif;
+    
     height: 0;
     overflow: hidden
 }
@@ -3623,10 +3577,9 @@ header #nav-icon {
     width: auto
 }
 .homepage-banners a .text>strong {
-    font-family: "robotoblack", sans-serif
 }
 .homepage-banners a .text>span {
-    font-family: "robotoregular", sans-serif;
+    
     margin: 6px 0 0
 }
 .homepage-banners a .img {
@@ -3638,7 +3591,7 @@ header #nav-icon {
     -webkit-transition: all 200ms cubic-bezier(0.64, 0.57, 0.67, 1.53);
     -webkit-transition-delay: 0s;
     transition: all 200ms cubic-bezier(0.64, 0.57, 0.67, 1.53) 0s;
-    font-family: "robotoregular", sans-serif;
+    
     max-height: 0;
     max-width: 0;
     overflow: hidden
@@ -3768,7 +3721,7 @@ header #nav-icon {
 .product-detail h1 {
     font-size: 184.61538%;
     line-height: 141.66667%;
-    font-family: "montserratregular", sans-serif
+    
 }
 .product-detail a {
     font-size: 100%;
@@ -3791,14 +3744,14 @@ header #nav-icon {
 .product-detail .price {
     font-size: 369.23077%;
     line-height: 108.33333%;
-    font-family: "montserratbold", sans-serif;
+    
     color: #ff9800;
     letter-spacing: -2px
 }
 .product-detail .price del {
     font-size: 54.16667%;
     line-height: 200%;
-    font-family: "montserratregular", sans-serif;
+    
     color: #b5b6bd
 }
 .product-detail #AddToCartForm {
@@ -3808,7 +3761,7 @@ header #nav-icon {
     float: left
 }
 .product-detail #AddToCart {
-    font-family: "montserratbold", sans-serif;
+    
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
@@ -3848,7 +3801,7 @@ header #nav-icon {
 .related h2 {
     font-size: 184.61538%;
     line-height: 150%;
-    font-family: "montserratregular", sans-serif;
+    
     text-align: center
 }
 .related .collection-list {
@@ -3916,7 +3869,7 @@ header #nav-icon {
     background-color: #0084ff
 }
 .spinner input {
-    font-family: "montserratlight", sans-serif;
+    
     border: 0 none;
     color: #16161a;
     display: block;
@@ -3946,7 +3899,7 @@ header #nav-icon {
     z-index: 100
 }
 .tabs .tab-labels span {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 100%;
     line-height: 123.07692%;
     -moz-border-radius: 1px;
@@ -4147,7 +4100,7 @@ header #nav-icon {
     text-align: right
 }
 .homepage .main-services span {
-    font-family: "montserratregular", sans-serif;
+    
     font-size: 138.46154%;
     line-height: 144.44444%;
     background: transparent no-repeat left center;
@@ -4177,7 +4130,7 @@ header #nav-icon {
     z-index: 2
 }
 .homepage .main-text h1 {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 492.30769%;
     line-height: 106.25%;
     letter-spacing: 14px;
@@ -4191,7 +4144,7 @@ header #nav-icon {
     padding: 44px 0 128px
 }
 .homepage .main-text .links .about {
-    font-family: "montserratbold", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 128.57143%;
     background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTBweCIgdmlld0JveD0iMCAwIDE2IDEwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDxnIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00ODUuMDAwMDAwLCAtMTM5MC4wMDAwMDApIiBmaWxsPSIjMDg2RkNGIj4KICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDk1Mi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI4NS4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAzNTguMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMTIuMzY0Njk0LDkuNzQ1NDg5NzkgTDIwOS4xNjQzMDYsMTIuOTQ1ODc3NCBMMjEwLjIxODgwMSwxNCBMMjE1LjIxODgwMSw5IEwyMTAuMjE4ODAxLDQgTDIwOS4xNjQzMDYsNS4wNTQxMjI1NiBMMjEyLjM2NDY5NCw4LjI1NDUxMDIxIEwyMDAsOC4yNTQ1MTAyMSBMMjAwLDkuNzQ1NDg5NzkgTDIxMi4zNjQ2OTQsOS43NDU0ODk3OSBMMjEyLjM2NDY5NCw5Ljc0NTQ4OTc5IFoiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==') no-repeat right center;
@@ -4284,7 +4237,7 @@ header #nav-icon {
 .cart h1 {
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratregular", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
     box-shadow: rgba(17, 17, 18, 0.04) 0 4px 4px -2px, rgba(19, 20, 20, 0.06) 0 3px 1px -2px;
@@ -4323,13 +4276,13 @@ header #nav-icon {
 .cart .cart-products .p-text {
     font-size: 92.30769%;
     line-height: 133.33333%;
-    font-family: "montserratregular", sans-serif;
+    
     float: left;
     margin-left: 2%;
     width: 78%
 }
 .cart .cart-products .p-text small {
-    font-family: "montserratlight", sans-serif;
+    
     color: #b5b6bd
 }
 .cart .cart-products .p-text a:hover {
@@ -4346,7 +4299,7 @@ header #nav-icon {
 .cart .cart-products .p-price {
     font-size: 116.66667%;
     line-height: 114.28571%;
-    font-family: "montserratbold", sans-serif;
+    
     color: #ff9800;
     float: left;
     text-align: right;
@@ -4361,7 +4314,7 @@ header #nav-icon {
     text-align: right
 }
 .cart .price-total strong {
-    font-family: "montserratbold", sans-serif;
+    
     color: #ff9800
 }
 .cart .spinner {
@@ -4384,7 +4337,7 @@ header #nav-icon {
     border-radius: 25px;
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
@@ -4498,7 +4451,7 @@ header #nav-icon {
     opacity: 1
 }
 #sign-in-popup h2 {
-    font-family: "montserratregular", sans-serif;
+    
     font-size: 184.61538%;
     line-height: 141.66667%;
     margin-bottom: 21px;
@@ -4601,7 +4554,7 @@ header #nav-icon {
     background-color: #f7f7fa
 }
 #sign-in-popup form .input {
-    font-family: "montserratlight", sans-serif;
+    
     font-size: 107.69231%;
     line-height: 128.57143%;
     -moz-border-radius: 24px;
@@ -4643,7 +4596,7 @@ header #nav-icon {
     border-radius: 25px;
     font-size: 107.69231%;
     line-height: 128.57143%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     -webkit-box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
     box-shadow: rgba(17, 17, 18, 0.1) 0 2px 4px, rgba(19, 20, 20, 0.07) 0 1px 1px;
@@ -4958,7 +4911,7 @@ header #nav-icon {
         color: #fff
     }
     header .header nav {
-        font-family: "montserratlight", sans-serif;
+        
         font-size: 92.30769%;
         line-height: 141.66667%;
         background-color: #16161a;
@@ -5307,7 +5260,7 @@ header #nav-icon {
         max-width: 100%
     }
     .collection-list a>span strong {
-        font-family: "robotolight", sans-serif
+        
     }
     .collection-list a .variants .variant {
         float: none;
@@ -5521,7 +5474,7 @@ header #nav-icon {
         bottom: 0
     }
     .social-sharing-btn-wrapper {
-        font-family: "montserratregular", sans-serif;
+        
         font-size: 92.30769%;
         line-height: 133.33333%;
         display: block
@@ -5542,7 +5495,7 @@ header #nav-icon {
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
         border-radius: 50%;
-        font-family: "robotobold", sans-serif;
+        
         font-size: 76.92308%;
         line-height: 110.0%;
         background-color: #16161a;
@@ -5652,7 +5605,7 @@ header #nav-icon {
     margin-right: 0
 }
 .swatch .header {
-    font-family: "montserratbold", sans-serif;
+    
     text-transform: uppercase
 }
 .swatch input {
@@ -5711,7 +5664,7 @@ header #nav-icon {
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
-    font-family: "montserratbold", sans-serif;
+    
     border: 1px solid #ff9800;
     color: #ff9800;
     cursor: pointer;
@@ -5858,7 +5811,7 @@ header #nav-icon {
     margin-bottom: 0
 }
 .swatch.error code {
-    font-family: monospace
+    
 }
 
 
@@ -5869,7 +5822,7 @@ header #nav-icon {
     transition: all 0.3s ease-in-out;
     font-size: 37%;
     line-height: 80%;
-    font-family: "montserratbold", sans-serif;
+    
     -moz-border-radius: 26px;
     -webkit-border-radius: 26px;
     border-radius: 26px;
@@ -5883,6 +5836,7 @@ header #nav-icon {
     padding: 16px 26px;
     border : 0;
     outline : 0;
+    font-family: 'RIDIBatang';
 }
 
 .comment-editor button{
@@ -5901,6 +5855,7 @@ header #nav-icon {
     padding: 11px 15px;
     border : 0;
     outline : 0;
+    font-family: 'RIDIBatang';
 }
 
 	
