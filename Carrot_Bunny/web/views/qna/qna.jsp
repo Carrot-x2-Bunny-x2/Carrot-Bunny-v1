@@ -10,15 +10,13 @@
 <style>
 #wrap {
     width: 100%;
-    min-height: 700px;
-    /* position: relative; */
-   
+    min-height:68%;
+	padding-bottom:60px;
 } 
 .notice .noticeList {
 	width: 81%;
 	height: 80%;
 	margin: auto;
-	min-height : 900px;
 }
 
 .noticetitle {

@@ -17,8 +17,9 @@ String keyword = request.getParameter("searchKeyword") == null ? "" : request.ge
 }
 
 #tbl-board {
-	width: 100%;
+	width: 80%;
 	min-height: 300px;
+	margin-left: 10%;
 	/* position: relative; */
 }
 

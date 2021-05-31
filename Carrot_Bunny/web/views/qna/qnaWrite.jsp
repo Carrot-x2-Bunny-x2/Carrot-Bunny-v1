@@ -7,6 +7,13 @@ Qna q = (Qna) request.getAttribute("qna");
 <%@ include file="../common/header.jsp"%>
 
 <style>
+
+.wrapper {
+	height : auto;
+	min-height:65%;
+	padding-bottom:60px;
+}
+
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
@@ -50,28 +57,29 @@ textarea {
 	font-weight: bolder;
 }
 </style>
-<div id="notice-container">
-	<div class="noticetitle">
-	<p>1:1 문의 등록</p>
+<div class="wrapper">
+	<div id="notice-container">
+		<div class="noticetitle">
+		<p>1:1 문의 등록</p>
+		</div>
+		<form name="qnaWrite"
+			action="<%=request.getContextPath()%>/qna/qnaWriteEnd"
+			method="post">
+		<table id="tbl-notice">
+			<tr>
+				<th>문의 제목</th>
+				<td><textarea name="qnaTitle" id="qnaTitle" required></textarea>
+				</tr>
+				<tr>
+					<th>문의 내용</th>
+					<td><textarea name="qnaContent" id="qnaContent" required></textarea><br></td>
+				</tr>
+				<tr>
+					<th colspan="2"><input type="submit" value="문의 등록하기"></th>
+				</tr>
+			</table>
+		</form>
 	</div>
-	<form name="qnaWrite"
-		action="<%=request.getContextPath()%>/qna/qnaWriteEnd"
-		method="post">
-	<table id="tbl-notice">
-		<tr>
-			<th>문의 제목</th>
-			<td><textarea name="qnaTitle" id="qnaTitle" required></textarea>
-			</tr>
-			<tr>
-				<th>문의 내용</th>
-				<td><textarea name="qnaContent" id="qnaContent" required></textarea><br></td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="문의 등록하기"></th>
-			</tr>
-		</table>
-	</form>
 </div>
-
 
 <%@ include file="../common/footer.jsp"%>
