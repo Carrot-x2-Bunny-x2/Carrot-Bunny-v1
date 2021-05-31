@@ -100,7 +100,7 @@ table#tbl-notice {
 				<td>판매완료</td>
 				<%} %>
 				<td><a
-					href="<%=request.getContextPath()%>/board/boardView?user=1&no=<%=b.getBoardNumber()%>">
+					href="<%=request.getContextPath()%>/board/boardView?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
 						<%=b.getBoardTitle()%>
 				</a></td>
 				<td><%=b.getBoardAmount() %></td>

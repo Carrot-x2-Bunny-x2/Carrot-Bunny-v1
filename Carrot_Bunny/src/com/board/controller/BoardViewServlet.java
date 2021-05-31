@@ -38,8 +38,7 @@ public class BoardViewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Love> loveList = new LoveService().selectLoveList();
-		request.setAttribute("loveList",loveList);
+		
 		int cPage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
@@ -47,6 +46,20 @@ public class BoardViewServlet extends HttpServlet {
 			cPage=1;
 		}
 		request.setAttribute("cPage", cPage);
+		int user;
+		try {
+			user=Integer.parseInt(request.getParameter("user"));
+		}catch(NumberFormatException e) {
+			user=0;
+		}
+		request.setAttribute("user", user);
+		int love;
+		try {
+			love=Integer.parseInt(request.getParameter("love"));
+		}catch(NumberFormatException e) {
+			love=0;
+		}
+		request.setAttribute("love", love);
 		
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
@@ -56,11 +69,13 @@ public class BoardViewServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg.jsp");
 			rd.forward(request, response);
 		} else {
+			List<Love> loveList = new LoveService().selectLoveList();
+			request.setAttribute("loveList",loveList);
+			
 			int num = Integer.parseInt(request.getParameter("no"));
-			
 			Board b = new BoardService().selectBoard(num);
-			
 			request.setAttribute("board", b);
+			
 			List<Comment> comments = new BoardService().selectComment(num);
 			request.setAttribute("comments", comments);
 

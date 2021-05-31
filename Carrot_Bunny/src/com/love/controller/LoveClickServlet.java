@@ -1,6 +1,7 @@
 package com.love.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.board.model.service.BoardService;
+import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.love.model.service.LoveService;
 import com.love.model.vo.Love;
 import com.member.model.vo.Member;
@@ -38,12 +42,22 @@ public class LoveClickServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Member m = (Member)session.getAttribute("loginMember");
 		int cPage;
-		// 데이터를 가져올때 원하는 구역 가져오기
-		// 1. 사용자가 원하는 page -> 현재 페이지
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
 		}catch(NumberFormatException e) {
 			cPage=1;
+		}
+		int user;
+		try {
+			user=Integer.parseInt(request.getParameter("user"));
+		}catch(NumberFormatException e) {
+			user=0;
+		}
+		int love;
+		try {
+			love=Integer.parseInt(request.getParameter("love"));
+		}catch(NumberFormatException e) {
+			love=0;
 		}
 		int boardNumber = Integer.parseInt(request.getParameter("no"));
 		int cnt = new LoveService().findLove(m, boardNumber);
@@ -67,14 +81,26 @@ public class LoveClickServlet extends HttpServlet {
 		// String loc = "/board/boardView?cPage="+cPage+"&no="+boardNumber;
 		if (result > 0) {
 			msg = "찜 설정 성공";
+			List<Love> loveList = new LoveService().selectLoveList();
+			request.setAttribute("loveList",loveList);
+			
+			int num = Integer.parseInt(request.getParameter("no"));
+			
+			Board b = new BoardService().selectBoard(num);
+			request.setAttribute("board", b);
+			
+			List<Comment> comments = new BoardService().selectComment(num);
+			request.setAttribute("comments", comments);
+			
+			request.setAttribute("cPage", cPage);
+			request.setAttribute("user", user);
+			request.setAttribute("love", love);
 		} else {
 			msg = "찜 설정 실패";
 		}
 		request.setAttribute("msg", msg);
 		// request.setAttribute("loc", loc);
-		request.setAttribute("cPage", cPage);
-		request.setAttribute("no", boardNumber);
-		request.getRequestDispatcher("/views/love/loveMsg.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/boardView.jsp").forward(request, response);
 	}
 
 	/**

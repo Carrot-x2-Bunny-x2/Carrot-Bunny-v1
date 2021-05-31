@@ -42,7 +42,10 @@ com.board.model.vo.Comment" %>
     table#tbl-comment tr.level2 sub.sub-comment-date {color:#ff9c8a; font-size:10px}
     /*답글관련*/
     table#tbl-comment textarea{margin: 4px 0 0 0;}
-    table#tbl-comment button.btn-insert2{width:60px; height:23px; color:white; background:#3300ff; position:relative; top:-5px; left:10px;}    
+    table#tbl-comment button.btn-insert2{
+    	width:45px; height:23px; color:white; position:relative; background-color: #ff9800; 
+    	font-family: 'RIDIBatang'; border-radius: 26px; border: 0; font-size: 20%;
+    }    
 
 
 	.wrapper {
@@ -5893,19 +5896,19 @@ header #nav-icon {
 							</div>
 						</div>
 						<div class="right-col">
-							<h1 itemprop="name" style="font-weight: bold"><%=b.getBoardTitle()%></h1>
+							<h1 itemprop="name" style="font-weight: bold"><%=b.getBoardWriter()%>🥕 님의 <%=b.getBoardTitle()%></h1>
 							<div style="float: right;">
 								<%
 								if (check == 1) {
 								%>
 								<input id="isLike" type="checkbox" checked
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								} else {
 								%>
 								<input id="isLike" type="checkbox"
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								}
@@ -5932,11 +5935,11 @@ header #nav-icon {
 											<%
 											if (b.getBoardIsSell() == 1) {
 											%>
-											<p style="color: blue">판매중</p>
+											<p style="color: #646464">판매중</p>
 											<%
 											} else {
 											%>
-											<p style="color: red">판매완료</p>
+											<p style="color: #646464">판매완료</p>
 											<%
 											}
 											%>
@@ -6059,10 +6062,22 @@ header #nav-icon {
 		</div>
 
 		<div class="more-products" id="more-products-wrap">
-			<span id="more-products" style="background-color: ff9800;"
+			<%if((int)request.getAttribute("user")==1) { %>
+				<span id="more-products" style="background-color: ff9800;"
 				data-rows_per_page="1"
-				onclick="location.assign('<%=request.getContextPath()%>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">상품
+				onclick="location.assign('<%=request.getContextPath()%>/board/boardPageUser?cPage=<%=request.getAttribute("cPage")%>')">상품
 				목록</span>
+			<%} else if((int)request.getAttribute("love")==1) { %>
+				<span id="more-products" style="background-color: ff9800;"
+				data-rows_per_page="1"
+				onclick="location.assign('<%=request.getContextPath()%>/love/lovePage?cPage=<%=request.getAttribute("cPage")%>')">상품
+				목록</span>
+			<%} else { %>
+				<span id="more-products" style="background-color: ff9800;"
+					data-rows_per_page="1"
+					onclick="location.assign('<%=request.getContextPath()%>/board/boardPage?cPage=<%=request.getAttribute("cPage")%>')">상품
+					목록</span>
+			<%} %>
 		</div>
 	</section>
 </div>

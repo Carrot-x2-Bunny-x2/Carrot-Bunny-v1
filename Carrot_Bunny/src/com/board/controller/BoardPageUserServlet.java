@@ -34,6 +34,10 @@ public class BoardPageUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int user = 1;
+		request.setAttribute("user",user);
+		int love = 0;
+		request.setAttribute("love",love);
 		int cPage;
 		int numPerPage;
 		try {
@@ -64,7 +68,7 @@ public class BoardPageUserServlet extends HttpServlet {
 			pageBar="<span>[이전]</span>";
 		}else {
 			pageBar="<a href='"+request.getContextPath()
-			+"/board/boardPageUser?cPage="+(pageNo-1)+"&numPerPage="+numPerPage+"'>[이전]</a>";
+			+"/board/boardPageUser?cPage="+(pageNo-1)+"'>[이전]</a>";
 		}
 	
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
@@ -72,7 +76,7 @@ public class BoardPageUserServlet extends HttpServlet {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
 				pageBar+="<a href='"+request.getContextPath()
-				+"/board/boardPageUser?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
+				+"/board/boardPageUser?cPage="+pageNo+"'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -82,9 +86,10 @@ public class BoardPageUserServlet extends HttpServlet {
 		}
 		else {
 			pageBar+="<a href='"+request.getContextPath()
-			+"/board/boardPageUser?cPage="+pageNo+"&numPerPage="+numPerPage+"'>[다음]</a>";
+			+"/board/boardPageUser?cPage="+pageNo+"'>[다음]</a>";
 		}
 		request.setAttribute("pageBar",pageBar);
+		request.setAttribute("cPage",cPage);
 		request.getRequestDispatcher("/views/board/boardPageUser.jsp")
 		.forward(request, response);
 		
