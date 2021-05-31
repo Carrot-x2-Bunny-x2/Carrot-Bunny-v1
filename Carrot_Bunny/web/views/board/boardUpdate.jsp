@@ -7,6 +7,7 @@
 	Board b=(Board)request.getAttribute("board");
 	
 	Member m = (Member)session.getAttribute("loginMember");
+	/*out.print(b.getBoardNumber());*/
 %>
 
 <%@ include file="../common/header.jsp"%>
@@ -25,10 +26,8 @@
 </style>
 <div class="wrapper">
 	<div id="notice-container">
-		<form action="<%=request.getContextPath() %>/board/boardUpdateEnd" 
+		<form action="<%=request.getContextPath() %>/board/boardUpdateEnd?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>" 
 	    method="post" enctype="multipart/form-data">
-	    	<input type="hidden" name="boardNo" value="<%=b.getBoardNumber()%>">
-	    	<input type="hidden" name="cPage" value="<%=request.getAttribute("cPage")%>">
 	        <table id="tbl-notice">
 	        <tr>
 	            <th>첨부파일</th>

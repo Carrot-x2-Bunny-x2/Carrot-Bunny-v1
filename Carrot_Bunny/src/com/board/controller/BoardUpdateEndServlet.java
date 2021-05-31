@@ -2,6 +2,8 @@ package com.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +14,10 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.common.MyRename;
+import com.love.model.service.LoveService;
+import com.love.model.vo.Love;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -90,25 +95,73 @@ public class BoardUpdateEndServlet extends HttpServlet {
 		}else {
 			fPath = mr.getParameter("boardFilepath1");
 		}
+		int num = Integer.parseInt(request.getParameter("no"));
 		// 파일명을 DB에 저장해야함. -> rename된 파일을 가져오기
 		// n.setFilePath(mr.getParameter("up_file"));
 		b.setRenamedFileName(fPath);
-		b.setBoardNumber(Integer.parseInt(mr.getParameter("boardNo")));
+		b.setBoardNumber(num);
 		int result = new BoardService().updateBoard(b);
 
-		int cPage = Integer.parseInt(mr.getParameter("cPage"));
 		// 등록성공하면 등록성공 메세지출력 후 리스트화면으로 이동
 		// 등록실패하면 등록실패 메세지출력 후 등록화면으로 이동
-		String msg = "";
-		String loc = "/board/boardPage?cPage="+cPage;
 		if (result > 0) {
-			msg = "상품수정 성공";
+			System.out.println("수정 성공");
+			int cPage;
+			try {
+				cPage=Integer.parseInt(request.getParameter("cPage"));
+			}catch(NumberFormatException e) {
+				cPage=1;
+			}
+			request.setAttribute("cPage", cPage);
+			int user;
+			try {
+				user=Integer.parseInt(request.getParameter("user"));
+			}catch(NumberFormatException e) {
+				user=0;
+			}
+			request.setAttribute("user", user);
+			int love;
+			try {
+				love=Integer.parseInt(request.getParameter("love"));
+			}catch(NumberFormatException e) {
+				love=0;
+			}
+			request.setAttribute("love", love);
+			int sold;
+			try {
+				sold=Integer.parseInt(request.getParameter("sold"));
+			}catch(NumberFormatException e) {
+				sold=0;
+			}
+			request.setAttribute("sold", sold);
+			String searchType;
+			try {
+				searchType=request.getParameter("searchType");
+			}catch(NumberFormatException e) {
+				searchType="";
+			}
+			request.setAttribute("searchType", searchType);
+			String keyword;
+			try {
+				keyword=request.getParameter("keyword");
+			}catch(NumberFormatException e) {
+				keyword="";
+			}
+			request.setAttribute("keyword", keyword);
+			
+			List<Love> loveList = new LoveService().selectLoveList();
+			request.setAttribute("loveList",loveList);
+			
+			
+			Board board = new BoardService().selectBoard(num);
+			request.setAttribute("board", board);
+			
+			List<Comment> comments = new BoardService().selectComment(num);
+			request.setAttribute("comments", comments);
 		} else {
-			msg = "상품수정 실패";
+			System.out.println("수정 실패");
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/boardView.jsp").forward(request, response);
 	}
 
 	/**

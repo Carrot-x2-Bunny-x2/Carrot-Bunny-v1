@@ -39,6 +39,41 @@ public class BoardUpdateServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			cPage=1;
 		}
+		int user;
+		try {
+			user=Integer.parseInt(request.getParameter("user"));
+		}catch(NumberFormatException e) {
+			user=0;
+		}
+		request.setAttribute("user", user);
+		int love;
+		try {
+			love=Integer.parseInt(request.getParameter("love"));
+		}catch(NumberFormatException e) {
+			love=0;
+		}
+		request.setAttribute("love", love);
+		int sold;
+		try {
+			sold=Integer.parseInt(request.getParameter("sold"));
+		}catch(NumberFormatException e) {
+			sold=0;
+		}
+		request.setAttribute("sold", sold);
+		String searchType;
+		try {
+			searchType=request.getParameter("searchType");
+		}catch(NumberFormatException e) {
+			searchType="";
+		}
+		request.setAttribute("searchType", searchType);
+		String keyword;
+		try {
+			keyword=request.getParameter("keyword");
+		}catch(NumberFormatException e) {
+			keyword="";
+		}
+		request.setAttribute("keyword", keyword);
 		
 		Board b = new BoardService().selectBoard(Integer.parseInt(request.getParameter("no")));
 		

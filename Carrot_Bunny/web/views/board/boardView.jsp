@@ -6047,7 +6047,7 @@ header #nav-icon {
 										if (loginMember.getUserId().equals(b.getBoardWriter())) {
 									%>
 									<input type="button" value="수정하기"
-										onclick="location.assign('<%=request.getContextPath()%>/board/boardUpdate?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')">
+										onclick="location.assign('<%=request.getContextPath()%>/board/boardUpdate?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')">
 									<input type="button" value="판매완료" onclick="fn_sell_product();">
 									<%
 									}
