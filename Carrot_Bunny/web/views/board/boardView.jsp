@@ -5902,13 +5902,13 @@ header #nav-icon {
 								if (check == 1) {
 								%>
 								<input id="isLike" type="checkbox" checked
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								} else {
 								%>
 								<input id="isLike" type="checkbox"
-									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
+									onclick="location.assign('<%=request.getContextPath()%>/love/loveClick?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>')"><label
 									for="isLike">❤</label>
 								<%
 								}
@@ -6029,6 +6029,13 @@ header #nav-icon {
 							    			<input type="hidden" name="commentWriter" value="<%=loginMember!=null?loginMember.getUserId():""%>">
 							    			<input type="hidden" name="commentLevel" value="1">
 							    			<input type="hidden" name="refNum" value="0">
+							    			<input type="hidden" name="user" value="<%=request.getAttribute("user") %>">
+							    			<input type="hidden" name="love" value="<%=request.getAttribute("love") %>">
+							    			<input type="hidden" name="searchType" value="<%=request.getAttribute("searchType") %>">
+							    			<input type="hidden" name="keyword" value="<%=request.getAttribute("keyword") %>">
+							    			<input type="hidden" name="sold" value="<%=request.getAttribute("sold") %>">
+							    			<input type="hidden" name="cPage" value="<%=request.getAttribute("cPage") %>">
+
 							    			<button type="submit" id="btn-insert">등록</button>
 							    		</form>
 							    	</div>

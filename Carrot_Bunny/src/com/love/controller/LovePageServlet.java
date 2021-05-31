@@ -53,6 +53,27 @@ public class LovePageServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			numPerPage=10;
 		}
+		int sold;
+		try {
+			sold=Integer.parseInt(request.getParameter("sold"));
+		}catch(NumberFormatException e) {
+			sold=0;
+		}
+		request.setAttribute("sold", sold);
+		String searchType;
+		try {
+			searchType=request.getParameter("searchType");
+		}catch(NumberFormatException e) {
+			searchType="";
+		}
+		request.setAttribute("searchType", searchType);
+		String keyword;
+		try {
+			keyword=request.getParameter("keyword");
+		}catch(NumberFormatException e) {
+			keyword="";
+		}
+		request.setAttribute("keyword", keyword);
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		

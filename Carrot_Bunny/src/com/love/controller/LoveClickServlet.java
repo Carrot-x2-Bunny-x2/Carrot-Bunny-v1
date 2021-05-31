@@ -59,6 +59,25 @@ public class LoveClickServlet extends HttpServlet {
 		}catch(NumberFormatException e) {
 			love=0;
 		}
+		int sold;
+		try {
+			sold=Integer.parseInt(request.getParameter("sold"));
+		}catch(NumberFormatException e) {
+			sold=0;
+		}
+		String searchType;
+		try {
+			searchType=request.getParameter("searchType");
+		}catch(NumberFormatException e) {
+			searchType="";
+		}
+		String keyword;
+		try {
+			keyword=request.getParameter("keyword");
+		}catch(NumberFormatException e) {
+			keyword="";
+		}
+		
 		int boardNumber = Integer.parseInt(request.getParameter("no"));
 		int cnt = new LoveService().findLove(m, boardNumber);
 		
@@ -95,6 +114,10 @@ public class LoveClickServlet extends HttpServlet {
 			request.setAttribute("cPage", cPage);
 			request.setAttribute("user", user);
 			request.setAttribute("love", love);
+			request.setAttribute("sold", sold);
+			request.setAttribute("searchType", searchType);
+			request.setAttribute("keyword", keyword);
+
 		} else {
 			msg = "찜 설정 실패";
 		}

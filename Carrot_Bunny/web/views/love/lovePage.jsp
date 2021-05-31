@@ -4,7 +4,7 @@
 <%@ page import="java.util.List,com.board.model.vo.Board"%>
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
-
+out.print(request.getAttribute("love"));
 %>
 
 <%@ include file="../common/header.jsp"%>
