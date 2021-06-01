@@ -92,7 +92,7 @@ com.board.model.vo.Comment" %>
 	}
 	
 	[id="isLike"]:checked + label {
-	  color: #e2264d;
+	  color: #FF8C00;
 	  will-change: font-size;
 	  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
 	}
