@@ -38,10 +38,17 @@ public class BoardService {
 			close(conn);
 			return list;
 		}
-	// user의 상품만 select(삭제되지 않은)
+	// user의 상품만 select(삭제되지 않은) 페이징 처리 포함
 	public List<Board> selectUserBoardList(int cpage, int numPerPage,Member m) {
 		Connection conn = getConnection();
 		List<Board> list = dao.selectUserBoardList(conn, cpage, numPerPage, m);
+		close(conn);
+		return list;
+	}
+	// user의 상품만 select(삭제되지 않은) 페이징 처리 미포함
+	public List<Board> selectAllUserBoardList(Member m) {
+		Connection conn = getConnection();
+		List<Board> list = dao.selectAllUserBoardList(conn, m);
 		close(conn);
 		return list;
 	}
