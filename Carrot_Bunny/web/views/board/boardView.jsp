@@ -6106,7 +6106,7 @@ header #nav-icon {
 	const fn_delete_product=()=>{
 		if(confirm("글을 삭제하시겠습니까?")){
 			//글 삭제 진행
-			location.replace("<%=request.getContextPath() %>/board/boardDelete?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
+			location.replace("<%=request.getContextPath() %>/board/boardDelete?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
 	$(function(){

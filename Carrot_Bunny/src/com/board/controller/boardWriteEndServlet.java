@@ -93,7 +93,6 @@ public class boardWriteEndServlet extends HttpServlet {
 		// 등록성공하면 등록성공 메세지출력 후 리스트화면으로 이동
 		// 등록실패하면 등록실패 메세지출력 후 등록화면으로 이동
 		if (result > 0) {
-			System.out.println("등록 성공");
 			request.setAttribute("msg", "등록 성공");
 			int cPage;
 			try {
@@ -137,7 +136,7 @@ public class boardWriteEndServlet extends HttpServlet {
 				keyword="";
 			}
 			request.setAttribute("keyword", keyword);
-			request.getRequestDispatcher("/views/board/boardWriteMsg.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/board/boardMsg.jsp").forward(request, response);
 			
 		} else {
 			request.setAttribute("msg", "등록 실패");
