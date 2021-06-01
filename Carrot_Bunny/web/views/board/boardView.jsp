@@ -5874,7 +5874,7 @@ header #nav-icon {
 				<div class="_cont detail-top">
 					<div class="cols">
 						<div class="left-col">
-							<div class="big" style="">
+							<div class="big" style="float: none;">
 								<%
 								if (b.getBoardReFilePath() != null) {
 								%>
