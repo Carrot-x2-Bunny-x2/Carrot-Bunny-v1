@@ -113,8 +113,10 @@ form#numperPageFrm {
 
 div#pageBar>* {
 	margin-right: 20px;
-	text-decoration: none;
+	text-decoration : none;
+	color: black;
 }
+
 </style>
 
 <div class="wrapper">
@@ -189,7 +191,7 @@ div#pageBar>* {
 					</tbody>
 				</table>
 	
-				<div id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; ">
+				<div class= "pageBar" id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; ">
 					<%=request.getAttribute("pageBar")%>
 				</div>
 			</div>

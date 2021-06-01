@@ -53,6 +53,10 @@ com.board.model.vo.Comment" %>
 	padding-bottom:60px;
 	}
 	
+	._cont detail-top{
+		margin-left: 8%; !important
+	}
+	
     section#notice-container{width:600px; margin:0 auto; text-align:center;}
     section#notice-container h2{margin:10px 0;}
     table#tbl-notice{width:500px; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
@@ -5870,7 +5874,7 @@ header #nav-icon {
 				<div class="_cont detail-top">
 					<div class="cols">
 						<div class="left-col">
-							<div class="big">
+							<div class="big" style="float: none;">
 								<%
 								if (b.getBoardReFilePath() != null) {
 								%>

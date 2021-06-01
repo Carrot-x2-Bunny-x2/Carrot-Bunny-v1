@@ -90,6 +90,30 @@ ul.join_box {
 	color: #888;
 	border: none;
 }
+
+
+.btn1{
+	width: 68px; 
+	height: 25px; 
+	border-radius: 10px; 
+	background-color: #ff9800; 
+	border: none; 
+	color: white; 
+	font-family: 'RIDIBatang';
+}
+
+.btn2 {
+	width: 70px; 
+	margin-right:10px; 
+	height: 38px; 
+	border-radius: 10px; 
+	background-color: #ff9800; 
+	border: none; 
+	color: white; 
+	font-family: 'RIDIBatang';
+}
+
+
 </style>
 
 <section id=enroll-container class=enroll-container>
@@ -102,7 +126,7 @@ ul.join_box {
 				<th>아이디</th>
 				<td>
 					<input type="text" placeholder="4글자이상" name="userId" id="userId_"  minlength="4" required> 
-					<input type="button" value="중복검사" onclick="fn_id_duplicate();"></td>
+					<input class="btn1" type="button" value="중복검사" onclick="fn_id_duplicate();"></td>
 			</tr>
 			<tr>
 				<th>패스워드</th>
@@ -152,9 +176,9 @@ ul.join_box {
 		</div>
 		<!-- fn_enroll_validate 함수가 submit을 하면 실행이 되도록 이벤트를 걸어줘야함. 그래야 사용이 가능. 
 			로직에서 true가 반환되면 넘어가고 false가 되면 전송을 막음. -->
-		<input type="submit" value="가입" onclick="return fn_enroll_validate();">
+		<input class="btn2" type="submit" value="가입" onclick="return fn_enroll_validate();">
 		<!-- <button type="button" id="signUp">가입</button> -->
-		<input type="reset" value="취소">
+		<input class="btn2" type="reset" value="취소">
 	</form>
 </section>
 <form action="" name="checkDuplicateId">

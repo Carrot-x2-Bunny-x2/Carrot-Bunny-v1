@@ -85,6 +85,7 @@ form#numperPageFrm {
 div#pageBar>* {
 	margin-right: 20px;
 	text-decoration: none;
+	color: black;
 }
 
 .searchboard {

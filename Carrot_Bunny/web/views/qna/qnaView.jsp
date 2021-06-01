@@ -56,6 +56,8 @@ table#tbl-notice td {
 textarea {
 	width: 88%;
 	height: auto;
+	resize: none;
+	min-height: 70px;
 }
 
 .noticetitle {

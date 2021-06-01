@@ -8,7 +8,8 @@ Notice n = (Notice) request.getAttribute("notice");
 
 <style>
 .wrap {
-	height: auto;
+	witth: 100%;
+	height: 100%;
 	min-height: 70%;
 	padding-bottom: 60px;
 }
@@ -16,8 +17,6 @@ Notice n = (Notice) request.getAttribute("notice");
 .noticeupdate {
 	width: 100%;
 	height: 100%;
-	min-height: 600px;
-	margin-left: 390px;
 }
 
 .noticetitle {
@@ -77,7 +76,26 @@ table#tbl-notice td {
 	
 }
 
+.nup {
+}
 
+.noticeupdate {
+	display :flex;
+}
+
+.noticeupdate table {
+	margin:auto;
+}
+
+.noticeupdate textarea {
+	height: 320px;
+	margin-left: 15px; 
+	border-radius: 10px; 
+	margin-top: 20px; 
+	font-size: 14px; 
+	resize: none;
+    width: 100%;"
+}
 
 
 </style>
@@ -89,36 +107,35 @@ table#tbl-notice td {
 			<p>공지사항을 수정해주세요!</p>
 		</div>
 
+		<div class="nup">
+			<form action="<%=request.getContextPath()%>/notice/noticeUpdateEnd"
+				method="post">
 
-		<form action="<%=request.getContextPath()%>/notice/noticeUpdateEnd"
-			method="post">
-
-			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+				<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
 
 
-			<div class="noticeupdate">
+				<div class="noticeupdate">
 
-				<table>
-					<tr>
-						<th style="padding-right: 15px;">제 목</th>
-						<td><input
-							style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px;"
-							type="text" name="n_title" id="noticeTitle"
-							value="<%=n.getNoticeTitle()%>" required></td>
-					</tr>
-					<tr>
-						<th style="padding-right: 15px;" >내 용</th>
-						<td><textarea
-								style="width: 650px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px;"
-								name="n_content"><%=n.getNoticeContent()%></textarea></td>
-					</tr>
-				</table>
-				<div style="padding-top:20px; text-align:center;">
-				<input class="nobtn" type="submit"
-							value="등록하기" onclick="">
-							</div>
-			</div>
-		</form>
+					<table>
+						<tr>
+							<th style="padding-right: 15px; padding-top: 17px;">제 목</th>
+							<td><input
+								style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px;"
+								type="text" name="n_title" id="noticeTitle"
+								value="<%=n.getNoticeTitle()%>" required></td>
+						</tr>
+						<tr>
+							<th style="padding-right: 15px;">내 용</th>
+							<td><textarea name="n_content"><%=n.getNoticeContent()%></textarea></td>
+						</tr>
+					</table>
+				</div>
+				<div style="padding-top: 20px; text-align: center;">
+					<input class="nobtn" type="submit" value="등록하기" onclick="">
+				</div>
+
+			</form>
+		</div>
 	</div>
 
 </div>
