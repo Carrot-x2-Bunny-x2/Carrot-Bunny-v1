@@ -29,6 +29,14 @@ public class BoardWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int user;
+		try {
+			user=Integer.parseInt(request.getParameter("user"));
+		}catch(NumberFormatException e) {
+			user=0;
+		}
+		request.setAttribute("user", user);
+
 		request.getRequestDispatcher("/views/board/boardWrite.jsp").forward(request, response);
 	}
 
