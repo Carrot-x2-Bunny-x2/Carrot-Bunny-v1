@@ -53,6 +53,9 @@ public class BoardPageUserServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
+		List<Board> allUserList=new BoardService().selectAllUserBoardList(loginMember);
+		request.setAttribute("allUserList", allUserList);
+
 		List<Board> list=new BoardService().selectUserBoardList(cPage,numPerPage,loginMember);
 		request.setAttribute("list", list);
 		
