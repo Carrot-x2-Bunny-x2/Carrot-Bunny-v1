@@ -51,7 +51,7 @@ public class LovePageServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=10;
+			numPerPage=5;
 		}
 		int sold;
 		try {

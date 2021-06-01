@@ -129,7 +129,7 @@
 					<p>나의 정보를 확인해보세요</p>
 				</div>
 				<div>
-					<p colspan="2" style="display:center;font-size : 12px; margin-top:20px; margin-bottom:40px;"><%=loginMember.getUserName() %></p>
+					<p colspan="2" style="display:center;font-size : 15px; margin-top:20px; margin-bottom:40px;">🥕 <%=loginMember.getUserName() %> 🥕</p>
 				</div>
 				<table>
 				<tr>
