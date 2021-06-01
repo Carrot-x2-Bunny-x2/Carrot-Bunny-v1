@@ -10,14 +10,13 @@ public class Comment {
 	private int refNumber;
 	private int commentLevel;
 	private Date commentDate;
-	private int commentDelete;
 	
 	public Comment() {
 		
 	}
 	
 	public Comment(int commentNumber, String commentWriter, String commentContent, int boardNumber, int refNumber,
-			int commentLevel, Date commentDate, int commentDelete) {
+			int commentLevel, Date commentDate) {
 		super();
 		this.commentNumber = commentNumber;
 		this.commentWriter = commentWriter;
@@ -26,7 +25,6 @@ public class Comment {
 		this.refNumber = refNumber;
 		this.commentLevel = commentLevel;
 		this.commentDate = commentDate;
-		this.commentDelete = commentDelete;
 	}
 
 	public int getCommentNumber() {
@@ -85,13 +83,6 @@ public class Comment {
 		this.commentDate = commentDate;
 	}
 
-	public int getCommentDelete() {
-		return commentDelete;
-	}
-
-	public void setCommentDelete(int commentDelete) {
-		this.commentDelete = commentDelete;
-	}
 	
 	
 }
