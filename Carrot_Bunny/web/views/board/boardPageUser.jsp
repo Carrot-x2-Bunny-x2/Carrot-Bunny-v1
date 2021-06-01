@@ -20,7 +20,7 @@ for (Board b : allUserList) {
 <%@ include file="../common/header.jsp"%>
 <style>
 .wrapper {
-	height: 400px;
+	height: 100%;
 	min-height: 80%;
 	padding-bottom: 0;
 }
