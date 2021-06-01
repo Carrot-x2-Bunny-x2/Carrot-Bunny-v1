@@ -130,7 +130,7 @@ ul.join_box {
 			</tr>
 			<tr>
 				<th>패스워드</th>
-				<td><input type="password" name="password" id="password_" required><br></td>
+				<td><input type="password" name="password" id="password_" minlength="4" maxlength="12" required><br></td>
 			</tr>
 			<tr>
 				<th>패스워드확인</th>

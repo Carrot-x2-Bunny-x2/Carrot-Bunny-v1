@@ -4,10 +4,11 @@
 <%@ page import="java.util.List,com.board.model.vo.Board"%>
 <%
 List<Board> list = (List<Board>) request.getAttribute("list");
+List<Board> allUserList = (List<Board>) request.getAttribute("allUserList");
 
 int selling = 0;
 int sold = 0;
-for (Board b : list) {
+for (Board b : allUserList) {
 	if (b.getBoardIsSell() == 1) {
 		selling += 1;
 	} else {
@@ -19,7 +20,7 @@ for (Board b : list) {
 <%@ include file="../common/header.jsp"%>
 <style>
 .wrapper {
-	height: 1000px;
+	height: 700px;
 	min-height: 100%;
 	padding-bottom: 60px;
 }

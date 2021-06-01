@@ -84,6 +84,7 @@ form#numperPageFrm {
 
 div#pageBar>* {
 	margin-right: 20px;
+	color: black;
 	text-decoration: none;
 	color: black;
 }
@@ -193,7 +194,7 @@ div#pageBar>* {
 					%>
 				</tbody>
 			</table>
-			<div id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; ">
+			<div id="pageBar" align="center" style="margin-top: 40px; margin-bottom:40px; color:black; ">
 				<%=request.getAttribute("pageBar")%>
 				<!-- memberlistservlet에서 보낸 pagebar를 받아서 사용. -->
 			</div>
