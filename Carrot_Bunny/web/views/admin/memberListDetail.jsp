@@ -6,8 +6,15 @@ Member m = (Member) request.getAttribute("member");
 %>
 <%@ include file="/views/common/header.jsp"%>
 <style>
+
+.wrapper {
+	height : auto;
+	min-height:70%;
+	padding-bottom:60px;
+}
+
 #tbl-member {
-	width: 90%;
+	width: 100%;
 	min-height: 300px;
 	/* position: relative; */
 }
@@ -35,7 +42,8 @@ Member m = (Member) request.getAttribute("member");
 }
 
 .membertb {
-	width: 100%;
+	width: 50%;
+	margin:auto;
 	margin-top: 20px;
 	line-height: 35px;
 	text-align: center;
@@ -51,8 +59,20 @@ Member m = (Member) request.getAttribute("member");
 	margin-top : 10px;
 
 }
+
+.memberlistbtn input {
+	width: 130px; 
+	height: 30px; 
+	margin-top: 20px; 
+	background-color: #ff9800; 
+	color: white; 
+	border: none; 
+	border-radius: 10px;
+	font-family: 'RIDIBatang';
+}
 </style>
 
+<div class="wrapper">
 <div id="tbl-member">
 
 	<div class="members">
@@ -91,6 +111,7 @@ Member m = (Member) request.getAttribute("member");
 	</div>
 </div>
 
+</div>
 	<script>
 	
 	const fn_delete_member=()=>{

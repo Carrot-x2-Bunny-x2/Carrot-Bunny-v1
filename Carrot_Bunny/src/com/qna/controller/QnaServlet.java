@@ -99,7 +99,7 @@ public class QnaServlet extends HttpServlet {
 
 				while(!(pageNo>pageEnd||pageNo>totalPage)) { 
 					if(cPage==pageNo) { //분기처리 
-						pageBar+="<span style='background-color:orange;'>"+pageNo+"</span>";
+						pageBar+="<span>"+pageNo+"</span>";
 					}else {
 						pageBar+="<a href='"+request.getContextPath()+"/qna.do?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 					}

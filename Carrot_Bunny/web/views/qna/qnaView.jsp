@@ -25,8 +25,8 @@ section#notice-container h2 {
 }
 
 table#tbl-notice {
-	width: 77%;
-	margin-left: 20px;
+	margin:auto;
+	width: 68%;
 	margin-top: 20px;
 	line-height: 40px;
 	text-align: center;
@@ -40,6 +40,7 @@ table#tbl-notice {
 }
 
 table#tbl-notice th {
+	min-width: 70px;
 	width: 125px;
 	padding: 5px 0;
 	text-align: center;
@@ -77,7 +78,7 @@ textarea {
 			<form name="qnaUpdate"
 				action="<%=request.getContextPath()%>/qna/qnaUpdate" method="post">
 				<div
-					style=" width: 800px;  margin-left:500px; padding-top:30px;">
+					style=" width: 60%; padding-top:30px; margin:auto">
 					<table id="tbl-notice">
 						<tr>
 							<th>제 목</th>
@@ -118,14 +119,14 @@ textarea {
 					</table>
 				</div>
 				<div style="text-align: center; margin-top:10px;">
-					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;" type="submit"
+					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';" type="submit" 
 								value="답변 등록">
 					<input
-						style="width: 70px; height: 38px; margin-right:10px;  margin-top: 20px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						style="width: 70px; height: 38px; margin-right:10px;  margin-top: 20px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 						type="button" value="문의 목록"
 						onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 					<input
-						style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 						type="button" value="삭제하기" onclick="fn_delete_qna();">
 				</div>
 			</form>
@@ -138,7 +139,8 @@ textarea {
 		<div class="noticetitle">
 			<p>1:1 문의 상세화면</p>
 		</div>
-		<table id="tbl-notice">
+		<div style=" width: 60%; padding-top:30px; margin:auto">
+		<table id="tbl-notice" >
 			<tr>
 				<th>제 목</th>
 				<td><%=q.getQnaTitle()%></td>
@@ -149,7 +151,7 @@ textarea {
 			</tr>
 			<tr>
 				<th>문의 내용</th>
-				<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
+				<td><textarea readonly="readonly"><%=q.getQnaContent()%></textarea></td>
 			</tr>
 			<tr>
 				<%
@@ -168,10 +170,10 @@ textarea {
 				}
 				%>
 			</tr>
-		</table>
+		</table></div>
 		<div style="text-align: center;">
 			<input
-				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 				type="button" value="문의 목록"
 				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 		</div>

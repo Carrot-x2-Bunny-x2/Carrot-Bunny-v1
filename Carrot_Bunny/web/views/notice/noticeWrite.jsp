@@ -11,7 +11,7 @@
 }
 
 .noticewrite {
-	width: 81%;
+	width: 100%;
 	height: 80%;
 	margin: auto;
 	min-height: 400px;
@@ -33,10 +33,19 @@
 	padding: 0;
 }
 
+
+.nwwrite {
+	width : 100%;	
+}
+
+.nform{
+	width: 80%;
+    margin: auto;
+}
+
 .writetb{
-	width: 100%;
-	heigth: 100%;
-	margin-left: 330px;
+	width: 80%;
+	margin: auto;
 
 }
 
@@ -66,10 +75,13 @@
     background-color: #ff9800;
     border: none;
     color: white; 
-	
+	font-family: 'RIDIBatang';
 
 }
 
+.nwt {
+	margin : auto;
+}
 
 </style>
 
@@ -88,11 +100,11 @@
 
 
 		<div class="nwwrite">
-			<form action="<%=request.getContextPath()%>/notice/noticeWriteEnd"
+			<form action="<%=request.getContextPath()%>/notice/noticeWriteEnd" class="nform"
 				method="post">
 
 				<div class="writetb">
-					<table>
+					<table class="nwt">
 						<tr>
 							<th>제목</th>
 							<td><input type="text" name="n_title"
