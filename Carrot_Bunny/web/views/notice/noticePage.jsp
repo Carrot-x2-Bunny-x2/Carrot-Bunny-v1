@@ -20,6 +20,12 @@
 	min-height: 600px;
 }
 
+.noticetable{
+	margin: auto;
+    width: 80%;
+}
+
+
 .noticetitle {
 	text-align: center;
 	height: 50px;
@@ -35,10 +41,8 @@
 }
 
 .noticetb {
-	width: 800px;
+	width: 100%;
 	margin-top: 90px;
-	margin-left:265px;
-	margin-bottom: 20px;
 	line-height: 50px;
 	text-align: center;
 	font-size: 15px;
@@ -52,15 +56,20 @@
 }
 
 .noticewrite {
-	margin-top: 10px;
-	margin-right :40px;
-	float: right;
-	width: 100px;
+	display : flex;
+	margin :auto;
+	margin-top: 4%;
+	width: 92px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: #ff9800;
 	border: none;
 	color: white;
+	font-family: 'RIDIBatang';
+}
+
+.nwrite {
+	width : 100%;
 }
 
 
@@ -99,7 +108,7 @@
 				</table>
 			</div>
 			<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
-			<div style="">
+			<div class="nwrite">
 				<input class="noticewrite" type="button" value="공지사항 등록"
 					onclick="location.assign('<%=request.getContextPath()%>/noticewrite')">
 			</div>

@@ -111,17 +111,17 @@ h5 {
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="로그인"
-						style="width: 130px; height: 30px; margin-top: 20px; margin-left: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px;">
+						style="width: 130px; height: 30px; margin-top: 20px; margin-left: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px; font-family: 'RIDIBatang';">
 						<input type="button" value="회원가입"
 						onclick="location.replace('<%=request.getContextPath()%>/memberenroll.do')"
-						style="width: 130px; height: 30px; margin-top: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px;">
+						style="width: 130px; height: 30px; margin-top: 20px; background-color: #ff9800; color: white; border: none; border-radius: 10px; font-family: 'RIDIBatang';">
 					</td>
 				</tr>
 			</table>
 			</div>
 			<div style="margin-left: 20px; margin-top: 10px;">
 				<a
-					href="javascript:alert('준비중입니다.ㅠ 보채지마세요.ㅜㅠ 관리자 홍서연 01053033196으로 연락주시면 알려드려요');"
+					href="javascript:alert('준비중입니다.ㅠ 관리자 홍서연 01082828282으로 연락주시면 알려드려요');"
 					onfocus="this.blur()" class="find-login">아이디/비밀번호 찾기</a>
 				<h5>*찾기 어려우실 경우 고객센터에 문의주세요.</h5>
 			</div>

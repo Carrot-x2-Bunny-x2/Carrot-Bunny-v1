@@ -44,7 +44,6 @@
 	border: 1px solid lightgray;
 	background-color: white;
 	border-radius: 10px;
-	margin-bottom: 50px;
 	text-decoration : none;
 	
 }

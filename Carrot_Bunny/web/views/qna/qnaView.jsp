@@ -119,14 +119,14 @@ textarea {
 					</table>
 				</div>
 				<div style="text-align: center; margin-top:10px;">
-					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;" type="submit"
+					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';" type="submit" 
 								value="답변 등록">
 					<input
-						style="width: 70px; height: 38px; margin-right:10px;  margin-top: 20px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						style="width: 70px; height: 38px; margin-right:10px;  margin-top: 20px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 						type="button" value="문의 목록"
 						onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 					<input
-						style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+						style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 						type="button" value="삭제하기" onclick="fn_delete_qna();">
 				</div>
 			</form>
@@ -173,7 +173,7 @@ textarea {
 		</table></div>
 		<div style="text-align: center;">
 			<input
-				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
+				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white; font-family: 'RIDIBatang';"
 				type="button" value="문의 목록"
 				onclick="location.assign('<%=request.getContextPath()%>/qna.do')">
 		</div>

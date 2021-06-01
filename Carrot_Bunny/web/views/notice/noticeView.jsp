@@ -68,23 +68,31 @@ input {
 }
 
 .buttonbtn {
+	margin: auto;
+    width: 60%;
 	padding-bottom: 20px;
 	padding-top: 50px;
 	display: flex;
-	margin-left: 631px;
-	
 }
 
 .btn1 {
-	margin-right: 10px;
+	margin-left: auto;
+	font-family: 'RIDIBatang';
 }
 
 .btn2 {
-	margin-right: 10px;
+	margin-left: 3%;
 }
 
 .btn3 {
-	margin-right: 10px;
+	margin-left: 3%;
+	margin-right: auto;
+	font-family: 'RIDIBatang';
+}
+
+.btn4 {
+	margin: auto;
+	font-family: 'RIDIBatang';
 }
 
 .noticewrite {
@@ -96,8 +104,7 @@ input {
 }
 
 .noticewrite {
-	margin-left: 410px;
-	margin-top:30px;
+	margin: auto;
 }
 
 .noticewrite tr{
@@ -107,12 +114,23 @@ font-size:13px;
 }
 
 .memberbtn{
+	margin: auto;
+    width: 100%;
 	padding-bottom: 20px;
 	padding-top: 50px;
 	display: flex;
-	margin-left: 740px;
 
 }
+
+.noticebox {
+	margin: auto;
+    width: 80%;
+}
+
+.ntb {
+	margin : auto;
+}
+
 </style>
 <div id="wrap">
 
@@ -124,42 +142,40 @@ font-size:13px;
 		</div>
 
 
-
-		<div class="noticewrite">
-
-			<table>
-				<tr>
-					<th style="padding-right : 15px;  ">제목</th>
-					<td
-						style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 10px; font-size:14px;"><%=n.getNoticeTitle()%></td>
-				</tr>
-				<tr>
-
-					<th style="padding-right : 15px;">내용</th>
-					<td
-						style="width: 700px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
-				</tr>
-			</table>
+		<div class="noticebox">
+			<div class="noticewrite">
+	
+				<table class="ntb">
+					<tr>
+						<th style="padding-right : 15px;  ">제목</th>
+						<td
+							style="width: 500px; height: 30px; margin-left: 15px; border-radius: 10px; margin-top: 10px; font-size:14px;"><%=n.getNoticeTitle()%></td>
+					</tr>
+					<tr>
+	
+						<th style="padding-right : 15px;">내용</th>
+						<td
+							style="width: 700px; height: 320px; margin-left: 15px; border-radius: 10px; margin-top: 20px; font-size:14px;"><%=n.getNoticeContent()%></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-
-	</div>
+	
 	<%
 	if (loginMember != null && loginMember.getUserId().equals("admin")) {
 	%>
 
 	<div class="buttonbtn">
-
 		<input class="btn1" type="submit" value="수정"
 			onclick="location.assign('<%=request.getContextPath()%>/notice/noticeUpdate?no=<%=n.getNoticeNo()%>')">
-		<form action="<%=request.getContextPath()%>/deleteNotice?no="
+		<form class="btn2" action="<%=request.getContextPath()%>/deleteNotice?no="
 			+'<%=n.getNoticeNo()%>" method="get">
 			<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
-			<input class="btn2" type="button" value="삭제"
+			<input type="button" value="삭제" style="font-family: 'RIDIBatang';"
 				onclick="fn_delete_notice();">
 		</form>
 		<input class="btn3" type="button" value="목록"
 			onclick="location.assign('<%=request.getContextPath()%>/noticePage')">
-
 	</div>
 	<%
 	} else {
@@ -172,7 +188,7 @@ font-size:13px;
 		%>
 	</div>
 
-
+	</div>
 </div>
 
 
