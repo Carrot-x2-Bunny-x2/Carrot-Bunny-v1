@@ -97,7 +97,7 @@
 								<td><%=q.getQnaWriter() %></td>
 								<td><%=q.getQnaDate() %></td>
 								<%if(q.getQnaAnswer() == null){ %>
-									<td >답변 대기 중</td>
+									<td style="color:red;" >답변 대기 중</td>
 								<%}else{%>
 									<td >답변완료</td>
 								<%}%>
@@ -105,7 +105,7 @@
 						<%}
 					}%>
 				</table>
-				<div id="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 19px; margin-top:10px;">
+				<div id="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 14px; margin-top:20px;">
 				<%=request.getAttribute("pageBar")%>
 			</div>
 			</div>

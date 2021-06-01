@@ -69,10 +69,7 @@ public class AdminBoardListServlet extends HttpServlet {
 
 			List<Board> list = new AdminService().selectBoardList(cPage, numPerPage); 
 			request.setAttribute("list", list);
-			//		
-			//		for(Member m : list) {
-			//			System.out.println(m.getmemberNum());
-			//		}
+			
 
 
 			int totalData = new AdminService().selectBoardListCount();
@@ -97,7 +94,7 @@ public class AdminBoardListServlet extends HttpServlet {
 
 			while(!(pageNo>pageEnd||pageNo>totalPage)) { 
 				if(cPage==pageNo) { //분기처리 
-					pageBar+="<span style='background-color:orange;'>"+pageNo+"</span>";
+					pageBar+="<span>"+pageNo+"</span>";
 				}else {
 					pageBar+="<a href='"+request.getContextPath()+"/boardListPage?cPage="+pageNo+"&numPerPage="+numPerPage+"'>"+pageNo+"</a>";
 				}
