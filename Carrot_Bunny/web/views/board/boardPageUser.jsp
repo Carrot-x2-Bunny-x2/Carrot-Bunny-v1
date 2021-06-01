@@ -164,7 +164,7 @@ div#pageBar>* {
 
 .tbl-member a {
 	text-decoration: none;
-	color:d2691e;
+	color: #ff8c00;
 	
 }
 </style>
@@ -227,7 +227,7 @@ div#pageBar>* {
 					</tbody>
 				</table>
 
-				<div id="pageBar" align="center" style="margin-top: 40px;">
+				<div id="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 16px; margin-top:40px;">
 					<%=request.getAttribute("pageBar")%>
 				</div>
 			</div>
