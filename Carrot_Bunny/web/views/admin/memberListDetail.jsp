@@ -9,13 +9,13 @@ Member m = (Member) request.getAttribute("member");
 
 .wrapper {
 	height : auto;
-	min-height:70%;
-	padding-bottom:60px;
+	min-height:40%;
+	padding-bottom:30px;
 }
 
 #tbl-member {
 	width: 100%;
-	min-height: 300px;
+	min-height: 200px;
 	/* position: relative; */
 }
 
@@ -44,12 +44,13 @@ Member m = (Member) request.getAttribute("member");
 .membertb {
 	width: 50%;
 	margin:auto;
-	margin-top: 20px;
-	line-height: 35px;
+	margin-top: 30px;
+	line-height: 70px;
 	text-align: center;
 	font-size: 13px;
+	margin-top:30px;
 	border: 1px solid lightgray;
-	border-collapse: collapse;
+	border-radius:10px;
 	background-color: white;
 	border-radius: 5px;
 }

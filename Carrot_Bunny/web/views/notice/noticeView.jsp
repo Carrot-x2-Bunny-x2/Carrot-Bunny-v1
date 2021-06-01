@@ -9,7 +9,7 @@ Notice n = (Notice) request.getAttribute("notice");
 <style>
 #wrap {
 	width: 100%;
-	min-height: 900px;
+	min-height: 800px;
 	/* position: relative; */
 }
 

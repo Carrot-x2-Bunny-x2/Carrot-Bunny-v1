@@ -56,7 +56,7 @@
 }
 
 .noticewrite {
-	display : flex;
+	display : left;
 	margin :auto;
 	margin-top: 4%;
 	width: 92px;
