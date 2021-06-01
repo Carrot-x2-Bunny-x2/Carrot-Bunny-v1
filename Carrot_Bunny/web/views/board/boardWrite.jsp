@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/header.jsp"%>
 <%@ page import="com.member.model.vo.Member" %> 
-
+<%
+	/*out.print((int)request.getAttribute("user"));*/
+%>
 <style>
 	.wrapper {
 		height : auto;
@@ -18,7 +20,7 @@
 </style>
 <div class="wrapper">
 	<div id="notice-container">
-		<form action="<%=request.getContextPath() %>/board/boardWriteEnd" 
+		<form action="<%=request.getContextPath() %>/board/boardWriteEnd?user=<%=request.getAttribute("user")%>" 
 	    method="post" enctype="multipart/form-data">
 	        <table id="tbl-notice">
 	        <tr>

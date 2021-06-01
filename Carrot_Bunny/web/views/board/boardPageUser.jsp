@@ -248,7 +248,7 @@ div#pageBar>* {
 </div>
 <script>
 		const fn_noticeWrite=()=>{
-			location.assign("<%=request.getContextPath()%>/board/boardWrite");		
+			location.assign("<%=request.getContextPath()%>/board/boardWrite?user=1");		
 		}
 </script>
 

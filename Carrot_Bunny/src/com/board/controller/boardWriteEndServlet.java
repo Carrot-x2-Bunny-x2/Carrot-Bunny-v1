@@ -1,6 +1,7 @@
 package com.board.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,10 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.board.model.service.BoardService;
 import com.board.model.vo.Board;
+import com.board.model.vo.Comment;
 import com.common.MyRename;
+import com.love.model.service.LoveService;
+import com.love.model.vo.Love;
 import com.oreilly.servlet.MultipartRequest;
 
 /**
@@ -86,21 +90,58 @@ public class boardWriteEndServlet extends HttpServlet {
 //		b.setBoardFilePath(mr.getFilesystemName("boardFilepath1"));
 //		System.out.println(mr.getFilesystemName("boardFilepath2"));
 		int result = new BoardService().insertBoard(b);
-
 		// 등록성공하면 등록성공 메세지출력 후 리스트화면으로 이동
 		// 등록실패하면 등록실패 메세지출력 후 등록화면으로 이동
-		String msg = "";
-		String loc = "";
 		if (result > 0) {
-			msg = "상품등록 성공";
-			loc = "/board/boardPage";
+			request.setAttribute("msg", "등록 성공");
+			int cPage;
+			try {
+				cPage=Integer.parseInt(request.getParameter("cPage"));
+			}catch(NumberFormatException e) {
+				cPage=1;
+			}
+			request.setAttribute("cPage", cPage);
+			int user;
+			try {
+				user=Integer.parseInt(request.getParameter("user"));
+			}catch(NumberFormatException e) {
+				user=0;
+			}
+			request.setAttribute("user", user);
+			int love;
+			try {
+				love=Integer.parseInt(request.getParameter("love"));
+			}catch(NumberFormatException e) {
+				love=0;
+			}
+			request.setAttribute("love", love);
+			int sold;
+			try {
+				sold=Integer.parseInt(request.getParameter("sold"));
+			}catch(NumberFormatException e) {
+				sold=0;
+			}
+			request.setAttribute("sold", sold);
+			String searchType;
+			try {
+				searchType=request.getParameter("searchType");
+			}catch(NumberFormatException e) {
+				searchType="";
+			}
+			request.setAttribute("searchType", searchType);
+			String keyword;
+			try {
+				keyword=request.getParameter("keyword");
+			}catch(NumberFormatException e) {
+				keyword="";
+			}
+			request.setAttribute("keyword", keyword);
+			request.getRequestDispatcher("/views/board/boardMsg.jsp").forward(request, response);
+			
 		} else {
-			msg = "상품등록 실패";
-			loc = "/board/boardWrite";
+			request.setAttribute("msg", "등록 실패");
 		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		
 	}
 
 	/**

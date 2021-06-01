@@ -19,7 +19,6 @@ com.board.model.vo.Comment" %>
 		}
 	}
 	List<Comment> comments = (List<Comment>) request.getAttribute("comments");
-
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
@@ -6100,13 +6099,13 @@ header #nav-icon {
 	const fn_sell_product=()=>{
 		if(confirm("판매 완료 처리하시겠습니까?")){
 			//판매완료 진행
-			location.replace("<%=request.getContextPath() %>/board/boardSell?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
+			location.replace("<%=request.getContextPath() %>/board/boardSell?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
 	const fn_delete_product=()=>{
 		if(confirm("글을 삭제하시겠습니까?")){
 			//글 삭제 진행
-			location.replace("<%=request.getContextPath() %>/board/boardDelete?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
+			location.replace("<%=request.getContextPath() %>/board/boardDelete?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
 	$(function(){

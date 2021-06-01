@@ -37,7 +37,7 @@
 
 .noticetb {	
     width: 100%;
-    margin-top:40px;
+    margin-top:50px;
     line-height: 60px;
     text-align: center;
     font-size: 13px;
@@ -56,6 +56,12 @@
 .noticewrite {
 	margin-top : 10px;
 	float : right;
+	width: 100px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #ff9800;
+    border: none;
+    color: white; 
 }
 
 
@@ -92,9 +98,9 @@
 								<td><%=q.getQnaWriter() %></td>
 								<td><%=q.getQnaDate() %></td>
 								<%if(q.getQnaAnswer() == null){ %>
-									<td style="color: red; font-weight: bold;">답변 대기 중</td>
+									<td >답변 대기 중</td>
 								<%}else{%>
-									<td style="color: orange;">답변완료</td>
+									<td >답변완료</td>
 								<%}%>
 							</tr>
 						<%}
@@ -123,13 +129,13 @@
 						for(Qna q : list){%>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo()%>"><%=q.getQnaTitle() %></a>
+									<a style="text-decoration:none; color: #FF8C00;"href="<%=request.getContextPath()%>/qna/qnaView?qnaNo=<%=q.getQnaNo()%>"><%=q.getQnaTitle() %></a>
 								</td>
 								<td><%=q.getQnaDate() %></td>
 								<%if(q.getQnaAnswer() == null){ %>
 									<td style="color: red;">답변 대기 중</td>
 								<%}else{%>
-									<td style="color: blue;">답변완료</td>
+									<td style="color:#FF8C00;">답변완료</td>
 								<%}%>
 							</tr>
 						<%}
