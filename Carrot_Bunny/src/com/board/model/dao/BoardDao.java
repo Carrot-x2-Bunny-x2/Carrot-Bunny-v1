@@ -495,6 +495,26 @@ public class BoardDao {
 		return result;
 	}
 	
+	public int deleteComment(Connection conn, Comment cm) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(prop.getProperty("deleteComment"));
+			pstmt.setInt(1,cm.getCommentDelete());
+			pstmt.setInt(2,cm.getCommentNumber());
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+
+	}
+	
+	
+	
+	
 	public int updateLikeBoard(Connection conn, Board b) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -544,6 +564,7 @@ public class BoardDao {
 				c.setRefNumber(rs.getInt("c_refnum"));
 				c.setCommentLevel(rs.getInt("c_level"));
 				c.setCommentDate(rs.getDate("c_date"));
+				c.setCommentDelete(rs.getInt("comment_delete"));
 				list.add(c);
 			}
 		}catch(SQLException e) {
