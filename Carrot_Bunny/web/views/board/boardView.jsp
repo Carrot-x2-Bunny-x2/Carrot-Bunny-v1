@@ -11,6 +11,7 @@ com.board.model.vo.Comment"%>
 	Board b=(Board)request.getAttribute("board");
 	
 	Member m = (Member)session.getAttribute("loginMember");
+	Comment cm = (Comment)request.getAttribute("comment");
 	
 	List<Love> loveList = (List<Love>) request.getAttribute("loveList");
 	int check = 0;
@@ -7118,7 +7119,8 @@ right
 												<button class="btn-reply" value="<%=c.getCommentNumber()%>">답글</button>
 												<%} %> <%if(loginMember!=null&&(loginMember.getUserId().equals("admin")
 																	||loginMember.getUserId().equals(c.getCommentWriter()))){ %>
-												<button class="btn-delete">삭제</button> <%} %>
+												<input type="button" value="삭제" onclick="fn_delete_comment();" class="btn-delete"></input> <%} %>
+												
 											</td>
 										</tr>
 										<%}else{%>
@@ -7229,6 +7231,14 @@ right
 			location.replace("<%=request.getContextPath() %>/board/boardDelete?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
 		}
 	}
+	
+	const fn_delete_comment=()=>{
+		if(confirm("댓글을 삭제하시겠습니까?")){
+			//댓글 삭제 진행
+			location.replace("<%=request.getContextPath() %>/board/CommentDelete?c_num=<%=request.getAttribute("c_num")%>);
+		}
+	}
+	
 	$(function(){
 		$(".comment-editor textarea").focus(e=>{
 			if(<%=loginMember==null%>){

@@ -143,6 +143,18 @@ public class BoardService {
 		return result;
 	}
 	
+	
+	//댓글 삭제 
+	public int deleteComment(Comment cm) {
+		Connection conn = getConnection();
+		int result = dao.deleteComment(conn, cm);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		return result;
+	
+	}
+	
 	//좋아요 업데이트  
 	public int updateLikeBoard(Board b) {
 		Connection conn = getConnection();
