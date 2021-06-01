@@ -144,11 +144,12 @@ form#numperPageFrm {
 }
 
 div#pageBar>* {
-	margin-top:20px;
-	margin-right: 20px;
+	
+	margin-right: 10px;
 	text-decoration: none;
+	color:black;
 }
-
+ 
 .writebutton {
 	width: 60px;
 	height: 38px;
@@ -167,6 +168,9 @@ div#pageBar>* {
 	color: #ff8c00;
 	
 }
+
+
+
 </style>
 <div class="wrapper">
 
@@ -227,7 +231,7 @@ div#pageBar>* {
 					</tbody>
 				</table>
 
-				<div id="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 16px; margin-top:40px;">
+				<div id="pageBar" class="pageBar" align="center" style="text-align: center; letter-spacing: 10px; font-size: 16px; margin-top:40px; color:black;">
 					<%=request.getAttribute("pageBar")%>
 				</div>
 			</div>
