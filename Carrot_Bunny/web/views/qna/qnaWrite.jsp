@@ -50,32 +50,60 @@ textarea {
 	font-size: 22px;
 	font-weight: bolder;
 }
+
+.qwb{
+	margin-right:10px; 
+	height: 38px; 
+	border-radius: 10px; 
+	background-color: #ff9800; 
+	border: none; 
+	color: white; 
+	font-family: 'RIDIBatang';"
+}
+
+.qwform {
+
+}
+
+.qnaTitle {
+	width: 80%;
+	min-height: 30px; 
+	border-radius: 10px; 
+	border-width: 0.5px;
+}
+
+.qnaContent {
+	width: 80%;
+	min-height: 200px; 
+	border-radius: 10px; 
+	border-width: 0.5px;
+}
+
+	
 </style>
 <div class="wrapper">
 	<div id="notice-container">
 		<div class="noticetitle">
 			<p>1:1 문의 등록</p>
 		</div>
-		<form name="qnaWrite"
-			action="<%=request.getContextPath()%>/qna/qnaWriteEnd" method="post">
-			<table id="tbl-notice">
-				<tr>
-					<th>문의 제목</th>
-					<!-- 선 두꺼움 수정요망 
-					-->
-					<td><input name="qnaTitle" id="qnaTitle"
-						style="height: 38px; border-radius: 10px; margin-left: 50px;"
-						required></input>
-				</tr>
-				<tr>
-					<th>문의 내용</th>
-					<td><input name="qnaContent" id="qnaContent" required></input></td>
-				</tr>
-				<tr>
-					<th colspan="2"><input type="submit" value="문의 등록하기"></th>
-				</tr>
-			</table>
-		</form>
+		<div class="qwform">
+			<form name="qnaWrite"
+				action="<%=request.getContextPath()%>/qna/qnaWriteEnd" method="post">
+				<table id="tbl-notice">
+					<tr>
+						<th>문의 제목</th>
+						<td><input name="qnaTitle" id="qnaTitle" class="qnaTitle" placeholder="문의 제목을 작성해주세요." required></input>
+					</tr>
+					<tr>
+						<th>문의 내용</th>
+						<td><input name="qnaContent" id="qnaContent" placeholder="문의 할 내용을 작성해주세요." class="qnaContent" required></input></td>
+					</tr>
+					<tr>
+						<th colspan="2"><input class="qwb" type="submit" value="문의 등록하기"></th>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</div>
 </div>
 

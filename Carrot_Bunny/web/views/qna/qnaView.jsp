@@ -104,7 +104,7 @@ textarea {
 							if (q.getQnaAnswer() == null) {
 							%>
 							<td ><input type="hidden" name="qnaNo"
-								value="<%=q.getQnaNo()%>"> <input style="width:400px; height:100px; border-radius:10px;"
+								value="<%=q.getQnaNo()%>"> <input style="width:400px; height:100px; border-radius:10px; color: #ff9800;"
 									placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer"
 									id="answer"></input><br> </td>
 							<%
@@ -159,7 +159,7 @@ textarea {
 				<%
 				if (q.getQnaAnswer() == null) {
 				%>
-				<th colspan="2"><p style="color: blue;">
+				<th colspan="2"><p style="color: #ff9800;">
 						문의에 대한 답변이 아직 등록되지 않았습니다.
 						<p></th>
 				<%
