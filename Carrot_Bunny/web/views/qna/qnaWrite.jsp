@@ -7,11 +7,10 @@ Qna q = (Qna) request.getAttribute("qna");
 <%@ include file="../common/header.jsp"%>
 
 <style>
-
 .wrapper {
-	height : auto;
-	min-height:65%;
-	padding-bottom:60px;
+	height: auto;
+	min-height: 65%;
+	padding-bottom: 60px;
 }
 
 section#notice-container {
@@ -27,25 +26,22 @@ section#notice-container h2 {
 table#tbl-notice {
 	width: 500px;
 	margin: 0 auto;
-	
 }
 
 table#tbl-notice th {
 	width: 125px;
-	
 	padding: 5px 0;
 	text-align: center;
 }
 
 table#tbl-notice td {
-	
 	padding: 5px 0 5px 10px;
-	text-align:left;
+	text-align: left;
 }
 
 textarea {
-	width : 88%;
-	height : auto;
+	width: 88%;
+	height: auto;
 }
 
 .noticetitle {
@@ -58,15 +54,18 @@ textarea {
 <div class="wrapper">
 	<div id="notice-container">
 		<div class="noticetitle">
-		<p>1:1 문의 등록</p>
+			<p>1:1 문의 등록</p>
 		</div>
 		<form name="qnaWrite"
-			action="<%=request.getContextPath()%>/qna/qnaWriteEnd"
-			method="post">
-		<table id="tbl-notice">
-			<tr>
-				<th>문의 제목</th>
-				<td><input name="qnaTitle" id="qnaTitle" required></input>
+			action="<%=request.getContextPath()%>/qna/qnaWriteEnd" method="post">
+			<table id="tbl-notice">
+				<tr>
+					<th>문의 제목</th>
+					<!-- 선 두꺼움 수정요망 
+					-->
+					<td><input name="qnaTitle" id="qnaTitle"
+						style="height: 38px; border-radius: 10px; margin-left: 50px;"
+						required></input>
 				</tr>
 				<tr>
 					<th>문의 내용</th>

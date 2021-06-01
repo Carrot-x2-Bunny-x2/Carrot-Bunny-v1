@@ -4,7 +4,7 @@
 <style>
 section#enroll-container {
 	text-align: center;
-	margin-bottom: 4%;
+	margin-bottom: 10%;
 }
 
 section#enroll-container input {
@@ -28,7 +28,8 @@ section#enroll-container table td {
 <!--이용약관 css -->* {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box
+ 	box-sizing: border-box
+	border-radius:10px;
 }
 
 body {
@@ -47,6 +48,7 @@ a {
 	content: "";
 	display: block;
 	clear: both;
+	border-radius:20px;
 }
 
 #joinForm {
@@ -95,7 +97,7 @@ ul.join_box {
 .btn1{
 	width: 68px; 
 	height: 25px; 
-	border-radius: 10px; 
+	border-radius: 21px; 
 	background-color: #ff9800; 
 	border: none; 
 	color: white; 
@@ -121,11 +123,11 @@ ul.join_box {
 	<form name="memberEnrollFrm"
 		action="<%=request.getContextPath()%>/memberenrollend.do"
 		method="post">
-		<table>
+		<table >
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input type="text" placeholder="4글자이상" name="userId" id="userId_"  minlength="4" required> 
+					<input type="text" placeholder="4글자이상" name="userId" id="userId_"  minlength="4"  required> 
 					<input class="btn1" type="button" value="중복검사" onclick="fn_id_duplicate();"></td>
 			</tr>
 			<tr>
@@ -147,19 +149,19 @@ ul.join_box {
 					id="email" required><br></td>
 			</tr>
 			<tr>
-				<th>휴대폰</th>
-				<td><input type="tel" placeholder="(-없이)01012345678"
-					name="phone" id="phone" maxlength="11" required><br></td>
+				<th >휴대폰</th>
+				<td><input  type="tel" placeholder="(-없이)01012345678"
+					name="phone" id="phone" maxlength="11"required><br></td>
 			</tr>
 		</table>
-		<div style="margin : 0 18%;">
+		<div style="margin : 5% 15%;">
 			<ul class="join_box" style="padding-inline-start : 1em; padding-inline-end : 1em;">
 				<li class="checkBox check02">
 					<ul class="clearfix">
 						<li>이용약관 동의(필수)</li>
 						<li class="checkBtn"><input type="checkbox" name="pointcheck" id="pointcheck" value="0" />
 						</li>
-					</ul> <textarea name="" id="" readonly="readonly">여러분을 환영합니다.
+					</ul > <textarea name="" id="" readonly="readonly" >여러분을 환영합니다.
 바니바니당근당근 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 바니바니당근당근 서비스의 이용과 관련하여 바니바니당근당근 서비스를 제공하는 바니바니당근당근 주식회사(이하 ‘바니바니당근당근’)와 이를 이용하는 바니바니당근당근 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 바니바니당근당근 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
        </textarea>
 				</li>
