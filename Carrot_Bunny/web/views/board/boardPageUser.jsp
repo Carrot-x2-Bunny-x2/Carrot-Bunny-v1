@@ -20,17 +20,17 @@ for (Board b : allUserList) {
 <%@ include file="../common/header.jsp"%>
 <style>
 .wrapper {
-	height: 700px;
-	min-height: 100%;
-	padding-bottom: 60px;
+	height: 400px;
+	min-height: 80%;
+	padding-bottom: 0;
 }
 
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	text-align: center;
-	height: 900px;
+	height: 400px;
 }
 
 section#notice-container h2 {
