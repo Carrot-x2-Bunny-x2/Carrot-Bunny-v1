@@ -14,9 +14,32 @@
 	
     section#notice-container{width:600px; margin:0 auto; text-align:center;}
     section#notice-container h2{margin:10px 0;}
-    table#tbl-notice{width:500px; margin:0 auto; border:1px solid black; border-collapse:collapse; clear:both; }
-    table#tbl-notice th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
-    table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
+    table#tbl-notice{width:500px; margin:0 auto; clear:both; }
+    table#tbl-notice th {width: 125px; padding: 5px 0; text-align:center;} 
+    table#tbl-notice td {padding: 5px 0 5px 10px; text-align:left;}
+    
+    
+    .bfb{
+    	width: 70px; 
+   		margin-right:10px; 
+   		height: 38px; 
+   		border-radius: 10px; 
+   		background-color: #ff9800; 
+   		border: none; 
+   		color: white; 
+   		font-family: 'RIDIBatang';"
+    }
+    
+   	.bwb {
+   		width: 70px; 
+   		margin-right:10px; 
+   		height: 38px; 
+   		border-radius: 10px; 
+   		background-color: #ff9800; 
+   		border: none; 
+   		color: white; 
+   		font-family: 'RIDIBatang';"
+   	}
 </style>
 <div class="wrapper">
 	<div id="notice-container">
@@ -26,7 +49,7 @@
 	        <tr>
 	            <th>첨부파일</th>
 	            <td>
-	            	<input type="file" name="boardFilepath1" >
+	            	<input class="bfb" type="file" name="boardFilepath1" >
 	            </td>
 	        </tr>
 	        <tr>
@@ -60,7 +83,7 @@
 	        </tr>
 	        <tr>
 	            <th colspan="2">
-	                <input type="submit" value="등록하기" onclick="">
+	                <input class="bwb" type="submit" value="등록하기" onclick="">
 	            </th>
 	        </tr>
 	    	</table>
