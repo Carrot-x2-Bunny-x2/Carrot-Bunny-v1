@@ -151,12 +151,13 @@ div#pageBar>* {
 }
  
 .writebutton {
-	width: 60px;
+	width: 90px;
 	height: 38px;
-	border-radius: 10px;
+	border-radius: 20px;
 	background-color: #ff9800;
 	border: none;
 	color: white;
+	font-family: 'RIDIBatang';
 }
 
 .search-container {
@@ -169,6 +170,13 @@ div#pageBar>* {
 	
 }
 
+.buttonbox {
+	display:block;
+	text-align: right;
+    margin-right: 10%;
+    margin-bottom: 10px;
+}
+
 
 
 </style>
@@ -178,13 +186,13 @@ div#pageBar>* {
 		<div class="members">
 			<div class="membertitle">나의 판매상품</div>
 			<div id="search-container" class="search-container">
-				<p>
+				<div><p>
 					판매중
 					<%=selling %>
 					/ 판매완료
-					<%=sold %></p>
-				<input  class="writebutton" type="button" value="글쓰기" id="btn-add"
-					onclick="fn_noticeWrite();">
+					<%=sold %></p></div>
+				<div class="buttonbox"><input class="writebutton" type="button" value="글쓰기" id="btn-add"
+					onclick="fn_noticeWrite();"></div>
 			</div>
 			<!-- 회원 리스트 -->
 			<div class="memberlist">

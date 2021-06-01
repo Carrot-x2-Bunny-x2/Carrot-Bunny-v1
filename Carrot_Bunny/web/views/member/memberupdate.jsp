@@ -54,7 +54,7 @@
 }
 
 .btn2 {
-	width: 90px;
+	width: 100px;
 	height: 40px;
 	border-radius: 10px;
 	background-color: #ff9800;
