@@ -233,7 +233,7 @@ h3 {
 					<div class="ex">
 						<div class="imgclass">
 							<a
-								href="<%=request.getContextPath()%>/board/boardView?cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>">
+								href="<%=request.getContextPath()%>/board/boardView?searchType=&keyword=&no=<%=b.getBoardNumber()%>">
 								<img class="new"
 								src="<%=request.getContextPath()%>/upload/board/<%=b.getBoardReFilePath()%>" />
 							</a>

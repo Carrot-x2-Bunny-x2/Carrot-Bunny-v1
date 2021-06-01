@@ -19,7 +19,6 @@ com.board.model.vo.Comment" %>
 		}
 	}
 	List<Comment> comments = (List<Comment>) request.getAttribute("comments");
-
 %>    
 <%@ include file="../common/header.jsp"%>
 <style>
