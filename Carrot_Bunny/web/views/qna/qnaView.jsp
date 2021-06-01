@@ -139,7 +139,8 @@ textarea {
 		<div class="noticetitle">
 			<p>1:1 문의 상세화면</p>
 		</div>
-		<table id="tbl-notice">
+		<div style=" width: 60%; padding-top:30px; margin:auto">
+		<table id="tbl-notice" >
 			<tr>
 				<th>제 목</th>
 				<td><%=q.getQnaTitle()%></td>
@@ -150,7 +151,7 @@ textarea {
 			</tr>
 			<tr>
 				<th>문의 내용</th>
-				<td><textarea readonly="readonly"><%=q.getQnaContent()%>></textarea></td>
+				<td><textarea readonly="readonly"><%=q.getQnaContent()%></textarea></td>
 			</tr>
 			<tr>
 				<%
@@ -169,7 +170,7 @@ textarea {
 				}
 				%>
 			</tr>
-		</table>
+		</table></div>
 		<div style="text-align: center;">
 			<input
 				style="width: 70px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;"
