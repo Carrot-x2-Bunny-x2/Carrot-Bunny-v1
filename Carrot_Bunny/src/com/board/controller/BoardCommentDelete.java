@@ -18,7 +18,7 @@ import com.love.model.vo.Love;
 /**
  * Servlet implementation class BoardCommentDelete
  */
-@WebServlet("/board/CommentDelete")
+@WebServlet("/board/commentDelete")
 public class BoardCommentDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,7 +39,6 @@ public class BoardCommentDelete extends HttpServlet {
 	
 	
 		Comment cm=new Comment();
-		cm.setCommentDelete(1);
 		cm.setCommentNumber(Integer.parseInt(request.getParameter("c_num")));
 		
 		int result = new BoardService().deleteComment(cm);
@@ -100,8 +99,6 @@ public class BoardCommentDelete extends HttpServlet {
 		} else {
 			request.setAttribute("msg", "삭제 성공");
 		}
-		
-		
 		
 		request.getRequestDispatcher("/views/board/boardMsg.jsp").forward(request, response);
 	}

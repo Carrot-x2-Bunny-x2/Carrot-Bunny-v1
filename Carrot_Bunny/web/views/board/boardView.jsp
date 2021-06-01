@@ -6006,7 +6006,6 @@ header #nav-icon {
 															<%} %>
 															<%if(loginMember!=null&&(loginMember.getUserId().equals("admin")
 																	||loginMember.getUserId().equals(c.getCommentWriter()))){ %>
-															<button class="btn-delete">삭제</button>
 															<%} %>
 														</td>
 													</tr>	
@@ -6136,6 +6135,13 @@ header #nav-icon {
 			$(e.target).off("click");
 		});
 	});
+	
+	const fn_delete_comment=()=>{
+		if(confirm("댓글을 삭제하시겠습니까?")){
+			//댓글 삭제 진행
+			location.replace("<%=request.getContextPath() %>/board/commentDelete?user=<%=request.getAttribute("user")%>&love=<%=request.getAttribute("love")%>&searchType=<%=request.getAttribute("searchType")%>&keyword=<%=request.getAttribute("keyword")%>&sold=<%=request.getAttribute("sold")%>&cPage=<%=request.getAttribute("cPage")%>&no=<%=b.getBoardNumber()%>");
+		}
+	}
 	
 </script>
 

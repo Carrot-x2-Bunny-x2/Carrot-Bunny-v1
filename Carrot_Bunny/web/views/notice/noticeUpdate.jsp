@@ -9,7 +9,7 @@ Notice n = (Notice) request.getAttribute("notice");
 <style>
 .wrap {
 	witth: 100%;
-	height: 100%;
+	height: 50%;
 	min-height: 70%;
 	padding-bottom: 60px;
 }
