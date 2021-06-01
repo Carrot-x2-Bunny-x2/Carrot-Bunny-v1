@@ -25,8 +25,8 @@ section#notice-container h2 {
 }
 
 table#tbl-notice {
-	width: 77%;
-	margin-left: 20px;
+	margin:auto;
+	width: 68%;
 	margin-top: 20px;
 	line-height: 40px;
 	text-align: center;
@@ -40,6 +40,7 @@ table#tbl-notice {
 }
 
 table#tbl-notice th {
+	min-width: 70px;
 	width: 125px;
 	padding: 5px 0;
 	text-align: center;
@@ -77,7 +78,7 @@ textarea {
 			<form name="qnaUpdate"
 				action="<%=request.getContextPath()%>/qna/qnaUpdate" method="post">
 				<div
-					style=" width: 800px;  margin-left:500px; padding-top:30px;">
+					style=" width: 60%; padding-top:30px; margin:auto">
 					<table id="tbl-notice">
 						<tr>
 							<th>제 목</th>
