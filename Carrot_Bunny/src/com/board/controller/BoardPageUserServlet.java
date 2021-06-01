@@ -48,7 +48,7 @@ public class BoardPageUserServlet extends HttpServlet {
 		try {
 			numPerPage=Integer.parseInt(request.getParameter("numPerPage"));
 		}catch(NumberFormatException e) {
-			numPerPage=10;
+			numPerPage=5;
 		}
 		HttpSession session = request.getSession(false);
 		Member loginMember = (Member)session.getAttribute("loginMember");

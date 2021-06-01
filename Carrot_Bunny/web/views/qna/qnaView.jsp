@@ -9,14 +9,15 @@ Qna q = (Qna) request.getAttribute("qna");
 <style>
 .wrapper {
 	height: auto;
-	min-height: 70%;
+	min-height: 90%;
 	padding-bottom: 60px;
 }
 
 section#notice-container {
 	width: 600px;
 	margin: 0 auto;
-	text-align: center;
+	display: block;
+	
 }
 
 section#notice-container h2 {
@@ -76,7 +77,7 @@ textarea {
 			<form name="qnaUpdate"
 				action="<%=request.getContextPath()%>/qna/qnaUpdate" method="post">
 				<div
-					style="border: 1px solid black; width: 800px; border-radius: 10px;" >
+					style=" width: 800px;  margin-left:500px; padding-top:30px;">
 					<table id="tbl-notice">
 						<tr>
 							<th>제 목</th>
@@ -94,13 +95,13 @@ textarea {
 							<th>문의 내용</th>
 							<td><p style="border: none;" readonly="readonly"><%=q.getQnaContent()%></p></td>
 						</tr>
-						<tr>
-							<th>답변 내용</th>
+						<tr >
+							<th >답변 내용</th>
 							<%
 							if (q.getQnaAnswer() == null) {
 							%>
 							<td ><input type="hidden" name="qnaNo"
-								value="<%=q.getQnaNo()%>"> <input style="width:400px; height:100px;"
+								value="<%=q.getQnaNo()%>"> <input style="width:400px; height:100px; border-radius:10px;"
 									placeholder="문의에 대한 답변이 아직 등록되지 않았습니다." name="answer"
 									id="answer"></input><br> </td>
 							<%
@@ -116,7 +117,7 @@ textarea {
 						
 					</table>
 				</div>
-				<div style="text-align: center;">
+				<div style="text-align: center; margin-top:10px;">
 					<input style="width: 70px; margin-right:10px; height: 38px; border-radius: 10px; background-color: #ff9800; border: none; color: white;" type="submit"
 								value="답변 등록">
 					<input

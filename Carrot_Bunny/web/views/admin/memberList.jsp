@@ -146,9 +146,9 @@ div#pageBar>* {
 					<form action="<%=request.getContextPath()%>/admin/searchMember">
 						<input type="hidden" name="searchType" value="mem_name"> <input
 							type="text" name="searchKeyword" size="30"
-							placeholder="검색할 이름을 입력하세요"
+							placeholder="검색할 이름을 입력하세요" class="searchinputid"
 							value='<%=searchType.equals("UserName") ? keyword : ""%>'>
-						<button type="submit">검색</button>
+						<button type="submit" class="searchbtn">검색</button>
 					</form>
 				</div>
 			</div>
@@ -178,7 +178,7 @@ div#pageBar>* {
 						%>
 						<tr>
 							<td><%=m.getmemberNum()%></td>
-							<td><a style="text-decoration : none;"
+							<td><a style="text-decoration : none; color: #d2691e;"
 								href="<%=request.getContextPath()%>/memberlistDetail?memberNum=<%=m.getmemberNum()%>"><%=m.getUserId()%>
 							</a></td>
 							<td><%=m.getUserName()%></td>
