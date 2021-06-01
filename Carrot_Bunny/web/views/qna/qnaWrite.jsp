@@ -27,22 +27,20 @@ section#notice-container h2 {
 table#tbl-notice {
 	width: 500px;
 	margin: 0 auto;
-	border: 1px solid black;
-	border-collapse: collapse;
-	clear: both;
+	
 }
 
 table#tbl-notice th {
 	width: 125px;
-	border: 1px solid;
+	
 	padding: 5px 0;
 	text-align: center;
 }
 
 table#tbl-notice td {
-	border: 1px solid;
+	
 	padding: 5px 0 5px 10px;
-	text-align: left;
+	text-align:left;
 }
 
 textarea {
@@ -68,11 +66,11 @@ textarea {
 		<table id="tbl-notice">
 			<tr>
 				<th>문의 제목</th>
-				<td><textarea name="qnaTitle" id="qnaTitle" required></textarea>
+				<td><input name="qnaTitle" id="qnaTitle" required></input>
 				</tr>
 				<tr>
 					<th>문의 내용</th>
-					<td><textarea name="qnaContent" id="qnaContent" required></textarea></td>
+					<td><input name="qnaContent" id="qnaContent" required></input></td>
 				</tr>
 				<tr>
 					<th colspan="2"><input type="submit" value="문의 등록하기"></th>
