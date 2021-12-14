@@ -60,3 +60,13 @@
 ![sellRead](./img/sellRead.png)
 
 - 이외 게시판, 마이 페이지 등등도 있으나 생략
+
+---
+### 🧭 시행 착오
+프로젝트를 하면서 발생했던 에러나 막혔던 부분들에 대해 글로 정리했습니다.
+- [Eclipse 실행 오류](https://blog.naver.com/harrison1995/222324356928)
+- [Tomcat Server 종료 방법](https://blog.naver.com/harrison1995/222326809429)
+- [getParameter로 password가 null로 받아지는 문제](https://blog.naver.com/harrison1995/222341662518)
+- [git 충돌문제, git stash, FileNotFoundException](https://blog.naver.com/harrison1995/222355525178)
+- [Eclipse에서 oracle DB 연결하기](https://blog.naver.com/harrison1995/222357928438)
+- [gitignore 적용이 되지 않을 때](https://blog.naver.com/harrison1995/222359465264)
